@@ -1,4 +1,4 @@
-# TorchDCM Paper Benchmarks
+# TorchDCM Evaluation Benchmark
 
 This repository contains the reproducible benchmark and validation system used
 for the TorchDCM software paper. The installable package is maintained in the
