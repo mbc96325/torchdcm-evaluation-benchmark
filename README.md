@@ -151,20 +151,20 @@ each JSON output.
 
 ## Experiment-to-output mapping
 
-| Identifier | Paper experiment | Archived result |
-| --- | --- | --- |
-| `synthetic-mnl` | Synthetic controlled MNL | [`synthetic_mnl_single_core.json`](results/synthetic_mnl_single_core.json) |
-| `synthetic-nl` | Synthetic controlled NL | [`generated_choice_battery_table4_nl.json`](results/generated_choice_battery_table4_nl.json) |
-| `synthetic-mixl` | Synthetic controlled MixL | [`generated_choice_battery_table4_mixl.json`](results/generated_choice_battery_table4_mixl.json) |
-| `real-mnl` | Real-data MNL | [`solver_attempt_matrix_mnl_single_core.json`](results/solver_attempt_matrix_mnl_single_core.json) |
-| `real-nl` | Real-data NL | [`nested_real_battery_single_core.json`](results/nested_real_battery_single_core.json) |
-| `real-mixl` | Real-data MixL | [`mixed_real_battery_apollo.json`](results/mixed_real_battery_apollo.json) |
-| `cpu-cuda` | TorchDCM CPU--CUDA scaling | [`torch_device_stress_battery.json`](results/torch_device_stress_battery.json) |
-| `ordered-synthetic-logit` | Synthetic ordered logit | [`ordered_logit_synthetic_threeway_single_core.json`](results/ordered_logit_synthetic_threeway_single_core.json) |
-| `ordered-synthetic-probit` | Synthetic ordered probit | [`ordered_probit_synthetic_threeway_single_core.json`](results/ordered_probit_synthetic_threeway_single_core.json) |
-| `ordered-real-logit` | Real-data ordered logit | [`ordered_logit_real_threeway_single_core.json`](results/ordered_logit_real_threeway_single_core.json) |
-| `ordered-real-probit` | Real-data ordered probit | [`ordered_probit_real_threeway_single_core.json`](results/ordered_probit_real_threeway_single_core.json) |
-| `advanced` | Latent class, hybrid choice, and panel | [`advanced_full_estimation.json`](results/advanced_full_estimation.json) |
+| Identifier | Paper experiment | Paper table or figure | Archived result |
+| --- | --- | --- | --- |
+| `synthetic-mnl` | Synthetic controlled MNL | Table 3 | [`synthetic_mnl_single_core.json`](results/synthetic_mnl_single_core.json) |
+| `synthetic-nl` | Synthetic controlled NL | Table 4 | [`generated_choice_battery_table4_nl.json`](results/generated_choice_battery_table4_nl.json) |
+| `synthetic-mixl` | Synthetic controlled MixL | Table 5 | [`generated_choice_battery_table4_mixl.json`](results/generated_choice_battery_table4_mixl.json) |
+| `real-mnl` | Real-data MNL | Table 7 | [`solver_attempt_matrix_mnl_single_core.json`](results/solver_attempt_matrix_mnl_single_core.json) |
+| `real-nl` | Real-data NL | Table 8 | [`nested_real_battery_single_core.json`](results/nested_real_battery_single_core.json) |
+| `real-mixl` | Real-data MixL | Table 9 | [`mixed_real_battery_apollo.json`](results/mixed_real_battery_apollo.json) |
+| `cpu-cuda` | TorchDCM CPU--CUDA scaling | Table 6 | [`torch_device_stress_battery.json`](results/torch_device_stress_battery.json) |
+| `ordered-synthetic-logit` | Synthetic ordered logit | Table EC.1 | [`ordered_logit_synthetic_threeway_single_core.json`](results/ordered_logit_synthetic_threeway_single_core.json) |
+| `ordered-synthetic-probit` | Synthetic ordered probit | Table EC.1 | [`ordered_probit_synthetic_threeway_single_core.json`](results/ordered_probit_synthetic_threeway_single_core.json) |
+| `ordered-real-logit` | Real-data ordered logit | Tables EC.2--EC.7 | [`ordered_logit_real_threeway_single_core.json`](results/ordered_logit_real_threeway_single_core.json) |
+| `ordered-real-probit` | Real-data ordered probit | Tables EC.2--EC.7 | [`ordered_probit_real_threeway_single_core.json`](results/ordered_probit_real_threeway_single_core.json) |
+| `advanced` | Latent class, hybrid choice, and panel | Tables EC.9--EC.11 | [`advanced_full_estimation.json`](results/advanced_full_estimation.json) |
 
 Run the ordered-model summarizer after reproducing those cases:
 
