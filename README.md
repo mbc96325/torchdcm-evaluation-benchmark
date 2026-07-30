@@ -5,8 +5,7 @@
 This repository is the standalone computational archive for the TorchDCM
 software paper, *TorchDCM: A PyTorch-First Package for Discrete Choice Model
 Estimation*. The paper is prepared for the *INFORMS Journal on Computing*
-software track. Its LaTeX source is maintained separately in the
-[manuscript repository](https://github.com/mbc96325/torchdcm-manuscript).
+software track.
 
 This archive contains the TorchDCM source code used in the study, experiment
 drivers for seven estimation packages, all input datasets, the intermediate
