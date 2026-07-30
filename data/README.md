@@ -8,8 +8,11 @@ This directory contains only datasets used in the paper.
   datasets reported in the manuscript.
 
 Each small-dataset directory contains a canonical `data.csv` and source
-metadata. LPMC is downloaded from the official Biogeme data page and processed
-with:
+metadata. These third-party datasets are not covered by the repository's MIT
+License. Their attribution and upstream terms are summarized in
+[`../THIRD_PARTY_NOTICES.md`](../THIRD_PARTY_NOTICES.md).
+
+LPMC is downloaded from the official Biogeme data page and processed with:
 
 ```bash
 python scripts/process_lpmc_london.py

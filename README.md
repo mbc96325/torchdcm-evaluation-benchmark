@@ -1,5 +1,7 @@
 # TorchDCM Evaluation Benchmark
 
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
 This repository is the standalone computational archive for the TorchDCM
 software paper. It contains the TorchDCM source code used in the study,
 experiment drivers for seven estimation packages, aligned datasets, and the
@@ -46,6 +48,9 @@ included.
 ├── run_exp.py                # Root experiment selector
 ├── requirements.txt          # Tested Python versions
 ├── pyproject.toml            # Standalone local installation
+├── LICENSE                   # MIT License for original software
+├── AUTHORS                   # Contribution authors
+├── THIRD_PARTY_NOTICES.md    # External software and data attribution
 └── BENCHMARK_SYSTEM.md       # Alignment and timing protocol
 ```
 
@@ -229,6 +234,14 @@ Numerical agreement should be assessed with the final-log-likelihood rule in
 comparisons should use the same thread policy and avoid concurrent heavy jobs.
 CPU model, GPU model, BLAS implementation, package versions, and compiler
 state can change wall-clock time.
+
+## License
+
+The TorchDCM source snapshot, original benchmark software, documentation, and
+generated results are released under the [MIT License](LICENSE), with
+copyright held by Baichuan Mo. Third-party datasets and external dependencies
+retain their upstream terms. See
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ## Support
 

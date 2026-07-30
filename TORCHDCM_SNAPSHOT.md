@@ -14,4 +14,5 @@ a second repository.
 
 The standalone benchmark package installs this local directory through the
 root `pyproject.toml`. The actively maintained package and its later releases
-remain in the separate TorchDCM repository.
+remain in the separate TorchDCM repository. The copyright holder distributes
+this archived source under the repository's [MIT License](LICENSE).

@@ -9,6 +9,10 @@ description = "PyTorch-first discrete choice model estimation with econometric i
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [{name = "Baichuan Mo"}]
+license = {file = "LICENSE"}
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+]
 dependencies = [
     "numpy>=1.23",
     "pandas>=1.5",
