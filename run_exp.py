@@ -34,7 +34,7 @@ EXPERIMENTS = {
             "--output-profile",
             "synthetic_mnl_reproduction",
         ),
-        "results/synthetic_mnl_single_core_office.json",
+        "results/synthetic_mnl_single_core.json",
     ),
     "synthetic-nl": Experiment(
         "Synthetic controlled NL estimation",
@@ -49,7 +49,7 @@ EXPERIMENTS = {
             "--output-profile",
             "synthetic_nl_reproduction",
         ),
-        "results/generated_choice_battery_table4_nl_office.json",
+        "results/generated_choice_battery_table4_nl.json",
     ),
     "synthetic-mixl": Experiment(
         "Synthetic controlled MixL estimation",
@@ -64,7 +64,7 @@ EXPERIMENTS = {
             "--output-profile",
             "synthetic_mixl_reproduction",
         ),
-        "results/generated_choice_battery_table4_mixl_office.json",
+        "results/generated_choice_battery_table4_mixl.json",
     ),
     "real-mnl": Experiment(
         "Real-data MNL estimation",
@@ -73,7 +73,7 @@ EXPERIMENTS = {
             "--profile",
             "mnl_reproduction",
         ),
-        "results/solver_attempt_matrix_mnl_single_core_office.json",
+        "results/solver_attempt_matrix_mnl_single_core.json",
     ),
     "real-nl": Experiment(
         "Real-data NL estimation",
@@ -84,7 +84,7 @@ EXPERIMENTS = {
             "--md-output",
             "results/nested_real_battery_reproduction.md",
         ),
-        "results/nested_real_battery_single_core_office.json",
+        "results/nested_real_battery_single_core.json",
     ),
     "real-mixl": Experiment(
         "Real-data MixL estimation",
@@ -95,7 +95,7 @@ EXPERIMENTS = {
             "--md-output",
             "results/mixed_real_battery_reproduction.md",
         ),
-        "results/mixed_real_battery_apollo_office.json",
+        "results/mixed_real_battery_apollo.json",
     ),
     "cpu-cuda": Experiment(
         "TorchDCM CPU--CUDA scaling",
@@ -119,7 +119,7 @@ EXPERIMENTS = {
             "--output",
             "results/ordered_logit_synthetic_reproduction.json",
         ),
-        "results/ordered_logit_synthetic_threeway_single_core_office.json",
+        "results/ordered_logit_synthetic_threeway_single_core.json",
     ),
     "ordered-synthetic-probit": Experiment(
         "Synthetic ordered-probit estimation",
@@ -130,7 +130,7 @@ EXPERIMENTS = {
             "--output",
             "results/ordered_probit_synthetic_reproduction.json",
         ),
-        "results/ordered_probit_synthetic_threeway_single_core_office.json",
+        "results/ordered_probit_synthetic_threeway_single_core.json",
     ),
     "ordered-real-logit": Experiment(
         "Real-data ordered-logit estimation",
@@ -141,7 +141,7 @@ EXPERIMENTS = {
             "--output",
             "results/ordered_logit_real_reproduction.json",
         ),
-        "results/ordered_logit_real_threeway_single_core_office.json",
+        "results/ordered_logit_real_threeway_single_core.json",
     ),
     "ordered-real-probit": Experiment(
         "Real-data ordered-probit estimation",
@@ -152,7 +152,7 @@ EXPERIMENTS = {
             "--output",
             "results/ordered_probit_real_reproduction.json",
         ),
-        "results/ordered_probit_real_threeway_single_core_office.json",
+        "results/ordered_probit_real_threeway_single_core.json",
     ),
     "advanced": Experiment(
         "Latent-class, hybrid-choice, and panel estimation",
@@ -161,7 +161,7 @@ EXPERIMENTS = {
             "--output",
             "results/advanced_full_estimation_reproduction.json",
         ),
-        "results/advanced_full_estimation_office.json",
+        "results/advanced_full_estimation.json",
     ),
 }
 

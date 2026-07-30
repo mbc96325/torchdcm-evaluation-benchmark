@@ -42,7 +42,7 @@ included.
 │   ├── small/                # Included public benchmark datasets
 │   ├── large/                # Large-data provenance and preparation notes
 │   └── dataset_index.csv     # Dataset-to-storage index
-├── results/                  # Archived Office-machine JSON results
+├── results/                  # Archived paper-result JSON files
 ├── scripts/                  # Large-data preparation utilities
 ├── tests/                    # Artifact and numerical parity checks
 ├── run_exp.py                # Root experiment selector
@@ -143,7 +143,7 @@ The standard workflow is:
 2. prepare the large public datasets if those cases will be run;
 3. select an experiment with `run_exp.py`;
 4. retain the newly generated `*_reproduction` output; and
-5. compare it with the corresponding archived Office-machine JSON file.
+5. compare it with the corresponding archived JSON file.
 
 Runtime values depend on hardware and software versions. Final log likelihoods,
 case dimensions, backend status, and consistency diagnostics are stored in
@@ -153,18 +153,18 @@ each JSON output.
 
 | Identifier | Paper experiment | Archived result |
 | --- | --- | --- |
-| `synthetic-mnl` | Synthetic controlled MNL | [`synthetic_mnl_single_core_office.json`](results/synthetic_mnl_single_core_office.json) |
-| `synthetic-nl` | Synthetic controlled NL | [`generated_choice_battery_table4_nl_office.json`](results/generated_choice_battery_table4_nl_office.json) |
-| `synthetic-mixl` | Synthetic controlled MixL | [`generated_choice_battery_table4_mixl_office.json`](results/generated_choice_battery_table4_mixl_office.json) |
-| `real-mnl` | Real-data MNL | [`solver_attempt_matrix_mnl_single_core_office.json`](results/solver_attempt_matrix_mnl_single_core_office.json) |
-| `real-nl` | Real-data NL | [`nested_real_battery_single_core_office.json`](results/nested_real_battery_single_core_office.json) |
-| `real-mixl` | Real-data MixL | [`mixed_real_battery_apollo_office.json`](results/mixed_real_battery_apollo_office.json) |
+| `synthetic-mnl` | Synthetic controlled MNL | [`synthetic_mnl_single_core.json`](results/synthetic_mnl_single_core.json) |
+| `synthetic-nl` | Synthetic controlled NL | [`generated_choice_battery_table4_nl.json`](results/generated_choice_battery_table4_nl.json) |
+| `synthetic-mixl` | Synthetic controlled MixL | [`generated_choice_battery_table4_mixl.json`](results/generated_choice_battery_table4_mixl.json) |
+| `real-mnl` | Real-data MNL | [`solver_attempt_matrix_mnl_single_core.json`](results/solver_attempt_matrix_mnl_single_core.json) |
+| `real-nl` | Real-data NL | [`nested_real_battery_single_core.json`](results/nested_real_battery_single_core.json) |
+| `real-mixl` | Real-data MixL | [`mixed_real_battery_apollo.json`](results/mixed_real_battery_apollo.json) |
 | `cpu-cuda` | TorchDCM CPU--CUDA scaling | [`torch_device_stress_battery.json`](results/torch_device_stress_battery.json) |
-| `ordered-synthetic-logit` | Synthetic ordered logit | [`ordered_logit_synthetic_threeway_single_core_office.json`](results/ordered_logit_synthetic_threeway_single_core_office.json) |
-| `ordered-synthetic-probit` | Synthetic ordered probit | [`ordered_probit_synthetic_threeway_single_core_office.json`](results/ordered_probit_synthetic_threeway_single_core_office.json) |
-| `ordered-real-logit` | Real-data ordered logit | [`ordered_logit_real_threeway_single_core_office.json`](results/ordered_logit_real_threeway_single_core_office.json) |
-| `ordered-real-probit` | Real-data ordered probit | [`ordered_probit_real_threeway_single_core_office.json`](results/ordered_probit_real_threeway_single_core_office.json) |
-| `advanced` | Latent class, hybrid choice, and panel | [`advanced_full_estimation_office.json`](results/advanced_full_estimation_office.json) |
+| `ordered-synthetic-logit` | Synthetic ordered logit | [`ordered_logit_synthetic_threeway_single_core.json`](results/ordered_logit_synthetic_threeway_single_core.json) |
+| `ordered-synthetic-probit` | Synthetic ordered probit | [`ordered_probit_synthetic_threeway_single_core.json`](results/ordered_probit_synthetic_threeway_single_core.json) |
+| `ordered-real-logit` | Real-data ordered logit | [`ordered_logit_real_threeway_single_core.json`](results/ordered_logit_real_threeway_single_core.json) |
+| `ordered-real-probit` | Real-data ordered probit | [`ordered_probit_real_threeway_single_core.json`](results/ordered_probit_real_threeway_single_core.json) |
+| `advanced` | Latent class, hybrid choice, and panel | [`advanced_full_estimation.json`](results/advanced_full_estimation.json) |
 
 Run the ordered-model summarizer after reproducing those cases:
 

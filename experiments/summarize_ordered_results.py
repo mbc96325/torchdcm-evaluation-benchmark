@@ -50,12 +50,12 @@ def main() -> None:
     synthetic = {
         kind: load(
             root
-            / f"ordered_{kind}_synthetic_threeway_single_core_office.json"
+            / f"ordered_{kind}_synthetic_threeway_single_core.json"
         )
         for kind in ("logit", "probit")
     }
     actual = {
-        kind: load(root / f"ordered_{kind}_real_threeway_single_core_office.json")
+        kind: load(root / f"ordered_{kind}_real_threeway_single_core.json")
         for kind in ("logit", "probit")
     }
 

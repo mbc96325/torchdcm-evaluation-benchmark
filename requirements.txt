@@ -1,4 +1,4 @@
-# Versions used to produce the archived Office-machine results.
+# Versions used to produce the archived benchmark results.
 # Install the repository itself afterward with: python -m pip install -e .
 numpy==2.4.6
 pandas==2.3.3

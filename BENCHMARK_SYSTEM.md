@@ -50,8 +50,8 @@ run that did not complete successfully, while `Timeout` records the
 
 ## Output policy
 
-The `results/` directory contains only the authoritative Office-machine JSON
-outputs used by the main paper and electronic companion. Reproduction commands
-should use a new output suffix so that the committed results remain auditable.
-The JSON files include case dimensions, runtime-policy metadata, backend
-status, final likelihoods, and available numerical diagnostics.
+The `results/` directory contains only the authoritative JSON outputs used by
+the main paper and electronic companion. Reproduction commands should use a
+new output suffix so that the committed results remain auditable. The JSON
+files include case dimensions, runtime-policy metadata, backend status, final
+likelihoods, and available numerical diagnostics.
