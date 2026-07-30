@@ -3,10 +3,15 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 This repository is the standalone computational archive for the TorchDCM
-software paper. It contains the TorchDCM source code used in the study,
-experiment drivers for seven estimation packages, all input datasets, the
-intermediate solver outputs retained by the benchmark, and the machine-readable
-results used to prepare the paper's tables.
+software paper, *TorchDCM: A PyTorch-First Package for Discrete Choice Model
+Estimation*. The paper is prepared for the *INFORMS Journal on Computing*
+software track. Its LaTeX source is maintained separately in the
+[manuscript repository](https://github.com/mbc96325/torchdcm-manuscript).
+
+This archive contains the TorchDCM source code used in the study, experiment
+drivers for seven estimation packages, all input datasets, the intermediate
+solver outputs retained by the benchmark, and the machine-readable results
+used to prepare the paper's tables.
 
 The `torchdcm/` directory is a clean snapshot of TorchDCM 0.1.1 at Git commit
 `b34ab6924523017aca39f5529c940c2cdd817bde`. The snapshot is installed directly
@@ -15,9 +20,50 @@ second Git checkout or a TorchDCM download from PyPI. Later package development
 continues in the [TorchDCM repository](https://github.com/mbc96325/torchdcm).
 See [TORCHDCM_SNAPSHOT.md](TORCHDCM_SNAPSHOT.md) for provenance.
 
+## Citation
+
+The journal DOI and computational-archive DOI have not yet been assigned.
+Until they are available, cite the manuscript and this fixed computational
+archive as follows:
+
+```bibtex
+@misc{mo2026torchdcm,
+  author = {Mo, Baichuan},
+  title = {{TorchDCM: A PyTorch-First Package for Discrete Choice Model Estimation}},
+  year = {2026},
+  note = {Software paper manuscript and computational archive},
+  url = {https://github.com/mbc96325/torchdcm-evaluation-benchmark}
+}
+```
+
+For an exact replication record, also report the Git commit used. The active
+TorchDCM package and this archived evaluation repository serve different
+purposes and should be linked separately.
+
+## Contents
+
+1. [Scope](#scope)
+2. [Repository layout](#repository-layout)
+3. [System requirements](#system-requirements)
+4. [Quick start](#quick-start)
+5. [Reproduction workflow](#reproduction-workflow)
+6. [Experiment-to-output mapping](#experiment-to-output-mapping)
+7. [Archived data](#archived-data)
+8. [Generating and checking paper outputs](#generating-and-checking-paper-outputs)
+9. [Timing and numerical protocol](#timing-and-numerical-protocol)
+10. [Approximate wall-clock times](#approximate-wall-clock-times)
+11. [Tests](#tests)
+12. [Cross-machine reproducibility](#cross-machine-reproducibility)
+13. [Troubleshooting](#troubleshooting)
+14. [License](#license)
+15. [Ongoing development](#ongoing-development)
+16. [Support](#support)
+
 ## Scope
 
-The repository reproduces the paper's:
+### What is reproduced
+
+The repository reproduces the numerical experiments reported in the paper:
 
 - synthetic MNL, NL, and MixL full-estimation experiments;
 - real-data MNL, NL, and MixL comparisons;
@@ -25,10 +71,22 @@ The repository reproduces the paper's:
 - ordered-logit and ordered-probit validation; and
 - latent-class, hybrid-choice, and panel validation.
 
-The manuscript source is intentionally not included. All 18 empirical datasets
-used by the paper, including the original LPMC files and the NHTS public-use
-CSV archive, are committed to ordinary Git. No Git LFS checkout or external
-data download is required after cloning.
+These experiments produce the results behind Tables 3--9 in the main paper
+and Tables EC.1--EC.11 in the electronic companion. All 18 empirical datasets,
+including the original LPMC files and the NHTS public-use CSV archive, are
+committed to ordinary Git. No Git LFS checkout or external data download is
+required after cloning.
+
+### What is not reproduced directly
+
+- Table 1 summarizes documented package capabilities rather than an executed
+  numerical experiment.
+- Table 2 reports dataset dimensions from the committed data and metadata.
+- Figure 1, the code listings, and the estimation-report illustration explain
+  the package architecture and public interface rather than benchmark outputs.
+- The formatted manuscript and electronic companion are maintained in the
+  separate manuscript repository. This archive retains the JSON evidence from
+  which their numerical tables were prepared.
 
 ## Repository layout
 
@@ -192,6 +250,23 @@ python scripts/process_lpmc_london.py
 It does not contact the network. NHTS rows are read directly from the committed
 `data/raw/nhts_2022/csv.zip`.
 
+## Generating and checking paper outputs
+
+Each root command writes a new result with a `_reproduction` suffix and leaves
+the archived paper result unchanged. Compare the new JSON with the file named
+in the mapping table. The principal checks are:
+
+1. the same case dimensions and model specification;
+2. successful completion or the same documented timeout status;
+3. final log likelihood within the rule in
+   [BENCHMARK_SYSTEM.md](BENCHMARK_SYSTEM.md); and
+4. similar runtime ordering, allowing for hardware and software differences.
+
+The top-level JSON files in `results/` are the direct sources for the numerical
+tables. `results/intermediate/` contains the subordinate package outputs and
+logs used to assemble them. The manuscript repository applies the journal's
+table formatting to these values and is not required to rerun estimation.
+
 ## Timing and numerical protocol
 
 All cross-estimator CPU runners enforce one logical CPU by controlling process
@@ -206,6 +281,30 @@ parameter scales, and starting values. Simulated models use common draws when
 the external interface accepts them. The complete rules for runtime scope,
 failed runs, and final-log-likelihood consistency are in
 [BENCHMARK_SYSTEM.md](BENCHMARK_SYSTEM.md).
+
+## Approximate wall-clock times
+
+The following planning values summarize the archived run on the paper
+hardware. They include sequential estimator work and recorded timeouts, rounded
+to practical intervals. Environment setup and scheduler overhead can add time.
+
+| Identifier | Approximate time |
+| --- | ---: |
+| `synthetic-mnl` | 60 minutes |
+| `synthetic-nl` | 45 minutes |
+| `synthetic-mixl` | 2 hours |
+| `real-mnl` | 10 minutes |
+| `real-nl` | 5 minutes |
+| `real-mixl` | 25 minutes |
+| `cpu-cuda` | 30 minutes |
+| each synthetic ordered experiment | 3 minutes |
+| each real-data ordered experiment | 7 minutes |
+| `advanced` | 15 minutes |
+
+A complete sequential rerun should therefore reserve roughly six hours on
+comparable hardware. Users interested only in checking a reported table can run
+the corresponding identifier or inspect the committed result without rerunning
+the remaining experiments.
 
 ## Tests
 
@@ -232,6 +331,22 @@ comparisons should use the same thread policy and avoid concurrent heavy jobs.
 CPU model, GPU model, BLAS implementation, package versions, and compiler
 state can change wall-clock time.
 
+## Troubleshooting
+
+- **An R estimator is unavailable.** Install Apollo, `mlogit`, `gmnl`, and
+  `jsonlite` with the command in [Quick start](#quick-start), then rerun the
+  affected identifier.
+- **CUDA is not detected.** Install a CUDA-enabled PyTorch build compatible
+  with the local driver. All non-device experiments can still run on CPU.
+- **A runtime differs from the paper.** Confirm single-thread execution and
+  avoid concurrent heavy jobs. Compare final log likelihoods before interpreting
+  timing differences.
+- **A stress case reaches 300 seconds.** This is an expected benchmark outcome,
+  not an archive failure. The JSON records `Timeout` explicitly.
+- **A result file already exists.** Reproduction commands use a
+  `_reproduction` suffix so that the committed paper evidence is not
+  overwritten.
+
 ## License
 
 The TorchDCM source snapshot, original benchmark software, documentation, and
@@ -239,6 +354,14 @@ generated results are released under the [MIT License](LICENSE), with
 copyright held by Baichuan Mo. Third-party datasets and external dependencies
 retain their upstream terms. See
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+## Ongoing development
+
+This repository is a fixed paper-evaluation archive. New TorchDCM features,
+examples, releases, and bug fixes are developed in the
+[main TorchDCM repository](https://github.com/mbc96325/torchdcm). Benchmark
+changes needed to reproduce the archived manuscript should be made here and
+should preserve the source snapshot and authoritative results.
 
 ## Support
 
