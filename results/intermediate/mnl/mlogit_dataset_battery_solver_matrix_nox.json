@@ -1,0 +1,186 @@
+[
+  {
+    "case": "nox",
+    "dataset_id": "mlogit_nox",
+    "model": "MNL",
+    "reference": "mlogit",
+    "mlogit": {
+      "backend": "mlogit",
+      "dataset": "nox",
+      "n_obs": 632,
+      "n_rows": 9480,
+      "n_parameters": 3,
+      "variables": [
+        "post",
+        "vcost",
+        "kcost"
+      ],
+      "loglike": -1106.0106492447546,
+      "estimate_seconds": 0.034999999999999976,
+      "covariance_seconds": 0,
+      "total_seconds": 0.034999999999999976,
+      "params": {
+        "post": -1.1630438193327073,
+        "vcost": -0.062473663632982644,
+        "kcost": 0.033379410031432924
+      },
+      "covariance_names": [
+        "post",
+        "vcost",
+        "kcost"
+      ],
+      "covariance": [
+        [
+          0.015328107136885172,
+          -0.00040911174841924653,
+          -0.000637280752985476
+        ],
+        [
+          -0.00040911174841924247,
+          0.0008196413244780571,
+          0.00024454641825107006
+        ],
+        [
+          -0.0006372807529854747,
+          0.0002445464182510702,
+          0.00011256563384936231
+        ]
+      ],
+      "available": true,
+      "wall_seconds": 0.4513991290004924
+    },
+    "torchdcm": {
+      "backend": "torchdcm",
+      "available": true,
+      "total_seconds": 0.1351942989276722,
+      "estimate_seconds": 0.1351942989276722,
+      "covariance_seconds": 0.0,
+      "loglike": -1106.0106492450957,
+      "n_obs": 632,
+      "n_rows": 9480,
+      "n_parameters": 3,
+      "parameters": [
+        "B_POST",
+        "B_VCOST",
+        "B_KCOST"
+      ]
+    },
+    "scipy_bfgs": {
+      "backend": "scipy_bfgs",
+      "available": true,
+      "total_seconds": 0.2358963170554489,
+      "estimate_seconds": 0.23498016805388033,
+      "covariance_seconds": 0.0009161490015685558,
+      "loglike": -1106.0106492447533,
+      "params": {
+        "B_POST": -1.163043807806995,
+        "B_VCOST": -0.062473663814832714,
+        "B_KCOST": 0.03337940947350045
+      },
+      "message": "Desired error not necessarily achieved due to precision loss."
+    },
+    "biogeme": {
+      "backend": "biogeme",
+      "available": true,
+      "total_seconds": 5.145987783907913,
+      "estimate_seconds": 5.145877260016277,
+      "covariance_seconds": 5.4421951062977314e-05,
+      "loglike": -1106.0106492447549,
+      "parameters": [
+        "B_POST",
+        "B_VCOST",
+        "B_KCOST"
+      ],
+      "params": {
+        "B_POST": -1.1630438193327073,
+        "B_VCOST": -0.06247366363298273,
+        "B_KCOST": 0.033379410031432896
+      },
+      "covariance": [
+        [
+          0.015328107136885266,
+          -0.0004091117484192502,
+          -0.0006372807529854803
+        ],
+        [
+          -0.0004091117484192475,
+          0.0008196413244780592,
+          0.00024454641825107093
+        ],
+        [
+          -0.0006372807529854795,
+          0.0002445464182510712,
+          0.0001125656338493628
+        ]
+      ]
+    },
+    "apollo": {
+      "backend": "apollo",
+      "available": true,
+      "total_seconds": 0.28600000000000003,
+      "estimate_seconds": 0.28600000000000003,
+      "covariance_seconds": 0,
+      "loglike": -1106.0106492447537,
+      "parameters": [
+        "B_POST",
+        "B_VCOST",
+        "B_KCOST"
+      ],
+      "params": {
+        "B_POST": -1.163043839548837,
+        "B_VCOST": -0.06247365246077568,
+        "B_KCOST": 0.03337942934191975
+      },
+      "covariance": [
+        [
+          0.015328107998992606,
+          -0.0004091118194730505,
+          -0.0006372808479824903
+        ],
+        [
+          -0.0004091118194730505,
+          0.0008196414379230445,
+          0.00024454644279019156
+        ],
+        [
+          -0.0006372808479824903,
+          0.00024454644279019156,
+          0.00011256564481876837
+        ]
+      ],
+      "message": "apollo_version=0.3.8"
+    },
+    "gmnl": {
+      "backend": "gmnl",
+      "available": false,
+      "total_seconds": 0.48845906800124794,
+      "estimate_seconds": null,
+      "covariance_seconds": null,
+      "loglike": null,
+      "params": null,
+      "message": "Error in s + x[[i]] : non-conformable arrays\nCalls: gmnl ... eval -> eval -> maxNRCompute -> fn -> fnOrig -> suml\nExecution halted"
+    },
+    "xlogit": {
+      "backend": "xlogit",
+      "available": true,
+      "total_seconds": 0.003816560027189553,
+      "estimate_seconds": 0.0038161500124260783,
+      "covariance_seconds": 4.100147634744644e-07,
+      "loglike": -1106.0106492474172,
+      "params": {
+        "B_POST": -1.163036904794064,
+        "B_VCOST": -0.062475152131323236,
+        "B_KCOST": 0.03337880385868684
+      },
+      "message": ""
+    },
+    "n_obs": 632,
+    "n_rows": 9480,
+    "n_parameters": 3,
+    "ll_diff": -3.410605131648481e-10,
+    "biogeme_ll_diff": -3.4083313948940486e-10,
+    "apollo_ll_diff": -3.41970007866621e-10,
+    "consistent": "Yes",
+    "status": "ok"
+  }
+]

@@ -1,0 +1,85 @@
+An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.
+[biogeme] starting torchdcm_advanced_latent_full_1000
+[biogeme] finished in 2.198s; LL=-575.661751
+{
+  "benchmark": "advanced_full_estimation_validation",
+  "timing_scope": "full optimization plus classic covariance construction",
+  "runtime_policy": {
+    "cpu_policy": "single-logical-core",
+    "logical_cpu_affinity": [
+      0
+    ],
+    "timing_scope": "estimation-plus-covariance",
+    "thread_environment": {
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+    "torch_intraop_threads": 1,
+    "torch_interop_threads": 1,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1
+      }
+    ]
+  },
+  "profile": "full",
+  "max_iter": 150,
+  "cases": [
+    {
+      "case": "Swissmetro 1,000",
+      "kind": "latent_class",
+      "data_type": "Actual",
+      "data_source": "Swissmetro",
+      "n_obs": 1000,
+      "n_units": 1000,
+      "n_draws": 0,
+      "extra": {
+        "classes": 2,
+        "membership_covariates": 1
+      },
+      "results": {
+        "biogeme": {
+          "backend": "biogeme",
+          "available": true,
+          "seconds": 2.197943614097312,
+          "loglike": -575.6617507785925,
+          "params": {
+            "ASC_B_C1": 0.4673516687003831,
+            "ASC_C_C1": -0.6574830181803103,
+            "B_X_C1": -2.978391606703175,
+            "ASC_B_C2": 1.3904385090151914,
+            "ASC_C_C2": -2.082258776235252,
+            "B_X_C2": 0.4758365903527508,
+            "CLASS_2": -1.9411426720947043,
+            "CLASS_2_Z": 11.78021464735908
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": "completed"
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -575.6617507785925,
+      "loglike_tolerance": 0.0005756617507785925,
+      "consistent": false
+    }
+  ]
+}

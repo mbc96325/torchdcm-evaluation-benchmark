@@ -56,6 +56,8 @@ def run_mlogit_export(dataset: str) -> tuple[pd.DataFrame, BackendResult]:
             str(script),
             "--dataset",
             dataset,
+            "--data-input",
+            str(ROOT / "data" / "small" / f"mlogit_{dataset}" / "data.csv"),
             "--data-output",
             str(data_path),
             "--result-output",
@@ -99,6 +101,8 @@ def run_gmnl(dataset: str) -> BackendResult:
             str(script),
             "--dataset",
             dataset,
+            "--data-input",
+            str(ROOT / "data" / "small" / f"mlogit_{dataset}" / "data.csv"),
             "--result-output",
             str(result_path),
         ]

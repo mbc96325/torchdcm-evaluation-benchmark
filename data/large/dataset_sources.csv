@@ -1,3 +1,3 @@
-dataset_id,release_status,processed_artifact,source_url,notes
-"lpmc_london","generated_locally","data/large/processed/lpmc_london","https://transp-or.epfl.ch/data/lpmc.dat","Prepared by scripts/process_lpmc_london.py."
-"nhts_2022","generated_locally","data/raw/nhts_2022","https://nhts.ornl.gov/","Downloaded and processed by experiments/compare_nhts_mnl.py."
+dataset_id,archive_status,local_input,optional_processed_artifact,source_url,notes
+"lpmc_london","included","data/raw/lpmc_london/data.csv","data/large/processed/lpmc_london","https://transp-or.epfl.ch/data/lpmc.dat","The original DAT file is retained beside the canonical CSV."
+"nhts_2022","included","data/raw/nhts_2022/csv.zip","","https://nhts.ornl.gov/downloads","The runner reads tripv2pub.csv directly from the committed public-use archive."

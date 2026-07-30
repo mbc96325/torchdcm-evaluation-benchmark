@@ -1,0 +1,32 @@
+{
+  "access_method": "archived in repository",
+  "columns": 32,
+  "dataset_id": "lpmc_london",
+  "dataset_name": "London Passenger Mode Choice",
+  "files": [
+    {
+      "bytes": 12972281,
+      "columns": 32,
+      "path": "raw/lpmc_london/data.csv",
+      "rows": 81086,
+      "sha256": "777b6fb7c2db219582cc318238f23864d642621ef4ae40bdb9e1e7e27b278d0b"
+    },
+    {
+      "bytes": 13652718,
+      "columns": 32,
+      "path": "raw/lpmc_london/data.dat",
+      "rows": 81086,
+      "sha256": "033b9eda6742ffa40716bcc4c32bf05cf3a9787058fb8335b65468ac48455338"
+    }
+  ],
+  "license_or_terms": "Provided by the Biogeme data page for research and education",
+  "message": "The experiment runner reads data.csv directly. data.dat is retained as the original upstream file.",
+  "notes": {
+    "source_page": "https://biogeme.epfl.ch/#data",
+    "source_url": "https://transp-or.epfl.ch/data/lpmc.dat"
+  },
+  "rows": 81086,
+  "source_family": "Biogeme",
+  "status": "included",
+  "upstream_url": "https://transp-or.epfl.ch/data/lpmc.dat"
+}

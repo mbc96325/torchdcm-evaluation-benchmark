@@ -1,0 +1,85 @@
+An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.
+[biogeme] starting torchdcm_advanced_latent_full_2000
+[biogeme] finished in 2.134s; LL=-1926.441606
+{
+  "benchmark": "advanced_full_estimation_validation",
+  "timing_scope": "full optimization plus classic covariance construction",
+  "runtime_policy": {
+    "cpu_policy": "single-logical-core",
+    "logical_cpu_affinity": [
+      0
+    ],
+    "timing_scope": "estimation-plus-covariance",
+    "thread_environment": {
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+    "torch_intraop_threads": 1,
+    "torch_interop_threads": 1,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1
+      }
+    ]
+  },
+  "profile": "full",
+  "max_iter": 150,
+  "cases": [
+    {
+      "case": "Synthetic 2,000",
+      "kind": "latent_class",
+      "data_type": "Synthetic",
+      "data_source": "Controlled latent-class DGP",
+      "n_obs": 2000,
+      "n_units": 2000,
+      "n_draws": 0,
+      "extra": {
+        "classes": 2,
+        "membership_covariates": 1
+      },
+      "results": {
+        "biogeme": {
+          "backend": "biogeme",
+          "available": true,
+          "seconds": 2.1335575359407812,
+          "loglike": -1926.4416064874451,
+          "params": {
+            "ASC_B_C1": -0.43833875479546697,
+            "ASC_C_C1": 0.20539931206474094,
+            "B_X_C1": -1.1948529079094536,
+            "ASC_B_C2": 0.6397759502882342,
+            "ASC_C_C2": -0.3493450634037941,
+            "B_X_C2": -0.21866383762581162,
+            "CLASS_2": -0.2324991921832948,
+            "CLASS_2_Z": 1.1301693461363505
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": "completed"
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -1926.4416064874451,
+      "loglike_tolerance": 0.001926441606487445,
+      "consistent": false
+    }
+  ]
+}

@@ -12,12 +12,15 @@ has_flag <- function(flag) {
 }
 
 dataset <- get_arg("--dataset")
+data_input <- get_arg("--data-input")
 data_out <- get_arg("--data-output")
 result_out <- get_arg("--result-output")
 
-if (is.null(dataset) || is.null(data_out) || is.null(result_out)) {
-  stop("Usage: run_mlogit_dataset_mnl.R --dataset DATASET --data-output data.csv --result-output result.json")
+if (is.null(dataset) || is.null(data_input) || is.null(data_out) || is.null(result_out)) {
+  stop("Usage: run_mlogit_dataset_mnl.R --dataset DATASET --data-input source.csv --data-output data.csv --result-output result.json")
 }
+
+source_data <- read.csv(data_input, check.names = FALSE, stringsAsFactors = FALSE)
 
 wide_to_long <- function(df, alternatives, choice_col, variables, column_fun) {
   rows <- list()
@@ -53,77 +56,77 @@ fit_long <- function(aligned, variables, availability_col = NULL) {
 
 make_case <- function(dataset) {
   if (dataset == "catsup") {
-    data(Catsup, package = "mlogit")
+    Catsup <- source_data
     alternatives <- c("heinz41", "heinz32", "heinz28", "hunts32")
     variables <- c("disp", "feat", "price")
     aligned <- wide_to_long(Catsup, alternatives, "choice", variables, function(var, alt) paste0(var, ".", alt))
     return(list(aligned = aligned, variables = variables))
   }
   if (dataset == "cracker") {
-    data(Cracker, package = "mlogit")
+    Cracker <- source_data
     alternatives <- c("sunshine", "kleebler", "nabisco", "private")
     variables <- c("disp", "feat", "price")
     aligned <- wide_to_long(Cracker, alternatives, "choice", variables, function(var, alt) paste0(var, ".", alt))
     return(list(aligned = aligned, variables = variables))
   }
   if (dataset == "electricity") {
-    data(Electricity, package = "mlogit")
+    Electricity <- source_data
     alternatives <- as.character(1:4)
     variables <- c("pf", "cl", "loc", "wk", "tod", "seas")
     aligned <- wide_to_long(Electricity, alternatives, "choice", variables, function(var, alt) paste0(var, alt))
     return(list(aligned = aligned, variables = variables))
   }
   if (dataset == "fishing") {
-    data(Fishing, package = "mlogit")
+    Fishing <- source_data
     alternatives <- c("beach", "pier", "boat", "charter")
     variables <- c("price", "catch")
     aligned <- wide_to_long(Fishing, alternatives, "mode", variables, function(var, alt) paste0(var, ".", alt))
     return(list(aligned = aligned, variables = variables))
   }
   if (dataset == "hc") {
-    data(HC, package = "mlogit")
+    HC <- source_data
     alternatives <- c("gcc", "ecc", "erc", "hpc", "gc", "ec", "er")
     variables <- c("ich", "och")
     aligned <- wide_to_long(HC, alternatives, "depvar", variables, function(var, alt) paste0(var, ".", alt))
     return(list(aligned = aligned, variables = variables))
   }
   if (dataset == "heating") {
-    data(Heating, package = "mlogit")
+    Heating <- source_data
     alternatives <- c("gc", "gr", "ec", "er", "hp")
     variables <- c("ic", "oc")
     aligned <- wide_to_long(Heating, alternatives, "depvar", variables, function(var, alt) paste0(var, ".", alt))
     return(list(aligned = aligned, variables = variables))
   }
   if (dataset == "mode") {
-    data(Mode, package = "mlogit")
+    Mode <- source_data
     alternatives <- c("car", "carpool", "bus", "rail")
     variables <- c("cost", "time")
     aligned <- wide_to_long(Mode, alternatives, "choice", variables, function(var, alt) paste0(var, ".", alt))
     return(list(aligned = aligned, variables = variables))
   }
   if (dataset == "modecanada") {
-    data(ModeCanada, package = "mlogit")
+    ModeCanada <- source_data
     variables <- c("cost", "ivt", "ovt", "freq")
     aligned <- data.frame(obs_id = ModeCanada$case, alt = ModeCanada$alt, choice = as.logical(ModeCanada$choice))
     for (var in variables) aligned[[var]] <- ModeCanada[[var]]
     return(list(aligned = aligned, variables = variables))
   }
   if (dataset == "nox") {
-    data(NOx, package = "mlogit")
+    NOx <- source_data
     variables <- c("post", "vcost", "kcost")
     aligned <- data.frame(obs_id = NOx$chid, alt = NOx$alt, choice = as.logical(NOx$choice), availability = as.logical(NOx$available))
     for (var in variables) aligned[[var]] <- NOx[[var]]
     return(list(aligned = aligned, variables = variables, availability_col = "availability"))
   }
   if (dataset == "risky_transport") {
-    data(RiskyTransport, package = "mlogit")
+    RiskyTransport <- source_data
     variables <- c("cost", "risk", "seats", "noise", "crowdness", "convloc", "clientele")
     aligned <- data.frame(obs_id = RiskyTransport$chid, alt = RiskyTransport$mode, choice = as.logical(RiskyTransport$choice))
     for (var in variables) aligned[[var]] <- RiskyTransport[[var]]
     return(list(aligned = aligned, variables = variables))
   }
   if (dataset == "train") {
-    data(Train, package = "mlogit")
+    Train <- source_data
     alternatives <- c("A", "B")
     variables <- c("price", "time", "change", "comfort")
     aligned <- wide_to_long(Train, alternatives, "choice", variables, function(var, alt) paste0(var, "_", alt))

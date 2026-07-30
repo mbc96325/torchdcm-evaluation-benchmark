@@ -11,15 +11,15 @@ import pandas as pd
 from torchdcm import Beta, ChoiceDataset, MultinomialLogit, UtilitySpec
 
 
+ROOT = Path(__file__).resolve().parents[1]
+
+
 def build_case(case: str, n_obs: int, seed: int):
     if case == "swissmetro":
         del seed
-        try:
-            import biogeme.data.swissmetro as swissmetro
-        except ImportError as exc:
-            raise RuntimeError("Biogeme is required to load the official Swissmetro testing data.") from exc
-
-        raw = pd.read_csv(Path(swissmetro.__file__).resolve().parent / "data" / "swissmetro.dat", sep="\t")
+        raw = pd.read_csv(
+            ROOT / "data" / "small" / "biogeme_swissmetro" / "data.csv"
+        )
         df = raw.loc[raw["CHOICE"] != 0].copy()
         if n_obs is not None:
             df = df.head(n_obs).copy()
@@ -134,7 +134,7 @@ def main() -> None:
     result = run_torchdcm(data, spec)
     print("alignment:")
     print("  benchmark_mode: full_estimation")
-    print("  data_source: biogeme.data.swissmetro/data/swissmetro.dat")
+    print("  data_source: data/small/biogeme_swissmetro/data.csv")
     print("  initial_values: TorchDCM estimates first; Biogeme starts from TorchDCM estimate in this parity view")
     print("  note: use compare_mnl_estimators.py for fully aligned shared-initial benchmark tables")
     print(result.summary())

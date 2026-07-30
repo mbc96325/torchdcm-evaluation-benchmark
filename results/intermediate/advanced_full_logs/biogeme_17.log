@@ -1,0 +1,2 @@
+An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.
+[biogeme] starting torchdcm_advanced_panel_full_250_64

@@ -7,7 +7,6 @@ import shutil
 import subprocess
 import tempfile
 import time
-import urllib.request
 import zipfile
 from dataclasses import dataclass
 from pathlib import Path
@@ -29,7 +28,6 @@ from mnl_generic_backends import (
 
 ROOT = Path(__file__).resolve().parents[1]
 REPO_ROOT = ROOT
-NHTS_2022_URL = "https://nhts.ornl.gov/media/2022/download/csv.zip"
 APOLLO_SCRIPT = ROOT / "experiments" / "apollo" / "R" / "run_generic_mnl.R"
 
 
@@ -65,11 +63,12 @@ class BackendResult:
 
 
 def ensure_nhts_2022_zip() -> Path:
-    raw_dir = ROOT / "data" / "raw" / "nhts_2022"
-    raw_dir.mkdir(parents=True, exist_ok=True)
-    archive = raw_dir / "csv.zip"
+    archive = ROOT / "data" / "raw" / "nhts_2022" / "csv.zip"
     if not archive.exists():
-        urllib.request.urlretrieve(NHTS_2022_URL, archive)
+        raise FileNotFoundError(
+            f"Archived NHTS input not found: {archive}. "
+            "Restore data/raw/nhts_2022/csv.zip from the repository checkout."
+        )
     return archive
 
 

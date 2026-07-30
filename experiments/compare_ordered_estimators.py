@@ -42,16 +42,17 @@ class BackendResult:
 CATEGORIES = [1, 2, 3, 4, 5, 6]
 VARIABLES = ["male", "highEducation", "haveGA", "ScaledIncome"]
 WEIGHT_COLUMN = "normalized_weight"
+DATA_PATH = (
+    Path(__file__).resolve().parents[1]
+    / "data"
+    / "small"
+    / "biogeme_optima"
+    / "data.csv"
+)
 
 
 def load_ordered_optima(indicator: str, n_obs: int | None):
-    try:
-        from biogeme.data.optima import read_data
-    except ImportError as exc:
-        raise RuntimeError("Biogeme is required for the aligned Optima ordered benchmark.") from exc
-
-    database = read_data()
-    df = database.dataframe.copy().reset_index(drop=True)
+    df = pd.read_csv(DATA_PATH).reset_index(drop=True)
     required = [indicator, *VARIABLES, WEIGHT_COLUMN]
     missing = [column for column in required if column not in df.columns]
     if missing:
@@ -492,8 +493,8 @@ def print_results(
     else:
         print("  benchmark_mode: torchdcm_full_estimation_then_fixed_replay")
         print("  estimated_backend: torchdcm")
-    print("  data_source: biogeme.data.optima/data/optima.dat")
-    print("  source_loader: biogeme.data.optima.read_data")
+    print("  data_source: data/small/biogeme_optima/data.csv")
+    print("  source_loader: pandas.read_csv")
     print(f"  outcome: {indicator} Likert ordered categories [1, 2, 3, 4, 5, 6]")
     print("  latent_index: B_MALE*male + B_HIGH_EDUCATION*highEducation + B_GA*haveGA + B_INCOME*ScaledIncome")
     print("  thresholds: shared explicit thresholds")

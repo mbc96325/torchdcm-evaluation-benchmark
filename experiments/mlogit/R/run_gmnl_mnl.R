@@ -10,20 +10,23 @@ get_arg <- function(flag, default = NULL) {
 }
 
 dataset <- get_arg("--dataset")
+data_input <- get_arg("--data-input")
 result_out <- get_arg("--result-output")
 
-if (is.null(dataset) || is.null(result_out)) {
-  stop("Usage: run_gmnl_mnl.R --dataset DATASET --result-output result.json")
+if (is.null(dataset) || is.null(data_input) || is.null(result_out)) {
+  stop("Usage: run_gmnl_mnl.R --dataset DATASET --data-input source.csv --result-output result.json")
 }
 
+source_data <- read.csv(data_input, check.names = FALSE, stringsAsFactors = FALSE)
+
 if (dataset == "fishing") {
-  data(Fishing, package = "mlogit")
+  Fishing <- source_data
   mdata <- mlogit.data(Fishing, varying = 2:9, shape = "wide", choice = "mode")
   estimate_start <- proc.time()[["elapsed"]]
   model <- gmnl(mode ~ price + catch, data = mdata, model = "mnl", print.level = 0)
   estimate_seconds <- proc.time()[["elapsed"]] - estimate_start
 } else if (dataset == "modecanada") {
-  data(ModeCanada, package = "mlogit")
+  ModeCanada <- source_data
   mdata <- mlogit.data(ModeCanada, shape = "long", chid.var = "case", alt.var = "alt", choice = "choice")
   estimate_start <- proc.time()[["elapsed"]]
   model <- gmnl(choice ~ cost + ivt + ovt | 0, data = mdata, model = "mnl", print.level = 0)

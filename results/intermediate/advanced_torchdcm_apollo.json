@@ -1,0 +1,1321 @@
+{
+  "benchmark": "advanced_full_estimation_validation",
+  "timing_scope": "full optimization plus classic covariance construction",
+  "runtime_policy": {
+    "cpu_policy": "single-logical-core",
+    "logical_cpu_affinity": [
+      0
+    ],
+    "timing_scope": "estimation-plus-covariance",
+    "thread_environment": {
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+    "torch_intraop_threads": 1,
+    "torch_interop_threads": 1,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1
+      }
+    ]
+  },
+  "profile": "full",
+  "max_iter": 150,
+  "cases": [
+    {
+      "case": "Synthetic 2,000",
+      "kind": "latent_class",
+      "data_type": "Synthetic",
+      "data_source": "Controlled latent-class DGP",
+      "n_obs": 2000,
+      "n_units": 2000,
+      "n_draws": 0,
+      "extra": {
+        "classes": 2,
+        "membership_covariates": 1
+      },
+      "results": {
+        "torchdcm": {
+          "backend": "torchdcm",
+          "available": true,
+          "seconds": 0.014468816807493567,
+          "loglike": -1926.441606179624,
+          "params": {
+            "B_X_C1": -1.1947955058665003,
+            "ASC_B_C1": -0.43831119520559536,
+            "ASC_C_C1": 0.20536637410195085,
+            "B_X_C2": -0.21860148410274163,
+            "ASC_B_C2": 0.6398591062524898,
+            "ASC_C_C2": -0.3494092560986178,
+            "CLASS_2": -0.23272260082859011,
+            "CLASS_2_Z": 1.1301056319514688
+          },
+          "covariance_available": true,
+          "convergence": {
+            "optimizer": "torch.optim.LBFGS",
+            "closure_evaluations": 23,
+            "gradient_norm": 4.7023065609604176e-05
+          },
+          "message": ""
+        },
+        "apollo": {
+          "backend": "apollo",
+          "available": true,
+          "seconds": 0.5019999999999999,
+          "loglike": -1926.441606179621,
+          "params": {
+            "ASC_B_C1": -0.4383114956266957,
+            "ASC_C_C1": 0.20536655561067163,
+            "B_X_C1": -1.1947960661066388,
+            "ASC_B_C2": 0.6398586649548663,
+            "ASC_C_C2": -0.34940921603078684,
+            "B_X_C2": -0.21860160450822202,
+            "CLASS_2": -0.2327208758512849,
+            "CLASS_2_Z": 1.1301056685081183
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": 4,
+            "message": "Relative function convergence (favorable)",
+            "successful_estimation": true,
+            "iterations": 7
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -1926.441606179621,
+      "loglike_tolerance": 0.001926441606179621,
+      "consistent": false
+    },
+    {
+      "case": "Synthetic 5,000",
+      "kind": "latent_class",
+      "data_type": "Synthetic",
+      "data_source": "Controlled latent-class DGP",
+      "n_obs": 5000,
+      "n_units": 5000,
+      "n_draws": 0,
+      "extra": {
+        "classes": 2,
+        "membership_covariates": 1
+      },
+      "results": {
+        "torchdcm": {
+          "backend": "torchdcm",
+          "available": true,
+          "seconds": 0.025370271177962422,
+          "loglike": -4802.548990418294,
+          "params": {
+            "B_X_C1": -0.9989456833616952,
+            "ASC_B_C1": -0.37119633972228433,
+            "ASC_C_C1": 0.24528115213495527,
+            "B_X_C2": -0.30018517869265565,
+            "ASC_B_C2": 0.7704046587411824,
+            "ASC_C_C2": -0.8904515560695776,
+            "CLASS_2": -0.6274849614270298,
+            "CLASS_2_Z": 0.9535850316862137
+          },
+          "covariance_available": true,
+          "convergence": {
+            "optimizer": "torch.optim.LBFGS",
+            "closure_evaluations": 25,
+            "gradient_norm": 0.0001043097356779705
+          },
+          "message": ""
+        },
+        "apollo": {
+          "backend": "apollo",
+          "available": true,
+          "seconds": 0.733,
+          "loglike": -4802.548990418462,
+          "params": {
+            "ASC_B_C1": -0.3711966336035969,
+            "ASC_C_C1": 0.2452806552879222,
+            "B_X_C1": -0.9989454232951597,
+            "ASC_B_C2": 0.7704040732161077,
+            "ASC_C_C2": -0.8904489612969894,
+            "B_X_C2": -0.30018624658077625,
+            "CLASS_2": -0.6274829413361652,
+            "CLASS_2_Z": 0.9535863834850349
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": 4,
+            "message": "Relative function convergence (favorable)",
+            "successful_estimation": true,
+            "iterations": 7
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -4802.548990418294,
+      "loglike_tolerance": 0.004802548990418294,
+      "consistent": false
+    },
+    {
+      "case": "Synthetic 10,000",
+      "kind": "latent_class",
+      "data_type": "Synthetic",
+      "data_source": "Controlled latent-class DGP",
+      "n_obs": 10000,
+      "n_units": 10000,
+      "n_draws": 0,
+      "extra": {
+        "classes": 2,
+        "membership_covariates": 1
+      },
+      "results": {
+        "torchdcm": {
+          "backend": "torchdcm",
+          "available": true,
+          "seconds": 0.03840105980634689,
+          "loglike": -9613.171449138856,
+          "params": {
+            "B_X_C1": -1.211289831663051,
+            "ASC_B_C1": -0.479213486042235,
+            "ASC_C_C1": 0.33946455128036446,
+            "B_X_C2": -0.31513009318622004,
+            "ASC_B_C2": 0.7093497974820164,
+            "ASC_C_C2": -0.3610191326679911,
+            "CLASS_2": -0.09066948313566825,
+            "CLASS_2_Z": 0.7626367189352493
+          },
+          "covariance_available": true,
+          "convergence": {
+            "optimizer": "torch.optim.LBFGS",
+            "closure_evaluations": 22,
+            "gradient_norm": 4.7087312373825725e-05
+          },
+          "message": ""
+        },
+        "apollo": {
+          "backend": "apollo",
+          "available": true,
+          "seconds": 1.2530000000000001,
+          "loglike": -9613.171449138878,
+          "params": {
+            "ASC_B_C1": -0.479212828607333,
+            "ASC_C_C1": 0.3394639646468834,
+            "B_X_C1": -1.2112888443647953,
+            "ASC_B_C2": 0.7093504802499666,
+            "ASC_C_C2": -0.3610193091335048,
+            "B_X_C2": -0.3151299056316217,
+            "CLASS_2": -0.0906716112750649,
+            "CLASS_2_Z": 0.7626369008324935
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": 4,
+            "message": "Relative function convergence (favorable)",
+            "successful_estimation": true,
+            "iterations": 7
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -9613.171449138856,
+      "loglike_tolerance": 0.009613171449138855,
+      "consistent": false
+    },
+    {
+      "case": "Swissmetro 1,000",
+      "kind": "latent_class",
+      "data_type": "Actual",
+      "data_source": "Swissmetro",
+      "n_obs": 1000,
+      "n_units": 1000,
+      "n_draws": 0,
+      "extra": {
+        "classes": 2,
+        "membership_covariates": 1
+      },
+      "results": {
+        "torchdcm": {
+          "backend": "torchdcm",
+          "available": true,
+          "seconds": 0.026680288137868047,
+          "loglike": -575.6614269470026,
+          "params": {
+            "B_X_C1": -2.9783924249666356,
+            "ASC_B_C1": 0.4673515462323128,
+            "ASC_C_C1": -0.6574831486246131,
+            "B_X_C2": 0.47583639937118005,
+            "ASC_B_C2": 1.3904386632883274,
+            "ASC_C_C2": -2.0822577668056588,
+            "CLASS_2": -1.9411421071530022,
+            "CLASS_2_Z": 24.77970278724156
+          },
+          "covariance_available": true,
+          "convergence": {
+            "optimizer": "torch.optim.LBFGS",
+            "closure_evaluations": 53,
+            "gradient_norm": 1.8142369061480954e-05
+          },
+          "message": ""
+        },
+        "apollo": {
+          "backend": "apollo",
+          "available": true,
+          "seconds": 0.347,
+          "loglike": -575.6614269462729,
+          "params": {
+            "ASC_B_C1": 0.4673515343646855,
+            "ASC_C_C1": -0.6574828889542805,
+            "B_X_C1": -2.9783922568358285,
+            "ASC_B_C2": 1.390438543659079,
+            "ASC_C_C2": -2.0822584942105005,
+            "B_X_C2": 0.47583636811147256,
+            "CLASS_2": -1.9411413690047614,
+            "CLASS_2_Z": 44.756810453547786
+          },
+          "covariance_available": false,
+          "convergence": {
+            "status": 4,
+            "message": "Relative function convergence (favorable)",
+            "successful_estimation": true,
+            "iterations": 12
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -575.6614269462729,
+      "loglike_tolerance": 0.0005756614269462728,
+      "consistent": false
+    },
+    {
+      "case": "Swissmetro 2,000",
+      "kind": "latent_class",
+      "data_type": "Actual",
+      "data_source": "Swissmetro",
+      "n_obs": 2000,
+      "n_units": 2000,
+      "n_draws": 0,
+      "extra": {
+        "classes": 2,
+        "membership_covariates": 1
+      },
+      "results": {
+        "torchdcm": {
+          "backend": "torchdcm",
+          "available": true,
+          "seconds": 0.020266168052330613,
+          "loglike": -1309.1020105318544,
+          "params": {
+            "B_X_C1": -2.8083209238703275,
+            "ASC_B_C1": 0.46773991579459806,
+            "ASC_C_C1": -0.7738450303826119,
+            "B_X_C2": 0.3163451039748131,
+            "ASC_B_C2": 0.9087224588695757,
+            "ASC_C_C2": -2.154924691697846,
+            "CLASS_2": -1.2931861654112617,
+            "CLASS_2_Z": 3.6175444405368617
+          },
+          "covariance_available": true,
+          "convergence": {
+            "optimizer": "torch.optim.LBFGS",
+            "closure_evaluations": 33,
+            "gradient_norm": 7.798087344900934e-05
+          },
+          "message": ""
+        },
+        "apollo": {
+          "backend": "apollo",
+          "available": true,
+          "seconds": 0.551,
+          "loglike": -1309.1020105323355,
+          "params": {
+            "ASC_B_C1": 0.4677453046111555,
+            "ASC_C_C1": -0.7738408975725609,
+            "B_X_C1": -2.808303400974833,
+            "ASC_B_C2": 0.9087229979290635,
+            "ASC_C_C2": -2.154928839346121,
+            "B_X_C2": 0.3163459207406749,
+            "CLASS_2": -1.293194353289315,
+            "CLASS_2_Z": 3.617558190325287
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": 4,
+            "message": "Relative function convergence (favorable)",
+            "successful_estimation": true,
+            "iterations": 14
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -1309.1020105318544,
+      "loglike_tolerance": 0.0013091020105318544,
+      "consistent": false
+    },
+    {
+      "case": "Swissmetro 5,000",
+      "kind": "latent_class",
+      "data_type": "Actual",
+      "data_source": "Swissmetro",
+      "n_obs": 5000,
+      "n_units": 5000,
+      "n_draws": 0,
+      "extra": {
+        "classes": 2,
+        "membership_covariates": 1
+      },
+      "results": {
+        "torchdcm": {
+          "backend": "torchdcm",
+          "available": true,
+          "seconds": 0.0324696390889585,
+          "loglike": -3878.7251545779272,
+          "params": {
+            "B_X_C1": -2.113989867539017,
+            "ASC_B_C1": 0.5309914188349183,
+            "ASC_C_C1": 0.27711950349760506,
+            "B_X_C2": 0.2960665252613585,
+            "ASC_B_C2": 0.4486267634195636,
+            "ASC_C_C2": -1.6594020093343713,
+            "CLASS_2": -1.4768346614283234,
+            "CLASS_2_Z": 4.6909707467196435
+          },
+          "covariance_available": true,
+          "convergence": {
+            "optimizer": "torch.optim.LBFGS",
+            "closure_evaluations": 33,
+            "gradient_norm": 8.530649851758386e-05
+          },
+          "message": ""
+        },
+        "apollo": {
+          "backend": "apollo",
+          "available": true,
+          "seconds": 0.985,
+          "loglike": -3878.7251545779013,
+          "params": {
+            "ASC_B_C1": 0.5309912179886883,
+            "ASC_C_C1": 0.2771188822560909,
+            "B_X_C1": -2.113988861767741,
+            "ASC_B_C2": 0.44862639825233236,
+            "ASC_C_C2": -1.6594026646737,
+            "B_X_C2": 0.29606656519094043,
+            "CLASS_2": -1.4768366526246335,
+            "CLASS_2_Z": 4.690970823162336
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": 4,
+            "message": "Relative function convergence (favorable)",
+            "successful_estimation": true,
+            "iterations": 14
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -3878.7251545779013,
+      "loglike_tolerance": 0.0038787251545779012,
+      "consistent": false
+    },
+    {
+      "case": "Synthetic 500",
+      "kind": "hybrid_choice",
+      "data_type": "Synthetic",
+      "data_source": "Controlled hybrid-choice DGP",
+      "n_obs": 500,
+      "n_units": 500,
+      "n_draws": 32,
+      "extra": {
+        "latent_variables": 1,
+        "continuous_indicators": 2
+      },
+      "results": {
+        "torchdcm": {
+          "backend": "torchdcm",
+          "available": true,
+          "seconds": 0.04945498099550605,
+          "loglike": -1682.8676847191641,
+          "params": {
+            "ASC_B": 0.27811578827606065,
+            "B_X": 0.7134677516095599,
+            "G_Q": 0.6008925993220591,
+            "SIGMA_LV": 0.7142938505316181,
+            "B_ATT": 0.9646838093193856,
+            "SIGMA_Y1": 0.666389682360843,
+            "A2": 0.2164852641745261,
+            "L2": 0.8172532913496346,
+            "SIGMA_Y2": 0.8498827344614698
+          },
+          "covariance_available": true,
+          "convergence": {
+            "optimizer": "torch.optim.LBFGS",
+            "closure_evaluations": 21,
+            "gradient_norm": 0.0002448744620410853,
+            "n_draws": 32,
+            "panel": false
+          },
+          "message": ""
+        },
+        "apollo": {
+          "backend": "apollo",
+          "available": true,
+          "seconds": 0.9319999999999999,
+          "loglike": -1682.8676847208578,
+          "params": {
+            "ASC_B": 0.27811712249232157,
+            "B_X": 0.7134686236819278,
+            "G_Q": 0.6008928651990674,
+            "SIGMA_LV": 0.7142942835739831,
+            "B_ATT": 0.9646860255141448,
+            "SIGMA_Y1": 0.6663903458700845,
+            "A2": 0.21648635598053098,
+            "L2": 0.8172524649586808,
+            "SIGMA_Y2": 0.8498814184159926
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": 4,
+            "message": "Relative function convergence (favorable)",
+            "successful_estimation": true,
+            "iterations": 7
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -1682.8676847191641,
+      "loglike_tolerance": 0.001682867684719164,
+      "consistent": false
+    },
+    {
+      "case": "Synthetic 2,000",
+      "kind": "hybrid_choice",
+      "data_type": "Synthetic",
+      "data_source": "Controlled hybrid-choice DGP",
+      "n_obs": 2000,
+      "n_units": 2000,
+      "n_draws": 64,
+      "extra": {
+        "latent_variables": 1,
+        "continuous_indicators": 2
+      },
+      "results": {
+        "torchdcm": {
+          "backend": "torchdcm",
+          "available": true,
+          "seconds": 0.281359656015411,
+          "loglike": -6896.269085005824,
+          "params": {
+            "ASC_B": 0.1547590269978984,
+            "B_X": 0.6783107500138966,
+            "G_Q": 0.6635926153861936,
+            "SIGMA_LV": 0.7992884926108519,
+            "B_ATT": 0.8603456634251428,
+            "SIGMA_Y1": 0.6791247945069099,
+            "A2": 0.20059465581776828,
+            "L2": 0.7217373982219033,
+            "SIGMA_Y2": 0.8803977679815247
+          },
+          "covariance_available": true,
+          "convergence": {
+            "optimizer": "torch.optim.LBFGS",
+            "closure_evaluations": 22,
+            "gradient_norm": 0.00028794453710380034,
+            "n_draws": 64,
+            "panel": false
+          },
+          "message": ""
+        },
+        "apollo": {
+          "backend": "apollo",
+          "available": true,
+          "seconds": 5.937,
+          "loglike": -6896.269085006,
+          "params": {
+            "ASC_B": 0.15475873836444048,
+            "B_X": 0.6783108888688716,
+            "G_Q": 0.6635923634413672,
+            "SIGMA_LV": 0.7992886459210338,
+            "B_ATT": 0.8603460632300315,
+            "SIGMA_Y1": 0.6791248885387078,
+            "A2": 0.20059458688945178,
+            "L2": 0.721737483980519,
+            "SIGMA_Y2": 0.8803979517000428
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": 4,
+            "message": "Relative function convergence (favorable)",
+            "successful_estimation": true,
+            "iterations": 7
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -6896.269085005824,
+      "loglike_tolerance": 0.006896269085005824,
+      "consistent": false
+    },
+    {
+      "case": "Synthetic 10,000",
+      "kind": "hybrid_choice",
+      "data_type": "Synthetic",
+      "data_source": "Controlled hybrid-choice DGP",
+      "n_obs": 10000,
+      "n_units": 10000,
+      "n_draws": 128,
+      "extra": {
+        "latent_variables": 1,
+        "continuous_indicators": 2
+      },
+      "results": {
+        "torchdcm": {
+          "backend": "torchdcm",
+          "available": true,
+          "seconds": 3.5051036630757153,
+          "loglike": -34352.65608442912,
+          "params": {
+            "ASC_B": 0.2294511087329427,
+            "B_X": 0.6907626323875754,
+            "G_Q": 0.6388836886165252,
+            "SIGMA_LV": 0.7430274847893534,
+            "B_ATT": 0.9173499709352209,
+            "SIGMA_Y1": 0.7092341500206143,
+            "A2": 0.1930868708419046,
+            "L2": 0.7540181742242195,
+            "SIGMA_Y2": 0.8457015858046673
+          },
+          "covariance_available": true,
+          "convergence": {
+            "optimizer": "torch.optim.LBFGS",
+            "closure_evaluations": 20,
+            "gradient_norm": 0.0014558895629786244,
+            "n_draws": 128,
+            "panel": false
+          },
+          "message": ""
+        },
+        "apollo": {
+          "backend": "apollo",
+          "available": true,
+          "seconds": 71.88600000000001,
+          "loglike": -34352.656084429036,
+          "params": {
+            "ASC_B": 0.22945107694061953,
+            "B_X": 0.6907624864221504,
+            "G_Q": 0.6388837037630468,
+            "SIGMA_LV": 0.7430275373649787,
+            "B_ATT": 0.9173497322399027,
+            "SIGMA_Y1": 0.709234115493635,
+            "A2": 0.19308685771289025,
+            "L2": 0.7540182061879259,
+            "SIGMA_Y2": 0.845701613585008
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": 4,
+            "message": "Relative function convergence (favorable)",
+            "successful_estimation": true,
+            "iterations": 8
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -34352.656084429036,
+      "loglike_tolerance": 0.034352656084429035,
+      "consistent": false
+    },
+    {
+      "case": "Optima 500",
+      "kind": "hybrid_choice",
+      "data_type": "Actual",
+      "data_source": "Optima",
+      "n_obs": 500,
+      "n_units": 500,
+      "n_draws": 32,
+      "extra": {
+        "latent_variables": 1,
+        "continuous_indicators": 2
+      },
+      "results": {
+        "torchdcm": {
+          "backend": "torchdcm",
+          "available": true,
+          "seconds": 0.05460487003438175,
+          "loglike": -1488.9748214897106,
+          "params": {
+            "ASC_B": -3.14498720286593,
+            "B_X": -1.6789790336641301,
+            "G_Q": 0.09833406303920575,
+            "SIGMA_LV": 1.1115660699852477,
+            "B_ATT": 0.2549149763882388,
+            "SIGMA_Y1": 0.5067909986526443,
+            "A2": -0.046632004305119996,
+            "L2": 0.47603948839715626,
+            "SIGMA_Y2": 0.8928271945096503
+          },
+          "covariance_available": true,
+          "convergence": {
+            "optimizer": "torch.optim.LBFGS",
+            "closure_evaluations": 26,
+            "gradient_norm": 0.00010903082142252374,
+            "n_draws": 32,
+            "panel": false
+          },
+          "message": ""
+        },
+        "apollo": {
+          "backend": "apollo",
+          "available": true,
+          "seconds": 1.205,
+          "loglike": -1488.97482149118,
+          "params": {
+            "ASC_B": -3.1449876055996175,
+            "B_X": -1.678980167952321,
+            "G_Q": 0.09833459239360266,
+            "SIGMA_LV": 1.111563185067808,
+            "B_ATT": 0.25491374426692726,
+            "SIGMA_Y1": 0.5067917653979461,
+            "A2": -0.046632572510471995,
+            "L2": 0.4760398626655485,
+            "SIGMA_Y2": 0.8928273083407929
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": 4,
+            "message": "Relative function convergence (favorable)",
+            "successful_estimation": true,
+            "iterations": 18
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -1488.9748214897106,
+      "loglike_tolerance": 0.0014889748214897106,
+      "consistent": false
+    },
+    {
+      "case": "Optima 1,000",
+      "kind": "hybrid_choice",
+      "data_type": "Actual",
+      "data_source": "Optima",
+      "n_obs": 1000,
+      "n_units": 1000,
+      "n_draws": 64,
+      "extra": {
+        "latent_variables": 1,
+        "continuous_indicators": 2
+      },
+      "results": {
+        "torchdcm": {
+          "backend": "torchdcm",
+          "available": true,
+          "seconds": 0.1288121968973428,
+          "loglike": -3025.5059536883637,
+          "params": {
+            "ASC_B": -2.9254592838059215,
+            "B_X": -1.3181107084077983,
+            "G_Q": 0.10883518977600065,
+            "SIGMA_LV": 0.8601672274201402,
+            "B_ATT": 0.7831668188103037,
+            "SIGMA_Y1": 0.6168884986935302,
+            "A2": 0.0020526925168528293,
+            "L2": 0.5187021576693259,
+            "SIGMA_Y2": 0.9141379789153756
+          },
+          "covariance_available": true,
+          "convergence": {
+            "optimizer": "torch.optim.LBFGS",
+            "closure_evaluations": 26,
+            "gradient_norm": 0.0006972656129860541,
+            "n_draws": 64,
+            "panel": false
+          },
+          "message": ""
+        },
+        "apollo": {
+          "backend": "apollo",
+          "available": true,
+          "seconds": 3.718,
+          "loglike": -3025.505953693701,
+          "params": {
+            "ASC_B": -2.92546652092956,
+            "B_X": -1.3181178827589315,
+            "G_Q": 0.10883599030554893,
+            "SIGMA_LV": 0.8601603317297308,
+            "B_ATT": 0.7831781011250718,
+            "SIGMA_Y1": 0.6168965466680313,
+            "A2": 0.0020524247587486136,
+            "L2": 0.5187124380178184,
+            "SIGMA_Y2": 0.9141354996646784
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": 4,
+            "message": "Relative function convergence (favorable)",
+            "successful_estimation": true,
+            "iterations": 17
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -3025.5059536883637,
+      "loglike_tolerance": 0.0030255059536883635,
+      "consistent": false
+    },
+    {
+      "case": "Optima 1,298",
+      "kind": "hybrid_choice",
+      "data_type": "Actual",
+      "data_source": "Optima",
+      "n_obs": 1298,
+      "n_units": 1298,
+      "n_draws": 128,
+      "extra": {
+        "latent_variables": 1,
+        "continuous_indicators": 2
+      },
+      "results": {
+        "torchdcm": {
+          "backend": "torchdcm",
+          "available": true,
+          "seconds": 0.29628254985436797,
+          "loglike": -3911.6749158421085,
+          "params": {
+            "ASC_B": -3.155226733628253,
+            "B_X": -1.436386879747127,
+            "G_Q": 0.1446709152887121,
+            "SIGMA_LV": 0.6543151219026819,
+            "B_ATT": 1.0245774521059932,
+            "SIGMA_Y1": 0.7273085195070493,
+            "A2": -0.0005633838368806647,
+            "L2": 0.6679973518237932,
+            "SIGMA_Y2": 0.8887184794991184
+          },
+          "covariance_available": true,
+          "convergence": {
+            "optimizer": "torch.optim.LBFGS",
+            "closure_evaluations": 26,
+            "gradient_norm": 0.00011943862336772867,
+            "n_draws": 128,
+            "panel": false
+          },
+          "message": ""
+        },
+        "apollo": {
+          "backend": "apollo",
+          "available": true,
+          "seconds": 9.203,
+          "loglike": -3911.6749158428097,
+          "params": {
+            "ASC_B": -3.155226055471652,
+            "B_X": -1.4363842882556317,
+            "G_Q": 0.14467062090011906,
+            "SIGMA_LV": 0.6543134424309845,
+            "B_ATT": 1.024582579420491,
+            "SIGMA_Y1": 0.7273098940292333,
+            "A2": -0.0005633268953157301,
+            "L2": 0.6679997094811085,
+            "SIGMA_Y2": 0.8887180552790401
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": 4,
+            "message": "Relative function convergence (favorable)",
+            "successful_estimation": true,
+            "iterations": 15
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -3911.6749158421085,
+      "loglike_tolerance": 0.003911674915842108,
+      "consistent": false
+    },
+    {
+      "case": "Synthetic 250x2",
+      "kind": "panel_likelihood",
+      "data_type": "Synthetic",
+      "data_source": "Controlled panel DGP",
+      "n_obs": 500,
+      "n_units": 250,
+      "n_draws": 32,
+      "extra": {
+        "alternatives": 4,
+        "choices_per_unit": 2,
+        "random_coefficients": 1
+      },
+      "results": {
+        "torchdcm": {
+          "backend": "torchdcm",
+          "available": true,
+          "seconds": 0.023732910864055157,
+          "loglike": -613.7538149701095,
+          "params": {
+            "B_X": -0.7376248825859838,
+            "ASC_B": 0.45963461500350344,
+            "ASC_C": 0.06587451480730727,
+            "ASC_D": 0.23115698592993633,
+            "SIGMA_B_X": 0.4173343775406476
+          },
+          "covariance_available": true,
+          "convergence": {
+            "optimizer": "torch.optim.LBFGS",
+            "success": true,
+            "message": "Likelihood-scaled gradient criterion satisfied.",
+            "closure_evaluations": 14,
+            "function_evaluations": 14,
+            "optimizer_iterations": 13,
+            "maximum_iterations": 150,
+            "maximum_function_evaluations": 187,
+            "gradient_norm": 0.0001590086539749403,
+            "gradient_max_abs": 0.00012098207792089755,
+            "scaled_gradient_norm": 2.5907562624712025e-07,
+            "scaled_gradient_tolerance": 1e-05,
+            "natural_gradient_norm": 0.00017388029430578963,
+            "nonfinite_evaluations": 0,
+            "best_loglike": -613.7538149701095,
+            "n_draws": 32,
+            "panel": true,
+            "initial_loglike": -621.3033522609343,
+            "compile_seconds": 3.4600961953401566e-06,
+            "optimization_seconds": 0.01322720805183053,
+            "inference_seconds": 0.009797843871638179,
+            "total_seconds": 0.023657951038330793
+          },
+          "message": ""
+        },
+        "apollo": {
+          "backend": "apollo",
+          "available": true,
+          "seconds": 0.539,
+          "loglike": -613.7538149698912,
+          "params": {
+            "ASC_B": 0.4596349168972254,
+            "B_X": -0.7376235970015685,
+            "ASC_C": 0.06587391997639039,
+            "ASC_D": 0.23115749414964903,
+            "SIGMA_B_X": 0.4173317987839058
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": 4,
+            "message": "Relative function convergence (favorable)",
+            "successful_estimation": true,
+            "iterations": 7
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -613.7538149698912,
+      "loglike_tolerance": 0.0006137538149698911,
+      "consistent": false
+    },
+    {
+      "case": "Synthetic 500x4",
+      "kind": "panel_likelihood",
+      "data_type": "Synthetic",
+      "data_source": "Controlled panel DGP",
+      "n_obs": 2000,
+      "n_units": 500,
+      "n_draws": 64,
+      "extra": {
+        "alternatives": 4,
+        "choices_per_unit": 4,
+        "random_coefficients": 1
+      },
+      "results": {
+        "torchdcm": {
+          "backend": "torchdcm",
+          "available": true,
+          "seconds": 0.10083647281862795,
+          "loglike": -2414.7761335328223,
+          "params": {
+            "B_X": -0.8072892017047827,
+            "ASC_B": 0.30000646660975683,
+            "ASC_C": -0.24005561146695992,
+            "ASC_D": 0.13653847252747478,
+            "SIGMA_B_X": 0.5860171630880651
+          },
+          "covariance_available": true,
+          "convergence": {
+            "optimizer": "torch.optim.LBFGS",
+            "success": true,
+            "message": "Likelihood-scaled gradient criterion satisfied.",
+            "closure_evaluations": 14,
+            "function_evaluations": 14,
+            "optimizer_iterations": 13,
+            "maximum_iterations": 150,
+            "maximum_function_evaluations": 187,
+            "gradient_norm": 4.438183278007639e-05,
+            "gradient_max_abs": 3.161542454555022e-05,
+            "scaled_gradient_norm": 1.837927423737855e-08,
+            "scaled_gradient_tolerance": 1e-05,
+            "natural_gradient_norm": 4.941215196689448e-05,
+            "nonfinite_evaluations": 0,
+            "best_loglike": -2414.7761335328223,
+            "n_draws": 64,
+            "panel": true,
+            "initial_loglike": -2450.5564863901773,
+            "compile_seconds": 3.0901283025741577e-06,
+            "optimization_seconds": 0.0501319570466876,
+            "inference_seconds": 0.04853199003264308,
+            "total_seconds": 0.10074728284962475
+          },
+          "message": ""
+        },
+        "apollo": {
+          "backend": "apollo",
+          "available": true,
+          "seconds": 3.168,
+          "loglike": -2414.7761335328205,
+          "params": {
+            "ASC_B": 0.3000064851307536,
+            "B_X": -0.807289201462734,
+            "ASC_C": -0.24005580773917246,
+            "ASC_D": 0.13653857731879526,
+            "SIGMA_B_X": 0.5860171157501326
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": 4,
+            "message": "Relative function convergence (favorable)",
+            "successful_estimation": true,
+            "iterations": 6
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -2414.7761335328205,
+      "loglike_tolerance": 0.00241477613353282,
+      "consistent": false
+    },
+    {
+      "case": "Synthetic 1,250x8",
+      "kind": "panel_likelihood",
+      "data_type": "Synthetic",
+      "data_source": "Controlled panel DGP",
+      "n_obs": 10000,
+      "n_units": 1250,
+      "n_draws": 128,
+      "extra": {
+        "alternatives": 4,
+        "choices_per_unit": 8,
+        "random_coefficients": 1
+      },
+      "results": {
+        "torchdcm": {
+          "backend": "torchdcm",
+          "available": true,
+          "seconds": 2.556558344978839,
+          "loglike": -12023.881303831464,
+          "params": {
+            "B_X": -0.8073432708326793,
+            "ASC_B": 0.3210112326045822,
+            "ASC_C": -0.17051524031783327,
+            "ASC_D": 0.0757028769429478,
+            "SIGMA_B_X": 0.5484584765855367
+          },
+          "covariance_available": true,
+          "convergence": {
+            "optimizer": "torch.optim.LBFGS",
+            "success": true,
+            "message": "Likelihood-scaled gradient criterion satisfied.",
+            "closure_evaluations": 14,
+            "function_evaluations": 14,
+            "optimizer_iterations": 13,
+            "maximum_iterations": 150,
+            "maximum_function_evaluations": 187,
+            "gradient_norm": 0.00011568808705497951,
+            "gradient_max_abs": 9.258831434974524e-05,
+            "scaled_gradient_norm": 9.621526039026598e-09,
+            "scaled_gradient_tolerance": 1e-05,
+            "natural_gradient_norm": 0.00014773248099606394,
+            "nonfinite_evaluations": 0,
+            "best_loglike": -12023.881303831464,
+            "n_draws": 128,
+            "panel": true,
+            "initial_loglike": -12167.636893562023,
+            "compile_seconds": 5.660112947225571e-06,
+            "optimization_seconds": 1.166085606906563,
+            "inference_seconds": 1.3469304700847715,
+            "total_seconds": 2.556351374834776
+          },
+          "message": ""
+        },
+        "apollo": {
+          "backend": "apollo",
+          "available": true,
+          "seconds": 32.145,
+          "loglike": -12023.881303831784,
+          "params": {
+            "ASC_B": 0.32101125375336204,
+            "B_X": -0.8073437270568501,
+            "ASC_C": -0.1705154214098678,
+            "ASC_D": 0.0757031278453948,
+            "SIGMA_B_X": 0.548458597187914
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": 4,
+            "message": "Relative function convergence (favorable)",
+            "successful_estimation": true,
+            "iterations": 6
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -12023.881303831464,
+      "loglike_tolerance": 0.012023881303831464,
+      "consistent": false
+    },
+    {
+      "case": "Electricity 100",
+      "kind": "panel_likelihood",
+      "data_type": "Actual",
+      "data_source": "Electricity",
+      "n_obs": 1200,
+      "n_units": 100,
+      "n_draws": 32,
+      "extra": {
+        "alternatives": 4,
+        "choices_per_unit": 12,
+        "random_coefficients": 1
+      },
+      "results": {
+        "torchdcm": {
+          "backend": "torchdcm",
+          "available": true,
+          "seconds": 0.03838121495209634,
+          "loglike": -1555.6939837890393,
+          "params": {
+            "B_X": 0.3193363441816215,
+            "ASC_B": 0.1863124022438293,
+            "ASC_C": 0.08331008686709374,
+            "ASC_D": 0.17660891733428563,
+            "SIGMA_B_X": 0.668706967836911
+          },
+          "covariance_available": true,
+          "convergence": {
+            "optimizer": "torch.optim.LBFGS",
+            "success": true,
+            "message": "Likelihood-scaled gradient criterion satisfied.",
+            "closure_evaluations": 14,
+            "function_evaluations": 14,
+            "optimizer_iterations": 13,
+            "maximum_iterations": 150,
+            "maximum_function_evaluations": 187,
+            "gradient_norm": 3.164373248818494e-05,
+            "gradient_max_abs": 2.5614296897180644e-05,
+            "scaled_gradient_norm": 2.034058935621365e-08,
+            "scaled_gradient_tolerance": 1e-05,
+            "natural_gradient_norm": 3.1695356641013705e-05,
+            "nonfinite_evaluations": 0,
+            "best_loglike": -1555.6939837890393,
+            "n_draws": 32,
+            "panel": true,
+            "initial_loglike": -1746.804458347577,
+            "compile_seconds": 2.9599759727716446e-06,
+            "optimization_seconds": 0.02055151481181383,
+            "inference_seconds": 0.016844311030581594,
+            "total_seconds": 0.038305615074932575
+          },
+          "message": ""
+        },
+        "apollo": {
+          "backend": "apollo",
+          "available": true,
+          "seconds": 0.9670000000000001,
+          "loglike": -1555.6939837890384,
+          "params": {
+            "ASC_B": 0.18631248804689926,
+            "B_X": 0.31933643259765915,
+            "ASC_C": 0.08331047511570437,
+            "ASC_D": 0.176609163147937,
+            "SIGMA_B_X": 0.6687069984982098
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": 4,
+            "message": "Relative function convergence (favorable)",
+            "successful_estimation": true,
+            "iterations": 13
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -1555.6939837890384,
+      "loglike_tolerance": 0.0015556939837890382,
+      "consistent": false
+    },
+    {
+      "case": "Electricity 250",
+      "kind": "panel_likelihood",
+      "data_type": "Actual",
+      "data_source": "Electricity",
+      "n_obs": 3000,
+      "n_units": 250,
+      "n_draws": 64,
+      "extra": {
+        "alternatives": 4,
+        "choices_per_unit": 12,
+        "random_coefficients": 1
+      },
+      "results": {
+        "torchdcm": {
+          "backend": "torchdcm",
+          "available": true,
+          "seconds": 0.14655653899535537,
+          "loglike": -3927.36977710251,
+          "params": {
+            "B_X": 0.24726917564055068,
+            "ASC_B": 0.15139326455175645,
+            "ASC_C": 0.14684388334710993,
+            "ASC_D": 0.20921982219743798,
+            "SIGMA_B_X": 0.8149561063599862
+          },
+          "covariance_available": true,
+          "convergence": {
+            "optimizer": "torch.optim.LBFGS",
+            "success": true,
+            "message": "Likelihood-scaled gradient criterion satisfied.",
+            "closure_evaluations": 14,
+            "function_evaluations": 14,
+            "optimizer_iterations": 14,
+            "maximum_iterations": 150,
+            "maximum_function_evaluations": 187,
+            "gradient_norm": 0.00012333783618038882,
+            "gradient_max_abs": 9.369902896477766e-05,
+            "scaled_gradient_norm": 3.140469148066409e-08,
+            "scaled_gradient_tolerance": 1e-05,
+            "natural_gradient_norm": 0.0001236826728580792,
+            "nonfinite_evaluations": 0,
+            "best_loglike": -3927.36977710251,
+            "n_draws": 64,
+            "panel": true,
+            "initial_loglike": -4295.609396133294,
+            "compile_seconds": 3.00002284348011e-06,
+            "optimization_seconds": 0.07169187697581947,
+            "inference_seconds": 0.07070924900472164,
+            "total_seconds": 0.14645484904758632
+          },
+          "message": ""
+        },
+        "apollo": {
+          "backend": "apollo",
+          "available": true,
+          "seconds": 4.71,
+          "loglike": -3927.3697771186276,
+          "params": {
+            "ASC_B": 0.15140186480500467,
+            "B_X": 0.2472727435355539,
+            "ASC_C": 0.14684792986269052,
+            "ASC_D": 0.20922420242090217,
+            "SIGMA_B_X": 0.8149567096933299
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": 4,
+            "message": "Relative function convergence (favorable)",
+            "successful_estimation": true,
+            "iterations": 10
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -3927.36977710251,
+      "loglike_tolerance": 0.00392736977710251,
+      "consistent": false
+    },
+    {
+      "case": "Electricity 348",
+      "kind": "panel_likelihood",
+      "data_type": "Actual",
+      "data_source": "Electricity",
+      "n_obs": 4176,
+      "n_units": 348,
+      "n_draws": 128,
+      "extra": {
+        "alternatives": 4,
+        "choices_per_unit": 12,
+        "random_coefficients": 1
+      },
+      "results": {
+        "torchdcm": {
+          "backend": "torchdcm",
+          "available": true,
+          "seconds": 0.5967960970010608,
+          "loglike": -5443.607175293502,
+          "params": {
+            "B_X": 0.25473171648208126,
+            "ASC_B": 0.1305865340622278,
+            "ASC_C": 0.12384462477747717,
+            "ASC_D": 0.20476099688276453,
+            "SIGMA_B_X": 0.5649712943898972
+          },
+          "covariance_available": true,
+          "convergence": {
+            "optimizer": "torch.optim.LBFGS",
+            "success": true,
+            "message": "Likelihood-scaled gradient criterion satisfied.",
+            "closure_evaluations": 14,
+            "function_evaluations": 14,
+            "optimizer_iterations": 13,
+            "maximum_iterations": 150,
+            "maximum_function_evaluations": 187,
+            "gradient_norm": 7.471186927329966e-05,
+            "gradient_max_abs": 5.461343594413692e-05,
+            "scaled_gradient_norm": 1.3724698874744103e-08,
+            "scaled_gradient_tolerance": 1e-05,
+            "natural_gradient_norm": 8.128839543872872e-05,
+            "nonfinite_evaluations": 0,
+            "best_loglike": -5443.607175293502,
+            "n_draws": 128,
+            "panel": true,
+            "initial_loglike": -5895.177921543897,
+            "compile_seconds": 3.4600961953401566e-06,
+            "optimization_seconds": 0.29475343506783247,
+            "inference_seconds": 0.28933925391174853,
+            "total_seconds": 0.5966239969711751
+          },
+          "message": ""
+        },
+        "apollo": {
+          "backend": "apollo",
+          "available": true,
+          "seconds": 18.058000000000003,
+          "loglike": -5443.607175293573,
+          "params": {
+            "ASC_B": 0.1305864875014952,
+            "B_X": 0.25473214498514923,
+            "ASC_C": 0.12384458455651692,
+            "ASC_D": 0.20476088843253118,
+            "SIGMA_B_X": 0.564971482786584
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": 4,
+            "message": "Relative function convergence (favorable)",
+            "successful_estimation": true,
+            "iterations": 10
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -5443.607175293502,
+      "loglike_tolerance": 0.0054436071752935015,
+      "consistent": false
+    }
+  ]
+}

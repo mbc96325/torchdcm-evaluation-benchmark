@@ -1,0 +1,7 @@
+# Preserve archived upstream bytes and keep large inputs out of textual diffs.
+data/raw/lpmc_london/data.csv binary
+data/raw/lpmc_london/data.dat binary
+data/raw/nhts_2022/csv.zip binary
+
+# Solver logs are immutable evidence rather than source text.
+results/intermediate/advanced_full_logs/*.log binary

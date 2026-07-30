@@ -1,0 +1,158 @@
+[
+  {
+    "case": "heating",
+    "dataset_id": "mlogit_heating",
+    "model": "MNL",
+    "reference": "mlogit",
+    "mlogit": {
+      "backend": "mlogit",
+      "dataset": "heating",
+      "n_obs": 900,
+      "n_rows": 4500,
+      "n_parameters": 2,
+      "variables": [
+        "ic",
+        "oc"
+      ],
+      "loglike": -1095.2371253294436,
+      "estimate_seconds": 0.02300000000000002,
+      "covariance_seconds": 0,
+      "total_seconds": 0.02300000000000002,
+      "params": {
+        "ic": -0.006231869335009908,
+        "oc": -0.004580082961486916
+      },
+      "covariance_names": [
+        "ic",
+        "oc"
+      ],
+      "covariance": [
+        [
+          1.2444947708484683e-07,
+          -6.055759376648684e-09
+        ],
+        [
+          -6.055759376648684e-09,
+          1.0378951115415688e-07
+        ]
+      ],
+      "available": true,
+      "wall_seconds": 0.8433146120514721
+    },
+    "torchdcm": {
+      "backend": "torchdcm",
+      "available": true,
+      "total_seconds": 0.13344172900542617,
+      "estimate_seconds": 0.13344172900542617,
+      "covariance_seconds": 0.0,
+      "loglike": -1095.2371253294464,
+      "n_obs": 900,
+      "n_rows": 4500,
+      "n_parameters": 2,
+      "parameters": [
+        "B_IC",
+        "B_OC"
+      ]
+    },
+    "scipy_bfgs": {
+      "backend": "scipy_bfgs",
+      "available": true,
+      "total_seconds": 0.14052983198780566,
+      "estimate_seconds": 0.13986549095716327,
+      "covariance_seconds": 0.0006643410306423903,
+      "loglike": -1095.237125329443,
+      "params": {
+        "B_IC": -0.006231869335352012,
+        "B_OC": -0.004580082962776304
+      },
+      "message": ""
+    },
+    "biogeme": {
+      "backend": "biogeme",
+      "available": true,
+      "total_seconds": 1.6740210859570652,
+      "estimate_seconds": 1.6738992019090801,
+      "covariance_seconds": 5.4551986977458e-05,
+      "loglike": -1095.2371253294434,
+      "parameters": [
+        "B_IC",
+        "B_OC"
+      ],
+      "params": {
+        "B_IC": -0.00623186933500991,
+        "B_OC": -0.004580082961486917
+      },
+      "covariance": [
+        [
+          1.2444947708484685e-07,
+          -6.055759376648676e-09
+        ],
+        [
+          -6.055759376648677e-09,
+          1.037895111541569e-07
+        ]
+      ]
+    },
+    "apollo": {
+      "backend": "apollo",
+      "available": true,
+      "total_seconds": 0.21999999999999997,
+      "estimate_seconds": 0.21999999999999997,
+      "covariance_seconds": 0,
+      "loglike": -1095.2371253294486,
+      "parameters": [
+        "B_IC",
+        "B_OC"
+      ],
+      "params": {
+        "B_IC": -0.006231868407907092,
+        "B_OC": -0.004580068730568737
+      },
+      "covariance": [
+        [
+          1.2444942974765187e-07,
+          -6.055754096238504e-09
+        ],
+        [
+          -6.055754096238504e-09,
+          1.037892178788224e-07
+        ]
+      ],
+      "message": "apollo_version=0.3.8"
+    },
+    "gmnl": {
+      "backend": "gmnl",
+      "available": true,
+      "total_seconds": 0.021999999999999964,
+      "estimate_seconds": 0.021999999999999964,
+      "covariance_seconds": 0.0,
+      "loglike": -1095.2371253294436,
+      "params": {
+        "B_IC": -0.006231869335009885,
+        "B_OC": -0.004580082961486814
+      },
+      "message": ""
+    },
+    "xlogit": {
+      "backend": "xlogit",
+      "available": true,
+      "total_seconds": 0.00330264400690794,
+      "estimate_seconds": 0.0033022440038621426,
+      "covariance_seconds": 4.00003045797348e-07,
+      "loglike": -1095.2371253294446,
+      "params": {
+        "B_IC": -0.006231869670800543,
+        "B_OC": -0.004580082603659084
+      },
+      "message": ""
+    },
+    "n_obs": 900,
+    "n_rows": 4500,
+    "n_parameters": 2,
+    "ll_diff": -2.7284841053187847e-12,
+    "biogeme_ll_diff": -2.9558577807620168e-12,
+    "apollo_ll_diff": 2.2737367544323206e-12,
+    "consistent": "Yes",
+    "status": "ok"
+  }
+]

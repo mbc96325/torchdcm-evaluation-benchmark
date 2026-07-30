@@ -160,6 +160,8 @@ EXPERIMENTS = {
             "experiments/run_advanced_full_suite.py",
             "--output",
             "results/advanced_full_estimation_reproduction.json",
+            "--log-dir",
+            "results/advanced_full_logs_reproduction",
         ),
         "results/advanced_full_estimation.json",
     ),

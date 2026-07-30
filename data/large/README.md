@@ -1,12 +1,12 @@
 # Large benchmark datasets
 
-Large source and processed files are not committed to GitHub.
+The source inputs are committed under `data/raw/`, so reproducing the paper
+does not require an external data download.
 
-| Dataset | Preparation |
-| --- | --- |
-| LPMC London | `python scripts/process_lpmc_london.py` downloads the official Biogeme table when needed and creates canonical wide and long files. |
-| NHTS 2022 | `experiments/compare_nhts_mnl.py` downloads the official trip archive when needed and constructs the aligned mode-choice case. |
+| Dataset | Archived input | Use |
+| --- | --- | --- |
+| LPMC London | `data/raw/lpmc_london/data.csv` and `data.dat` | The estimators read the CSV directly. `scripts/process_lpmc_london.py` can create optional wide and long derivatives. |
+| NHTS 2022 | `data/raw/nhts_2022/csv.zip` | The estimators read `tripv2pub.csv` directly from the archive. |
 
-Downloaded source files and processed tables are stored under ignored
-`data/raw/` and `data/large/processed/` directories.
-`dataset_sources.csv` records the corresponding source URLs and local artifacts.
+Generated derivatives remain untracked under `data/large/processed/`.
+`dataset_sources.csv` records provenance and local paths.

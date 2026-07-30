@@ -1,0 +1,129 @@
+{
+  "benchmark": "advanced_full_estimation_validation",
+  "timing_scope": "full optimization plus classic covariance construction",
+  "runtime_policy": {
+    "cpu_policy": "single-logical-core",
+    "logical_cpu_affinity": [
+      0
+    ],
+    "timing_scope": "estimation-plus-covariance",
+    "thread_environment": {
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+    "torch_intraop_threads": 1,
+    "torch_interop_threads": 1,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1
+      }
+    ]
+  },
+  "profile": "full",
+  "max_iter": 150,
+  "cases": [
+    {
+      "case": "Swissmetro 3,500",
+      "kind": "latent_class",
+      "data_type": "Actual",
+      "data_source": "Swissmetro",
+      "n_obs": 3500,
+      "n_units": 3500,
+      "n_draws": 0,
+      "extra": {
+        "classes": 2,
+        "membership_covariates": 1
+      },
+      "results": {
+        "torchdcm": {
+          "backend": "torchdcm",
+          "available": true,
+          "seconds": 0.027168889064341784,
+          "loglike": -2555.9506887998223,
+          "params": {
+            "B_X_C1": -2.8778337894845474,
+            "ASC_B_C1": 0.33537691257085583,
+            "ASC_C_C1": -0.8338813595820032,
+            "B_X_C2": 0.6423687141004923,
+            "ASC_B_C2": 0.28101184970154713,
+            "ASC_C_C2": -1.945983189158263,
+            "CLASS_2": -1.1004162813622442,
+            "CLASS_2_Z": 2.240463381242474
+          },
+          "covariance_available": true,
+          "convergence": {
+            "optimizer": "torch.optim.LBFGS",
+            "closure_evaluations": 33,
+            "gradient_norm": 0.00011274087460449051
+          },
+          "message": ""
+        },
+        "biogeme": {
+          "backend": "biogeme",
+          "available": true,
+          "seconds": 2.260854562977329,
+          "loglike": -2555.95068880117,
+          "params": {
+            "ASC_B_C1": 0.3353789727567903,
+            "ASC_C_C1": -0.8338821432816039,
+            "B_X_C1": -2.8778368738691325,
+            "ASC_B_C2": 0.28100578311620944,
+            "ASC_C_C2": -1.9459848131868673,
+            "B_X_C2": 0.6423740100188549,
+            "CLASS_2": -1.1004201735191896,
+            "CLASS_2_Z": 2.240445965547254
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": "completed"
+          },
+          "message": ""
+        },
+        "apollo": {
+          "backend": "apollo",
+          "available": true,
+          "seconds": 0.847,
+          "loglike": -2555.9506887999237,
+          "params": {
+            "ASC_B_C1": 0.33537699414659894,
+            "ASC_C_C1": -0.833880205956934,
+            "B_X_C1": -2.8778360465976953,
+            "ASC_B_C2": 0.28101017371153436,
+            "ASC_C_C2": -1.9459849156699232,
+            "B_X_C2": 0.6423662942850473,
+            "CLASS_2": -1.1004147030931863,
+            "CLASS_2_Z": 2.2404620780280102
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": 4,
+            "message": "Relative function convergence (favorable)",
+            "successful_estimation": true,
+            "iterations": 13
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -2555.9506887998223,
+      "loglike_tolerance": 0.0025559506887998223,
+      "consistent": true
+    }
+  ]
+}

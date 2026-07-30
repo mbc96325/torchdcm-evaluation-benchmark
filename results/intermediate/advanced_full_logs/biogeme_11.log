@@ -1,0 +1,86 @@
+An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.
+[biogeme] starting torchdcm_advanced_hybrid_full_1000_64
+[biogeme] finished in 162.814s; LL=-3025.505954
+{
+  "benchmark": "advanced_full_estimation_validation",
+  "timing_scope": "full optimization plus classic covariance construction",
+  "runtime_policy": {
+    "cpu_policy": "single-logical-core",
+    "logical_cpu_affinity": [
+      0
+    ],
+    "timing_scope": "estimation-plus-covariance",
+    "thread_environment": {
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+    "torch_intraop_threads": 1,
+    "torch_interop_threads": 1,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1
+      }
+    ]
+  },
+  "profile": "full",
+  "max_iter": 150,
+  "cases": [
+    {
+      "case": "Optima 1,000",
+      "kind": "hybrid_choice",
+      "data_type": "Actual",
+      "data_source": "Optima",
+      "n_obs": 1000,
+      "n_units": 1000,
+      "n_draws": 64,
+      "extra": {
+        "latent_variables": 1,
+        "continuous_indicators": 2
+      },
+      "results": {
+        "biogeme": {
+          "backend": "biogeme",
+          "available": true,
+          "seconds": 162.81408132892102,
+          "loglike": -3025.50595368806,
+          "params": {
+            "ASC_B": -2.9254619950386602,
+            "B_X": -1.3181139565306925,
+            "G_Q": 0.10883529413422607,
+            "SIGMA_LV": 0.8601682259980167,
+            "B_ATT": 0.7831659619086901,
+            "SIGMA_Y1": 0.616887799005481,
+            "A2": 0.0020527065377040285,
+            "L2": 0.5187017064869713,
+            "SIGMA_Y2": 0.914138243838961
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": "completed"
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -3025.50595368806,
+      "loglike_tolerance": 0.00302550595368806,
+      "consistent": false
+    }
+  ]
+}

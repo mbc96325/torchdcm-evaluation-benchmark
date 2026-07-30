@@ -136,7 +136,11 @@ def run_case(case: MatrixCase, python: str) -> dict:
         "model": case.model,
         "alignment_mode": case.alignment_mode,
         "runtime_policy": runtime_policy_metadata(),
-        "command": command,
+        "command": [
+            "python",
+            f"experiments/{case.command[0]}",
+            *case.command[1:],
+        ],
         "returncode": proc.returncode,
         "wall_seconds": wall_s,
         "solver_status": solver_status,

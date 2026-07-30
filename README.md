@@ -4,8 +4,9 @@
 
 This repository is the standalone computational archive for the TorchDCM
 software paper. It contains the TorchDCM source code used in the study,
-experiment drivers for seven estimation packages, aligned datasets, and the
-machine-readable results used to prepare the paper's tables.
+experiment drivers for seven estimation packages, all input datasets, the
+intermediate solver outputs retained by the benchmark, and the machine-readable
+results used to prepare the paper's tables.
 
 The `torchdcm/` directory is a clean snapshot of TorchDCM 0.1.1 at Git commit
 `b34ab6924523017aca39f5529c940c2cdd817bde`. The snapshot is installed directly
@@ -24,11 +25,10 @@ The repository reproduces the paper's:
 - ordered-logit and ordered-probit validation; and
 - latent-class, hybrid-choice, and panel validation.
 
-The manuscript source is intentionally not included. Large LPMC and NHTS
-inputs are materialized from their public sources because redistribution or
-repository-size constraints make committing the processed files undesirable.
-The smaller public benchmark datasets and all paper-facing JSON results are
-included.
+The manuscript source is intentionally not included. All 18 empirical datasets
+used by the paper, including the original LPMC files and the NHTS public-use
+CSV archive, are committed to ordinary Git. No Git LFS checkout or external
+data download is required after cloning.
 
 ## Repository layout
 
@@ -40,9 +40,12 @@ included.
 │   └── mlogit/R/             # mlogit and gmnl adapters
 ├── data/
 │   ├── small/                # Included public benchmark datasets
-│   ├── large/                # Large-data provenance and preparation notes
+│   ├── raw/                  # Archived LPMC and NHTS source files
+│   ├── large/                # Optional processed-data instructions
 │   └── dataset_index.csv     # Dataset-to-storage index
-├── results/                  # Archived paper-result JSON files
+├── results/
+│   ├── intermediate/         # Retained subordinate outputs and solver logs
+│   └── *.json                # Authoritative paper-table results
 ├── scripts/                  # Large-data preparation utilities
 ├── tests/                    # Artifact and numerical parity checks
 ├── run_exp.py                # Root experiment selector
@@ -140,10 +143,9 @@ for custom profiles.
 The standard workflow is:
 
 1. install Python and, where needed, R dependencies;
-2. prepare the large public datasets if those cases will be run;
-3. select an experiment with `run_exp.py`;
-4. retain the newly generated `*_reproduction` output; and
-5. compare it with the corresponding archived JSON file.
+2. select an experiment with `run_exp.py`;
+3. retain the newly generated `*_reproduction` output; and
+4. compare it with the corresponding archived JSON file.
 
 Runtime values depend on hardware and software versions. Final log likelihoods,
 case dimensions, backend status, and consistency diagnostics are stored in
@@ -172,21 +174,23 @@ Run the ordered-model summarizer after reproducing those cases:
 python experiments/summarize_ordered_results.py
 ```
 
-## Data preparation
+## Archived data
 
-Sixteen small public datasets are committed under `data/small`. Their
-dimensions and upstream sources are recorded in `data/dataset_index.csv` and
-the accompanying metadata files.
+All paper inputs are versioned in this repository. Sixteen datasets are under
+`data/small`. The LPMC source CSV and original DAT file and the NHTS 2022
+public-use CSV archive are under `data/raw`. Their dimensions, checksums, and
+upstream sources are recorded in `data/dataset_index.csv` and the accompanying
+metadata.
 
-Materialize the LPMC data before running its rows:
+The benchmark runners read these archived inputs directly. The following
+optional command creates long- and wide-format LPMC derivatives for inspection:
 
 ```bash
 python scripts/process_lpmc_london.py
 ```
 
-The NHTS experiment downloads and processes the official 2022 trip archive
-when its local cache is absent. Downloaded and processed large files remain
-untracked under `data/raw` and `data/large/processed`.
+It does not contact the network. NHTS rows are read directly from the committed
+`data/raw/nhts_2022/csv.zip`.
 
 ## Timing and numerical protocol
 

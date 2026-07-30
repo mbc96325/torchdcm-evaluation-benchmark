@@ -21,6 +21,7 @@ from mnl_generic_backends import run_gmnl_generic, run_scipy_mle, run_xlogit_gen
 
 ROOT = Path(__file__).resolve().parents[1]
 RESULTS = ROOT / "results"
+DATA_ROOT = ROOT / "data" / "small"
 R_SCRIPT = ROOT / "experiments" / "mlogit" / "R" / "run_mlogit_dataset_mnl.R"
 APOLLO_SCRIPT = ROOT / "experiments" / "apollo" / "R" / "run_generic_mnl.R"
 
@@ -57,6 +58,8 @@ def run_r_reference(dataset: str) -> tuple[pd.DataFrame | None, dict]:
             str(R_SCRIPT),
             "--dataset",
             dataset,
+            "--data-input",
+            str(DATA_ROOT / f"mlogit_{dataset}" / "data.csv"),
             "--data-output",
             str(data_path),
             "--result-output",

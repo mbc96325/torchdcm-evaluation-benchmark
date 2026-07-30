@@ -15,5 +15,5 @@ dataset_id,status,rows,columns,storage,upstream_url
 "mlogit_heating","included","900","21","github_small","https://cran.r-project.org/web/packages/mlogit/mlogit.pdf"
 "mlogit_mode","included","453","9","github_small","https://cran.r-project.org/web/packages/mlogit/mlogit.pdf"
 "mlogit_nox","included","9480","12","github_small","https://cran.r-project.org/web/packages/mlogit/mlogit.pdf"
-"lpmc_london","external","81086","32","official_download","https://transp-or.epfl.ch/data/lpmc.dat"
-"nhts_2022","external","27375","8 raw trip columns used","official_download","https://nhts.ornl.gov/"
+"lpmc_london","included","81086","32","github_raw","https://transp-or.epfl.ch/data/lpmc.dat"
+"nhts_2022","included","27375","8 raw trip columns used","github_raw","https://nhts.ornl.gov/downloads"

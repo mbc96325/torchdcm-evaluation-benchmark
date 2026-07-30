@@ -1,0 +1,6 @@
+An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.
+[biogeme] starting torchdcm_advanced_hybrid_full_10000_128
+E0722 08:03:50.338799  708829 slow_operation_alarm.cc:73] 
+********************************
+[Compiling module jit_one_observation_loglikelihood for CPU] Very slow compile? If you want to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+********************************

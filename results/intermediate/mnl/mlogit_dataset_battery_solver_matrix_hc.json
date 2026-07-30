@@ -1,0 +1,158 @@
+[
+  {
+    "case": "hc",
+    "dataset_id": "mlogit_hc",
+    "model": "MNL",
+    "reference": "mlogit",
+    "mlogit": {
+      "backend": "mlogit",
+      "dataset": "hc",
+      "n_obs": 250,
+      "n_rows": 1750,
+      "n_parameters": 2,
+      "variables": [
+        "ich",
+        "och"
+      ],
+      "loglike": -331.9100227462119,
+      "estimate_seconds": 0.014000000000000012,
+      "covariance_seconds": 0,
+      "total_seconds": 0.014000000000000012,
+      "params": {
+        "ich": -0.0016020522077310464,
+        "och": -0.009302551383614417
+      },
+      "covariance_names": [
+        "ich",
+        "och"
+      ],
+      "covariance": [
+        [
+          4.929949915106531e-08,
+          4.239156118624587e-08
+        ],
+        [
+          4.239156118624588e-08,
+          5.077923104597888e-07
+        ]
+      ],
+      "available": true,
+      "wall_seconds": 0.5774871669709682
+    },
+    "torchdcm": {
+      "backend": "torchdcm",
+      "available": true,
+      "total_seconds": 0.14150928205344826,
+      "estimate_seconds": 0.14150928205344826,
+      "covariance_seconds": 0.0,
+      "loglike": -331.9100227464945,
+      "n_obs": 250,
+      "n_rows": 1750,
+      "n_parameters": 2,
+      "parameters": [
+        "B_ICH",
+        "B_OCH"
+      ]
+    },
+    "scipy_bfgs": {
+      "backend": "scipy_bfgs",
+      "available": true,
+      "total_seconds": 0.04812830709852278,
+      "estimate_seconds": 0.04752344801090658,
+      "covariance_seconds": 0.0006048590876162052,
+      "loglike": -331.91002274621195,
+      "params": {
+        "B_ICH": -0.001602056781445106,
+        "B_OCH": -0.009302556310001188
+      },
+      "message": "Desired error not necessarily achieved due to precision loss."
+    },
+    "biogeme": {
+      "backend": "biogeme",
+      "available": true,
+      "total_seconds": 2.1571457920363173,
+      "estimate_seconds": 2.157026238972321,
+      "covariance_seconds": 5.232100374996662e-05,
+      "loglike": -331.91002274621184,
+      "parameters": [
+        "B_ICH",
+        "B_OCH"
+      ],
+      "params": {
+        "B_ICH": -0.0016020567814831064,
+        "B_OCH": -0.009302556309962086
+      },
+      "covariance": [
+        [
+          4.929949915106529e-08,
+          4.239156118624587e-08
+        ],
+        [
+          4.23915611862459e-08,
+          5.077923104597887e-07
+        ]
+      ]
+    },
+    "apollo": {
+      "backend": "apollo",
+      "available": true,
+      "total_seconds": 0.21499999999999997,
+      "estimate_seconds": 0.21499999999999997,
+      "covariance_seconds": 0,
+      "loglike": -331.9100227463087,
+      "parameters": [
+        "B_ICH",
+        "B_OCH"
+      ],
+      "params": {
+        "B_ICH": -0.0016020555993798032,
+        "B_OCH": -0.009302549215458908
+      },
+      "covariance": [
+        [
+          4.929942334275175e-08,
+          4.2391469049355974e-08
+        ],
+        [
+          4.2391469049355974e-08,
+          5.077918500500059e-07
+        ]
+      ],
+      "message": "apollo_version=0.3.8"
+    },
+    "gmnl": {
+      "backend": "gmnl",
+      "available": true,
+      "total_seconds": 0.01699999999999996,
+      "estimate_seconds": 0.01699999999999996,
+      "covariance_seconds": 0.0,
+      "loglike": -331.9100227462119,
+      "params": {
+        "B_ICH": -0.0016020567814827964,
+        "B_OCH": -0.009302556309961728
+      },
+      "message": ""
+    },
+    "xlogit": {
+      "backend": "xlogit",
+      "available": true,
+      "total_seconds": 0.002136496943421662,
+      "estimate_seconds": 0.00213598704431206,
+      "covariance_seconds": 5.098991096019745e-07,
+      "loglike": -331.9100227462262,
+      "params": {
+        "B_ICH": -0.0016020578467740834,
+        "B_OCH": -0.00930255559046175
+      },
+      "message": ""
+    },
+    "n_obs": 250,
+    "n_rows": 1750,
+    "n_parameters": 2,
+    "ll_diff": -2.8262547857593745e-10,
+    "biogeme_ll_diff": -2.8268232199479826e-10,
+    "apollo_ll_diff": -1.858211362559814e-10,
+    "consistent": "Yes",
+    "status": "ok"
+  }
+]

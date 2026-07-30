@@ -7,13 +7,10 @@ dist/
 .DS_Store
 *.pyc
 
-# Large processed benchmark artifacts are published outside GitHub.
+# Optional processed derivatives can be regenerated from the archived raw data.
 data/large/processed/
 data/large/releases/*
 !data/large/releases/.gitkeep
-
-# Raw downloaded survey data stay local or on the remote benchmark server.
-data/raw/
 
 # Python/R generated benchmark scratch.
 __*.iter
@@ -24,6 +21,9 @@ torchdcm_nl_compare*.yaml
 results/*_reproduction.json
 results/*_reproduction.md
 results/advanced_full_logs/
+results/advanced_full_logs_reproduction/
+results/mlogit_dataset_battery_solver_matrix_*.json
+results/mlogit_dataset_battery_solver_matrix_*.md
 
 # Local Biogeme runtime config.
 biogeme.toml

@@ -1,0 +1,86 @@
+An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.
+[biogeme] starting torchdcm_advanced_hybrid_full_2000_64
+[biogeme] finished in 163.670s; LL=-6896.269085
+{
+  "benchmark": "advanced_full_estimation_validation",
+  "timing_scope": "full optimization plus classic covariance construction",
+  "runtime_policy": {
+    "cpu_policy": "single-logical-core",
+    "logical_cpu_affinity": [
+      0
+    ],
+    "timing_scope": "estimation-plus-covariance",
+    "thread_environment": {
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+    "torch_intraop_threads": 1,
+    "torch_interop_threads": 1,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1
+      }
+    ]
+  },
+  "profile": "full",
+  "max_iter": 150,
+  "cases": [
+    {
+      "case": "Synthetic 2,000",
+      "kind": "hybrid_choice",
+      "data_type": "Synthetic",
+      "data_source": "Controlled hybrid-choice DGP",
+      "n_obs": 2000,
+      "n_units": 2000,
+      "n_draws": 64,
+      "extra": {
+        "latent_variables": 1,
+        "continuous_indicators": 2
+      },
+      "results": {
+        "biogeme": {
+          "backend": "biogeme",
+          "available": true,
+          "seconds": 163.66990282805637,
+          "loglike": -6896.269085056854,
+          "params": {
+            "ASC_B": 0.15475882505003322,
+            "B_X": 0.6783093428035469,
+            "G_Q": 0.6635955615731288,
+            "SIGMA_LV": 0.7992846849039841,
+            "B_ATT": 0.8603488373364804,
+            "SIGMA_Y1": 0.679126537854457,
+            "A2": 0.20059491721670678,
+            "L2": 0.7217376970513452,
+            "SIGMA_Y2": 0.8803941505577191
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": "completed"
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -6896.269085056854,
+      "loglike_tolerance": 0.006896269085056854,
+      "consistent": false
+    }
+  ]
+}

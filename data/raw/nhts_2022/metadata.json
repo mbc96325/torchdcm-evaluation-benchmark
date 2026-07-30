@@ -1,0 +1,25 @@
+{
+  "access_method": "archived in repository",
+  "dataset_id": "nhts_2022",
+  "dataset_name": "2022 National Household Travel Survey",
+  "files": [
+    {
+      "bytes": 4533528,
+      "members_used": [
+        "tripv2pub.csv"
+      ],
+      "path": "raw/nhts_2022/csv.zip",
+      "sha256": "64530c396d5f164d2259a22f7042f27bee5147babcd367568ddbfafe6c8bf34c"
+    }
+  ],
+  "license_or_terms": "Official public-use survey release",
+  "message": "The benchmark reads eight columns from tripv2pub.csv and retains 27,375 observations after its documented filters.",
+  "notes": {
+    "citation": "Federal Highway Administration. (2022). 2022 National Household Travel Survey, U.S. Department of Transportation, Washington, DC.",
+    "source_url": "https://nhts.ornl.gov/downloads"
+  },
+  "rows_after_filtering": 27375,
+  "source_family": "U.S. Federal Highway Administration",
+  "status": "included",
+  "upstream_url": "https://nhts.ornl.gov/downloads"
+}

@@ -1,0 +1,228 @@
+[
+  {
+    "case": "train",
+    "dataset_id": "mlogit_train",
+    "model": "MNL",
+    "reference": "mlogit",
+    "mlogit": {
+      "backend": "mlogit",
+      "dataset": "train",
+      "n_obs": 2929,
+      "n_rows": 5858,
+      "n_parameters": 4,
+      "variables": [
+        "price",
+        "time",
+        "change",
+        "comfort"
+      ],
+      "loglike": -1724.1500271593764,
+      "estimate_seconds": 0.030000000000000027,
+      "covariance_seconds": 0.001000000000000112,
+      "total_seconds": 0.03100000000000014,
+      "params": {
+        "price": -0.0014843759627745578,
+        "time": -0.028675856982919773,
+        "change": -0.32634094065578734,
+        "comfort": -0.9457255537501433
+      },
+      "covariance_names": [
+        "price",
+        "time",
+        "change",
+        "comfort"
+      ],
+      "covariance": [
+        [
+          5.5916659991782796e-09,
+          9.631272939565929e-08,
+          1.3224616230369515e-06,
+          2.3271574331760892e-06
+        ],
+        [
+          9.631272939565929e-08,
+          7.142407869244835e-06,
+          3.617470022393026e-05,
+          6.95626935043655e-05
+        ],
+        [
+          1.3224616230369515e-06,
+          3.617470022393027e-05,
+          0.0035389591625358176,
+          0.0009384504603770146
+        ],
+        [
+          2.3271574331760892e-06,
+          6.95626935043655e-05,
+          0.0009384504603770145,
+          0.0042179132456508
+        ]
+      ],
+      "available": true,
+      "wall_seconds": 1.095893468009308
+    },
+    "torchdcm": {
+      "backend": "torchdcm",
+      "available": true,
+      "total_seconds": 0.14992457791231573,
+      "estimate_seconds": 0.14992457791231573,
+      "covariance_seconds": 0.0,
+      "loglike": -1724.1500271596988,
+      "n_obs": 2929,
+      "n_rows": 5858,
+      "n_parameters": 4,
+      "parameters": [
+        "B_PRICE",
+        "B_TIME",
+        "B_CHANGE",
+        "B_COMFORT"
+      ]
+    },
+    "scipy_bfgs": {
+      "backend": "scipy_bfgs",
+      "available": true,
+      "total_seconds": 1.7662997259758413,
+      "estimate_seconds": 1.7652540829731151,
+      "covariance_seconds": 0.0010456430027261376,
+      "loglike": -1724.1500271593738,
+      "params": {
+        "B_PRICE": -0.0014843762367789575,
+        "B_TIME": -0.02867586431100542,
+        "B_CHANGE": -0.32634094762235294,
+        "B_COMFORT": -0.9457256542068884
+      },
+      "message": "Desired error not necessarily achieved due to precision loss."
+    },
+    "biogeme": {
+      "backend": "biogeme",
+      "available": true,
+      "total_seconds": 1.3592235069954768,
+      "estimate_seconds": 1.3591046229703352,
+      "covariance_seconds": 5.406199488788843e-05,
+      "loglike": -1724.1500271593764,
+      "parameters": [
+        "B_PRICE",
+        "B_TIME",
+        "B_CHANGE",
+        "B_COMFORT"
+      ],
+      "params": {
+        "B_PRICE": -0.0014843762198745003,
+        "B_TIME": -0.028675862241613496,
+        "B_CHANGE": -0.3263409801331412,
+        "B_COMFORT": -0.9457256803289483
+      },
+      "covariance": [
+        [
+          5.591665977850928e-09,
+          9.631272893279259e-08,
+          1.3224616157726586e-06,
+          2.3271574172981716e-06
+        ],
+        [
+          9.631272893280034e-08,
+          7.142407850215798e-06,
+          3.617470007870743e-05,
+          6.95626930985046e-05
+        ],
+        [
+          1.3224616157726595e-06,
+          3.6174700078707546e-05,
+          0.0035389591550790307,
+          0.0009384504542924474
+        ],
+        [
+          2.3271574172981733e-06,
+          6.956269309850473e-05,
+          0.0009384504542924474,
+          0.004217913229478652
+        ]
+      ]
+    },
+    "apollo": {
+      "backend": "apollo",
+      "available": true,
+      "total_seconds": 0.2859999999999999,
+      "estimate_seconds": 0.2859999999999999,
+      "covariance_seconds": 0,
+      "loglike": -1724.1500271601724,
+      "parameters": [
+        "B_PRICE",
+        "B_TIME",
+        "B_CHANGE",
+        "B_COMFORT"
+      ],
+      "params": {
+        "B_PRICE": -0.0014843732438440654,
+        "B_TIME": -0.02867581070420895,
+        "B_CHANGE": -0.3263402803203727,
+        "B_COMFORT": -0.9457244292858531
+      },
+      "covariance": [
+        [
+          5.591654877682001e-09,
+          9.631252474547133e-08,
+          1.3224592814129729e-06,
+          2.327152368967886e-06
+        ],
+        [
+          9.631252474547133e-08,
+          7.142400947351311e-06,
+          3.61746611559123e-05,
+          6.956257985720688e-05
+        ],
+        [
+          1.3224592814129729e-06,
+          3.61746611559123e-05,
+          0.0035389568807053544,
+          0.0009384493072695914
+        ],
+        [
+          2.327152368967886e-06,
+          6.956257985720688e-05,
+          0.0009384493072695914,
+          0.004217909208709943
+        ]
+      ],
+      "message": "apollo_version=0.3.8"
+    },
+    "gmnl": {
+      "backend": "gmnl",
+      "available": true,
+      "total_seconds": 0.046999999999999986,
+      "estimate_seconds": 0.046999999999999986,
+      "covariance_seconds": 0.0,
+      "loglike": -1724.1500271593764,
+      "params": {
+        "B_PRICE": -0.0014843762253030916,
+        "B_TIME": -0.02867586240546817,
+        "B_CHANGE": -0.3263409845433173,
+        "B_COMFORT": -0.9457256889888929
+      },
+      "message": ""
+    },
+    "xlogit": {
+      "backend": "xlogit",
+      "available": true,
+      "total_seconds": 0.004735138034448028,
+      "estimate_seconds": 0.004734707996249199,
+      "covariance_seconds": 4.300381988286972e-07,
+      "loglike": -1724.150027165676,
+      "params": {
+        "B_PRICE": -0.001484378340598082,
+        "B_TIME": -0.028675762018861354,
+        "B_CHANGE": -0.32634591688039005,
+        "B_COMFORT": -0.9457282775993958
+      },
+      "message": ""
+    },
+    "n_obs": 2929,
+    "n_rows": 5858,
+    "n_parameters": 4,
+    "ll_diff": -3.2241587177850306e-10,
+    "biogeme_ll_diff": -3.2241587177850306e-10,
+    "apollo_ll_diff": 4.736193659482524e-10,
+    "consistent": "Yes",
+    "status": "ok"
+  }
+]

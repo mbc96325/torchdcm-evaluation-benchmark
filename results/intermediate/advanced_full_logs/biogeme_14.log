@@ -1,0 +1,83 @@
+An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.
+[biogeme] starting torchdcm_advanced_panel_full_500_64
+[biogeme] finished in 157.266s; LL=-2414.776134
+{
+  "benchmark": "advanced_full_estimation_validation",
+  "timing_scope": "full optimization plus classic covariance construction",
+  "runtime_policy": {
+    "cpu_policy": "single-logical-core",
+    "logical_cpu_affinity": [
+      0
+    ],
+    "timing_scope": "estimation-plus-covariance",
+    "thread_environment": {
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+    "torch_intraop_threads": 1,
+    "torch_interop_threads": 1,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1
+      }
+    ]
+  },
+  "profile": "full",
+  "max_iter": 150,
+  "cases": [
+    {
+      "case": "Synthetic 500x4",
+      "kind": "panel_likelihood",
+      "data_type": "Synthetic",
+      "data_source": "Controlled panel DGP",
+      "n_obs": 2000,
+      "n_units": 500,
+      "n_draws": 64,
+      "extra": {
+        "alternatives": 4,
+        "choices_per_unit": 4,
+        "random_coefficients": 1
+      },
+      "results": {
+        "biogeme": {
+          "backend": "biogeme",
+          "available": true,
+          "seconds": 157.26647078688256,
+          "loglike": -2414.776133532819,
+          "params": {
+            "ASC_B": 0.30000648327328927,
+            "B_X": -0.8072891709028212,
+            "ASC_C": -0.24005568516971837,
+            "ASC_D": 0.13653855811352217,
+            "SIGMA_B_X": 0.5860170743323965
+          },
+          "covariance_available": true,
+          "convergence": {
+            "status": "completed"
+          },
+          "message": ""
+        }
+      },
+      "best_loglike": -2414.776133532819,
+      "loglike_tolerance": 0.002414776133532819,
+      "consistent": false
+    }
+  ]
+}

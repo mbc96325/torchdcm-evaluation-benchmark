@@ -9,6 +9,8 @@ Within each row, estimators receive the same data, utility specification,
 parameter scale, and starting values. Simulated models use common antithetic
 normal draws where the external software accepts user-supplied draws. Apollo
 uses its documented draw interface when a shared matrix cannot be supplied.
+All empirical inputs are read from the versioned files under `data/`. The
+runners do not fetch data during an experiment.
 
 The synthetic generator varies sample size, choice-set size, coefficient
 dimension, feature correlation, and, for MixL, the number of random
@@ -50,8 +52,9 @@ run that did not complete successfully, while `Timeout` records the
 
 ## Output policy
 
-The `results/` directory contains only the authoritative JSON outputs used by
-the main paper and electronic companion. Reproduction commands should use a
-new output suffix so that the committed results remain auditable. The JSON
-files include case dimensions, runtime-policy metadata, backend status, final
-likelihoods, and available numerical diagnostics.
+The top-level JSON files in `results/` are the authoritative outputs used by
+the main paper and electronic companion. `results/intermediate/` retains
+subordinate outputs and solver logs used to assemble them. Reproduction
+commands use a new output suffix so that the committed results remain
+auditable. The JSON files include case dimensions, runtime-policy metadata,
+backend status, final likelihoods, and available numerical diagnostics.

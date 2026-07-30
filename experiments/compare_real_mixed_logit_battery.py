@@ -116,7 +116,7 @@ def swissmetro_case(n_obs: int | None, sigma_scale: float) -> MixedCase:
     return MixedCase(
         case="swissmetro",
         dataset_id="biogeme_swissmetro",
-        source="biogeme.data.swissmetro/data/swissmetro.dat",
+        source="data/small/biogeme_swissmetro/data.csv",
         model_name="Swissmetro mixed logit",
         df=df.copy(),
         data=data,

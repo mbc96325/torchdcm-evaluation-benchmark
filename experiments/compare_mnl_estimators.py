@@ -23,6 +23,9 @@ from compare_biogeme import build_case, run_biogeme
 from mnl_generic_backends import make_design_long, run_gmnl_generic, run_mlogit_generic, run_xlogit_generic
 
 
+ROOT = Path(__file__).resolve().parents[1]
+
+
 @dataclass
 class BackendResult:
     backend: str
@@ -80,12 +83,9 @@ def make_initial_values(names: list[str], mode: str, seed: int, scale: float) ->
 
 
 def load_biogeme_swissmetro(n_obs: int | None = None):
-    try:
-        import biogeme.data.swissmetro as swissmetro
-    except ImportError as exc:
-        raise RuntimeError("Biogeme is required to load the official Swissmetro testing data.") from exc
-
-    raw = pd.read_csv(Path(swissmetro.__file__).resolve().parent / "data" / "swissmetro.dat", sep="\t")
+    raw = pd.read_csv(
+        ROOT / "data" / "small" / "biogeme_swissmetro" / "data.csv"
+    )
     df = raw.loc[raw["CHOICE"] != 0].copy()
     if n_obs is not None:
         df = df.head(n_obs).copy()
@@ -460,7 +460,7 @@ def print_results(case: str, n_obs: int, initial: str, initial_values: dict[str,
     print(f"n_obs: {n_obs}")
     print("alignment:")
     print("  benchmark_mode: full_estimation")
-    print("  data_source: biogeme.data.swissmetro/data/swissmetro.dat")
+    print("  data_source: data/small/biogeme_swissmetro/data.csv")
     print("  model: MNL with TRAIN/SM/CAR, ASC_TRAIN, ASC_CAR, B_TIME, B_COST")
     print("  scaling: time/100, cost/100, GA discount and official availability filters")
     print("  initial_values: shared across TorchDCM, SciPy, Biogeme, Apollo")

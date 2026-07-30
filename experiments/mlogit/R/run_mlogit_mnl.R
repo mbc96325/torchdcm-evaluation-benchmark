@@ -9,15 +9,18 @@ get_arg <- function(flag, default = NULL) {
 }
 
 dataset <- get_arg("--dataset")
+data_input <- get_arg("--data-input")
 data_out <- get_arg("--data-output")
 result_out <- get_arg("--result-output")
 
-if (is.null(dataset) || is.null(data_out) || is.null(result_out)) {
-  stop("Usage: run_mlogit_mnl.R --dataset DATASET --data-output data.csv --result-output result.json")
+if (is.null(dataset) || is.null(data_input) || is.null(data_out) || is.null(result_out)) {
+  stop("Usage: run_mlogit_mnl.R --dataset DATASET --data-input source.csv --data-output data.csv --result-output result.json")
 }
 
+source_data <- read.csv(data_input, check.names = FALSE, stringsAsFactors = FALSE)
+
 if (dataset == "fishing") {
-  data(Fishing, package = "mlogit")
+  Fishing <- source_data
   alternatives <- c("beach", "boat", "charter", "pier")
   rows <- list()
   cursor <- 1
@@ -43,7 +46,7 @@ if (dataset == "fishing") {
   covariance <- vcov(model)
   covariance_seconds <- proc.time()[["elapsed"]] - covariance_start
 } else if (dataset == "modecanada") {
-  data(ModeCanada, package = "mlogit")
+  ModeCanada <- source_data
   aligned <- data.frame(
     obs_id = ModeCanada$case,
     alt = ModeCanada$alt,
