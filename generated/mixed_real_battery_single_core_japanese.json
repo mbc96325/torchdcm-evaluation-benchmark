@@ -1,7 +1,0 @@
-[
-  {
-    "case": "mlogit_japanese_fdi",
-    "status": "skipped",
-    "message": "case exceeded 300s worker limit"
-  }
-]

@@ -32,7 +32,6 @@ from torchdcm import (
     UtilitySpec,
 )
 from compare_biogeme_public_mnl import CASE_BUILDERS as PUBLIC_CASE_BUILDERS
-from compare_mixed_logit_estimators import make_draws
 from compare_mnl_estimators import load_biogeme_swissmetro, make_initial_values, spec_with_initials
 from run_mlogit_dataset_battery import DEFAULT_DATASETS as MLOGIT_DATASETS
 from run_mlogit_dataset_battery import run_r_reference
@@ -699,6 +698,15 @@ def compare_results(case: MixedCase, results: list[BackendResult]) -> bool | Non
 
 
 make_draws_cached = torch.empty(0)
+
+
+def make_draws(n_draws: int, seed: int, n_random: int) -> torch.Tensor:
+    """Create the shared antithetic normal draws used by the MixL comparisons."""
+    generator = torch.Generator(device="cpu")
+    generator.manual_seed(seed)
+    half = (n_draws + 1) // 2
+    base = torch.randn((half, n_random), generator=generator, dtype=torch.float64)
+    return torch.cat([base, -base], dim=0)[:n_draws]
 
 
 def build_cases(datasets: list[str], n_obs: int | None, sigma_scale: float) -> list[MixedCase | dict]:

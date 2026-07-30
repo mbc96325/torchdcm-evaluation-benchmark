@@ -52,13 +52,6 @@ fit_long <- function(aligned, variables, availability_col = NULL) {
 }
 
 make_case <- function(dataset) {
-  if (dataset == "car") {
-    data(Car, package = "mlogit")
-    alternatives <- as.character(1:6)
-    variables <- c("price", "range", "cost", "station")
-    aligned <- wide_to_long(Car, alternatives, "choice", variables, function(var, alt) paste0(var, alt))
-    return(list(aligned = aligned, variables = variables))
-  }
   if (dataset == "catsup") {
     data(Catsup, package = "mlogit")
     alternatives <- c("heinz41", "heinz32", "heinz28", "hunts32")
@@ -87,29 +80,6 @@ make_case <- function(dataset) {
     aligned <- wide_to_long(Fishing, alternatives, "mode", variables, function(var, alt) paste0(var, ".", alt))
     return(list(aligned = aligned, variables = variables))
   }
-  if (dataset == "game") {
-    data(Game, package = "mlogit")
-    alternatives <- c("Xbox", "PlayStation", "PSPortable", "GameCube", "GameBoy", "PC")
-    rows <- list()
-    cursor <- 1
-    for (i in seq_len(nrow(Game))) {
-      for (alt in alternatives) {
-        rows[[cursor]] <- data.frame(
-          obs_id = i,
-          alt = alt,
-          choice = as.logical(Game[[paste0("ch.", alt)]][[i]]),
-          own = Game[[paste0("own.", alt)]][[i]]
-        )
-        cursor <- cursor + 1
-      }
-    }
-    return(list(aligned = do.call(rbind, rows), variables = c("own")))
-  }
-  if (dataset == "game2") {
-    data(Game2, package = "mlogit")
-    aligned <- data.frame(obs_id = Game2$chid, alt = Game2$platform, choice = as.logical(Game2$ch), own = Game2$own)
-    return(list(aligned = aligned, variables = c("own")))
-  }
   if (dataset == "hc") {
     data(HC, package = "mlogit")
     alternatives <- c("gcc", "ecc", "erc", "hpc", "gc", "ec", "er")
@@ -122,13 +92,6 @@ make_case <- function(dataset) {
     alternatives <- c("gc", "gr", "ec", "er", "hp")
     variables <- c("ic", "oc")
     aligned <- wide_to_long(Heating, alternatives, "depvar", variables, function(var, alt) paste0(var, ".", alt))
-    return(list(aligned = aligned, variables = variables))
-  }
-  if (dataset == "japanese_fdi") {
-    data(JapaneseFDI, package = "mlogit")
-    variables <- c("wage", "unemp", "elig", "area", "scrate", "ctaxrate", "gdp", "harris", "krugman", "domind", "japind", "network")
-    aligned <- data.frame(obs_id = JapaneseFDI$firm, alt = JapaneseFDI$region, choice = as.logical(JapaneseFDI$choice))
-    for (var in variables) aligned[[var]] <- JapaneseFDI[[var]]
     return(list(aligned = aligned, variables = variables))
   }
   if (dataset == "mode") {

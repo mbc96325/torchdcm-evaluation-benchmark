@@ -104,6 +104,14 @@ class BackendResult:
 
 
 def generated_specs(profile: str) -> list[GeneratedSpec]:
+    if profile == "paper":
+        # The 45 cases reported in the paper: 15 each for MNL, NL, and MixL.
+        return [
+            *generated_specs("controlled"),
+            *generated_specs("stress_additional"),
+            generated_specs("stress")[0],
+            *generated_specs("table4"),
+        ]
     if profile == "smoke":
         return [
             GeneratedSpec("gen_mnl_base", "mnl", 400, 3, 3, 0.0),
@@ -1217,7 +1225,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--profile",
-        choices=["smoke", "full", "controlled", "controlled_additional", "stress", "stress_additional", "table4"],
+        choices=["paper", "smoke", "full", "controlled", "controlled_additional", "stress", "stress_additional", "table4"],
         default="smoke",
     )
     parser.add_argument("--models", nargs="+", choices=["mnl", "nl", "mixl"], default=["mnl", "nl", "mixl"])

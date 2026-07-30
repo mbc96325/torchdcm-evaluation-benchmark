@@ -25,16 +25,12 @@ R_SCRIPT = ROOT / "benchmarks" / "mlogit" / "R" / "run_mlogit_dataset_mnl.R"
 APOLLO_SCRIPT = ROOT / "benchmarks" / "apollo" / "R" / "run_generic_mnl.R"
 
 DEFAULT_DATASETS = [
-    "car",
     "catsup",
     "cracker",
     "electricity",
     "fishing",
-    "game",
-    "game2",
     "hc",
     "heating",
-    "japanese_fdi",
     "mode",
     "modecanada",
     "nox",

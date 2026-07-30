@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import shutil
+import urllib.request
 from pathlib import Path
 
 import numpy as np
@@ -11,6 +12,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW_PATH = ROOT / "datasets" / "raw" / "lpmc_london" / "data.csv"
+SOURCE_URL = "https://transp-or.epfl.ch/data/lpmc.dat"
 OUT_DIR = ROOT / "datasets" / "large" / "processed" / "lpmc_london"
 RELEASE_DIR = ROOT / "datasets" / "large" / "releases"
 
@@ -110,15 +112,28 @@ def write_schema(out_dir: Path, wide: pd.DataFrame, long: pd.DataFrame) -> None:
     (out_dir / "schema.json").write_text(json.dumps(schema, indent=2, sort_keys=True), encoding="utf-8")
 
 
+def load_raw(path: Path, source_url: str) -> pd.DataFrame:
+    """Load the local canonical CSV, downloading the official table if needed."""
+    if path.exists():
+        return pd.read_csv(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    downloaded = path.with_suffix(".dat")
+    urllib.request.urlretrieve(source_url, downloaded)
+    raw = pd.read_csv(downloaded, sep="\t")
+    raw.to_csv(path, index=False)
+    return raw
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Process Biogeme LPMC raw data into TorchDCM long/wide choice-set files.")
     parser.add_argument("--raw", type=Path, default=RAW_PATH)
+    parser.add_argument("--source-url", default=SOURCE_URL)
     parser.add_argument("--out", type=Path, default=OUT_DIR)
     parser.add_argument("--zip", action="store_true", help="Create datasets/large/releases/lpmc_london.zip for Google Drive upload.")
     args = parser.parse_args()
 
     args.out.mkdir(parents=True, exist_ok=True)
-    raw = pd.read_csv(args.raw)
+    raw = load_raw(args.raw, args.source_url)
     wide = build_wide(raw)
     long = build_long(wide)
     wide.to_csv(args.out / "choice_wide.csv", index=False)

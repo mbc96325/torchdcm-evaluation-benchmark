@@ -14,7 +14,7 @@ dependencies = [
     "pandas>=1.5",
     "scipy>=1.10",
     "torch>=2.1",
-    "torchdcm==0.1.0",
+    "torchdcm==0.1.1",
 ]
 
 [project.optional-dependencies]

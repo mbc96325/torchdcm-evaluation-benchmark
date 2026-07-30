@@ -477,6 +477,7 @@ def write_outputs(rows: list[dict], profile: str) -> tuple[Path, Path]:
 
 
 def run_supervisor(args: argparse.Namespace) -> None:
+    output_profile = args.output_profile or args.profile
     rows: list[dict] = []
     for spec in profile_specs(args.profile):
         if args.case and spec.case != args.case:
@@ -506,13 +507,13 @@ def run_supervisor(args: argparse.Namespace) -> None:
             "repetitions": args.repeats,
         }
         rows.append(row)
-        write_outputs(rows, args.profile)
+        write_outputs(rows, output_profile)
         print(
             f"[device-stress] {spec.case}: cpu={fmt_time(devices['cpu'])} "
             f"gpu={fmt_time(devices['cuda'])} result={row['comparison'].get('consistent')}",
             flush=True,
         )
-    json_path, md_path = write_outputs(rows, args.profile)
+    json_path, md_path = write_outputs(rows, output_profile)
     print(f"json: {json_path}")
     print(f"markdown: {md_path}")
 
@@ -520,6 +521,7 @@ def run_supervisor(args: argparse.Namespace) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--profile", choices=["smoke", "calibration", "battery", "stress"], default="stress")
+    parser.add_argument("--output-profile", help="Optional output filename suffix; defaults to --profile.")
     parser.add_argument("--case")
     parser.add_argument("--seed", type=int, default=20260710)
     parser.add_argument("--cpu-timeout", type=int, default=300)

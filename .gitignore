@@ -19,6 +19,9 @@ torchdcm_compare*.html
 torchdcm_compare*.yaml
 torchdcm_nl_compare*.html
 torchdcm_nl_compare*.yaml
+generated/*_reproduction.json
+generated/*_reproduction.md
+generated/advanced_full_logs/
 
 # Local Biogeme runtime config.
 biogeme.toml

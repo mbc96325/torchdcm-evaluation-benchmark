@@ -28,7 +28,7 @@ from torchdcm import Beta, ChoiceDataset, Nest, NestedLogit, UtilitySpec
 import compare_biogeme_public_mnl as public_mnl
 import compare_nhts_mnl as nhts_mnl
 import run_mlogit_dataset_battery as mlogit_datasets
-from compare_nested_logit_estimators import load_biogeme_swissmetro
+from compare_mnl_estimators import load_biogeme_swissmetro
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -280,19 +280,6 @@ def make_nhts_case(_: int | None) -> NestedCase:
     )
 
 
-def make_telephone_case(n_obs: int | None) -> NestedCase:
-    base = public_mnl.make_telephone(n_obs)
-    return nested_case_from_public_mnl(
-        key="telephone",
-        data_label="Telephone service",
-        base=base,
-        nests={
-            "BASIC": NestSpec(["A1", "A2", "A3"], init=0.8),
-            "PREMIUM": NestSpec(["A4", "A5"], init=0.8),
-        },
-    )
-
-
 def make_parking_case(_: int | None) -> NestedCase:
     base = public_mnl.make_parking(None)
     return nested_case_from_design_long(
@@ -311,27 +298,17 @@ def make_parking_case(_: int | None) -> NestedCase:
 
 
 MLOGIT_DATA_LABELS = {
-    "car": "Car",
     "catsup": "Catsup",
     "cracker": "Cracker",
     "electricity": "Electricity",
     "fishing": "Fishing",
-    "game": "Game",
-    "game2": "Game2",
     "hc": "HC",
     "heating": "Heating",
     "mode": "Mode",
-    "modecanada": "ModeCanada",
-    "nox": "NOx",
-    "risky_transport": "RiskyTransport",
 }
 
 
 MLOGIT_NESTS = {
-    "car": {
-        "LOW_RANGE": NestSpec(["1", "2", "3"], init=0.8),
-        "HIGH_RANGE": NestSpec(["4", "5", "6"], init=0.8),
-    },
     "catsup": {
         "HEINZ": NestSpec(["heinz41", "heinz32", "heinz28"], init=0.8),
         "HUNTS": NestSpec(["hunts32"], init=1.0, fixed=True),
@@ -347,16 +324,6 @@ MLOGIT_NESTS = {
     "fishing": {
         "SHORE": NestSpec(["beach", "pier"], init=0.8),
         "BOAT": NestSpec(["boat", "charter"], init=0.8),
-    },
-    "game": {
-        "CONSOLE": NestSpec(["Xbox", "PlayStation", "GameCube"], init=0.8),
-        "HANDHELD": NestSpec(["PSPortable", "GameBoy"], init=0.8),
-        "PC_NEST": NestSpec(["PC"], init=1.0, fixed=True),
-    },
-    "game2": {
-        "CONSOLE": NestSpec(["Xbox", "PlayStation", "GameCube"], init=0.8),
-        "HANDHELD": NestSpec(["PSPortable", "GameBoy"], init=0.8),
-        "PC_NEST": NestSpec(["PC"], init=1.0, fixed=True),
     },
     "hc": {
         "CURRENT": NestSpec(["gcc", "ecc", "erc"], init=0.8),
@@ -450,20 +417,13 @@ CASE_BUILDERS = {
     "lpmc": make_lpmc_case,
     "nhts": make_nhts_case,
     "parking": make_parking_case,
-    "telephone": make_telephone_case,
-    "mlogit_car": make_mlogit_case_builder("car"),
     "mlogit_catsup": make_mlogit_case_builder("catsup"),
     "mlogit_cracker": make_mlogit_case_builder("cracker"),
     "mlogit_electricity": make_mlogit_case_builder("electricity"),
     "mlogit_fishing": make_mlogit_case_builder("fishing"),
-    "mlogit_game": make_mlogit_case_builder("game"),
-    "mlogit_game2": make_mlogit_case_builder("game2"),
     "mlogit_hc": make_mlogit_case_builder("hc"),
     "mlogit_heating": make_mlogit_case_builder("heating"),
     "mlogit_mode": make_mlogit_case_builder("mode"),
-    "mlogit_modecanada": make_mlogit_case_builder("modecanada"),
-    "mlogit_nox": make_mlogit_case_builder("nox"),
-    "mlogit_risky_transport": make_mlogit_case_builder("risky_transport"),
 }
 
 

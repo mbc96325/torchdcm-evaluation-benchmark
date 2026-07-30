@@ -1,0 +1,3591 @@
+[
+  {
+    "case": "N_1000",
+    "family": "MNL",
+    "generated": {
+      "model": "mnl",
+      "N": 1000,
+      "J": 4,
+      "K": 6,
+      "rho": 0.3,
+      "random_coefficients": 0
+    },
+    "n_obs": 1000,
+    "n_alternatives": 4,
+    "n_variables": 6,
+    "rho": 0.3,
+    "n_parameters": 9,
+    "parameters": [
+      "B_X1",
+      "B_X2",
+      "B_X3",
+      "B_X4",
+      "B_X5",
+      "B_X6",
+      "ASC_ALT2",
+      "ASC_ALT3",
+      "ASC_ALT4"
+    ],
+    "consistent": "Yes",
+    "runtime_policy": {
+      "cpu_policy": "single-logical-core",
+      "logical_cpu_affinity": [
+        0
+      ],
+      "timing_scope": "estimation-plus-covariance",
+      "thread_environment": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      },
+      "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
+    },
+    "backends": [
+      {
+        "backend": "torchdcm",
+        "available": true,
+        "total_s": 0.005415132152847946,
+        "estimate_s": 0.004336727084591985,
+        "covariance_s": 0.001078405068255961,
+        "loglike": -608.8233770496951,
+        "ll_diff": 0.0,
+        "max_param_diff": 0.0,
+        "max_prob_diff": 0.0,
+        "max_cov_diff": 0.0,
+        "max_se_diff": 0.0,
+        "closure_evals": 16,
+        "optimizer_iterations": 15,
+        "runtime_repeats_s": [
+          0.005415132152847946,
+          0.005401320871897042,
+          0.005425241077318788
+        ],
+        "message": ""
+      },
+      {
+        "backend": "scipy_bfgs",
+        "available": true,
+        "total_s": 0.7611561979865655,
+        "estimate_s": 0.6523777809925377,
+        "covariance_s": 0.1087784169940278,
+        "loglike": -608.8233770496595,
+        "ll_diff": 3.558398020686582e-11,
+        "max_param_diff": 3.7635541866309907e-07,
+        "max_prob_diff": 4.047796869910414e-07,
+        "max_cov_diff": 9.063669710596134e-10,
+        "max_se_diff": 3.992785060913384e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          0.7644522659247741,
+          0.7611561979865655,
+          0.7589850560761988
+        ],
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "backend": "biogeme",
+        "available": true,
+        "total_s": 2.2307952059200034,
+        "estimate_s": 2.2307185769313946,
+        "covariance_s": 7.662898860871792e-05,
+        "loglike": -608.8233777186949,
+        "ll_diff": -6.689998599540559e-07,
+        "max_param_diff": 5.998349971125805e-05,
+        "max_prob_diff": 2.2458891765997357e-05,
+        "max_cov_diff": 8.433034705511433e-07,
+        "max_se_diff": 3.075048331024899e-06,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          2.2298020069720224,
+          2.2307952059200034,
+          2.2345626639435068
+        ],
+        "message": ""
+      },
+      {
+        "backend": "apollo",
+        "available": true,
+        "total_s": 0.353,
+        "estimate_s": 0.353,
+        "covariance_s": 0,
+        "loglike": -608.8233770499522,
+        "ll_diff": -2.5715962692629546e-10,
+        "max_param_diff": 1.045146555078702e-06,
+        "max_prob_diff": 1.501785713009518e-06,
+        "max_cov_diff": 1.0916475768479872e-08,
+        "max_se_diff": 3.980572887973821e-08,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          0.353,
+          0.356,
+          0.353
+        ],
+        "message": "apollo_version=0.3.8"
+      },
+      {
+        "backend": "mlogit",
+        "available": true,
+        "total_s": 0.03200000000000003,
+        "estimate_s": 0.031000000000000028,
+        "covariance_s": 0.0010000000000000009,
+        "loglike": -608.8233770496603,
+        "ll_diff": 3.4788172342814505e-11,
+        "max_param_diff": 3.7680248060611987e-07,
+        "max_prob_diff": 4.0478285434630834e-07,
+        "max_cov_diff": 9.051333467458011e-10,
+        "max_se_diff": 3.985444738119348e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          0.03200000000000003,
+          0.03200000000000003,
+          0.03300000000000003
+        ],
+        "message": ""
+      },
+      {
+        "backend": "gmnl",
+        "available": true,
+        "total_s": 0.11799999999999994,
+        "estimate_s": 0.11799999999999994,
+        "covariance_s": 0.0,
+        "loglike": -608.8233770496604,
+        "ll_diff": 3.467448550509289e-11,
+        "max_param_diff": 3.7680247913507436e-07,
+        "max_prob_diff": 4.0478286023049037e-07,
+        "max_cov_diff": 8.532319746568096e-10,
+        "max_se_diff": 3.797722358811484e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          0.11799999999999994,
+          0.11699999999999994,
+          0.12099999999999994
+        ],
+        "message": ""
+      },
+      {
+        "backend": "xlogit",
+        "available": true,
+        "total_s": 0.009704191004857421,
+        "estimate_s": 0.0097038010135293,
+        "covariance_s": 3.8999132812023163e-07,
+        "loglike": -608.8233770631231,
+        "ll_diff": -1.3428007150650956e-08,
+        "max_param_diff": 9.640776091612846e-06,
+        "max_prob_diff": 8.506037460220828e-06,
+        "max_cov_diff": 2.1131751123471335e-08,
+        "max_se_diff": 1.1117913092939524e-07,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          0.009768420015461743,
+          0.009704191004857421,
+          0.00960687198676169
+        ],
+        "message": ""
+      }
+    ],
+    "true_parameters": {
+      "B_X1": -0.25,
+      "B_X2": -0.42000000000000004,
+      "B_X3": -0.5900000000000001,
+      "B_X4": -0.76,
+      "B_X5": -0.93,
+      "B_X6": -1.1,
+      "ASC_ALT2": -0.2333333333333333,
+      "ASC_ALT3": -0.4666666666666666,
+      "ASC_ALT4": -0.7
+    },
+    "runtime_repetitions": 3,
+    "runtime_summary": "median",
+    "worker_policy": "independent child process per backend repetition"
+  },
+  {
+    "case": "N_10000",
+    "family": "MNL",
+    "generated": {
+      "model": "mnl",
+      "N": 10000,
+      "J": 4,
+      "K": 6,
+      "rho": 0.3,
+      "random_coefficients": 0
+    },
+    "n_obs": 10000,
+    "n_alternatives": 4,
+    "n_variables": 6,
+    "rho": 0.3,
+    "n_parameters": 9,
+    "parameters": [
+      "B_X1",
+      "B_X2",
+      "B_X3",
+      "B_X4",
+      "B_X5",
+      "B_X6",
+      "ASC_ALT2",
+      "ASC_ALT3",
+      "ASC_ALT4"
+    ],
+    "consistent": "Yes",
+    "runtime_policy": {
+      "cpu_policy": "single-logical-core",
+      "logical_cpu_affinity": [
+        0
+      ],
+      "timing_scope": "estimation-plus-covariance",
+      "thread_environment": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      },
+      "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
+    },
+    "backends": [
+      {
+        "backend": "torchdcm",
+        "available": true,
+        "total_s": 0.014909425983205438,
+        "estimate_s": 0.011176929925568402,
+        "covariance_s": 0.003732496057637036,
+        "loglike": -6046.345299223956,
+        "ll_diff": 0.0,
+        "max_param_diff": 0.0,
+        "max_prob_diff": 0.0,
+        "max_cov_diff": 0.0,
+        "max_se_diff": 0.0,
+        "closure_evals": 17,
+        "optimizer_iterations": 17,
+        "runtime_repeats_s": [
+          0.014781158999539912,
+          0.014909425983205438,
+          0.01606466993689537
+        ],
+        "message": ""
+      },
+      {
+        "backend": "scipy_bfgs",
+        "available": true,
+        "total_s": 8.953987503889948,
+        "estimate_s": 8.823274018941447,
+        "covariance_s": 0.130713484948501,
+        "loglike": -6046.345299223943,
+        "ll_diff": 1.3642420526593924e-11,
+        "max_param_diff": 9.688831215104443e-08,
+        "max_prob_diff": 1.3152841438213159e-07,
+        "max_cov_diff": 6.626294369975472e-11,
+        "max_se_diff": 9.638316186832974e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          8.953513381886296,
+          8.9612254970707,
+          8.953987503889948
+        ],
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "backend": "biogeme",
+        "available": true,
+        "total_s": 2.213913065032102,
+        "estimate_s": 2.2138369460590184,
+        "covariance_s": 7.611897308379412e-05,
+        "loglike": -6046.345299223951,
+        "ll_diff": 5.4569682106375694e-12,
+        "max_param_diff": 4.3556160345126216e-08,
+        "max_prob_diff": 6.154025034010857e-08,
+        "max_cov_diff": 3.150241504289164e-11,
+        "max_se_diff": 3.7498251032053176e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          2.2132381990086287,
+          2.220237049041316,
+          2.213913065032102
+        ],
+        "message": ""
+      },
+      {
+        "backend": "apollo",
+        "available": true,
+        "total_s": 1.029,
+        "estimate_s": 1.029,
+        "covariance_s": 0,
+        "loglike": -6046.345299223931,
+        "ll_diff": 2.546585164964199e-11,
+        "max_param_diff": 9.971700698496733e-08,
+        "max_prob_diff": 8.888411628937831e-08,
+        "max_cov_diff": 4.131041537493163e-11,
+        "max_se_diff": 4.917300247542222e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          1.027,
+          1.0299999999999998,
+          1.029
+        ],
+        "message": "apollo_version=0.3.8"
+      },
+      {
+        "backend": "mlogit",
+        "available": true,
+        "total_s": 0.3340000000000001,
+        "estimate_s": 0.3340000000000001,
+        "covariance_s": 0.0,
+        "loglike": -6046.345299223951,
+        "ll_diff": 5.4569682106375694e-12,
+        "max_param_diff": 4.331193503848141e-08,
+        "max_prob_diff": 6.154206455555311e-08,
+        "max_cov_diff": 2.5044268091647948e-11,
+        "max_se_diff": 2.9810928725559904e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          0.3340000000000001,
+          0.3340000000000001,
+          0.3320000000000001
+        ],
+        "message": ""
+      },
+      {
+        "backend": "gmnl",
+        "available": true,
+        "total_s": 1.8330000000000002,
+        "estimate_s": 1.8330000000000002,
+        "covariance_s": 0.0,
+        "loglike": -6046.345299223951,
+        "ll_diff": 5.4569682106375694e-12,
+        "max_param_diff": 4.3311937147905155e-08,
+        "max_prob_diff": 6.154206511066462e-08,
+        "max_cov_diff": 3.13763821781915e-11,
+        "max_se_diff": 3.734823075807192e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          1.8330000000000002,
+          1.7890000000000001,
+          1.851
+        ],
+        "message": ""
+      },
+      {
+        "backend": "xlogit",
+        "available": true,
+        "total_s": 0.07367323606740683,
+        "estimate_s": 0.07367263606283814,
+        "covariance_s": 6.00004568696022e-07,
+        "loglike": -6046.345299237817,
+        "ll_diff": -1.3860699255019426e-08,
+        "max_param_diff": 2.913473413634904e-06,
+        "max_prob_diff": 2.7073141076749963e-06,
+        "max_cov_diff": 2.7723125255955244e-09,
+        "max_se_diff": 3.299963829972441e-08,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          0.07367323606740683,
+          0.07397974201012403,
+          0.07273878890555352
+        ],
+        "message": ""
+      }
+    ],
+    "true_parameters": {
+      "B_X1": -0.25,
+      "B_X2": -0.42000000000000004,
+      "B_X3": -0.5900000000000001,
+      "B_X4": -0.76,
+      "B_X5": -0.93,
+      "B_X6": -1.1,
+      "ASC_ALT2": -0.2333333333333333,
+      "ASC_ALT3": -0.4666666666666666,
+      "ASC_ALT4": -0.7
+    },
+    "runtime_repetitions": 3,
+    "runtime_summary": "median",
+    "worker_policy": "independent child process per backend repetition"
+  },
+  {
+    "case": "N_100000",
+    "family": "MNL",
+    "generated": {
+      "model": "mnl",
+      "N": 100000,
+      "J": 4,
+      "K": 6,
+      "rho": 0.3,
+      "random_coefficients": 0
+    },
+    "n_obs": 100000,
+    "n_alternatives": 4,
+    "n_variables": 6,
+    "rho": 0.3,
+    "n_parameters": 9,
+    "parameters": [
+      "B_X1",
+      "B_X2",
+      "B_X3",
+      "B_X4",
+      "B_X5",
+      "B_X6",
+      "ASC_ALT2",
+      "ASC_ALT3",
+      "ASC_ALT4"
+    ],
+    "consistent": "Yes",
+    "runtime_policy": {
+      "cpu_policy": "single-logical-core",
+      "logical_cpu_affinity": [
+        0
+      ],
+      "timing_scope": "estimation-plus-covariance",
+      "thread_environment": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      },
+      "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
+    },
+    "backends": [
+      {
+        "backend": "torchdcm",
+        "available": true,
+        "total_s": 0.1069784959545359,
+        "estimate_s": 0.07699953194241971,
+        "covariance_s": 0.029978964012116194,
+        "loglike": -60967.29849147926,
+        "ll_diff": 0.0,
+        "max_param_diff": 0.0,
+        "max_prob_diff": 0.0,
+        "max_cov_diff": 0.0,
+        "max_se_diff": 0.0,
+        "closure_evals": 17,
+        "optimizer_iterations": 17,
+        "runtime_repeats_s": [
+          0.1069784959545359,
+          0.10698301601223648,
+          0.10646431497298181
+        ],
+        "message": ""
+      },
+      {
+        "backend": "scipy_bfgs",
+        "available": true,
+        "total_s": 106.26102597697172,
+        "estimate_s": 106.09051646501757,
+        "covariance_s": 0.1705095119541511,
+        "loglike": -60967.298491479014,
+        "ll_diff": 2.473825588822365e-10,
+        "max_param_diff": 1.029975374988723e-07,
+        "max_prob_diff": 1.267521377856795e-07,
+        "max_cov_diff": 9.917140540846234e-12,
+        "max_se_diff": 3.6435359417053004e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          106.48882667394355,
+          106.26102597697172,
+          106.15404627693351
+        ],
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "backend": "biogeme",
+        "available": true,
+        "total_s": 3.5204453179612756,
+        "estimate_s": 3.5203693789662793,
+        "covariance_s": 7.593899499624968e-05,
+        "loglike": -60967.29849147926,
+        "ll_diff": 0.0,
+        "max_param_diff": 9.484379781543595e-09,
+        "max_prob_diff": 8.487105684906737e-09,
+        "max_cov_diff": 6.544461424607545e-13,
+        "max_se_diff": 2.555553338390304e-11,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          3.520815143128857,
+          3.517306950991042,
+          3.5204453179612756
+        ],
+        "message": ""
+      },
+      {
+        "backend": "apollo",
+        "available": true,
+        "total_s": 20.587000000000003,
+        "estimate_s": 20.587000000000003,
+        "covariance_s": 0,
+        "loglike": -60967.29849147872,
+        "ll_diff": 5.384208634495735e-10,
+        "max_param_diff": 7.700053039627619e-08,
+        "max_prob_diff": 5.784671158748367e-08,
+        "max_cov_diff": 1.9411059944737102e-12,
+        "max_se_diff": 7.57984456450922e-11,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          20.587000000000003,
+          20.819,
+          20.558999999999997
+        ],
+        "message": "apollo_version=0.3.8"
+      },
+      {
+        "backend": "mlogit",
+        "available": true,
+        "total_s": 2.8049999999999997,
+        "estimate_s": 2.8040000000000003,
+        "covariance_s": 0.0009999999999994458,
+        "loglike": -60967.29849147926,
+        "ll_diff": 0.0,
+        "max_param_diff": 9.4844138098793e-09,
+        "max_prob_diff": 8.492214487176852e-09,
+        "max_cov_diff": 1.2053323020667223e-12,
+        "max_se_diff": 4.706714358537756e-11,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          2.8040000000000003,
+          2.8219999999999996,
+          2.8049999999999997
+        ],
+        "message": ""
+      },
+      {
+        "backend": "gmnl",
+        "available": true,
+        "total_s": 13.466,
+        "estimate_s": 13.466,
+        "covariance_s": 0.0,
+        "loglike": -60967.29849147926,
+        "ll_diff": 0.0,
+        "max_param_diff": 9.484414031923905e-09,
+        "max_prob_diff": 8.492216041489087e-09,
+        "max_cov_diff": 6.561593987337161e-13,
+        "max_se_diff": 2.562243472947756e-11,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          13.738000000000003,
+          13.466,
+          13.346
+        ],
+        "message": ""
+      },
+      {
+        "backend": "xlogit",
+        "available": true,
+        "total_s": 0.7335449890233576,
+        "estimate_s": 0.7335443890187889,
+        "covariance_s": 6.00004568696022e-07,
+        "loglike": -60967.29849147973,
+        "ll_diff": -4.656612873077393e-10,
+        "max_param_diff": 2.4705376755473907e-07,
+        "max_prob_diff": 1.7236669525022563e-07,
+        "max_cov_diff": 1.005553493661597e-11,
+        "max_se_diff": 3.694381727620266e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          0.7123616317985579,
+          0.7335449890233576,
+          0.735305741080083
+        ],
+        "message": ""
+      }
+    ],
+    "true_parameters": {
+      "B_X1": -0.25,
+      "B_X2": -0.42000000000000004,
+      "B_X3": -0.5900000000000001,
+      "B_X4": -0.76,
+      "B_X5": -0.93,
+      "B_X6": -1.1,
+      "ASC_ALT2": -0.2333333333333333,
+      "ASC_ALT3": -0.4666666666666666,
+      "ASC_ALT4": -0.7
+    },
+    "runtime_repetitions": 3,
+    "runtime_summary": "median",
+    "worker_policy": "independent child process per backend repetition"
+  },
+  {
+    "case": "J_3",
+    "family": "MNL",
+    "generated": {
+      "model": "mnl",
+      "N": 20000,
+      "J": 3,
+      "K": 6,
+      "rho": 0.3,
+      "random_coefficients": 0
+    },
+    "n_obs": 20000,
+    "n_alternatives": 3,
+    "n_variables": 6,
+    "rho": 0.3,
+    "n_parameters": 8,
+    "parameters": [
+      "B_X1",
+      "B_X2",
+      "B_X3",
+      "B_X4",
+      "B_X5",
+      "B_X6",
+      "ASC_ALT2",
+      "ASC_ALT3"
+    ],
+    "consistent": "Yes",
+    "runtime_policy": {
+      "cpu_policy": "single-logical-core",
+      "logical_cpu_affinity": [
+        0
+      ],
+      "timing_scope": "estimation-plus-covariance",
+      "thread_environment": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      },
+      "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
+    },
+    "backends": [
+      {
+        "backend": "torchdcm",
+        "available": true,
+        "total_s": 0.02446232200600207,
+        "estimate_s": 0.017807241063565016,
+        "covariance_s": 0.006655080942437053,
+        "loglike": -9737.839836267882,
+        "ll_diff": 0.0,
+        "max_param_diff": 0.0,
+        "max_prob_diff": 0.0,
+        "max_cov_diff": 0.0,
+        "max_se_diff": 0.0,
+        "closure_evals": 16,
+        "optimizer_iterations": 15,
+        "runtime_repeats_s": [
+          0.02446232200600207
+        ],
+        "message": ""
+      },
+      {
+        "backend": "scipy_bfgs",
+        "available": true,
+        "total_s": 23.97076318215113,
+        "estimate_s": 23.829612362082116,
+        "covariance_s": 0.14115082006901503,
+        "loglike": -9737.839836267825,
+        "ll_diff": 5.638867150992155e-11,
+        "max_param_diff": 3.406547766093837e-08,
+        "max_prob_diff": 2.0516106369328213e-08,
+        "max_cov_diff": 1.1025626375435471e-11,
+        "max_se_diff": 2.0251331167564501e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          23.97076318215113
+        ],
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "backend": "biogeme",
+        "available": true,
+        "total_s": 1.761776068015024,
+        "estimate_s": 1.7617040199693292,
+        "covariance_s": 7.204804569482803e-05,
+        "loglike": -9737.839836267878,
+        "ll_diff": 3.637978807091713e-12,
+        "max_param_diff": 4.0955447477841744e-08,
+        "max_prob_diff": 2.5056002384005183e-08,
+        "max_cov_diff": 1.909419215621877e-11,
+        "max_se_diff": 3.5071278173259834e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          1.761776068015024
+        ],
+        "message": ""
+      },
+      {
+        "backend": "apollo",
+        "available": true,
+        "total_s": 1.855,
+        "estimate_s": 1.855,
+        "covariance_s": 0,
+        "loglike": -9737.839836267865,
+        "ll_diff": 1.6370904631912708e-11,
+        "max_param_diff": 9.069919970627893e-08,
+        "max_prob_diff": 1.716073201318835e-07,
+        "max_cov_diff": 1.800943340854802e-11,
+        "max_se_diff": 4.907410311449922e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          1.855
+        ],
+        "message": "apollo_version=0.3.8"
+      },
+      {
+        "backend": "mlogit",
+        "available": true,
+        "total_s": 0.4949999999999999,
+        "estimate_s": 0.494,
+        "covariance_s": 0.0009999999999998899,
+        "loglike": -9737.839836267878,
+        "ll_diff": 3.637978807091713e-12,
+        "max_param_diff": 4.0955354219107676e-08,
+        "max_prob_diff": 2.5058429331537013e-08,
+        "max_cov_diff": 1.0052262841564463e-11,
+        "max_se_diff": 1.8463504683485787e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          0.4949999999999999
+        ],
+        "message": ""
+      },
+      {
+        "backend": "gmnl",
+        "available": true,
+        "total_s": 2.039,
+        "estimate_s": 2.039,
+        "covariance_s": 0.0,
+        "loglike": -9737.83983626788,
+        "ll_diff": 1.8189894035458565e-12,
+        "max_param_diff": 4.095534822390334e-08,
+        "max_prob_diff": 2.5058435326741346e-08,
+        "max_cov_diff": 1.9036161644399308e-11,
+        "max_se_diff": 3.4964690517891306e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          2.039
+        ],
+        "message": ""
+      },
+      {
+        "backend": "xlogit",
+        "available": true,
+        "total_s": 0.09775203699246049,
+        "estimate_s": 0.09775079693645239,
+        "covariance_s": 1.2400560081005096e-06,
+        "loglike": -9737.839836269415,
+        "ll_diff": -1.533408067189157e-09,
+        "max_param_diff": 7.087884659195964e-07,
+        "max_prob_diff": 6.329057569143259e-07,
+        "max_cov_diff": 3.182963978108286e-10,
+        "max_se_diff": 7.57533127893062e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          0.09775203699246049
+        ],
+        "message": ""
+      }
+    ],
+    "true_parameters": {
+      "B_X1": -0.25,
+      "B_X2": -0.42000000000000004,
+      "B_X3": -0.5900000000000001,
+      "B_X4": -0.76,
+      "B_X5": -0.93,
+      "B_X6": -1.1,
+      "ASC_ALT2": -0.35,
+      "ASC_ALT3": -0.7
+    },
+    "runtime_repetitions": 1,
+    "runtime_summary": "single run",
+    "worker_policy": "independent child process per backend repetition"
+  },
+  {
+    "case": "J_10",
+    "family": "MNL",
+    "generated": {
+      "model": "mnl",
+      "N": 20000,
+      "J": 10,
+      "K": 6,
+      "rho": 0.3,
+      "random_coefficients": 0
+    },
+    "n_obs": 20000,
+    "n_alternatives": 10,
+    "n_variables": 6,
+    "rho": 0.3,
+    "n_parameters": 15,
+    "parameters": [
+      "B_X1",
+      "B_X2",
+      "B_X3",
+      "B_X4",
+      "B_X5",
+      "B_X6",
+      "ASC_ALT2",
+      "ASC_ALT3",
+      "ASC_ALT4",
+      "ASC_ALT5",
+      "ASC_ALT6",
+      "ASC_ALT7",
+      "ASC_ALT8",
+      "ASC_ALT9",
+      "ASC_ALT10"
+    ],
+    "consistent": "Yes",
+    "runtime_policy": {
+      "cpu_policy": "single-logical-core",
+      "logical_cpu_affinity": [
+        0
+      ],
+      "timing_scope": "estimation-plus-covariance",
+      "thread_environment": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      },
+      "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
+    },
+    "backends": [
+      {
+        "backend": "torchdcm",
+        "available": true,
+        "total_s": 0.08558070904109627,
+        "estimate_s": 0.06303176400251687,
+        "covariance_s": 0.022548945038579404,
+        "loglike": -20860.252427214215,
+        "ll_diff": 0.0,
+        "max_param_diff": 0.0,
+        "max_prob_diff": 0.0,
+        "max_cov_diff": 0.0,
+        "max_se_diff": 0.0,
+        "closure_evals": 29,
+        "optimizer_iterations": 27,
+        "runtime_repeats_s": [
+          0.08558070904109627
+        ],
+        "message": ""
+      },
+      {
+        "backend": "scipy_bfgs",
+        "available": true,
+        "total_s": 25.728929090080783,
+        "estimate_s": 25.569948913063854,
+        "covariance_s": 0.1589801770169288,
+        "loglike": -20860.2524272138,
+        "ll_diff": 4.147295840084553e-10,
+        "max_param_diff": 1.769791911909735e-07,
+        "max_prob_diff": 2.9921299621316066e-07,
+        "max_cov_diff": 5.075452016133075e-11,
+        "max_se_diff": 6.301414876008771e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          25.728929090080783
+        ],
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "backend": "biogeme",
+        "available": true,
+        "total_s": 6.883427441003732,
+        "estimate_s": 6.883332444005646,
+        "covariance_s": 9.49969980865717e-05,
+        "loglike": -20860.25242729672,
+        "ll_diff": -8.250572136603296e-08,
+        "max_param_diff": 3.2689780322670003e-06,
+        "max_prob_diff": 1.8973130936350557e-06,
+        "max_cov_diff": 4.1828599401435435e-09,
+        "max_se_diff": 4.867340065023429e-08,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          6.883427441003732
+        ],
+        "message": ""
+      },
+      {
+        "backend": "apollo",
+        "available": true,
+        "total_s": 5.965,
+        "estimate_s": 5.965,
+        "covariance_s": 0,
+        "loglike": -20860.25242721414,
+        "ll_diff": 7.275957614183426e-11,
+        "max_param_diff": 3.1580461637426005e-07,
+        "max_prob_diff": 3.406491814184065e-07,
+        "max_cov_diff": 6.724859211160172e-11,
+        "max_se_diff": 8.249261412851538e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          5.965
+        ],
+        "message": "apollo_version=0.3.8"
+      },
+      {
+        "backend": "mlogit",
+        "available": true,
+        "total_s": 1.6239999999999999,
+        "estimate_s": 1.6239999999999999,
+        "covariance_s": 0.0,
+        "loglike": -20860.25242721395,
+        "ll_diff": 2.6557245291769505e-10,
+        "max_param_diff": 1.7696525778099215e-07,
+        "max_prob_diff": 2.9924036903938855e-07,
+        "max_cov_diff": 5.0738799880351015e-11,
+        "max_se_diff": 6.299463173320419e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          1.6239999999999999
+        ],
+        "message": ""
+      },
+      {
+        "backend": "gmnl",
+        "available": true,
+        "total_s": 17.134,
+        "estimate_s": 17.134,
+        "covariance_s": 0.0,
+        "loglike": -20860.25242721395,
+        "ll_diff": 2.6557245291769505e-10,
+        "max_param_diff": 1.7696525789201445e-07,
+        "max_prob_diff": 2.9924036948347776e-07,
+        "max_cov_diff": 5.0773206168933105e-11,
+        "max_se_diff": 6.303734825796603e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          17.134
+        ],
+        "message": ""
+      },
+      {
+        "backend": "xlogit",
+        "available": true,
+        "total_s": 0.721609246917069,
+        "estimate_s": 0.721607556915842,
+        "covariance_s": 1.6900012269616127e-06,
+        "loglike": -20860.252427214145,
+        "ll_diff": 6.912159733474255e-11,
+        "max_param_diff": 3.719754572695244e-07,
+        "max_prob_diff": 4.245089140764158e-07,
+        "max_cov_diff": 4.66930329687601e-10,
+        "max_se_diff": 5.797161604925716e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          0.721609246917069
+        ],
+        "message": ""
+      }
+    ],
+    "true_parameters": {
+      "B_X1": -0.25,
+      "B_X2": -0.42000000000000004,
+      "B_X3": -0.5900000000000001,
+      "B_X4": -0.76,
+      "B_X5": -0.93,
+      "B_X6": -1.1,
+      "ASC_ALT2": -0.07777777777777778,
+      "ASC_ALT3": -0.15555555555555556,
+      "ASC_ALT4": -0.23333333333333334,
+      "ASC_ALT5": -0.3111111111111111,
+      "ASC_ALT6": -0.3888888888888889,
+      "ASC_ALT7": -0.4666666666666667,
+      "ASC_ALT8": -0.5444444444444445,
+      "ASC_ALT9": -0.6222222222222222,
+      "ASC_ALT10": -0.7
+    },
+    "runtime_repetitions": 1,
+    "runtime_summary": "single run",
+    "worker_policy": "independent child process per backend repetition"
+  },
+  {
+    "case": "J_20",
+    "family": "MNL",
+    "generated": {
+      "model": "mnl",
+      "N": 20000,
+      "J": 20,
+      "K": 6,
+      "rho": 0.3,
+      "random_coefficients": 0
+    },
+    "n_obs": 20000,
+    "n_alternatives": 20,
+    "n_variables": 6,
+    "rho": 0.3,
+    "n_parameters": 25,
+    "parameters": [
+      "B_X1",
+      "B_X2",
+      "B_X3",
+      "B_X4",
+      "B_X5",
+      "B_X6",
+      "ASC_ALT2",
+      "ASC_ALT3",
+      "ASC_ALT4",
+      "ASC_ALT5",
+      "ASC_ALT6",
+      "ASC_ALT7",
+      "ASC_ALT8",
+      "ASC_ALT9",
+      "ASC_ALT10",
+      "ASC_ALT11",
+      "ASC_ALT12",
+      "ASC_ALT13",
+      "ASC_ALT14",
+      "ASC_ALT15",
+      "ASC_ALT16",
+      "ASC_ALT17",
+      "ASC_ALT18",
+      "ASC_ALT19",
+      "ASC_ALT20"
+    ],
+    "consistent": "Yes",
+    "runtime_policy": {
+      "cpu_policy": "single-logical-core",
+      "logical_cpu_affinity": [
+        0
+      ],
+      "timing_scope": "estimation-plus-covariance",
+      "thread_environment": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      },
+      "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
+    },
+    "backends": [
+      {
+        "backend": "torchdcm",
+        "available": true,
+        "total_s": 0.3372334089362994,
+        "estimate_s": 0.2219819399761036,
+        "covariance_s": 0.11525146896019578,
+        "loglike": -27835.174509003056,
+        "ll_diff": 0.0,
+        "max_param_diff": 0.0,
+        "max_prob_diff": 0.0,
+        "max_cov_diff": 0.0,
+        "max_se_diff": 0.0,
+        "closure_evals": 39,
+        "optimizer_iterations": 36,
+        "runtime_repeats_s": [
+          0.3372334089362994
+        ],
+        "message": ""
+      },
+      {
+        "backend": "scipy_bfgs",
+        "available": true,
+        "total_s": 21.92275854095351,
+        "estimate_s": 21.676890557049774,
+        "covariance_s": 0.24586798390373588,
+        "loglike": -27835.174509002987,
+        "ll_diff": 6.912159733474255e-11,
+        "max_param_diff": 1.6528135515780917e-07,
+        "max_prob_diff": 5.85394676066997e-08,
+        "max_cov_diff": 1.600956927791386e-10,
+        "max_se_diff": 1.4070198756099828e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          21.92275854095351
+        ],
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "backend": "biogeme",
+        "available": true,
+        "total_s": 22.980164898908697,
+        "estimate_s": 22.98002714291215,
+        "covariance_s": 0.00013775599654763937,
+        "loglike": -27835.174509003555,
+        "ll_diff": -4.984030965715647e-10,
+        "max_param_diff": 2.4465343673174544e-07,
+        "max_prob_diff": 1.848194528530911e-07,
+        "max_cov_diff": 4.963297108376286e-10,
+        "max_se_diff": 4.34897872575446e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          22.980164898908697
+        ],
+        "message": ""
+      },
+      {
+        "backend": "apollo",
+        "available": true,
+        "total_s": 23.805000000000003,
+        "estimate_s": 23.805000000000003,
+        "covariance_s": 0,
+        "loglike": -27835.174509003133,
+        "ll_diff": -7.639755494892597e-11,
+        "max_param_diff": 2.3539073418232803e-07,
+        "max_prob_diff": 1.3480602462090374e-07,
+        "max_cov_diff": 3.577424975177712e-10,
+        "max_se_diff": 3.2645966555056027e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          23.805000000000003
+        ],
+        "message": "apollo_version=0.3.8"
+      },
+      {
+        "backend": "mlogit",
+        "available": true,
+        "total_s": 3.415,
+        "estimate_s": 3.415,
+        "covariance_s": 0.0,
+        "loglike": -27835.174509003027,
+        "ll_diff": 2.9103830456733704e-11,
+        "max_param_diff": 2.4541313992099134e-07,
+        "max_prob_diff": 1.8514649657852544e-07,
+        "max_cov_diff": 2.019031782041214e-10,
+        "max_se_diff": 1.7744498856386848e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          3.415
+        ],
+        "message": ""
+      },
+      {
+        "backend": "gmnl",
+        "available": true,
+        "total_s": 78.99300000000001,
+        "estimate_s": 78.99300000000001,
+        "covariance_s": 0.0,
+        "loglike": -27835.174509003027,
+        "ll_diff": 2.9103830456733704e-11,
+        "max_param_diff": 1.8156557757276204e-07,
+        "max_prob_diff": 6.586704692779222e-08,
+        "max_cov_diff": 2.02091828948453e-10,
+        "max_se_diff": 1.7761078649480844e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          78.99300000000001
+        ],
+        "message": ""
+      },
+      {
+        "backend": "xlogit",
+        "available": true,
+        "total_s": 4.060368690057658,
+        "estimate_s": 4.060366770019755,
+        "covariance_s": 1.920037902891636e-06,
+        "loglike": -27835.17450900409,
+        "ll_diff": -1.0331859812140465e-09,
+        "max_param_diff": 5.745822478919749e-07,
+        "max_prob_diff": 3.1725983540287217e-07,
+        "max_cov_diff": 1.0880167869084523e-09,
+        "max_se_diff": 9.64038716216864e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          4.060368690057658
+        ],
+        "message": ""
+      }
+    ],
+    "true_parameters": {
+      "B_X1": -0.25,
+      "B_X2": -0.42000000000000004,
+      "B_X3": -0.5900000000000001,
+      "B_X4": -0.76,
+      "B_X5": -0.93,
+      "B_X6": -1.1,
+      "ASC_ALT2": -0.0368421052631579,
+      "ASC_ALT3": -0.0736842105263158,
+      "ASC_ALT4": -0.11052631578947367,
+      "ASC_ALT5": -0.14736842105263157,
+      "ASC_ALT6": -0.18421052631578946,
+      "ASC_ALT7": -0.22105263157894733,
+      "ASC_ALT8": -0.25789473684210523,
+      "ASC_ALT9": -0.29473684210526313,
+      "ASC_ALT10": -0.33157894736842103,
+      "ASC_ALT11": -0.3684210526315789,
+      "ASC_ALT12": -0.4052631578947368,
+      "ASC_ALT13": -0.44210526315789467,
+      "ASC_ALT14": -0.47894736842105257,
+      "ASC_ALT15": -0.5157894736842105,
+      "ASC_ALT16": -0.5526315789473684,
+      "ASC_ALT17": -0.5894736842105263,
+      "ASC_ALT18": -0.6263157894736842,
+      "ASC_ALT19": -0.6631578947368421,
+      "ASC_ALT20": -0.7
+    },
+    "runtime_repetitions": 1,
+    "runtime_summary": "single run",
+    "worker_policy": "independent child process per backend repetition"
+  },
+  {
+    "case": "K_4",
+    "family": "MNL",
+    "generated": {
+      "model": "mnl",
+      "N": 20000,
+      "J": 5,
+      "K": 4,
+      "rho": 0.3,
+      "random_coefficients": 0
+    },
+    "n_obs": 20000,
+    "n_alternatives": 5,
+    "n_variables": 4,
+    "rho": 0.3,
+    "n_parameters": 8,
+    "parameters": [
+      "B_X1",
+      "B_X2",
+      "B_X3",
+      "B_X4",
+      "ASC_ALT2",
+      "ASC_ALT3",
+      "ASC_ALT4",
+      "ASC_ALT5"
+    ],
+    "consistent": "Yes",
+    "runtime_policy": {
+      "cpu_policy": "single-logical-core",
+      "logical_cpu_affinity": [
+        0
+      ],
+      "timing_scope": "estimation-plus-covariance",
+      "thread_environment": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      },
+      "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
+    },
+    "backends": [
+      {
+        "backend": "torchdcm",
+        "available": true,
+        "total_s": 0.02864998602308333,
+        "estimate_s": 0.02170308993663639,
+        "covariance_s": 0.006946896086446941,
+        "loglike": -18328.433974536412,
+        "ll_diff": 0.0,
+        "max_param_diff": 0.0,
+        "max_prob_diff": 0.0,
+        "max_cov_diff": 0.0,
+        "max_se_diff": 0.0,
+        "closure_evals": 18,
+        "optimizer_iterations": 17,
+        "runtime_repeats_s": [
+          0.02864998602308333
+        ],
+        "message": ""
+      },
+      {
+        "backend": "scipy_bfgs",
+        "available": true,
+        "total_s": 10.721694299019873,
+        "estimate_s": 10.58253864001017,
+        "covariance_s": 0.1391556590097025,
+        "loglike": -18328.433974536263,
+        "ll_diff": 1.4915713109076023e-10,
+        "max_param_diff": 2.491721060593477e-07,
+        "max_prob_diff": 1.7195700702243855e-07,
+        "max_cov_diff": 5.110806179306482e-11,
+        "max_se_diff": 9.488617253028409e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          10.721694299019873
+        ],
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "backend": "biogeme",
+        "available": true,
+        "total_s": 2.060470530996099,
+        "estimate_s": 2.060397563036531,
+        "covariance_s": 7.296795956790447e-05,
+        "loglike": -18328.433974536318,
+        "ll_diff": 9.458744898438454e-11,
+        "max_param_diff": 2.8752813463484017e-07,
+        "max_prob_diff": 1.6226165810984128e-07,
+        "max_cov_diff": 3.988491427322355e-11,
+        "max_se_diff": 6.805269646414924e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          2.060470530996099
+        ],
+        "message": ""
+      },
+      {
+        "backend": "apollo",
+        "available": true,
+        "total_s": 1.914,
+        "estimate_s": 1.914,
+        "covariance_s": 0,
+        "loglike": -18328.433974536478,
+        "ll_diff": -6.548361852765083e-11,
+        "max_param_diff": 2.7589050466403364e-07,
+        "max_prob_diff": 2.242347209024942e-07,
+        "max_cov_diff": 8.97777657337534e-11,
+        "max_se_diff": 1.6667954447213695e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          1.914
+        ],
+        "message": "apollo_version=0.3.8"
+      },
+      {
+        "backend": "mlogit",
+        "available": true,
+        "total_s": 0.7679999999999999,
+        "estimate_s": 0.767,
+        "covariance_s": 0.0009999999999998899,
+        "loglike": -18328.4339745363,
+        "ll_diff": 1.127773430198431e-10,
+        "max_param_diff": 2.8752813463484017e-07,
+        "max_prob_diff": 1.6226165844290819e-07,
+        "max_cov_diff": 5.1385445052655465e-11,
+        "max_se_diff": 9.540115641915037e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          0.7679999999999999
+        ],
+        "message": ""
+      },
+      {
+        "backend": "gmnl",
+        "available": true,
+        "total_s": 3.018,
+        "estimate_s": 3.018,
+        "covariance_s": 0.0,
+        "loglike": -18328.4339745363,
+        "ll_diff": 1.127773430198431e-10,
+        "max_param_diff": 2.501739284621607e-07,
+        "max_prob_diff": 1.7248192563101838e-07,
+        "max_cov_diff": 5.139806061229407e-11,
+        "max_se_diff": 9.542457830857831e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          3.018
+        ],
+        "message": ""
+      },
+      {
+        "backend": "xlogit",
+        "available": true,
+        "total_s": 0.13739106990396976,
+        "estimate_s": 0.1373897499870509,
+        "covariance_s": 1.319916918873787e-06,
+        "loglike": -18328.433974536536,
+        "ll_diff": -1.2369127944111824e-10,
+        "max_param_diff": 4.3338311361829085e-07,
+        "max_prob_diff": 2.4299722423126724e-07,
+        "max_cov_diff": 1.4558911107936945e-10,
+        "max_se_diff": 2.702977300317322e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          0.13739106990396976
+        ],
+        "message": ""
+      }
+    ],
+    "true_parameters": {
+      "B_X1": -0.25,
+      "B_X2": -0.5333333333333334,
+      "B_X3": -0.8166666666666668,
+      "B_X4": -1.1,
+      "ASC_ALT2": -0.175,
+      "ASC_ALT3": -0.35,
+      "ASC_ALT4": -0.5249999999999999,
+      "ASC_ALT5": -0.7
+    },
+    "runtime_repetitions": 1,
+    "runtime_summary": "single run",
+    "worker_policy": "independent child process per backend repetition"
+  },
+  {
+    "case": "K_12",
+    "family": "MNL",
+    "generated": {
+      "model": "mnl",
+      "N": 20000,
+      "J": 5,
+      "K": 12,
+      "rho": 0.3,
+      "random_coefficients": 0
+    },
+    "n_obs": 20000,
+    "n_alternatives": 5,
+    "n_variables": 12,
+    "rho": 0.3,
+    "n_parameters": 16,
+    "parameters": [
+      "B_X1",
+      "B_X2",
+      "B_X3",
+      "B_X4",
+      "B_X5",
+      "B_X6",
+      "B_X7",
+      "B_X8",
+      "B_X9",
+      "B_X10",
+      "B_X11",
+      "B_X12",
+      "ASC_ALT2",
+      "ASC_ALT3",
+      "ASC_ALT4",
+      "ASC_ALT5"
+    ],
+    "consistent": "Yes",
+    "runtime_policy": {
+      "cpu_policy": "single-logical-core",
+      "logical_cpu_affinity": [
+        0
+      ],
+      "timing_scope": "estimation-plus-covariance",
+      "thread_environment": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      },
+      "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
+    },
+    "backends": [
+      {
+        "backend": "torchdcm",
+        "available": true,
+        "total_s": 0.04370085010305047,
+        "estimate_s": 0.02872726204805076,
+        "covariance_s": 0.014973588054999709,
+        "loglike": -8083.607854015172,
+        "ll_diff": 0.0,
+        "max_param_diff": 0.0,
+        "max_prob_diff": 0.0,
+        "max_cov_diff": 0.0,
+        "max_se_diff": 0.0,
+        "closure_evals": 21,
+        "optimizer_iterations": 20,
+        "runtime_repeats_s": [
+          0.04370085010305047
+        ],
+        "message": ""
+      },
+      {
+        "backend": "scipy_bfgs",
+        "available": true,
+        "total_s": 32.48290972097311,
+        "estimate_s": 32.33600660902448,
+        "covariance_s": 0.1469031119486317,
+        "loglike": -8083.607854015103,
+        "ll_diff": 6.912159733474255e-11,
+        "max_param_diff": 1.6744711792138212e-07,
+        "max_prob_diff": 1.1379388387133815e-07,
+        "max_cov_diff": 6.225840372756086e-11,
+        "max_se_diff": 7.228799364655814e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          32.48290972097311
+        ],
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "backend": "biogeme",
+        "available": true,
+        "total_s": 5.903899102006108,
+        "estimate_s": 5.903797414037399,
+        "covariance_s": 0.00010168796870857477,
+        "loglike": -8083.607854015592,
+        "ll_diff": -4.2018655221909285e-10,
+        "max_param_diff": 3.792752463205318e-07,
+        "max_prob_diff": 2.0569890468724594e-07,
+        "max_cov_diff": 5.968503581990636e-10,
+        "max_se_diff": 7.044101704711814e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          5.903899102006108
+        ],
+        "message": ""
+      },
+      {
+        "backend": "apollo",
+        "available": true,
+        "total_s": 5.163,
+        "estimate_s": 5.163,
+        "covariance_s": 0,
+        "loglike": -8083.607854015235,
+        "ll_diff": -6.275513442233205e-11,
+        "max_param_diff": 5.134029489040071e-07,
+        "max_prob_diff": 2.9358113073918446e-07,
+        "max_cov_diff": 8.386894477518947e-11,
+        "max_se_diff": 1.0068833683485323e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          5.163
+        ],
+        "message": "apollo_version=0.3.8"
+      },
+      {
+        "backend": "mlogit",
+        "available": true,
+        "total_s": 0.9440000000000002,
+        "estimate_s": 0.9440000000000002,
+        "covariance_s": 0.0,
+        "loglike": -8083.607854015144,
+        "ll_diff": 2.8194335754960775e-11,
+        "max_param_diff": 3.793027001375293e-07,
+        "max_prob_diff": 2.057151328171969e-07,
+        "max_cov_diff": 6.228695489073066e-11,
+        "max_se_diff": 7.232114421218405e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          0.9440000000000002
+        ],
+        "message": ""
+      },
+      {
+        "backend": "gmnl",
+        "available": true,
+        "total_s": 14.772,
+        "estimate_s": 14.772,
+        "covariance_s": 0.0,
+        "loglike": -8083.607854015144,
+        "ll_diff": 2.8194335754960775e-11,
+        "max_param_diff": 1.6247141884639937e-07,
+        "max_prob_diff": 1.0766752533974966e-07,
+        "max_cov_diff": 6.244758941724438e-11,
+        "max_se_diff": 7.250765612920596e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          14.772
+        ],
+        "message": ""
+      },
+      {
+        "backend": "xlogit",
+        "available": true,
+        "total_s": 0.45954913191962987,
+        "estimate_s": 0.45954766194336116,
+        "covariance_s": 1.469976268708706e-06,
+        "loglike": -8083.607854172686,
+        "ll_diff": -1.575135684106499e-07,
+        "max_param_diff": 8.7933351127778e-06,
+        "max_prob_diff": 8.67501903667467e-06,
+        "max_cov_diff": 5.065465272712996e-09,
+        "max_se_diff": 5.978328447564518e-08,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          0.45954913191962987
+        ],
+        "message": ""
+      }
+    ],
+    "true_parameters": {
+      "B_X1": -0.25,
+      "B_X2": -0.32727272727272727,
+      "B_X3": -0.40454545454545454,
+      "B_X4": -0.48181818181818187,
+      "B_X5": -0.5590909090909091,
+      "B_X6": -0.6363636363636365,
+      "B_X7": -0.7136363636363637,
+      "B_X8": -0.790909090909091,
+      "B_X9": -0.8681818181818183,
+      "B_X10": -0.9454545454545455,
+      "B_X11": -1.022727272727273,
+      "B_X12": -1.1,
+      "ASC_ALT2": -0.175,
+      "ASC_ALT3": -0.35,
+      "ASC_ALT4": -0.5249999999999999,
+      "ASC_ALT5": -0.7
+    },
+    "runtime_repetitions": 1,
+    "runtime_summary": "single run",
+    "worker_policy": "independent child process per backend repetition"
+  },
+  {
+    "case": "K_32",
+    "family": "MNL",
+    "generated": {
+      "model": "mnl",
+      "N": 20000,
+      "J": 5,
+      "K": 32,
+      "rho": 0.3,
+      "random_coefficients": 0
+    },
+    "n_obs": 20000,
+    "n_alternatives": 5,
+    "n_variables": 32,
+    "rho": 0.3,
+    "n_parameters": 36,
+    "parameters": [
+      "B_X1",
+      "B_X2",
+      "B_X3",
+      "B_X4",
+      "B_X5",
+      "B_X6",
+      "B_X7",
+      "B_X8",
+      "B_X9",
+      "B_X10",
+      "B_X11",
+      "B_X12",
+      "B_X13",
+      "B_X14",
+      "B_X15",
+      "B_X16",
+      "B_X17",
+      "B_X18",
+      "B_X19",
+      "B_X20",
+      "B_X21",
+      "B_X22",
+      "B_X23",
+      "B_X24",
+      "B_X25",
+      "B_X26",
+      "B_X27",
+      "B_X28",
+      "B_X29",
+      "B_X30",
+      "B_X31",
+      "B_X32",
+      "ASC_ALT2",
+      "ASC_ALT3",
+      "ASC_ALT4",
+      "ASC_ALT5"
+    ],
+    "consistent": "Yes",
+    "runtime_policy": {
+      "cpu_policy": "single-logical-core",
+      "logical_cpu_affinity": [
+        0
+      ],
+      "timing_scope": "estimation-plus-covariance",
+      "thread_environment": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      },
+      "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
+    },
+    "backends": [
+      {
+        "backend": "torchdcm",
+        "available": true,
+        "total_s": 0.08739736210554838,
+        "estimate_s": 0.044584278017282486,
+        "covariance_s": 0.042813084088265896,
+        "loglike": -3148.8405006320145,
+        "ll_diff": 0.0,
+        "max_param_diff": 0.0,
+        "max_prob_diff": 0.0,
+        "max_cov_diff": 0.0,
+        "max_se_diff": 0.0,
+        "closure_evals": 25,
+        "optimizer_iterations": 23,
+        "runtime_repeats_s": [
+          0.08739736210554838
+        ],
+        "message": ""
+      },
+      {
+        "backend": "scipy_bfgs",
+        "available": true,
+        "total_s": 40.246259485022165,
+        "estimate_s": 40.06732080306392,
+        "covariance_s": 0.17893868195824325,
+        "loglike": -3148.840500631854,
+        "ll_diff": 1.6052581486292183e-10,
+        "max_param_diff": 6.040597165246631e-07,
+        "max_prob_diff": 3.8161437165840084e-07,
+        "max_cov_diff": 2.9649702311396187e-10,
+        "max_se_diff": 2.2733119275919478e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          40.246259485022165
+        ],
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "backend": "biogeme",
+        "available": true,
+        "total_s": 41.28197701496538,
+        "estimate_s": 41.281775678973645,
+        "covariance_s": 0.00020133599173277617,
+        "loglike": -3148.840500694268,
+        "ll_diff": -6.225354809430428e-08,
+        "max_param_diff": 6.992888378798412e-06,
+        "max_prob_diff": 2.8244034786517602e-06,
+        "max_cov_diff": 3.164033757739604e-08,
+        "max_se_diff": 2.3253137325374151e-07,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          41.28197701496538
+        ],
+        "message": ""
+      },
+      {
+        "backend": "apollo",
+        "available": true,
+        "total_s": 27.003999999999998,
+        "estimate_s": 27.003999999999998,
+        "covariance_s": 0,
+        "loglike": -3148.840500632839,
+        "ll_diff": -8.244569471571594e-10,
+        "max_param_diff": 6.765796232155452e-07,
+        "max_prob_diff": 1.2463506548487935e-06,
+        "max_cov_diff": 4.277378408065746e-10,
+        "max_se_diff": 5.044789606889477e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          27.003999999999998
+        ],
+        "message": "apollo_version=0.3.8"
+      },
+      {
+        "backend": "mlogit",
+        "available": true,
+        "total_s": 1.5630000000000002,
+        "estimate_s": 1.5630000000000002,
+        "covariance_s": 0.0,
+        "loglike": -3148.840500631857,
+        "ll_diff": 1.5734258340671659e-10,
+        "max_param_diff": 5.763466776609327e-07,
+        "max_prob_diff": 3.642021889627145e-07,
+        "max_cov_diff": 3.2646906879263415e-10,
+        "max_se_diff": 2.503114604479606e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          1.5630000000000002
+        ],
+        "message": ""
+      },
+      {
+        "backend": "gmnl",
+        "available": true,
+        "total_s": 80.933,
+        "estimate_s": 80.932,
+        "covariance_s": 0.0010000000000047748,
+        "loglike": -3148.840500631857,
+        "ll_diff": 1.5734258340671659e-10,
+        "max_param_diff": 5.763466768837766e-07,
+        "max_prob_diff": 3.6420218990640407e-07,
+        "max_cov_diff": 3.265479033009999e-10,
+        "max_se_diff": 2.5037190515275753e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          80.933
+        ],
+        "message": ""
+      },
+      {
+        "backend": "xlogit",
+        "available": true,
+        "total_s": 2.880107454955578,
+        "estimate_s": 2.8801059150137007,
+        "covariance_s": 1.5399418771266937e-06,
+        "loglike": -3148.8405010768543,
+        "ll_diff": -4.448397703527007e-07,
+        "max_param_diff": 1.3781997516115752e-05,
+        "max_prob_diff": 2.4721359549062516e-05,
+        "max_cov_diff": 9.554049417055677e-09,
+        "max_se_diff": 1.1382924024888608e-07,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          2.880107454955578
+        ],
+        "message": ""
+      }
+    ],
+    "true_parameters": {
+      "B_X1": -0.25,
+      "B_X2": -0.27741935483870966,
+      "B_X3": -0.3048387096774194,
+      "B_X4": -0.33225806451612905,
+      "B_X5": -0.3596774193548387,
+      "B_X6": -0.3870967741935484,
+      "B_X7": -0.4145161290322581,
+      "B_X8": -0.44193548387096776,
+      "B_X9": -0.4693548387096774,
+      "B_X10": -0.49677419354838714,
+      "B_X11": -0.5241935483870968,
+      "B_X12": -0.5516129032258065,
+      "B_X13": -0.5790322580645162,
+      "B_X14": -0.6064516129032258,
+      "B_X15": -0.6338709677419355,
+      "B_X16": -0.6612903225806452,
+      "B_X17": -0.6887096774193548,
+      "B_X18": -0.7161290322580646,
+      "B_X19": -0.7435483870967743,
+      "B_X20": -0.7709677419354839,
+      "B_X21": -0.7983870967741936,
+      "B_X22": -0.8258064516129033,
+      "B_X23": -0.853225806451613,
+      "B_X24": -0.8806451612903227,
+      "B_X25": -0.9080645161290324,
+      "B_X26": -0.935483870967742,
+      "B_X27": -0.9629032258064517,
+      "B_X28": -0.9903225806451614,
+      "B_X29": -1.017741935483871,
+      "B_X30": -1.0451612903225809,
+      "B_X31": -1.0725806451612905,
+      "B_X32": -1.1,
+      "ASC_ALT2": -0.175,
+      "ASC_ALT3": -0.35,
+      "ASC_ALT4": -0.5249999999999999,
+      "ASC_ALT5": -0.7
+    },
+    "runtime_repetitions": 1,
+    "runtime_summary": "single run",
+    "worker_policy": "independent child process per backend repetition"
+  },
+  {
+    "case": "rho_0p0",
+    "family": "MNL",
+    "generated": {
+      "model": "mnl",
+      "N": 20000,
+      "J": 5,
+      "K": 12,
+      "rho": 0.0,
+      "random_coefficients": 0
+    },
+    "n_obs": 20000,
+    "n_alternatives": 5,
+    "n_variables": 12,
+    "rho": 0.0,
+    "n_parameters": 16,
+    "parameters": [
+      "B_X1",
+      "B_X2",
+      "B_X3",
+      "B_X4",
+      "B_X5",
+      "B_X6",
+      "B_X7",
+      "B_X8",
+      "B_X9",
+      "B_X10",
+      "B_X11",
+      "B_X12",
+      "ASC_ALT2",
+      "ASC_ALT3",
+      "ASC_ALT4",
+      "ASC_ALT5"
+    ],
+    "consistent": "Yes",
+    "runtime_policy": {
+      "cpu_policy": "single-logical-core",
+      "logical_cpu_affinity": [
+        0
+      ],
+      "timing_scope": "estimation-plus-covariance",
+      "thread_environment": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      },
+      "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
+    },
+    "backends": [
+      {
+        "backend": "torchdcm",
+        "available": true,
+        "total_s": 0.04345260898116976,
+        "estimate_s": 0.028657883987762034,
+        "covariance_s": 0.014794724993407726,
+        "loglike": -15071.183022560796,
+        "ll_diff": 0.0,
+        "max_param_diff": 0.0,
+        "max_prob_diff": 0.0,
+        "max_cov_diff": 0.0,
+        "max_se_diff": 0.0,
+        "closure_evals": 21,
+        "optimizer_iterations": 20,
+        "runtime_repeats_s": [
+          0.04345260898116976
+        ],
+        "message": ""
+      },
+      {
+        "backend": "scipy_bfgs",
+        "available": true,
+        "total_s": 27.920283823041245,
+        "estimate_s": 27.77127998706419,
+        "covariance_s": 0.14900383597705513,
+        "loglike": -15071.183022560754,
+        "ll_diff": 4.18367562815547e-11,
+        "max_param_diff": 4.494717931180503e-08,
+        "max_prob_diff": 2.55896777101583e-08,
+        "max_cov_diff": 1.3907442363535194e-11,
+        "max_se_diff": 2.2713831857035238e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          27.920283823041245
+        ],
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "backend": "biogeme",
+        "available": true,
+        "total_s": 5.418467245064676,
+        "estimate_s": 5.41836285602767,
+        "covariance_s": 0.00010438903700560331,
+        "loglike": -15071.183023151501,
+        "ll_diff": -5.907058948650956e-07,
+        "max_param_diff": 1.0674915374098148e-05,
+        "max_prob_diff": 4.602844384749005e-06,
+        "max_cov_diff": 8.402864249031083e-09,
+        "max_se_diff": 1.3006250127595154e-07,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          5.418467245064676
+        ],
+        "message": ""
+      },
+      {
+        "backend": "apollo",
+        "available": true,
+        "total_s": 4.808,
+        "estimate_s": 4.808,
+        "covariance_s": 0,
+        "loglike": -15071.183022560808,
+        "ll_diff": -1.2732925824820995e-11,
+        "max_param_diff": 7.470874685555629e-08,
+        "max_prob_diff": 1.0072151268580853e-07,
+        "max_cov_diff": 2.740610321148862e-11,
+        "max_se_diff": 4.2420049417568606e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          4.808
+        ],
+        "message": "apollo_version=0.3.8"
+      },
+      {
+        "backend": "mlogit",
+        "available": true,
+        "total_s": 0.923,
+        "estimate_s": 0.9220000000000002,
+        "covariance_s": 0.0009999999999998899,
+        "loglike": -15071.183022560792,
+        "ll_diff": 3.637978807091713e-12,
+        "max_param_diff": 4.581694290628491e-08,
+        "max_prob_diff": 2.5037168671637744e-08,
+        "max_cov_diff": 1.493966289654175e-11,
+        "max_se_diff": 2.4399669090735543e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          0.923
+        ],
+        "message": ""
+      },
+      {
+        "backend": "gmnl",
+        "available": true,
+        "total_s": 11.751,
+        "estimate_s": 11.751,
+        "covariance_s": 0.0,
+        "loglike": -15071.183022560792,
+        "ll_diff": 3.637978807091713e-12,
+        "max_param_diff": 4.5816942850773756e-08,
+        "max_prob_diff": 2.503716811652623e-08,
+        "max_cov_diff": 1.5062805711930916e-11,
+        "max_se_diff": 2.4600787726369866e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          11.751
+        ],
+        "message": ""
+      },
+      {
+        "backend": "xlogit",
+        "available": true,
+        "total_s": 0.45549554703757167,
+        "estimate_s": 0.45549403701443225,
+        "covariance_s": 1.5100231394171715e-06,
+        "loglike": -15071.183022561443,
+        "ll_diff": -6.475602276623249e-10,
+        "max_param_diff": 5.457370217953894e-07,
+        "max_prob_diff": 4.5017813143921614e-07,
+        "max_cov_diff": 1.9004102230681802e-10,
+        "max_se_diff": 3.0498281226865043e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          0.45549554703757167
+        ],
+        "message": ""
+      }
+    ],
+    "true_parameters": {
+      "B_X1": -0.25,
+      "B_X2": -0.32727272727272727,
+      "B_X3": -0.40454545454545454,
+      "B_X4": -0.48181818181818187,
+      "B_X5": -0.5590909090909091,
+      "B_X6": -0.6363636363636365,
+      "B_X7": -0.7136363636363637,
+      "B_X8": -0.790909090909091,
+      "B_X9": -0.8681818181818183,
+      "B_X10": -0.9454545454545455,
+      "B_X11": -1.022727272727273,
+      "B_X12": -1.1,
+      "ASC_ALT2": -0.175,
+      "ASC_ALT3": -0.35,
+      "ASC_ALT4": -0.5249999999999999,
+      "ASC_ALT5": -0.7
+    },
+    "runtime_repetitions": 1,
+    "runtime_summary": "single run",
+    "worker_policy": "independent child process per backend repetition"
+  },
+  {
+    "case": "rho_0p5",
+    "family": "MNL",
+    "generated": {
+      "model": "mnl",
+      "N": 20000,
+      "J": 5,
+      "K": 12,
+      "rho": 0.5,
+      "random_coefficients": 0
+    },
+    "n_obs": 20000,
+    "n_alternatives": 5,
+    "n_variables": 12,
+    "rho": 0.5,
+    "n_parameters": 16,
+    "parameters": [
+      "B_X1",
+      "B_X2",
+      "B_X3",
+      "B_X4",
+      "B_X5",
+      "B_X6",
+      "B_X7",
+      "B_X8",
+      "B_X9",
+      "B_X10",
+      "B_X11",
+      "B_X12",
+      "ASC_ALT2",
+      "ASC_ALT3",
+      "ASC_ALT4",
+      "ASC_ALT5"
+    ],
+    "consistent": "Yes",
+    "runtime_policy": {
+      "cpu_policy": "single-logical-core",
+      "logical_cpu_affinity": [
+        0
+      ],
+      "timing_scope": "estimation-plus-covariance",
+      "thread_environment": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      },
+      "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
+    },
+    "backends": [
+      {
+        "backend": "torchdcm",
+        "available": true,
+        "total_s": 0.04113672813400626,
+        "estimate_s": 0.02623765403404832,
+        "covariance_s": 0.014899074099957943,
+        "loglike": -6656.0320153090315,
+        "ll_diff": 0.0,
+        "max_param_diff": 0.0,
+        "max_prob_diff": 0.0,
+        "max_cov_diff": 0.0,
+        "max_se_diff": 0.0,
+        "closure_evals": 19,
+        "optimizer_iterations": 19,
+        "runtime_repeats_s": [
+          0.04113672813400626
+        ],
+        "message": ""
+      },
+      {
+        "backend": "scipy_bfgs",
+        "available": true,
+        "total_s": 44.12720703193918,
+        "estimate_s": 43.978888756013475,
+        "covariance_s": 0.14831827592570335,
+        "loglike": -6656.032015308823,
+        "ll_diff": 2.0827428670600057e-10,
+        "max_param_diff": 4.4347658922916366e-07,
+        "max_prob_diff": 2.7973814425985566e-07,
+        "max_cov_diff": 1.1816357224289642e-10,
+        "max_se_diff": 1.28951387762255e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          44.12720703193918
+        ],
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "backend": "biogeme",
+        "available": true,
+        "total_s": 5.880293476046063,
+        "estimate_s": 5.880194447003305,
+        "covariance_s": 9.902904275804758e-05,
+        "loglike": -6656.03201646436,
+        "ll_diff": -1.1553283911780454e-06,
+        "max_param_diff": 2.0394482709962247e-05,
+        "max_prob_diff": 8.457740398593039e-06,
+        "max_cov_diff": 4.1004254707800725e-08,
+        "max_se_diff": 4.3836039331779375e-07,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          5.880293476046063
+        ],
+        "message": ""
+      },
+      {
+        "backend": "apollo",
+        "available": true,
+        "total_s": 5.140000000000001,
+        "estimate_s": 5.140000000000001,
+        "covariance_s": 0,
+        "loglike": -6656.032015309191,
+        "ll_diff": -1.5916157281026244e-10,
+        "max_param_diff": 4.953722074763078e-07,
+        "max_prob_diff": 5.793077791915735e-07,
+        "max_cov_diff": 3.205067483115498e-10,
+        "max_se_diff": 3.5390591082706813e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          5.140000000000001
+        ],
+        "message": "apollo_version=0.3.8"
+      },
+      {
+        "backend": "mlogit",
+        "available": true,
+        "total_s": 1.0230000000000001,
+        "estimate_s": 1.0219999999999998,
+        "covariance_s": 0.001000000000000334,
+        "loglike": -6656.032015308856,
+        "ll_diff": 1.7553247744217515e-10,
+        "max_param_diff": 4.419251187215423e-07,
+        "max_prob_diff": 2.8144393482421037e-07,
+        "max_cov_diff": 1.1835848620633804e-10,
+        "max_se_diff": 1.306923153032713e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          1.0230000000000001
+        ],
+        "message": ""
+      },
+      {
+        "backend": "gmnl",
+        "available": true,
+        "total_s": 14.411999999999999,
+        "estimate_s": 14.411999999999999,
+        "covariance_s": 0.0,
+        "loglike": -6656.032015308856,
+        "ll_diff": 1.7553247744217515e-10,
+        "max_param_diff": 4.4192511783336386e-07,
+        "max_prob_diff": 2.814439377663014e-07,
+        "max_cov_diff": 1.1746734444526008e-10,
+        "max_se_diff": 1.2970831006486883e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          14.411999999999999
+        ],
+        "message": ""
+      },
+      {
+        "backend": "xlogit",
+        "available": true,
+        "total_s": 0.4784909139852971,
+        "estimate_s": 0.47848939395044,
+        "covariance_s": 1.5200348570942879e-06,
+        "loglike": -6656.032015317025,
+        "ll_diff": -7.993548933882266e-09,
+        "max_param_diff": 2.0456117564293663e-06,
+        "max_prob_diff": 1.664839242798699e-06,
+        "max_cov_diff": 3.1214345132084265e-09,
+        "max_se_diff": 3.336988677049568e-08,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          0.4784909139852971
+        ],
+        "message": ""
+      }
+    ],
+    "true_parameters": {
+      "B_X1": -0.25,
+      "B_X2": -0.32727272727272727,
+      "B_X3": -0.40454545454545454,
+      "B_X4": -0.48181818181818187,
+      "B_X5": -0.5590909090909091,
+      "B_X6": -0.6363636363636365,
+      "B_X7": -0.7136363636363637,
+      "B_X8": -0.790909090909091,
+      "B_X9": -0.8681818181818183,
+      "B_X10": -0.9454545454545455,
+      "B_X11": -1.022727272727273,
+      "B_X12": -1.1,
+      "ASC_ALT2": -0.175,
+      "ASC_ALT3": -0.35,
+      "ASC_ALT4": -0.5249999999999999,
+      "ASC_ALT5": -0.7
+    },
+    "runtime_repetitions": 1,
+    "runtime_summary": "single run",
+    "worker_policy": "independent child process per backend repetition"
+  },
+  {
+    "case": "rho_0p98",
+    "family": "MNL",
+    "generated": {
+      "model": "mnl",
+      "N": 20000,
+      "J": 5,
+      "K": 12,
+      "rho": 0.98,
+      "random_coefficients": 0
+    },
+    "n_obs": 20000,
+    "n_alternatives": 5,
+    "n_variables": 12,
+    "rho": 0.98,
+    "n_parameters": 16,
+    "parameters": [
+      "B_X1",
+      "B_X2",
+      "B_X3",
+      "B_X4",
+      "B_X5",
+      "B_X6",
+      "B_X7",
+      "B_X8",
+      "B_X9",
+      "B_X10",
+      "B_X11",
+      "B_X12",
+      "ASC_ALT2",
+      "ASC_ALT3",
+      "ASC_ALT4",
+      "ASC_ALT5"
+    ],
+    "consistent": "Yes",
+    "runtime_policy": {
+      "cpu_policy": "single-logical-core",
+      "logical_cpu_affinity": [
+        0
+      ],
+      "timing_scope": "estimation-plus-covariance",
+      "thread_environment": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      },
+      "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
+    },
+    "backends": [
+      {
+        "backend": "torchdcm",
+        "available": true,
+        "total_s": 0.052915936103090644,
+        "estimate_s": 0.03817643702495843,
+        "covariance_s": 0.014739499078132212,
+        "loglike": -5038.165750076262,
+        "ll_diff": 0.0,
+        "max_param_diff": 0.0,
+        "max_prob_diff": 0.0,
+        "max_cov_diff": 0.0,
+        "max_se_diff": 0.0,
+        "closure_evals": 28,
+        "optimizer_iterations": 27,
+        "runtime_repeats_s": [
+          0.052915936103090644
+        ],
+        "message": ""
+      },
+      {
+        "backend": "scipy_bfgs",
+        "available": true,
+        "total_s": 20.54484800202772,
+        "estimate_s": 20.397800592938438,
+        "covariance_s": 0.14704740908928216,
+        "loglike": -5038.1657500762485,
+        "ll_diff": 1.3642420526593924e-11,
+        "max_param_diff": 2.1832916508035538e-07,
+        "max_prob_diff": 9.555535612770782e-08,
+        "max_cov_diff": 1.7065036883590068e-10,
+        "max_se_diff": 6.803168028923778e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          20.54484800202772
+        ],
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "backend": "biogeme",
+        "available": true,
+        "total_s": 6.108501699985936,
+        "estimate_s": 6.108405260951258,
+        "covariance_s": 9.643903467804193e-05,
+        "loglike": -5038.1657500878155,
+        "ll_diff": -1.1553311196621507e-08,
+        "max_param_diff": 2.382878256712573e-06,
+        "max_prob_diff": 9.766594668558781e-07,
+        "max_cov_diff": 3.3968095530800824e-08,
+        "max_se_diff": 1.3337887835862539e-07,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          6.108501699985936
+        ],
+        "message": ""
+      },
+      {
+        "backend": "apollo",
+        "available": true,
+        "total_s": 4.897,
+        "estimate_s": 4.897,
+        "covariance_s": 0,
+        "loglike": -5038.165750076361,
+        "ll_diff": -9.913492249324918e-11,
+        "max_param_diff": 7.507768805536941e-07,
+        "max_prob_diff": 3.213923114309125e-07,
+        "max_cov_diff": 5.082202436668126e-10,
+        "max_se_diff": 1.9942913986881194e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          4.897
+        ],
+        "message": "apollo_version=0.3.8"
+      },
+      {
+        "backend": "mlogit",
+        "available": true,
+        "total_s": 1.0300000000000002,
+        "estimate_s": 1.029,
+        "covariance_s": 0.001000000000000334,
+        "loglike": -5038.165750076252,
+        "ll_diff": 1.000444171950221e-11,
+        "max_param_diff": 2.945656064623492e-07,
+        "max_prob_diff": 1.0950194873071695e-07,
+        "max_cov_diff": 1.88913718002226e-10,
+        "max_se_diff": 7.531256729365055e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          1.0300000000000002
+        ],
+        "message": ""
+      },
+      {
+        "backend": "gmnl",
+        "available": true,
+        "total_s": 15.981,
+        "estimate_s": 15.981,
+        "covariance_s": 0.0,
+        "loglike": -5038.165750076252,
+        "ll_diff": 1.000444171950221e-11,
+        "max_param_diff": 2.9456560957097366e-07,
+        "max_prob_diff": 1.0950194873071695e-07,
+        "max_cov_diff": 1.8856500388908515e-10,
+        "max_se_diff": 7.517354794206454e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          15.981
+        ],
+        "message": ""
+      },
+      {
+        "backend": "xlogit",
+        "available": true,
+        "total_s": 0.4739147670334205,
+        "estimate_s": 0.4739133269758895,
+        "covariance_s": 1.4400575309991837e-06,
+        "loglike": -5038.165750096814,
+        "ll_diff": -2.055185177596286e-08,
+        "max_param_diff": 1.1973428165112932e-05,
+        "max_prob_diff": 4.280691017544136e-06,
+        "max_cov_diff": 3.2111458537348314e-08,
+        "max_se_diff": 1.260076458731163e-07,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          0.4739147670334205
+        ],
+        "message": ""
+      }
+    ],
+    "true_parameters": {
+      "B_X1": -0.25,
+      "B_X2": -0.32727272727272727,
+      "B_X3": -0.40454545454545454,
+      "B_X4": -0.48181818181818187,
+      "B_X5": -0.5590909090909091,
+      "B_X6": -0.6363636363636365,
+      "B_X7": -0.7136363636363637,
+      "B_X8": -0.790909090909091,
+      "B_X9": -0.8681818181818183,
+      "B_X10": -0.9454545454545455,
+      "B_X11": -1.022727272727273,
+      "B_X12": -1.1,
+      "ASC_ALT2": -0.175,
+      "ASC_ALT3": -0.35,
+      "ASC_ALT4": -0.5249999999999999,
+      "ASC_ALT5": -0.7
+    },
+    "runtime_repetitions": 1,
+    "runtime_summary": "single run",
+    "worker_policy": "independent child process per backend repetition"
+  },
+  {
+    "case": "stress_mnl_small",
+    "family": "MNL",
+    "generated": {
+      "model": "mnl",
+      "N": 30000,
+      "J": 20,
+      "K": 12,
+      "rho": 0.5,
+      "random_coefficients": 0
+    },
+    "n_obs": 30000,
+    "n_alternatives": 20,
+    "n_variables": 12,
+    "rho": 0.5,
+    "n_parameters": 31,
+    "parameters": [
+      "B_X1",
+      "B_X2",
+      "B_X3",
+      "B_X4",
+      "B_X5",
+      "B_X6",
+      "B_X7",
+      "B_X8",
+      "B_X9",
+      "B_X10",
+      "B_X11",
+      "B_X12",
+      "ASC_ALT2",
+      "ASC_ALT3",
+      "ASC_ALT4",
+      "ASC_ALT5",
+      "ASC_ALT6",
+      "ASC_ALT7",
+      "ASC_ALT8",
+      "ASC_ALT9",
+      "ASC_ALT10",
+      "ASC_ALT11",
+      "ASC_ALT12",
+      "ASC_ALT13",
+      "ASC_ALT14",
+      "ASC_ALT15",
+      "ASC_ALT16",
+      "ASC_ALT17",
+      "ASC_ALT18",
+      "ASC_ALT19",
+      "ASC_ALT20"
+    ],
+    "consistent": "Yes",
+    "runtime_policy": {
+      "cpu_policy": "single-logical-core",
+      "logical_cpu_affinity": [
+        0
+      ],
+      "timing_scope": "estimation-plus-covariance",
+      "thread_environment": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      },
+      "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
+    },
+    "backends": [
+      {
+        "backend": "torchdcm",
+        "available": true,
+        "total_s": 0.722865954041481,
+        "estimate_s": 0.4233476730296388,
+        "covariance_s": 0.2995182810118422,
+        "loglike": -18020.21937823456,
+        "ll_diff": 0.0,
+        "max_param_diff": 0.0,
+        "max_prob_diff": 0.0,
+        "max_cov_diff": 0.0,
+        "max_se_diff": 0.0,
+        "closure_evals": 38,
+        "optimizer_iterations": 34,
+        "runtime_repeats_s": [
+          0.722865954041481
+        ],
+        "message": ""
+      },
+      {
+        "backend": "scipy_bfgs",
+        "available": true,
+        "total_s": 43.010303174029104,
+        "estimate_s": 42.5808141779853,
+        "covariance_s": 0.4294889960438013,
+        "loglike": -18020.219378234367,
+        "ll_diff": 1.9281287677586079e-10,
+        "max_param_diff": 1.115694536341083e-07,
+        "max_prob_diff": 1.6252543577621736e-07,
+        "max_cov_diff": 5.1088311098929085e-11,
+        "max_se_diff": 4.12940230620773e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          43.010303174029104
+        ],
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "backend": "biogeme",
+        "available": true,
+        "total_s": 75.34653220197652,
+        "estimate_s": 75.34635781403631,
+        "covariance_s": 0.00017438794020563364,
+        "loglike": -18020.219378237372,
+        "ll_diff": -2.812157617881894e-09,
+        "max_param_diff": 6.039012168113089e-07,
+        "max_prob_diff": 3.8340870556208273e-07,
+        "max_cov_diff": 2.2364266948765588e-09,
+        "max_se_diff": 1.7164925869561642e-08,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          75.34653220197652
+        ],
+        "message": ""
+      },
+      {
+        "backend": "apollo",
+        "available": true,
+        "total_s": 61.989,
+        "estimate_s": 61.989,
+        "covariance_s": 0,
+        "loglike": -18020.219378236634,
+        "ll_diff": -2.0736479200422764e-09,
+        "max_param_diff": 9.0839078997762e-07,
+        "max_prob_diff": 6.787699287080784e-07,
+        "max_cov_diff": 1.4632796389510427e-09,
+        "max_se_diff": 1.1584917358753444e-08,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          61.989
+        ],
+        "message": "apollo_version=0.3.8"
+      },
+      {
+        "backend": "mlogit",
+        "available": true,
+        "total_s": 6.013,
+        "estimate_s": 6.012000000000002,
+        "covariance_s": 0.0009999999999976694,
+        "loglike": -18020.21937823448,
+        "ll_diff": 8.003553375601768e-11,
+        "max_param_diff": 6.040195694723138e-07,
+        "max_prob_diff": 3.8335070817741013e-07,
+        "max_cov_diff": 5.287349204297076e-11,
+        "max_se_diff": 4.2644845293926537e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          6.013
+        ],
+        "message": ""
+      },
+      {
+        "backend": "gmnl",
+        "available": true,
+        "total_s": 201.058,
+        "estimate_s": 201.058,
+        "covariance_s": 0.0,
+        "loglike": -18020.21937823448,
+        "ll_diff": 8.003553375601768e-11,
+        "max_param_diff": 1.0707625797135023e-07,
+        "max_prob_diff": 1.6241812517137078e-07,
+        "max_cov_diff": 5.3521955097057816e-11,
+        "max_se_diff": 4.316785956470781e-10,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          201.058
+        ],
+        "message": ""
+      },
+      {
+        "backend": "xlogit",
+        "available": true,
+        "total_s": 10.693977398099378,
+        "estimate_s": 10.693976758047938,
+        "covariance_s": 6.400514394044876e-07,
+        "loglike": -18020.219378282425,
+        "ll_diff": -4.786488716490567e-08,
+        "max_param_diff": 1.0260559639027611e-05,
+        "max_prob_diff": 3.7257740869156564e-06,
+        "max_cov_diff": 2.4230714951861687e-09,
+        "max_se_diff": 1.9543156405676942e-08,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          10.693977398099378
+        ],
+        "message": ""
+      }
+    ],
+    "true_parameters": {
+      "B_X1": -0.25,
+      "B_X2": -0.32727272727272727,
+      "B_X3": -0.40454545454545454,
+      "B_X4": -0.48181818181818187,
+      "B_X5": -0.5590909090909091,
+      "B_X6": -0.6363636363636365,
+      "B_X7": -0.7136363636363637,
+      "B_X8": -0.790909090909091,
+      "B_X9": -0.8681818181818183,
+      "B_X10": -0.9454545454545455,
+      "B_X11": -1.022727272727273,
+      "B_X12": -1.1,
+      "ASC_ALT2": -0.0368421052631579,
+      "ASC_ALT3": -0.0736842105263158,
+      "ASC_ALT4": -0.11052631578947367,
+      "ASC_ALT5": -0.14736842105263157,
+      "ASC_ALT6": -0.18421052631578946,
+      "ASC_ALT7": -0.22105263157894733,
+      "ASC_ALT8": -0.25789473684210523,
+      "ASC_ALT9": -0.29473684210526313,
+      "ASC_ALT10": -0.33157894736842103,
+      "ASC_ALT11": -0.3684210526315789,
+      "ASC_ALT12": -0.4052631578947368,
+      "ASC_ALT13": -0.44210526315789467,
+      "ASC_ALT14": -0.47894736842105257,
+      "ASC_ALT15": -0.5157894736842105,
+      "ASC_ALT16": -0.5526315789473684,
+      "ASC_ALT17": -0.5894736842105263,
+      "ASC_ALT18": -0.6263157894736842,
+      "ASC_ALT19": -0.6631578947368421,
+      "ASC_ALT20": -0.7
+    },
+    "runtime_repetitions": 1,
+    "runtime_summary": "single run",
+    "worker_policy": "independent child process per backend repetition"
+  },
+  {
+    "case": "stress_mnl_medium",
+    "family": "MNL",
+    "generated": {
+      "model": "mnl",
+      "N": 40000,
+      "J": 28,
+      "K": 16,
+      "rho": 0.5,
+      "random_coefficients": 0
+    },
+    "n_obs": 40000,
+    "n_alternatives": 28,
+    "n_variables": 16,
+    "rho": 0.5,
+    "n_parameters": 43,
+    "parameters": [
+      "B_X1",
+      "B_X2",
+      "B_X3",
+      "B_X4",
+      "B_X5",
+      "B_X6",
+      "B_X7",
+      "B_X8",
+      "B_X9",
+      "B_X10",
+      "B_X11",
+      "B_X12",
+      "B_X13",
+      "B_X14",
+      "B_X15",
+      "B_X16",
+      "ASC_ALT2",
+      "ASC_ALT3",
+      "ASC_ALT4",
+      "ASC_ALT5",
+      "ASC_ALT6",
+      "ASC_ALT7",
+      "ASC_ALT8",
+      "ASC_ALT9",
+      "ASC_ALT10",
+      "ASC_ALT11",
+      "ASC_ALT12",
+      "ASC_ALT13",
+      "ASC_ALT14",
+      "ASC_ALT15",
+      "ASC_ALT16",
+      "ASC_ALT17",
+      "ASC_ALT18",
+      "ASC_ALT19",
+      "ASC_ALT20",
+      "ASC_ALT21",
+      "ASC_ALT22",
+      "ASC_ALT23",
+      "ASC_ALT24",
+      "ASC_ALT25",
+      "ASC_ALT26",
+      "ASC_ALT27",
+      "ASC_ALT28"
+    ],
+    "consistent": "Yes",
+    "runtime_policy": {
+      "cpu_policy": "single-logical-core",
+      "logical_cpu_affinity": [
+        0
+      ],
+      "timing_scope": "estimation-plus-covariance",
+      "thread_environment": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      },
+      "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
+    },
+    "backends": [
+      {
+        "backend": "torchdcm",
+        "available": true,
+        "total_s": 2.479545365087688,
+        "estimate_s": 1.2948137080529705,
+        "covariance_s": 1.1847316570347175,
+        "loglike": -19158.10050879975,
+        "ll_diff": 0.0,
+        "max_param_diff": 0.0,
+        "max_prob_diff": 0.0,
+        "max_cov_diff": 0.0,
+        "max_se_diff": 0.0,
+        "closure_evals": 43,
+        "optimizer_iterations": 39,
+        "runtime_repeats_s": [
+          2.479545365087688
+        ],
+        "message": ""
+      },
+      {
+        "backend": "scipy_bfgs",
+        "available": true,
+        "total_s": 73.94369719398674,
+        "estimate_s": 72.62225159199443,
+        "covariance_s": 1.321445601992309,
+        "loglike": -19158.100508799416,
+        "ll_diff": 3.346940502524376e-10,
+        "max_param_diff": 4.5203157822415463e-07,
+        "max_prob_diff": 2.2889714434981556e-07,
+        "max_cov_diff": 3.472726160455575e-10,
+        "max_se_diff": 2.3661415327058677e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          73.94369719398674
+        ],
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "backend": "biogeme",
+        "available": false,
+        "total_s": 300.10274097393267,
+        "estimate_s": null,
+        "covariance_s": null,
+        "loglike": null,
+        "ll_diff": null,
+        "max_param_diff": null,
+        "max_prob_diff": null,
+        "max_cov_diff": null,
+        "max_se_diff": null,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          300.10274097393267
+        ],
+        "message": "biogeme exceeded 300s timeout"
+      },
+      {
+        "backend": "apollo",
+        "available": true,
+        "total_s": 236.97,
+        "estimate_s": 236.97,
+        "covariance_s": 0,
+        "loglike": -19158.1005088019,
+        "ll_diff": -2.1500454749912024e-09,
+        "max_param_diff": 1.1904576184829097e-06,
+        "max_prob_diff": 7.041436362320574e-07,
+        "max_cov_diff": 3.043427498732043e-09,
+        "max_se_diff": 2.0657041147065236e-08,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          236.97
+        ],
+        "message": "apollo_version=0.3.8"
+      },
+      {
+        "backend": "mlogit",
+        "available": true,
+        "total_s": 13.671999999999997,
+        "estimate_s": 13.671999999999997,
+        "covariance_s": 0.0,
+        "loglike": -19158.10050879942,
+        "ll_diff": 3.310560714453459e-10,
+        "max_param_diff": 4.552205035146528e-07,
+        "max_prob_diff": 2.2782344055727322e-07,
+        "max_cov_diff": 3.4853403930307225e-10,
+        "max_se_diff": 2.3747362409842765e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          13.671999999999997
+        ],
+        "message": ""
+      },
+      {
+        "backend": "gmnl",
+        "available": false,
+        "total_s": 300.1027174349874,
+        "estimate_s": null,
+        "covariance_s": null,
+        "loglike": null,
+        "ll_diff": null,
+        "max_param_diff": null,
+        "max_prob_diff": null,
+        "max_cov_diff": null,
+        "max_se_diff": null,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          300.1027174349874
+        ],
+        "message": "gmnl exceeded 300s timeout"
+      },
+      {
+        "backend": "xlogit",
+        "available": true,
+        "total_s": 43.686276787891984,
+        "estimate_s": 43.686275957967155,
+        "covariance_s": 8.299248293042183e-07,
+        "loglike": -19158.100508804433,
+        "ll_diff": -4.6820787247270346e-09,
+        "max_param_diff": 1.00228141863834e-06,
+        "max_prob_diff": 9.281043805708933e-07,
+        "max_cov_diff": 2.290024691143505e-09,
+        "max_se_diff": 6.2133378164741515e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          43.686276787891984
+        ],
+        "message": ""
+      }
+    ],
+    "true_parameters": {
+      "B_X1": -0.25,
+      "B_X2": -0.30666666666666664,
+      "B_X3": -0.36333333333333334,
+      "B_X4": -0.42000000000000004,
+      "B_X5": -0.4766666666666667,
+      "B_X6": -0.5333333333333333,
+      "B_X7": -0.5900000000000001,
+      "B_X8": -0.6466666666666667,
+      "B_X9": -0.7033333333333334,
+      "B_X10": -0.76,
+      "B_X11": -0.8166666666666667,
+      "B_X12": -0.8733333333333334,
+      "B_X13": -0.93,
+      "B_X14": -0.9866666666666667,
+      "B_X15": -1.0433333333333334,
+      "B_X16": -1.1,
+      "ASC_ALT2": -0.025925925925925908,
+      "ASC_ALT3": -0.05185185185185187,
+      "ASC_ALT4": -0.07777777777777778,
+      "ASC_ALT5": -0.10370370370370369,
+      "ASC_ALT6": -0.12962962962962962,
+      "ASC_ALT7": -0.15555555555555556,
+      "ASC_ALT8": -0.18148148148148147,
+      "ASC_ALT9": -0.2074074074074074,
+      "ASC_ALT10": -0.23333333333333334,
+      "ASC_ALT11": -0.25925925925925924,
+      "ASC_ALT12": -0.28518518518518515,
+      "ASC_ALT13": -0.3111111111111111,
+      "ASC_ALT14": -0.337037037037037,
+      "ASC_ALT15": -0.36296296296296293,
+      "ASC_ALT16": -0.3888888888888889,
+      "ASC_ALT17": -0.4148148148148148,
+      "ASC_ALT18": -0.4407407407407407,
+      "ASC_ALT19": -0.4666666666666667,
+      "ASC_ALT20": -0.4925925925925926,
+      "ASC_ALT21": -0.5185185185185185,
+      "ASC_ALT22": -0.5444444444444444,
+      "ASC_ALT23": -0.5703703703703703,
+      "ASC_ALT24": -0.5962962962962963,
+      "ASC_ALT25": -0.6222222222222222,
+      "ASC_ALT26": -0.6481481481481481,
+      "ASC_ALT27": -0.674074074074074,
+      "ASC_ALT28": -0.7
+    },
+    "runtime_repetitions": 1,
+    "runtime_summary": "single run",
+    "worker_policy": "independent child process per backend repetition"
+  },
+  {
+    "case": "stress_mnl_large",
+    "family": "MNL",
+    "generated": {
+      "model": "mnl",
+      "N": 50000,
+      "J": 35,
+      "K": 20,
+      "rho": 0.5,
+      "random_coefficients": 0
+    },
+    "n_obs": 50000,
+    "n_alternatives": 35,
+    "n_variables": 20,
+    "rho": 0.5,
+    "n_parameters": 54,
+    "parameters": [
+      "B_X1",
+      "B_X2",
+      "B_X3",
+      "B_X4",
+      "B_X5",
+      "B_X6",
+      "B_X7",
+      "B_X8",
+      "B_X9",
+      "B_X10",
+      "B_X11",
+      "B_X12",
+      "B_X13",
+      "B_X14",
+      "B_X15",
+      "B_X16",
+      "B_X17",
+      "B_X18",
+      "B_X19",
+      "B_X20",
+      "ASC_ALT2",
+      "ASC_ALT3",
+      "ASC_ALT4",
+      "ASC_ALT5",
+      "ASC_ALT6",
+      "ASC_ALT7",
+      "ASC_ALT8",
+      "ASC_ALT9",
+      "ASC_ALT10",
+      "ASC_ALT11",
+      "ASC_ALT12",
+      "ASC_ALT13",
+      "ASC_ALT14",
+      "ASC_ALT15",
+      "ASC_ALT16",
+      "ASC_ALT17",
+      "ASC_ALT18",
+      "ASC_ALT19",
+      "ASC_ALT20",
+      "ASC_ALT21",
+      "ASC_ALT22",
+      "ASC_ALT23",
+      "ASC_ALT24",
+      "ASC_ALT25",
+      "ASC_ALT26",
+      "ASC_ALT27",
+      "ASC_ALT28",
+      "ASC_ALT29",
+      "ASC_ALT30",
+      "ASC_ALT31",
+      "ASC_ALT32",
+      "ASC_ALT33",
+      "ASC_ALT34",
+      "ASC_ALT35"
+    ],
+    "consistent": "Yes",
+    "runtime_policy": {
+      "cpu_policy": "single-logical-core",
+      "logical_cpu_affinity": [
+        0
+      ],
+      "timing_scope": "estimation-plus-covariance",
+      "thread_environment": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      },
+      "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
+    },
+    "backends": [
+      {
+        "backend": "torchdcm",
+        "available": true,
+        "total_s": 5.2031055830884725,
+        "estimate_s": 2.3496310020564124,
+        "covariance_s": 2.85347458103206,
+        "loglike": -20000.21755136025,
+        "ll_diff": 0.0,
+        "max_param_diff": 0.0,
+        "max_prob_diff": 0.0,
+        "max_cov_diff": 0.0,
+        "max_se_diff": 0.0,
+        "closure_evals": 42,
+        "optimizer_iterations": 39,
+        "runtime_repeats_s": [
+          5.2031055830884725
+        ],
+        "message": ""
+      },
+      {
+        "backend": "scipy_bfgs",
+        "available": true,
+        "total_s": 101.33318344294094,
+        "estimate_s": 98.33454984496348,
+        "covariance_s": 2.9986335979774594,
+        "loglike": -20000.217551358997,
+        "ll_diff": 1.2514647096395493e-09,
+        "max_param_diff": 1.3588364768321592e-06,
+        "max_prob_diff": 6.091319648682259e-07,
+        "max_cov_diff": 9.254372138403633e-10,
+        "max_se_diff": 5.721572313155399e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          101.33318344294094
+        ],
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "backend": "biogeme",
+        "available": false,
+        "total_s": 300.10689594899304,
+        "estimate_s": null,
+        "covariance_s": null,
+        "loglike": null,
+        "ll_diff": null,
+        "max_param_diff": null,
+        "max_prob_diff": null,
+        "max_cov_diff": null,
+        "max_se_diff": null,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          300.10689594899304
+        ],
+        "message": "biogeme exceeded 300s timeout"
+      },
+      {
+        "backend": "apollo",
+        "available": false,
+        "total_s": 300.1097898139851,
+        "estimate_s": null,
+        "covariance_s": null,
+        "loglike": null,
+        "ll_diff": null,
+        "max_param_diff": null,
+        "max_prob_diff": null,
+        "max_cov_diff": null,
+        "max_se_diff": null,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          300.1097898139851
+        ],
+        "message": "apollo exceeded 300s timeout"
+      },
+      {
+        "backend": "mlogit",
+        "available": true,
+        "total_s": 25.269000000000005,
+        "estimate_s": 25.268,
+        "covariance_s": 0.0010000000000047748,
+        "loglike": -20000.217551358946,
+        "ll_diff": 1.3023964129388332e-09,
+        "max_param_diff": 1.1190648859793484e-06,
+        "max_prob_diff": 5.739592222608891e-07,
+        "max_cov_diff": 7.437901249768286e-10,
+        "max_se_diff": 4.5985280860971756e-09,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          25.269000000000005
+        ],
+        "message": ""
+      },
+      {
+        "backend": "gmnl",
+        "available": false,
+        "total_s": 300.10779777297284,
+        "estimate_s": null,
+        "covariance_s": null,
+        "loglike": null,
+        "ll_diff": null,
+        "max_param_diff": null,
+        "max_prob_diff": null,
+        "max_cov_diff": null,
+        "max_se_diff": null,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          300.10779777297284
+        ],
+        "message": "gmnl exceeded 300s timeout"
+      },
+      {
+        "backend": "xlogit",
+        "available": true,
+        "total_s": 127.40854366798885,
+        "estimate_s": 127.40854172792751,
+        "covariance_s": 1.9400613382458687e-06,
+        "loglike": -20000.217551363814,
+        "ll_diff": -3.5652192309498787e-09,
+        "max_param_diff": 2.7353782987571407e-06,
+        "max_prob_diff": 1.4419148948729976e-06,
+        "max_cov_diff": 4.212771465006426e-09,
+        "max_se_diff": 2.6140469525093302e-08,
+        "closure_evals": null,
+        "optimizer_iterations": null,
+        "runtime_repeats_s": [
+          127.40854366798885
+        ],
+        "message": ""
+      }
+    ],
+    "true_parameters": {
+      "B_X1": -0.25,
+      "B_X2": -0.2947368421052632,
+      "B_X3": -0.3394736842105263,
+      "B_X4": -0.3842105263157895,
+      "B_X5": -0.42894736842105263,
+      "B_X6": -0.4736842105263158,
+      "B_X7": -0.518421052631579,
+      "B_X8": -0.5631578947368421,
+      "B_X9": -0.6078947368421053,
+      "B_X10": -0.6526315789473685,
+      "B_X11": -0.6973684210526316,
+      "B_X12": -0.7421052631578948,
+      "B_X13": -0.786842105263158,
+      "B_X14": -0.8315789473684212,
+      "B_X15": -0.8763157894736843,
+      "B_X16": -0.9210526315789475,
+      "B_X17": -0.9657894736842106,
+      "B_X18": -1.0105263157894737,
+      "B_X19": -1.055263157894737,
+      "B_X20": -1.1,
+      "ASC_ALT2": -0.02058823529411763,
+      "ASC_ALT3": -0.041176470588235314,
+      "ASC_ALT4": -0.061764705882352944,
+      "ASC_ALT5": -0.08235294117647057,
+      "ASC_ALT6": -0.10294117647058823,
+      "ASC_ALT7": -0.12352941176470589,
+      "ASC_ALT8": -0.14411764705882352,
+      "ASC_ALT9": -0.16470588235294117,
+      "ASC_ALT10": -0.18529411764705883,
+      "ASC_ALT11": -0.20588235294117646,
+      "ASC_ALT12": -0.22647058823529412,
+      "ASC_ALT13": -0.24705882352941178,
+      "ASC_ALT14": -0.2676470588235294,
+      "ASC_ALT15": -0.28823529411764703,
+      "ASC_ALT16": -0.3088235294117647,
+      "ASC_ALT17": -0.32941176470588235,
+      "ASC_ALT18": -0.35,
+      "ASC_ALT19": -0.37058823529411766,
+      "ASC_ALT20": -0.3911764705882353,
+      "ASC_ALT21": -0.4117647058823529,
+      "ASC_ALT22": -0.4323529411764706,
+      "ASC_ALT23": -0.45294117647058824,
+      "ASC_ALT24": -0.47352941176470587,
+      "ASC_ALT25": -0.49411764705882355,
+      "ASC_ALT26": -0.5147058823529411,
+      "ASC_ALT27": -0.5352941176470588,
+      "ASC_ALT28": -0.5558823529411765,
+      "ASC_ALT29": -0.5764705882352941,
+      "ASC_ALT30": -0.5970588235294118,
+      "ASC_ALT31": -0.6176470588235294,
+      "ASC_ALT32": -0.638235294117647,
+      "ASC_ALT33": -0.6588235294117647,
+      "ASC_ALT34": -0.6794117647058824,
+      "ASC_ALT35": -0.7
+    },
+    "runtime_repetitions": 1,
+    "runtime_summary": "single run",
+    "worker_policy": "independent child process per backend repetition"
+  }
+]

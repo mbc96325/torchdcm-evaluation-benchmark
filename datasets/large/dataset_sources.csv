@@ -1,0 +1,3 @@
+dataset_id,release_status,processed_artifact,source_url,notes
+"lpmc_london","generated_locally","datasets/large/processed/lpmc_london","https://transp-or.epfl.ch/data/lpmc.dat","Prepared by scripts/process_lpmc_london.py."
+"nhts_2022","generated_locally","datasets/raw/nhts_2022","https://nhts.ornl.gov/","Downloaded and processed by benchmarks/compare_nhts_mnl.py."
