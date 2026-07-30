@@ -13,8 +13,8 @@ drivers for seven estimation packages, all input datasets, the intermediate
 solver outputs retained by the benchmark, and the machine-readable results
 used to prepare the paper's tables.
 
-The `torchdcm/` directory is a clean snapshot of TorchDCM 0.1.1 at Git commit
-`b34ab6924523017aca39f5529c940c2cdd817bde`. The snapshot is installed directly
+The `torchdcm/` directory is a clean snapshot of TorchDCM 0.1.2 at Git commit
+`86bd009795b86f4589403c34c988161d02eb94cc`. The snapshot is installed directly
 from this repository. Reproducing the paper therefore does not require a
 second Git checkout or a TorchDCM download from PyPI. Later package development
 continues in the [TorchDCM repository](https://github.com/mbc96325/torchdcm).
@@ -92,7 +92,7 @@ required after cloning.
 
 ```text
 .
-├── torchdcm/                 # TorchDCM 0.1.1 source snapshot
+├── torchdcm/                 # TorchDCM 0.1.2 source snapshot
 ├── experiments/              # Python experiment drivers
 │   ├── apollo/R/             # Apollo adapters
 │   └── mlogit/R/             # mlogit and gmnl adapters
@@ -121,7 +121,7 @@ Python 3.10 or later is required. The committed results were produced with:
 
 | Component | Version |
 | --- | --- |
-| TorchDCM source snapshot | 0.1.1 |
+| TorchDCM source snapshot | 0.1.2 |
 | PyTorch | 2.12.1+cu130 |
 | NumPy | 2.4.6 |
 | pandas | 2.3.3 |

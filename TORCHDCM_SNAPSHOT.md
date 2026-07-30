@@ -3,11 +3,11 @@
 The `torchdcm/` directory is an unmodified source snapshot of the public
 [TorchDCM repository](https://github.com/mbc96325/torchdcm) at:
 
-- release tag: `v0.1.1`
-- Git commit: `b34ab6924523017aca39f5529c940c2cdd817bde`
-- package version: `0.1.1`
+- release tag: `v0.1.2`
+- Git commit: `86bd009795b86f4589403c34c988161d02eb94cc`
+- package version: `0.1.2`
 
-The snapshot was extracted with `git archive v0.1.1 torchdcm`. It is committed
+The snapshot was extracted with `git archive v0.1.2 torchdcm`. It is committed
 here so that the paper's Python experiments use the exact implementation
 evaluated in the manuscript without downloading TorchDCM from PyPI or cloning
 a second repository.

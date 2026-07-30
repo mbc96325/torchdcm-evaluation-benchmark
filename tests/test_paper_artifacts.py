@@ -113,5 +113,5 @@ def test_intermediate_outputs_are_archived():
 def test_vendored_torchdcm_snapshot():
     source = ROOT / "torchdcm"
     assert (source / "__init__.py").is_file()
-    assert torchdcm.__version__ == "0.1.1"
+    assert torchdcm.__version__ == "0.1.2"
     assert Path(torchdcm.__file__).resolve().parent == source.resolve()
