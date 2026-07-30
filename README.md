@@ -54,13 +54,6 @@ included.
 └── BENCHMARK_SYSTEM.md       # Alignment and timing protocol
 ```
 
-This organization adapts the archival pattern illustrated by
-[ORJournal/2023.0615](https://github.com/ORJournal/2023.0615): source code is
-stored with the experiment drivers, data, archived outputs, and a root-level
-reproduction entry point. Unlike that example, this repository omits
-manuscript files and retains only material needed to reproduce the numerical
-study.
-
 ## System requirements
 
 Python 3.10 or later is required. The committed results were produced with:
