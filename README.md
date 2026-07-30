@@ -1,78 +1,238 @@
 # TorchDCM Evaluation Benchmark
 
-This repository reproduces the validation and runtime experiments in the
-TorchDCM software paper. The installable package is maintained in the separate
-[TorchDCM repository](https://github.com/mbc96325/torchdcm) and released on
-[PyPI](https://pypi.org/project/torchdcm/).
+This repository is the standalone computational archive for the TorchDCM
+software paper. It contains the TorchDCM source code used in the study,
+experiment drivers for seven estimation packages, aligned datasets, and the
+machine-readable results used to prepare the paper's tables.
 
-The repository intentionally contains only paper-facing experiment code,
-aligned external-software wrappers, benchmark datasets, and the committed
-outputs used to prepare the manuscript tables.
+The `torchdcm/` directory is a clean snapshot of TorchDCM 0.1.1 at Git commit
+`b34ab6924523017aca39f5529c940c2cdd817bde`. The snapshot is installed directly
+from this repository. Reproducing the paper therefore does not require a
+second Git checkout or a TorchDCM download from PyPI. Later package development
+continues in the [TorchDCM repository](https://github.com/mbc96325/torchdcm).
+See [TORCHDCM_SNAPSHOT.md](TORCHDCM_SNAPSHOT.md) for provenance.
 
-## Environment
+## Scope
+
+The repository reproduces the paper's:
+
+- synthetic MNL, NL, and MixL full-estimation experiments;
+- real-data MNL, NL, and MixL comparisons;
+- TorchDCM CPU--CUDA experiments;
+- ordered-logit and ordered-probit validation; and
+- latent-class, hybrid-choice, and panel validation.
+
+The manuscript source is intentionally not included. Large LPMC and NHTS
+inputs are materialized from their public sources because redistribution or
+repository-size constraints make committing the processed files undesirable.
+The smaller public benchmark datasets and all paper-facing JSON results are
+included.
+
+## Repository layout
+
+```text
+.
+├── torchdcm/                 # TorchDCM 0.1.1 source snapshot
+├── experiments/              # Python experiment drivers
+│   ├── apollo/R/             # Apollo adapters
+│   └── mlogit/R/             # mlogit and gmnl adapters
+├── data/
+│   ├── small/                # Included public benchmark datasets
+│   ├── large/                # Large-data provenance and preparation notes
+│   └── dataset_index.csv     # Dataset-to-storage index
+├── results/                  # Archived Office-machine JSON results
+├── scripts/                  # Large-data preparation utilities
+├── tests/                    # Artifact and numerical parity checks
+├── run_exp.py                # Root experiment selector
+├── requirements.txt          # Tested Python versions
+├── pyproject.toml            # Standalone local installation
+└── BENCHMARK_SYSTEM.md       # Alignment and timing protocol
+```
+
+This organization adapts the archival pattern illustrated by
+[ORJournal/2023.0615](https://github.com/ORJournal/2023.0615): source code is
+stored with the experiment drivers, data, archived outputs, and a root-level
+reproduction entry point. Unlike that example, this repository omits
+manuscript files and retains only material needed to reproduce the numerical
+study.
+
+## System requirements
+
+Python 3.10 or later is required. The committed results were produced with:
+
+| Component | Version |
+| --- | --- |
+| TorchDCM source snapshot | 0.1.1 |
+| PyTorch | 2.12.1+cu130 |
+| NumPy | 2.4.6 |
+| pandas | 2.3.3 |
+| SciPy | 1.18.0 |
+| Biogeme | 3.3.3 |
+| xlogit | 0.2.7 |
+| Apollo | 0.3.8 |
+| mlogit | 2.0.0 |
+| gmnl | 1.1.3.2 |
+| jsonlite | 2.0.0 |
+
+Python-only checks run on Linux, macOS, or Windows. The complete
+cross-software replication also requires an R installation and the four R
+packages listed above. CUDA experiments require a CUDA-capable NVIDIA GPU and
+a compatible PyTorch build.
+
+The paper's CPU experiments ran on an AMD Ryzen 9 9950X3D. Each estimator and
+its child processes used one logical CPU. Device experiments used one logical
+CPU or an NVIDIA GeForce RTX 5090 with 32 GB of memory.
+
+## Quick start
+
+Clone the repository and install its local TorchDCM snapshot together with the
+benchmark dependencies:
 
 ```bash
+git clone https://github.com/mbc96325/torchdcm-evaluation-benchmark.git
+cd torchdcm-evaluation-benchmark
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -U pip
-python -m pip install -e ".[bench]"
+python -m pip install -r requirements.txt
+python -m pip install -e . --no-deps
 ```
 
-The Python environment provides TorchDCM 0.1.1, PyTorch, Biogeme, SciPy, and
-`xlogit`. The R comparisons additionally require Apollo, `mlogit`, `gmnl`, and
-`jsonlite`:
+On Windows, activate the environment with
+`.venv\Scripts\activate`. The exact PyTorch command may differ by CPU/CUDA
+platform. If so, install the appropriate PyTorch build first, then install the
+remaining dependencies and this repository.
+
+Install the external R estimators when their comparison rows are needed:
 
 ```r
 install.packages(c("apollo", "mlogit", "gmnl", "jsonlite"))
 ```
 
-The committed results were generated with TorchDCM 0.1.1, PyTorch 2.12.1,
-Biogeme 3.3.3, `xlogit` 0.2.7, Apollo 0.3.8, `mlogit` 2.0.0, and `gmnl`
-1.1.3.2.
+Confirm that the vendored source and archived artifacts are available:
 
-Small public datasets are committed under `datasets/small`. Before running the
-LPMC cases, materialize the official source data:
+```bash
+python -c "import torchdcm; print(torchdcm.__version__, torchdcm.__file__)"
+pytest tests/test_paper_artifacts.py
+python run_exp.py --list
+```
+
+The printed package path should point into this repository.
+
+## Reproduction workflow
+
+Run an experiment by its stable identifier:
+
+```bash
+python run_exp.py synthetic-mnl
+```
+
+Use `python run_exp.py --list` to display all identifiers and corresponding
+archived outputs. Use `--dry-run` to inspect a resolved command without
+starting estimation:
+
+```bash
+python run_exp.py real-mixl --dry-run
+```
+
+Arguments not consumed by `run_exp.py` are passed to the selected experiment
+driver. Direct execution of the scripts in `experiments/` remains available
+for custom profiles.
+
+The standard workflow is:
+
+1. install Python and, where needed, R dependencies;
+2. prepare the large public datasets if those cases will be run;
+3. select an experiment with `run_exp.py`;
+4. retain the newly generated `*_reproduction` output; and
+5. compare it with the corresponding archived Office-machine JSON file.
+
+Runtime values depend on hardware and software versions. Final log likelihoods,
+case dimensions, backend status, and consistency diagnostics are stored in
+each JSON output.
+
+## Experiment-to-output mapping
+
+| Identifier | Paper experiment | Archived result |
+| --- | --- | --- |
+| `synthetic-mnl` | Synthetic controlled MNL | [`synthetic_mnl_single_core_office.json`](results/synthetic_mnl_single_core_office.json) |
+| `synthetic-nl` | Synthetic controlled NL | [`generated_choice_battery_table4_nl_office.json`](results/generated_choice_battery_table4_nl_office.json) |
+| `synthetic-mixl` | Synthetic controlled MixL | [`generated_choice_battery_table4_mixl_office.json`](results/generated_choice_battery_table4_mixl_office.json) |
+| `real-mnl` | Real-data MNL | [`solver_attempt_matrix_mnl_single_core_office.json`](results/solver_attempt_matrix_mnl_single_core_office.json) |
+| `real-nl` | Real-data NL | [`nested_real_battery_single_core_office.json`](results/nested_real_battery_single_core_office.json) |
+| `real-mixl` | Real-data MixL | [`mixed_real_battery_apollo_office.json`](results/mixed_real_battery_apollo_office.json) |
+| `cpu-cuda` | TorchDCM CPU--CUDA scaling | [`torch_device_stress_battery.json`](results/torch_device_stress_battery.json) |
+| `ordered-synthetic-logit` | Synthetic ordered logit | [`ordered_logit_synthetic_threeway_single_core_office.json`](results/ordered_logit_synthetic_threeway_single_core_office.json) |
+| `ordered-synthetic-probit` | Synthetic ordered probit | [`ordered_probit_synthetic_threeway_single_core_office.json`](results/ordered_probit_synthetic_threeway_single_core_office.json) |
+| `ordered-real-logit` | Real-data ordered logit | [`ordered_logit_real_threeway_single_core_office.json`](results/ordered_logit_real_threeway_single_core_office.json) |
+| `ordered-real-probit` | Real-data ordered probit | [`ordered_probit_real_threeway_single_core_office.json`](results/ordered_probit_real_threeway_single_core_office.json) |
+| `advanced` | Latent class, hybrid choice, and panel | [`advanced_full_estimation_office.json`](results/advanced_full_estimation_office.json) |
+
+Run the ordered-model summarizer after reproducing those cases:
+
+```bash
+python experiments/summarize_ordered_results.py
+```
+
+## Data preparation
+
+Sixteen small public datasets are committed under `data/small`. Their
+dimensions and upstream sources are recorded in `data/dataset_index.csv` and
+the accompanying metadata files.
+
+Materialize the LPMC data before running its rows:
 
 ```bash
 python scripts/process_lpmc_london.py
 ```
 
-The NHTS runner downloads and processes the official 2022 trip file when its
-local cache is absent.
+The NHTS experiment downloads and processes the official 2022 trip archive
+when its local cache is absent. Downloaded and processed large files remain
+untracked under `data/raw` and `data/large/processed`.
 
-## Reproducing the paper results
+## Timing and numerical protocol
 
-Each cross-estimator runner enforces the paper's single-logical-CPU policy.
-Commands below write new outputs without overwriting the committed Office
-results.
+All cross-estimator CPU runners enforce one logical CPU by controlling process
+affinity and the OpenMP, BLAS, NumExpr, and PyTorch thread counts. Apollo uses
+`nCores=1`. Reported runtime covers full parameter estimation and covariance
+construction. It excludes data loading or generation, aligned-design
+construction, process startup, and file input/output. Stress workers have a
+300-second limit.
 
-| Paper experiment | Reproduction command | Committed result |
-| --- | --- | --- |
-| Synthetic MNL | `python benchmarks/compare_generated_choice_battery.py --profile paper --models mnl --backend-timeout 300 --output-profile synthetic_mnl_reproduction` | [`synthetic_mnl_single_core_office.json`](generated/synthetic_mnl_single_core_office.json) |
-| Synthetic NL | `python benchmarks/compare_generated_choice_battery.py --profile paper --models nl --backend-timeout 300 --output-profile synthetic_nl_reproduction` | [`generated_choice_battery_table4_nl_office.json`](generated/generated_choice_battery_table4_nl_office.json) |
-| Synthetic MixL | `python benchmarks/compare_generated_choice_battery.py --profile paper --models mixl --backend-timeout 300 --output-profile synthetic_mixl_reproduction` | [`generated_choice_battery_table4_mixl_office.json`](generated/generated_choice_battery_table4_mixl_office.json) |
-| Real-data MNL | `python benchmarks/run_solver_attempt_matrix.py --profile mnl_reproduction` | [`solver_attempt_matrix_mnl_single_core_office.json`](generated/solver_attempt_matrix_mnl_single_core_office.json) |
-| Real-data NL | `python benchmarks/run_real_nested_logit_isolated.py --json-output generated/nested_real_battery_reproduction.json --md-output generated/nested_real_battery_reproduction.md` | [`nested_real_battery_single_core_office.json`](generated/nested_real_battery_single_core_office.json) |
-| Real-data MixL | `python benchmarks/run_real_mixed_logit_isolated.py --json-output generated/mixed_real_battery_reproduction.json --md-output generated/mixed_real_battery_reproduction.md` | [`mixed_real_battery_apollo_office.json`](generated/mixed_real_battery_apollo_office.json) |
-| CPU--CUDA scaling | `python benchmarks/compare_torch_device_stress.py --profile battery --repeats 3 --output-profile device_reproduction` | [`torch_device_stress_battery.json`](generated/torch_device_stress_battery.json) |
-| Synthetic ordered logit | `python benchmarks/compare_synthetic_ordered_probit.py --kind logit --output generated/ordered_logit_synthetic_reproduction.json` | [`ordered_logit_synthetic_threeway_single_core_office.json`](generated/ordered_logit_synthetic_threeway_single_core_office.json) |
-| Synthetic ordered probit | `python benchmarks/compare_synthetic_ordered_probit.py --kind probit --output generated/ordered_probit_synthetic_reproduction.json` | [`ordered_probit_synthetic_threeway_single_core_office.json`](generated/ordered_probit_synthetic_threeway_single_core_office.json) |
-| Real ordered logit | `python benchmarks/run_real_ordered_probit_battery.py --kind logit --output generated/ordered_logit_real_reproduction.json` | [`ordered_logit_real_threeway_single_core_office.json`](generated/ordered_logit_real_threeway_single_core_office.json) |
-| Real ordered probit | `python benchmarks/run_real_ordered_probit_battery.py --kind probit --output generated/ordered_probit_real_reproduction.json` | [`ordered_probit_real_threeway_single_core_office.json`](generated/ordered_probit_real_threeway_single_core_office.json) |
-| Latent class, hybrid choice, and panel | `python benchmarks/run_advanced_full_suite.py --output generated/advanced_full_estimation_reproduction.json` | [`advanced_full_estimation_office.json`](generated/advanced_full_estimation_office.json) |
+Within a case, estimators receive aligned data, utility specifications,
+parameter scales, and starting values. Simulated models use common draws when
+the external interface accepts them. The complete rules for runtime scope,
+failed runs, and final-log-likelihood consistency are in
+[BENCHMARK_SYSTEM.md](BENCHMARK_SYSTEM.md).
 
-Run `python benchmarks/summarize_ordered_results.py` to render the ordered-model
-rows used in the electronic companion. Runtime values will vary by machine.
-Case definitions, final likelihoods, parameter diagnostics, and comparison
-status are retained in the JSON outputs.
+## Tests
 
-## Repository layout
+Run the lightweight archive checks:
 
-| Path | Purpose |
-| --- | --- |
-| `benchmarks/` | Paper experiment runners and external-software wrappers. |
-| `datasets/` | Included datasets, provenance, and large-data preparation notes. |
-| `generated/` | The authoritative outputs used by the paper. |
-| `scripts/` | LPMC preparation utility. |
-| `tests/` | Numerical parity checks for benchmark infrastructure. |
-| `BENCHMARK_SYSTEM.md` | Runtime, alignment, and consistency conventions. |
+```bash
+pytest tests/test_paper_artifacts.py
+```
+
+Run the Biogeme numerical parity test when Biogeme is installed:
+
+```bash
+pytest tests/test_biogeme_parity.py
+```
+
+The complete experiment suite is intentionally not a unit-test target because
+the stress and simulation-based cases can require many hours.
+
+## Cross-machine reproducibility
+
+Numerical agreement should be assessed with the final-log-likelihood rule in
+`BENCHMARK_SYSTEM.md`, not by expecting byte-identical JSON files. Runtime
+comparisons should use the same thread policy and avoid concurrent heavy jobs.
+CPU model, GPU model, BLAS implementation, package versions, and compiler
+state can change wall-clock time.
+
+## Support
+
+Use the issue trackers for the corresponding scope:
+
+- [benchmark and reproduction issues](https://github.com/mbc96325/torchdcm-evaluation-benchmark/issues);
+- [TorchDCM package issues](https://github.com/mbc96325/torchdcm/issues).

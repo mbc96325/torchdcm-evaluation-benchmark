@@ -4,13 +4,15 @@ import csv
 import json
 from pathlib import Path
 
+import torchdcm
+
 
 ROOT = Path(__file__).resolve().parents[1]
-GENERATED = ROOT / "generated"
+RESULTS = ROOT / "results"
 
 
 def load(name: str):
-    return json.loads((GENERATED / name).read_text(encoding="utf-8"))
+    return json.loads((RESULTS / name).read_text(encoding="utf-8"))
 
 
 def test_main_paper_case_counts():
@@ -39,7 +41,7 @@ def test_electronic_companion_case_counts():
 
 
 def test_dataset_catalog_matches_paper_scope():
-    with (ROOT / "datasets" / "dataset_index.csv").open(
+    with (ROOT / "data" / "dataset_index.csv").open(
         newline="", encoding="utf-8"
     ) as stream:
         rows = list(csv.DictReader(stream))
@@ -47,4 +49,11 @@ def test_dataset_catalog_matches_paper_scope():
     committed = [row for row in rows if row["storage"] == "github_small"]
     assert len(committed) == 16
     for row in committed:
-        assert (ROOT / "datasets" / "small" / row["dataset_id"] / "data.csv").is_file()
+        assert (ROOT / "data" / "small" / row["dataset_id"] / "data.csv").is_file()
+
+
+def test_vendored_torchdcm_snapshot():
+    source = ROOT / "torchdcm"
+    assert (source / "__init__.py").is_file()
+    assert torchdcm.__version__ == "0.1.1"
+    assert Path(torchdcm.__file__).resolve().parent == source.resolve()

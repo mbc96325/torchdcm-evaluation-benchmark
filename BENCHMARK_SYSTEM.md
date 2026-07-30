@@ -50,7 +50,7 @@ run that did not complete successfully, while `Timeout` records the
 
 ## Output policy
 
-The `generated/` directory contains only the authoritative Office-machine JSON
+The `results/` directory contains only the authoritative Office-machine JSON
 outputs used by the main paper and electronic companion. Reproduction commands
 should use a new output suffix so that the committed results remain auditable.
 The JSON files include case dimensions, runtime-policy metadata, backend

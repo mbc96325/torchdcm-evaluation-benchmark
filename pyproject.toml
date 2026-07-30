@@ -3,26 +3,33 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "torchdcm-evaluation-benchmark"
-version = "0.1.0"
-description = "Reproducible validation and benchmarks for the TorchDCM software paper."
+name = "torchdcm"
+version = "0.1.1"
+description = "PyTorch-first discrete choice model estimation with econometric inference."
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [{name = "Baichuan Mo"}]
 dependencies = [
     "numpy>=1.23",
     "pandas>=1.5",
-    "scipy>=1.10",
     "torch>=2.1",
-    "torchdcm==0.1.1",
 ]
 
 [project.optional-dependencies]
 bench = [
+    "scipy>=1.10",
     "biogeme>=3.2",
     "xlogit>=0.2",
     "pytest>=7",
 ]
 
-[tool.setuptools]
-py-modules = []
+[project.urls]
+Homepage = "https://github.com/mbc96325/torchdcm"
+Repository = "https://github.com/mbc96325/torchdcm"
+Benchmarks = "https://github.com/mbc96325/torchdcm-evaluation-benchmark"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+include = ["torchdcm*"]

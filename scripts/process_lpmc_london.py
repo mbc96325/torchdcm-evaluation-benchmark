@@ -11,10 +11,10 @@ import pandas as pd
 
 
 ROOT = Path(__file__).resolve().parents[1]
-RAW_PATH = ROOT / "datasets" / "raw" / "lpmc_london" / "data.csv"
+RAW_PATH = ROOT / "data" / "raw" / "lpmc_london" / "data.csv"
 SOURCE_URL = "https://transp-or.epfl.ch/data/lpmc.dat"
-OUT_DIR = ROOT / "datasets" / "large" / "processed" / "lpmc_london"
-RELEASE_DIR = ROOT / "datasets" / "large" / "releases"
+OUT_DIR = ROOT / "data" / "large" / "processed" / "lpmc_london"
+RELEASE_DIR = ROOT / "data" / "large" / "releases"
 
 ALT_MAP = {1: "walk", 2: "cycle", 3: "pt", 4: "drive"}
 ALTERNATIVES = ["walk", "cycle", "pt", "drive"]
@@ -129,7 +129,7 @@ def main() -> int:
     parser.add_argument("--raw", type=Path, default=RAW_PATH)
     parser.add_argument("--source-url", default=SOURCE_URL)
     parser.add_argument("--out", type=Path, default=OUT_DIR)
-    parser.add_argument("--zip", action="store_true", help="Create datasets/large/releases/lpmc_london.zip for Google Drive upload.")
+    parser.add_argument("--zip", action="store_true", help="Create data/large/releases/lpmc_london.zip for Google Drive upload.")
     args = parser.parse_args()
 
     args.out.mkdir(parents=True, exist_ok=True)

@@ -2,16 +2,18 @@
 __pycache__/
 .pytest_cache/
 *.egg-info/
+build/
+dist/
 .DS_Store
 *.pyc
 
 # Large processed benchmark artifacts are published outside GitHub.
-datasets/large/processed/
-datasets/large/releases/*
-!datasets/large/releases/.gitkeep
+data/large/processed/
+data/large/releases/*
+!data/large/releases/.gitkeep
 
 # Raw downloaded survey data stay local or on the remote benchmark server.
-datasets/raw/
+data/raw/
 
 # Python/R generated benchmark scratch.
 __*.iter
@@ -19,9 +21,9 @@ torchdcm_compare*.html
 torchdcm_compare*.yaml
 torchdcm_nl_compare*.html
 torchdcm_nl_compare*.yaml
-generated/*_reproduction.json
-generated/*_reproduction.md
-generated/advanced_full_logs/
+results/*_reproduction.json
+results/*_reproduction.md
+results/advanced_full_logs/
 
 # Local Biogeme runtime config.
 biogeme.toml

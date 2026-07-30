@@ -1,0 +1,9 @@
+# Versions used to produce the archived Office-machine results.
+# Install the repository itself afterward with: python -m pip install -e .
+numpy==2.4.6
+pandas==2.3.3
+scipy==1.18.0
+torch==2.12.1
+biogeme==3.3.3
+xlogit==0.2.7
+pytest==9.1.1
