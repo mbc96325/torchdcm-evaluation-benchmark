@@ -3,8 +3,8 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 This repository is the standalone computational archive for the TorchDCM
-software paper, *TorchDCM: A PyTorch-First Package for Discrete Choice Model
-Estimation*. The paper is prepared for the *INFORMS Journal on Computing*
+software paper, *TorchDCM: A Unified PyTorch-Native Package for Discrete Choice
+Modeling*. The paper is prepared for the *INFORMS Journal on Computing*
 software track.
 
 This archive contains the TorchDCM source code used in the study, experiment
@@ -28,7 +28,7 @@ archive as follows:
 ```bibtex
 @misc{mo2026torchdcm,
   author = {Mo, Baichuan},
-  title = {{TorchDCM: A PyTorch-First Package for Discrete Choice Model Estimation}},
+  title = {{TorchDCM: A Unified PyTorch-Native Package for Discrete Choice Modeling}},
   year = {2026},
   note = {Software paper manuscript and computational archive},
   url = {https://github.com/mbc96325/torchdcm-evaluation-benchmark}
