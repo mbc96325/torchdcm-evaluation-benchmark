@@ -27,7 +27,7 @@ archive as follows:
 
 ```bibtex
 @misc{mo2026torchdcm,
-  author = {Mo, Baichuan},
+  author = {Mo, Baichuan and You, Zhengzhong Ricky and Chen, Xiqun Michael and Li, Ruimin},
   title = {{TorchDCM: A Unified PyTorch-Native Package for Discrete Choice Modeling}},
   year = {2026},
   note = {Software paper manuscript and computational archive},
