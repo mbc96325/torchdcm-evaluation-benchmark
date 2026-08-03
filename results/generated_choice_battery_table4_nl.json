@@ -87,6 +87,22 @@
         "max_prob_diff": 0.0,
         "max_cov_diff": 0.0,
         "max_se_diff": 0.0,
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.05928990663960576,
+        "estimate_s": 0.05127858091145754,
+        "covariance_s": 0.008011325728148222,
+        "loglike": -567.6938156888741,
+        "ll_diff": 0.0,
+        "max_param_diff": 4.274358644806853e-15,
+        "max_prob_diff": 7.16093850883226e-15,
+        "max_cov_diff": 5.898059818321144e-17,
+        "max_se_diff": 3.469446951953614e-16,
+        "worse_loglike": false,
         "message": ""
       },
       {
@@ -101,7 +117,8 @@
         "max_prob_diff": 5.714038933962717e-05,
         "max_cov_diff": 0.014390432534071854,
         "max_se_diff": 0.1199502063274514,
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -115,7 +132,8 @@
         "max_prob_diff": 6.402948969363997e-07,
         "max_cov_diff": null,
         "max_se_diff": null,
-        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)"
+        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)",
+        "worse_loglike": false
       }
     ],
     "generated": {
@@ -221,6 +239,22 @@
         "max_prob_diff": 0.0,
         "max_cov_diff": 0.0,
         "max_se_diff": 0.0,
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.14290960598737001,
+        "estimate_s": 0.10600894503295422,
+        "covariance_s": 0.0369006609544158,
+        "loglike": -5269.181032428542,
+        "ll_diff": 0.0,
+        "max_param_diff": 4.9960036108132044e-15,
+        "max_prob_diff": 2.55351295663786e-15,
+        "max_cov_diff": 4.0223900599212215e-17,
+        "max_se_diff": 7.667477763817487e-16,
+        "worse_loglike": false,
         "message": ""
       },
       {
@@ -235,7 +269,8 @@
         "max_prob_diff": 5.089765449017847e-05,
         "max_cov_diff": 1.031354899275411e-07,
         "max_se_diff": 1.9577006839313627e-06,
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -249,7 +284,8 @@
         "max_prob_diff": 3.5634364281555975e-07,
         "max_cov_diff": 2.3406089679281483e-09,
         "max_se_diff": 3.567311250562977e-08,
-        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)"
+        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)",
+        "worse_loglike": false
       }
     ],
     "generated": {
@@ -355,6 +391,22 @@
         "max_prob_diff": 0.0,
         "max_cov_diff": 0.0,
         "max_se_diff": 0.0,
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 1.2558396877720952,
+        "estimate_s": 0.9321201257407665,
+        "covariance_s": 0.3237195620313287,
+        "loglike": -53619.24158527315,
+        "ll_diff": 5.820766091346741e-11,
+        "max_param_diff": 1.2234657731369225e-13,
+        "max_prob_diff": 1.1218803663837207e-13,
+        "max_cov_diff": 3.1956859034010243e-17,
+        "max_se_diff": 1.6167622796103842e-15,
+        "worse_loglike": false,
         "message": ""
       },
       {
@@ -369,7 +421,8 @@
         "max_prob_diff": 4.6275009096097275e-05,
         "max_cov_diff": 5.376855978766462e-09,
         "max_se_diff": 2.720016215405213e-07,
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -383,7 +436,8 @@
         "max_prob_diff": 7.430493514926084e-08,
         "max_cov_diff": 9.508482746284873e-12,
         "max_se_diff": 5.902358116149919e-10,
-        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)"
+        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)",
+        "worse_loglike": false
       }
     ],
     "generated": {
@@ -486,6 +540,22 @@
         "max_prob_diff": 0.0,
         "max_cov_diff": 0.0,
         "max_se_diff": 0.0,
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.14282659208402038,
+        "estimate_s": 0.10640636924654245,
+        "covariance_s": 0.03642022283747792,
+        "loglike": -8293.574916679896,
+        "ll_diff": 0.0,
+        "max_param_diff": 1.1324274851176597e-14,
+        "max_prob_diff": 3.608224830031759e-15,
+        "max_cov_diff": 3.8055496254241206e-17,
+        "max_se_diff": 1.1171619185290638e-15,
+        "worse_loglike": false,
         "message": ""
       },
       {
@@ -500,7 +570,8 @@
         "max_prob_diff": 4.71155962355474e-05,
         "max_cov_diff": 7.534753147006145e-08,
         "max_se_diff": 1.7914615605026107e-06,
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -514,7 +585,8 @@
         "max_prob_diff": 3.2114290010598623e-07,
         "max_cov_diff": 1.1978245760720097e-10,
         "max_se_diff": 2.660314902397376e-09,
-        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)"
+        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)",
+        "worse_loglike": false
       }
     ],
     "generated": {
@@ -632,6 +704,22 @@
         "max_prob_diff": 0.0,
         "max_cov_diff": 0.0,
         "max_se_diff": 0.0,
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.5767369600944221,
+        "estimate_s": 0.40873844595625997,
+        "covariance_s": 0.16799851413816214,
+        "loglike": -17003.10324692782,
+        "ll_diff": 0.0,
+        "max_param_diff": 5.731248808871214e-13,
+        "max_prob_diff": 6.343259251195832e-13,
+        "max_cov_diff": 7.170913168819126e-16,
+        "max_se_diff": 1.0443035325380379e-14,
+        "worse_loglike": false,
         "message": ""
       },
       {
@@ -660,7 +748,8 @@
         "max_prob_diff": 4.6772687911644795e-07,
         "max_cov_diff": 3.812355619994129e-10,
         "max_se_diff": 5.103791462374163e-09,
-        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)"
+        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)",
+        "worse_loglike": false
       }
     ],
     "generated": {
@@ -798,6 +887,22 @@
         "max_prob_diff": 0.0,
         "max_cov_diff": 0.0,
         "max_se_diff": 0.0,
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 3.791210175026208,
+        "estimate_s": 2.6292575420811772,
+        "covariance_s": 1.161952632945031,
+        "loglike": -22021.69258031798,
+        "ll_diff": -1.0913936421275139e-11,
+        "max_param_diff": 2.886579864025407e-14,
+        "max_prob_diff": 1.0325074129013956e-14,
+        "max_cov_diff": 1.20346441145891e-16,
+        "max_se_diff": 1.4606371667724716e-15,
+        "worse_loglike": false,
         "message": ""
       },
       {
@@ -826,7 +931,8 @@
         "max_prob_diff": 1.7841459765133294e-07,
         "max_cov_diff": 8.393493252864537e-10,
         "max_se_diff": 9.998564462487813e-09,
-        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)"
+        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)",
+        "worse_loglike": false
       }
     ],
     "generated": {
@@ -932,6 +1038,22 @@
         "max_prob_diff": 0.0,
         "max_cov_diff": 0.0,
         "max_se_diff": 0.0,
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.2714854325167835,
+        "estimate_s": 0.20289536658674479,
+        "covariance_s": 0.06859006593003869,
+        "loglike": -16219.894709596516,
+        "ll_diff": -1.0913936421275139e-11,
+        "max_param_diff": 8.43769498715119e-15,
+        "max_prob_diff": 2.7200464103316335e-15,
+        "max_cov_diff": 2.1141942363467336e-17,
+        "max_se_diff": 4.475586568020162e-16,
+        "worse_loglike": false,
         "message": ""
       },
       {
@@ -946,7 +1068,8 @@
         "max_prob_diff": 6.901455207908302e-05,
         "max_cov_diff": 1.3589028061351035e-07,
         "max_se_diff": 2.3119004776417373e-06,
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -960,7 +1083,8 @@
         "max_prob_diff": 1.8133669338338265e-07,
         "max_cov_diff": 1.957820535974529e-10,
         "max_se_diff": 5.610957927448812e-09,
-        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)"
+        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)",
+        "worse_loglike": false
       }
     ],
     "generated": {
@@ -1074,6 +1198,22 @@
         "max_prob_diff": 0.0,
         "max_cov_diff": 0.0,
         "max_se_diff": 0.0,
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.36788125801831484,
+        "estimate_s": 0.24537573801353574,
+        "covariance_s": 0.1225055200047791,
+        "loglike": -7140.957626725784,
+        "ll_diff": -4.547473508864641e-12,
+        "max_param_diff": 6.550315845288424e-14,
+        "max_prob_diff": 1.84297022087776e-14,
+        "max_cov_diff": 3.1073234263434557e-16,
+        "max_se_diff": 5.7419347054832315e-15,
+        "worse_loglike": false,
         "message": ""
       },
       {
@@ -1088,7 +1228,8 @@
         "max_prob_diff": 0.00017805267076415054,
         "max_cov_diff": 3.4574952903639565e-07,
         "max_se_diff": 4.0582923991963615e-06,
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -1102,7 +1243,8 @@
         "max_prob_diff": 3.5358593319934073e-07,
         "max_cov_diff": 1.2761193173135496e-09,
         "max_se_diff": 2.3584772655682595e-08,
-        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)"
+        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)",
+        "worse_loglike": false
       }
     ],
     "generated": {
@@ -1236,6 +1378,22 @@
         "max_prob_diff": 0.0,
         "max_cov_diff": 0.0,
         "max_se_diff": 0.0,
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.6277131014503539,
+        "estimate_s": 0.33848644280806184,
+        "covariance_s": 0.289226658642292,
+        "loglike": -2800.761902224535,
+        "ll_diff": -4.547473508864641e-13,
+        "max_param_diff": 7.877032359715486e-13,
+        "max_prob_diff": 3.4891534106407107e-13,
+        "max_cov_diff": 3.2506549535460394e-15,
+        "max_se_diff": 3.8739844665514056e-14,
+        "worse_loglike": false,
         "message": ""
       },
       {
@@ -1250,7 +1408,8 @@
         "max_prob_diff": 0.0002690445912909567,
         "max_cov_diff": 2.515873737053871e-06,
         "max_se_diff": 1.9954251098880382e-05,
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -1264,7 +1423,8 @@
         "max_prob_diff": 1.8141029196061531e-06,
         "max_cov_diff": 5.336455626133926e-09,
         "max_se_diff": 6.360428995294543e-08,
-        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)"
+        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)",
+        "worse_loglike": false
       }
     ],
     "generated": {
@@ -1378,6 +1538,22 @@
         "max_prob_diff": 0.0,
         "max_cov_diff": 0.0,
         "max_se_diff": 0.0,
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.3819442759267986,
+        "estimate_s": 0.2600526991300285,
+        "covariance_s": 0.1218915767967701,
+        "loglike": -13254.368622904036,
+        "ll_diff": -3.637978807091713e-12,
+        "max_param_diff": 2.0650148258027912e-14,
+        "max_prob_diff": 1.3489209749195652e-14,
+        "max_cov_diff": 2.667137344314341e-17,
+        "max_se_diff": 5.169475958410885e-16,
+        "worse_loglike": false,
         "message": ""
       },
       {
@@ -1392,7 +1568,8 @@
         "max_prob_diff": 6.891058659036498e-05,
         "max_cov_diff": 1.4468118992249333e-07,
         "max_se_diff": 2.217052484911053e-06,
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -1406,7 +1583,8 @@
         "max_prob_diff": 2.4210876403696346e-07,
         "max_cov_diff": 2.7001217873991873e-10,
         "max_se_diff": 4.3607503372178336e-09,
-        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)"
+        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)",
+        "worse_loglike": false
       }
     ],
     "generated": {
@@ -1520,6 +1698,22 @@
         "max_prob_diff": 0.0,
         "max_cov_diff": 0.0,
         "max_se_diff": 0.0,
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.3599309269338846,
+        "estimate_s": 0.23789221700280905,
+        "covariance_s": 0.12203870993107557,
+        "loglike": -5900.363307272621,
+        "ll_diff": -5.4569682106375694e-12,
+        "max_param_diff": 5.161426841482353e-13,
+        "max_prob_diff": 1.7114087924596788e-13,
+        "max_cov_diff": 2.0213865303819745e-15,
+        "max_se_diff": 3.399364123524151e-14,
+        "worse_loglike": false,
         "message": ""
       },
       {
@@ -1534,7 +1728,8 @@
         "max_prob_diff": 0.0001888825481829448,
         "max_cov_diff": 4.730059655804267e-07,
         "max_se_diff": 5.235210173128169e-06,
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -1548,7 +1743,8 @@
         "max_prob_diff": 1.2136468058310257e-07,
         "max_cov_diff": 2.735254121723901e-10,
         "max_se_diff": 4.599666366539301e-09,
-        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)"
+        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)",
+        "worse_loglike": false
       }
     ],
     "generated": {
@@ -1662,6 +1858,22 @@
         "max_prob_diff": 0.0,
         "max_cov_diff": 0.0,
         "max_se_diff": 0.0,
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.36232594260945916,
+        "estimate_s": 0.23923045257106423,
+        "covariance_s": 0.12309549003839493,
+        "loglike": -4450.704993629478,
+        "ll_diff": -1.8189894035458565e-12,
+        "max_param_diff": 2.5701663020072374e-13,
+        "max_prob_diff": 8.862355294070312e-14,
+        "max_cov_diff": 2.5270584236292137e-15,
+        "max_se_diff": 3.562428130265971e-14,
+        "worse_loglike": false,
         "message": ""
       },
       {
@@ -1676,7 +1888,8 @@
         "max_prob_diff": 0.0004304603671859142,
         "max_cov_diff": 2.8738419681970107e-06,
         "max_se_diff": 1.2056023290740736e-05,
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -1690,7 +1903,8 @@
         "max_prob_diff": 1.2563354659933523e-06,
         "max_cov_diff": 1.5893930319435534e-08,
         "max_se_diff": 1.2641370827903842e-07,
-        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)"
+        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)",
+        "worse_loglike": false
       }
     ],
     "generated": {
@@ -1814,6 +2028,22 @@
         "max_prob_diff": 0.0,
         "max_cov_diff": 0.0,
         "max_se_diff": 0.0,
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 1.1911707292310894,
+        "estimate_s": 0.8059544833377004,
+        "covariance_s": 0.385216245893389,
+        "loglike": -18348.167076396945,
+        "ll_diff": 0.0,
+        "max_param_diff": 3.2085445411667024e-14,
+        "max_prob_diff": 1.7208456881689926e-14,
+        "max_cov_diff": 6.231451986360437e-17,
+        "max_se_diff": 2.579533808777512e-15,
+        "worse_loglike": false,
         "message": ""
       },
       {
@@ -1842,7 +2072,8 @@
         "max_prob_diff": 1.504965931875546e-07,
         "max_cov_diff": 1.3693250699997606e-10,
         "max_se_diff": 1.994520890460927e-09,
-        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)"
+        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)",
+        "worse_loglike": false
       }
     ],
     "generated": {
@@ -1976,6 +2207,22 @@
         "max_prob_diff": 0.0,
         "max_cov_diff": 0.0,
         "max_se_diff": 0.0,
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 6.101645692251623,
+        "estimate_s": 4.142227252945304,
+        "covariance_s": 1.9594184393063188,
+        "loglike": -21811.528132305328,
+        "ll_diff": -2.9103830456733704e-11,
+        "max_param_diff": 1.855737785660949e-12,
+        "max_prob_diff": 2.1695423235712497e-12,
+        "max_cov_diff": 1.0482066603589857e-15,
+        "max_se_diff": 1.226796442210798e-14,
+        "worse_loglike": false,
         "message": ""
       },
       {
@@ -2004,7 +2251,8 @@
         "max_prob_diff": 6.209109494892395e-07,
         "max_cov_diff": 3.6631676858522866e-10,
         "max_se_diff": 4.869423114728377e-09,
-        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)"
+        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)",
+        "worse_loglike": false
       }
     ],
     "generated": {
@@ -2148,6 +2396,22 @@
         "max_prob_diff": 0.0,
         "max_cov_diff": 0.0,
         "max_se_diff": 0.0,
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 13.057684171479195,
+        "estimate_s": 8.578242013696581,
+        "covariance_s": 4.479442157782614,
+        "loglike": -23845.606379882047,
+        "ll_diff": 5.820766091346741e-11,
+        "max_param_diff": 5.151901127931069e-11,
+        "max_prob_diff": 3.26396687455599e-11,
+        "max_cov_diff": 3.136336676479168e-14,
+        "max_se_diff": 3.3870822813142354e-13,
+        "worse_loglike": false,
         "message": ""
       },
       {
@@ -2176,7 +2440,8 @@
         "max_prob_diff": 3.404469760548423e-07,
         "max_cov_diff": 4.920019595726355e-10,
         "max_se_diff": 5.496549312922205e-09,
-        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)"
+        "message": "apollo_version=0.3.8; convergence_status=4; convergence_message=Relative function convergence (favorable)",
+        "worse_loglike": false
       }
     ],
     "generated": {

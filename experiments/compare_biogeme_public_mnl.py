@@ -23,6 +23,7 @@ from mnl_generic_backends import (
     run_scipy_mle,
     run_xlogit_generic,
 )
+from torch_choice_backend import run_mnl as run_torch_choice_mnl
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -278,7 +279,14 @@ def run_torch(case: CaseSpec) -> BackendResult:
     model = MultinomialLogit(case.spec)
     data = case.data.to(device=model.device, dtype=model.dtype)
     compiled = model.compile(data)
-    params = torch.as_tensor([case.initial_values[name] for name in compiled.free_names], dtype=torch.float64).requires_grad_(True)
+    initial = torch.as_tensor(
+        [case.initial_values[name] for name in compiled.free_names],
+        dtype=torch.float64,
+    )
+    # Warm up the tensor and autograd path before timing, as in Torch-Choice.
+    warmup = initial.clone().requires_grad_(True)
+    (-model.loglike(warmup, data, compiled)).backward()
+    params = initial.clone().requires_grad_(True)
     optimizer = torch.optim.LBFGS(
         [params],
         max_iter=model.max_iter,
@@ -444,6 +452,10 @@ def run_scipy(case: CaseSpec):
     return run_scipy_mle(case.data, case.spec, case.initial_values, target_names=case.parameter_names)
 
 
+def run_torch_choice(case: CaseSpec):
+    return run_torch_choice_mnl(case.data, case.spec, case.initial_values, max_iter=500)
+
+
 def run_mlogit(case: CaseSpec):
     return run_mlogit_generic(make_case_design_long(case), case.parameter_names)
 
@@ -586,7 +598,7 @@ def print_payload(payload: dict) -> None:
     print("alignment:")
     print("  benchmark_mode: full_estimation")
     print(f"  data_source: {payload['source']}")
-    print("  initial_values: zeros shared across TorchDCM, SciPy, Biogeme, Apollo, mlogit, gmnl, and xlogit")
+    print("  initial_values: zeros shared across all estimators")
     print("  covariance: classic inverse observed information / Rao-Cramer")
     print("  reference: torchdcm")
     print()
@@ -622,6 +634,7 @@ def main() -> None:
     case = CASE_BUILDERS[args.case](args.n_obs)
     results = [
         run_torch(case),
+        run_torch_choice(case),
         run_scipy(case),
         run_biogeme(case),
         run_apollo(case),

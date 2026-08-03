@@ -17,6 +17,7 @@ import torch
 from benchmark_runtime import estimation_covariance_total
 from torchdcm import Beta, ChoiceDataset, MultinomialLogit, UtilitySpec
 from mnl_generic_backends import run_gmnl_generic, run_scipy_mle, run_xlogit_generic
+from torch_choice_backend import run_mnl as run_torch_choice_mnl
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -103,7 +104,11 @@ def run_torch(df: pd.DataFrame, variables: list[str], max_iter: int) -> dict:
     model = MultinomialLogit(spec, max_iter=max_iter)
     data = data.to(device=model.device, dtype=model.dtype)
     compiled = model.compile(data)
-    params = torch.zeros(len(compiled.free_names), dtype=torch.float64, requires_grad=True)
+    initial = torch.zeros(len(compiled.free_names), dtype=torch.float64)
+    # Match Torch-Choice by excluding one-time tensor/autograd initialization.
+    warmup = initial.clone().requires_grad_(True)
+    (-model.loglike(warmup, data, compiled)).backward()
+    params = initial.clone().requires_grad_(True)
     optimizer = torch.optim.LBFGS(
         [params],
         max_iter=max_iter,
@@ -122,12 +127,18 @@ def run_torch(df: pd.DataFrame, variables: list[str], max_iter: int) -> dict:
     estimate_s = time.perf_counter() - estimate_start
     final = params.detach().clone()
     loglike = float(model.loglike(final, data, compiled).detach().cpu())
+    covariance_start = time.perf_counter()
+    hessian = torch.autograd.functional.hessian(
+        lambda p: model.loglike(p, data, compiled), final
+    )
+    torch.linalg.pinv(-hessian.detach(), hermitian=True)
+    covariance_s = time.perf_counter() - covariance_start
     return {
         "backend": "torchdcm",
         "available": True,
-        "total_seconds": estimate_s,
+        "total_seconds": estimate_s + covariance_s,
         "estimate_seconds": estimate_s,
-        "covariance_seconds": 0.0,
+        "covariance_seconds": covariance_s,
         "loglike": loglike,
         "n_obs": data.n_obs,
         "n_rows": data.n_rows,
@@ -416,6 +427,14 @@ def benchmark_dataset(dataset: str, max_iter: int) -> dict:
     data, spec, _ = make_torch_case(df, variables, max_iter=max_iter)
     parameter_names = [f"B_{variable.upper()}" for variable in variables]
     scipy_result = run_scipy_mle(data, spec, {name: 0.0 for name in parameter_names}, target_names=parameter_names)
+    torch_choice_result = result_to_dict(
+        run_torch_choice_mnl(
+            data,
+            spec,
+            {name: 0.0 for name in parameter_names},
+            max_iter=max_iter,
+        )
+    )
     long_design, design_parameters = make_design_long(df, variables)
     biogeme_result = run_biogeme(df, variables)
     apollo_result = run_apollo(df, variables)
@@ -433,6 +452,7 @@ def benchmark_dataset(dataset: str, max_iter: int) -> dict:
         else None
     )
     result["torchdcm"] = torch_result
+    result["torch_choice"] = torch_choice_result
     result["scipy_bfgs"] = result_to_dict(scipy_result)
     result["biogeme"] = biogeme_result
     result["apollo"] = apollo_result
@@ -447,9 +467,13 @@ def benchmark_dataset(dataset: str, max_iter: int) -> dict:
     biogeme_consistent = not biogeme_result.get("available") or (biogeme_ll_diff is not None and abs(biogeme_ll_diff) <= 1e-4)
     apollo_consistent = not apollo_result.get("available") or (apollo_ll_diff is not None and abs(apollo_ll_diff) <= 1e-4)
     scipy_consistent = abs(torch_result["loglike"] - float(scipy_result.loglike)) <= 1e-4
+    torch_choice_consistent = (
+        not torch_choice_result.get("available")
+        or abs(torch_result["loglike"] - float(torch_choice_result["loglike"])) <= 1e-4
+    )
     gmnl_consistent = not gmnl_result.get("available") or abs(torch_result["loglike"] - float(gmnl_result["loglike"])) <= 1e-4
     xlogit_consistent = not xlogit_result.get("available") or abs(torch_result["loglike"] - float(xlogit_result["loglike"])) <= 1e-4
-    result["consistent"] = "Yes" if abs(ll_diff) <= 1e-4 and scipy_consistent and biogeme_consistent and apollo_consistent and gmnl_consistent and xlogit_consistent else "No"
+    result["consistent"] = "Yes" if abs(ll_diff) <= 1e-4 and torch_choice_consistent and scipy_consistent and biogeme_consistent and apollo_consistent and gmnl_consistent and xlogit_consistent else "No"
     result["status"] = "ok"
     return result
 

@@ -24,6 +24,7 @@ from mnl_generic_backends import (
     run_scipy_mle,
     run_xlogit_generic,
 )
+from torch_choice_backend import run_mnl as run_torch_choice_mnl
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -170,10 +171,15 @@ def make_nhts_2022_case(n_obs: int | None = None) -> BenchmarkCase:
 
 
 def run_torch(case: BenchmarkCase, max_iter: int) -> BackendResult:
-    model = MultinomialLogit(case.spec, max_iter=max_iter, tolerance_grad=1e-9)
+    model = MultinomialLogit(case.spec, max_iter=max_iter, tolerance_grad=1e-7)
     data = case.data.to(device=model.device, dtype=model.dtype)
     compiled = model.compile(data)
-    params = compiled.free_initial.clone().detach().requires_grad_(True)
+    initial = compiled.free_initial.clone().detach()
+    # Exclude the same one-time forward/backward initialization excluded from
+    # the Torch-Choice runtime.
+    warmup = initial.clone().requires_grad_(True)
+    (-model.loglike(warmup, data, compiled)).backward()
+    params = initial.clone().requires_grad_(True)
     optimizer = torch.optim.LBFGS(
         [params],
         max_iter=model.max_iter,
@@ -331,6 +337,10 @@ def run_scipy(case: BenchmarkCase):
     return run_scipy_mle(case.data, case.spec, case.initial_values, target_names=case.parameter_names, maxiter=500)
 
 
+def run_torch_choice(case: BenchmarkCase, max_iter: int):
+    return run_torch_choice_mnl(case.data, case.spec, case.initial_values, max_iter=max_iter)
+
+
 def run_mlogit(case: BenchmarkCase):
     return run_mlogit_generic(make_case_design_long(case), case.parameter_names)
 
@@ -482,7 +492,7 @@ def print_payload(payload: dict) -> None:
     print(f"  data_source: {payload['source']}")
     print("  choice_set: AUTO, WALK, BIKE, TRANSIT, OTHER from NHTS TRIPMODE")
     print("  features: alternative-specific coefficients on standardized trip/person/household covariates")
-    print("  initial_values: zeros shared across TorchDCM, SciPy, Biogeme, Apollo, mlogit, gmnl, and xlogit")
+    print("  initial_values: zeros shared across all estimators")
     print("  covariance: classic inverse observed information / Rao-Cramer")
     print("  reference: torchdcm")
     print()
@@ -518,6 +528,7 @@ def main() -> None:
     case = make_nhts_2022_case(args.n_obs)
     results = [
         run_torch(case, args.max_iter),
+        run_torch_choice(case, args.max_iter),
         run_scipy(case),
         run_biogeme(case),
         run_apollo(case),

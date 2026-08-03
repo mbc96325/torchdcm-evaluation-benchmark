@@ -82,7 +82,28 @@
           0.005401320871897042,
           0.005425241077318788
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.006350873038172722,
+        "estimate_s": 0.005040219984948635,
+        "covariance_s": 0.0013106530532240868,
+        "loglike": -608.8233770496952,
+        "ll_diff": -1.1368683772161603e-13,
+        "max_param_diff": 4.440892098500626e-16,
+        "max_prob_diff": 5.551115123125783e-16,
+        "max_cov_diff": 5.377642775528102e-17,
+        "max_se_diff": 1.942890293094024e-16,
+        "worse_loglike": false,
+        "message": "",
+        "runtime_repeats_s": [
+          0.006940068211406469,
+          0.006350873038172722,
+          0.006298641208559275
+        ]
       },
       {
         "backend": "scipy_bfgs",
@@ -103,7 +124,8 @@
           0.7611561979865655,
           0.7589850560761988
         ],
-        "message": "Desired error not necessarily achieved due to precision loss."
+        "message": "Desired error not necessarily achieved due to precision loss.",
+        "worse_loglike": false
       },
       {
         "backend": "biogeme",
@@ -124,7 +146,8 @@
           2.2307952059200034,
           2.2345626639435068
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -145,7 +168,8 @@
           0.356,
           0.353
         ],
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "worse_loglike": false
       },
       {
         "backend": "mlogit",
@@ -166,7 +190,8 @@
           0.03200000000000003,
           0.03300000000000003
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "gmnl",
@@ -187,7 +212,8 @@
           0.11699999999999994,
           0.12099999999999994
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "xlogit",
@@ -208,7 +234,8 @@
           0.009704191004857421,
           0.00960687198676169
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       }
     ],
     "true_parameters": {
@@ -309,7 +336,28 @@
           0.014909425983205438,
           0.01606466993689537
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.02775629423558712,
+        "estimate_s": 0.020930657163262367,
+        "covariance_s": 0.006825637072324753,
+        "loglike": -6046.3452992239545,
+        "ll_diff": 1.8189894035458565e-12,
+        "max_param_diff": 2.7755575615628914e-16,
+        "max_prob_diff": 6.661338147750939e-16,
+        "max_cov_diff": 5.421010862427522e-18,
+        "max_se_diff": 8.326672684688674e-17,
+        "worse_loglike": false,
+        "message": "",
+        "runtime_repeats_s": [
+          0.02826036000624299,
+          0.02775629423558712,
+          0.027559543028473854
+        ]
       },
       {
         "backend": "scipy_bfgs",
@@ -330,7 +378,8 @@
           8.9612254970707,
           8.953987503889948
         ],
-        "message": "Desired error not necessarily achieved due to precision loss."
+        "message": "Desired error not necessarily achieved due to precision loss.",
+        "worse_loglike": false
       },
       {
         "backend": "biogeme",
@@ -351,7 +400,8 @@
           2.220237049041316,
           2.213913065032102
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -372,7 +422,8 @@
           1.0299999999999998,
           1.029
         ],
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "worse_loglike": false
       },
       {
         "backend": "mlogit",
@@ -393,7 +444,8 @@
           0.3340000000000001,
           0.3320000000000001
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "gmnl",
@@ -414,7 +466,8 @@
           1.7890000000000001,
           1.851
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "xlogit",
@@ -435,7 +488,8 @@
           0.07397974201012403,
           0.07273878890555352
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       }
     ],
     "true_parameters": {
@@ -536,7 +590,28 @@
           0.10698301601223648,
           0.10646431497298181
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.22927008103579283,
+        "estimate_s": 0.16965222591534257,
+        "covariance_s": 0.05961785512045026,
+        "loglike": -60967.298491479276,
+        "ll_diff": -1.4551915228366852e-11,
+        "max_param_diff": 2.220446049250313e-16,
+        "max_prob_diff": 6.661338147750939e-16,
+        "max_cov_diff": 3.876022766635678e-18,
+        "max_se_diff": 1.5092094240998222e-16,
+        "worse_loglike": false,
+        "message": "",
+        "runtime_repeats_s": [
+          0.23056025570258498,
+          0.22891787439584732,
+          0.22927008103579283
+        ]
       },
       {
         "backend": "scipy_bfgs",
@@ -557,7 +632,8 @@
           106.26102597697172,
           106.15404627693351
         ],
-        "message": "Desired error not necessarily achieved due to precision loss."
+        "message": "Desired error not necessarily achieved due to precision loss.",
+        "worse_loglike": false
       },
       {
         "backend": "biogeme",
@@ -578,7 +654,8 @@
           3.517306950991042,
           3.5204453179612756
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -599,7 +676,8 @@
           20.819,
           20.558999999999997
         ],
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "worse_loglike": false
       },
       {
         "backend": "mlogit",
@@ -620,7 +698,8 @@
           2.8219999999999996,
           2.8049999999999997
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "gmnl",
@@ -641,7 +720,8 @@
           13.466,
           13.346
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "xlogit",
@@ -662,7 +742,8 @@
           0.7335449890233576,
           0.735305741080083
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       }
     ],
     "true_parameters": {
@@ -760,7 +841,28 @@
         "runtime_repeats_s": [
           0.02446232200600207
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.035741647239774466,
+        "estimate_s": 0.026188177056610584,
+        "covariance_s": 0.009553470183163881,
+        "loglike": -9737.839836267882,
+        "ll_diff": 0.0,
+        "max_param_diff": 1.1102230246251565e-16,
+        "max_prob_diff": 6.661338147750939e-16,
+        "max_cov_diff": 3.3610267347050637e-18,
+        "max_se_diff": 6.245004513516506e-17,
+        "worse_loglike": false,
+        "message": "",
+        "runtime_repeats_s": [
+          0.036611618008464575,
+          0.035741647239774466,
+          0.03548320150002837
+        ]
       },
       {
         "backend": "scipy_bfgs",
@@ -779,7 +881,8 @@
         "runtime_repeats_s": [
           23.97076318215113
         ],
-        "message": "Desired error not necessarily achieved due to precision loss."
+        "message": "Desired error not necessarily achieved due to precision loss.",
+        "worse_loglike": false
       },
       {
         "backend": "biogeme",
@@ -798,7 +901,8 @@
         "runtime_repeats_s": [
           1.761776068015024
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -817,7 +921,8 @@
         "runtime_repeats_s": [
           1.855
         ],
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "worse_loglike": false
       },
       {
         "backend": "mlogit",
@@ -836,7 +941,8 @@
         "runtime_repeats_s": [
           0.4949999999999999
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "gmnl",
@@ -855,7 +961,8 @@
         "runtime_repeats_s": [
           2.039
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "xlogit",
@@ -874,7 +981,8 @@
         "runtime_repeats_s": [
           0.09775203699246049
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       }
     ],
     "true_parameters": {
@@ -978,7 +1086,28 @@
         "runtime_repeats_s": [
           0.08558070904109627
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.22298689000308514,
+        "estimate_s": 0.16766036907210946,
+        "covariance_s": 0.055326520930975676,
+        "loglike": -20860.252427214207,
+        "ll_diff": 7.275957614183426e-12,
+        "max_param_diff": 1.6653345369377348e-15,
+        "max_prob_diff": 2.55351295663786e-15,
+        "max_cov_diff": 4.466912950640278e-17,
+        "max_se_diff": 5.48172618408671e-16,
+        "worse_loglike": false,
+        "message": "",
+        "runtime_repeats_s": [
+          0.2240432328544557,
+          0.2214835244230926,
+          0.22298689000308514
+        ]
       },
       {
         "backend": "scipy_bfgs",
@@ -997,7 +1126,8 @@
         "runtime_repeats_s": [
           25.728929090080783
         ],
-        "message": "Desired error not necessarily achieved due to precision loss."
+        "message": "Desired error not necessarily achieved due to precision loss.",
+        "worse_loglike": false
       },
       {
         "backend": "biogeme",
@@ -1016,7 +1146,8 @@
         "runtime_repeats_s": [
           6.883427441003732
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -1035,7 +1166,8 @@
         "runtime_repeats_s": [
           5.965
         ],
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "worse_loglike": false
       },
       {
         "backend": "mlogit",
@@ -1054,7 +1186,8 @@
         "runtime_repeats_s": [
           1.6239999999999999
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "gmnl",
@@ -1073,7 +1206,8 @@
         "runtime_repeats_s": [
           17.134
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "xlogit",
@@ -1092,7 +1226,8 @@
         "runtime_repeats_s": [
           0.721609246917069
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       }
     ],
     "true_parameters": {
@@ -1213,7 +1348,28 @@
         "runtime_repeats_s": [
           0.3372334089362994
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 2.6333919502794743,
+        "estimate_s": 1.8637123294174671,
+        "covariance_s": 0.7696796208620071,
+        "loglike": -27835.174509003034,
+        "ll_diff": 2.1827872842550278e-11,
+        "max_param_diff": 1.1611683836676434e-12,
+        "max_prob_diff": 4.722888746755416e-13,
+        "max_cov_diff": 1.4211722076939992e-15,
+        "max_se_diff": 1.2490009027033011e-14,
+        "worse_loglike": false,
+        "message": "",
+        "runtime_repeats_s": [
+          2.628486114088446,
+          2.6333919502794743,
+          2.6351586948148906
+        ]
       },
       {
         "backend": "scipy_bfgs",
@@ -1232,7 +1388,8 @@
         "runtime_repeats_s": [
           21.92275854095351
         ],
-        "message": "Desired error not necessarily achieved due to precision loss."
+        "message": "Desired error not necessarily achieved due to precision loss.",
+        "worse_loglike": false
       },
       {
         "backend": "biogeme",
@@ -1251,7 +1408,8 @@
         "runtime_repeats_s": [
           22.980164898908697
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -1270,7 +1428,8 @@
         "runtime_repeats_s": [
           23.805000000000003
         ],
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "worse_loglike": false
       },
       {
         "backend": "mlogit",
@@ -1289,7 +1448,8 @@
         "runtime_repeats_s": [
           3.415
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "gmnl",
@@ -1308,7 +1468,8 @@
         "runtime_repeats_s": [
           78.99300000000001
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "xlogit",
@@ -1327,7 +1488,8 @@
         "runtime_repeats_s": [
           4.060368690057658
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       }
     ],
     "true_parameters": {
@@ -1441,7 +1603,28 @@
         "runtime_repeats_s": [
           0.02864998602308333
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.05762757360935211,
+        "estimate_s": 0.044769066385924816,
+        "covariance_s": 0.012858507223427296,
+        "loglike": -18328.433974536416,
+        "ll_diff": -3.637978807091713e-12,
+        "max_param_diff": 6.661338147750939e-16,
+        "max_prob_diff": 7.216449660063518e-16,
+        "max_cov_diff": 6.830473686658678e-18,
+        "max_se_diff": 1.231653667943533e-16,
+        "worse_loglike": false,
+        "message": "",
+        "runtime_repeats_s": [
+          0.059165510814636946,
+          0.05762757360935211,
+          0.05727191176265478
+        ]
       },
       {
         "backend": "scipy_bfgs",
@@ -1460,7 +1643,8 @@
         "runtime_repeats_s": [
           10.721694299019873
         ],
-        "message": "Desired error not necessarily achieved due to precision loss."
+        "message": "Desired error not necessarily achieved due to precision loss.",
+        "worse_loglike": false
       },
       {
         "backend": "biogeme",
@@ -1479,7 +1663,8 @@
         "runtime_repeats_s": [
           2.060470530996099
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -1498,7 +1683,8 @@
         "runtime_repeats_s": [
           1.914
         ],
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "worse_loglike": false
       },
       {
         "backend": "mlogit",
@@ -1517,7 +1703,8 @@
         "runtime_repeats_s": [
           0.7679999999999999
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "gmnl",
@@ -1536,7 +1723,8 @@
         "runtime_repeats_s": [
           3.018
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "xlogit",
@@ -1555,7 +1743,8 @@
         "runtime_repeats_s": [
           0.13739106990396976
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       }
     ],
     "true_parameters": {
@@ -1660,7 +1849,28 @@
         "runtime_repeats_s": [
           0.04370085010305047
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.08524555945768952,
+        "estimate_s": 0.05899630533531308,
+        "covariance_s": 0.026249254122376442,
+        "loglike": -8083.607854015169,
+        "ll_diff": 2.7284841053187847e-12,
+        "max_param_diff": 1.1102230246251565e-16,
+        "max_prob_diff": 9.43689570931383e-16,
+        "max_cov_diff": 1.5612511283791264e-17,
+        "max_se_diff": 1.97758476261356e-16,
+        "worse_loglike": false,
+        "message": "",
+        "runtime_repeats_s": [
+          0.08693011943250895,
+          0.08465389488264918,
+          0.08524555945768952
+        ]
       },
       {
         "backend": "scipy_bfgs",
@@ -1679,7 +1889,8 @@
         "runtime_repeats_s": [
           32.48290972097311
         ],
-        "message": "Desired error not necessarily achieved due to precision loss."
+        "message": "Desired error not necessarily achieved due to precision loss.",
+        "worse_loglike": false
       },
       {
         "backend": "biogeme",
@@ -1698,7 +1909,8 @@
         "runtime_repeats_s": [
           5.903899102006108
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -1717,7 +1929,8 @@
         "runtime_repeats_s": [
           5.163
         ],
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "worse_loglike": false
       },
       {
         "backend": "mlogit",
@@ -1736,7 +1949,8 @@
         "runtime_repeats_s": [
           0.9440000000000002
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "gmnl",
@@ -1755,7 +1969,8 @@
         "runtime_repeats_s": [
           14.772
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "xlogit",
@@ -1774,7 +1989,8 @@
         "runtime_repeats_s": [
           0.45954913191962987
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       }
     ],
     "true_parameters": {
@@ -1907,7 +2123,28 @@
         "runtime_repeats_s": [
           0.08739736210554838
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.192764971870929,
+        "estimate_s": 0.11081513110548258,
+        "covariance_s": 0.08194984076544642,
+        "loglike": -3148.840500632012,
+        "ll_diff": 2.2737367544323206e-12,
+        "max_param_diff": 5.329070518200751e-15,
+        "max_prob_diff": 3.6637359812630166e-15,
+        "max_cov_diff": 1.3877787807814457e-16,
+        "max_se_diff": 2.0261570199409107e-15,
+        "worse_loglike": false,
+        "message": "",
+        "runtime_repeats_s": [
+          0.1962955053895712,
+          0.192764971870929,
+          0.19250328512862325
+        ]
       },
       {
         "backend": "scipy_bfgs",
@@ -1926,7 +2163,8 @@
         "runtime_repeats_s": [
           40.246259485022165
         ],
-        "message": "Desired error not necessarily achieved due to precision loss."
+        "message": "Desired error not necessarily achieved due to precision loss.",
+        "worse_loglike": false
       },
       {
         "backend": "biogeme",
@@ -1945,7 +2183,8 @@
         "runtime_repeats_s": [
           41.28197701496538
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -1964,7 +2203,8 @@
         "runtime_repeats_s": [
           27.003999999999998
         ],
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "worse_loglike": false
       },
       {
         "backend": "mlogit",
@@ -1983,7 +2223,8 @@
         "runtime_repeats_s": [
           1.5630000000000002
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "gmnl",
@@ -2002,7 +2243,8 @@
         "runtime_repeats_s": [
           80.933
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "xlogit",
@@ -2021,7 +2263,8 @@
         "runtime_repeats_s": [
           2.880107454955578
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       }
     ],
     "true_parameters": {
@@ -2154,7 +2397,28 @@
         "runtime_repeats_s": [
           0.04345260898116976
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.08586044423282146,
+        "estimate_s": 0.059674051124602556,
+        "covariance_s": 0.02618639310821891,
+        "loglike": -15071.1830225608,
+        "ll_diff": -3.637978807091713e-12,
+        "max_param_diff": 1.1102230246251565e-16,
+        "max_prob_diff": 6.661338147750939e-16,
+        "max_cov_diff": 1.6046192152785466e-17,
+        "max_se_diff": 2.6020852139652106e-16,
+        "worse_loglike": false,
+        "message": "",
+        "runtime_repeats_s": [
+          0.08661032887175679,
+          0.0853924099355936,
+          0.08586044423282146
+        ]
       },
       {
         "backend": "scipy_bfgs",
@@ -2173,7 +2437,8 @@
         "runtime_repeats_s": [
           27.920283823041245
         ],
-        "message": "Desired error not necessarily achieved due to precision loss."
+        "message": "Desired error not necessarily achieved due to precision loss.",
+        "worse_loglike": false
       },
       {
         "backend": "biogeme",
@@ -2192,7 +2457,8 @@
         "runtime_repeats_s": [
           5.418467245064676
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -2211,7 +2477,8 @@
         "runtime_repeats_s": [
           4.808
         ],
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "worse_loglike": false
       },
       {
         "backend": "mlogit",
@@ -2230,7 +2497,8 @@
         "runtime_repeats_s": [
           0.923
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "gmnl",
@@ -2249,7 +2517,8 @@
         "runtime_repeats_s": [
           11.751
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "xlogit",
@@ -2268,7 +2537,8 @@
         "runtime_repeats_s": [
           0.45549554703757167
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       }
     ],
     "true_parameters": {
@@ -2381,7 +2651,28 @@
         "runtime_repeats_s": [
           0.04113672813400626
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.07979777129366994,
+        "estimate_s": 0.053733401000499725,
+        "covariance_s": 0.026064370293170214,
+        "loglike": -6656.032015309039,
+        "ll_diff": -7.275957614183426e-12,
+        "max_param_diff": 4.718447854656915e-16,
+        "max_prob_diff": 9.992007221626409e-16,
+        "max_cov_diff": 3.252606517456513e-17,
+        "max_se_diff": 3.5388358909926865e-16,
+        "worse_loglike": false,
+        "message": "",
+        "runtime_repeats_s": [
+          0.08153101988136768,
+          0.07979777129366994,
+          0.07976068696007133
+        ]
       },
       {
         "backend": "scipy_bfgs",
@@ -2400,7 +2691,8 @@
         "runtime_repeats_s": [
           44.12720703193918
         ],
-        "message": "Desired error not necessarily achieved due to precision loss."
+        "message": "Desired error not necessarily achieved due to precision loss.",
+        "worse_loglike": false
       },
       {
         "backend": "biogeme",
@@ -2419,7 +2711,8 @@
         "runtime_repeats_s": [
           5.880293476046063
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -2438,7 +2731,8 @@
         "runtime_repeats_s": [
           5.140000000000001
         ],
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "worse_loglike": false
       },
       {
         "backend": "mlogit",
@@ -2457,7 +2751,8 @@
         "runtime_repeats_s": [
           1.0230000000000001
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "gmnl",
@@ -2476,7 +2771,8 @@
         "runtime_repeats_s": [
           14.411999999999999
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "xlogit",
@@ -2495,7 +2791,8 @@
         "runtime_repeats_s": [
           0.4784909139852971
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       }
     ],
     "true_parameters": {
@@ -2608,7 +2905,28 @@
         "runtime_repeats_s": [
           0.052915936103090644
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.10567387379705906,
+        "estimate_s": 0.07931307563558221,
+        "covariance_s": 0.02636079816147685,
+        "loglike": -5038.165750076265,
+        "ll_diff": -2.7284841053187847e-12,
+        "max_param_diff": 1.4432899320127035e-15,
+        "max_prob_diff": 1.6653345369377348e-15,
+        "max_cov_diff": 4.132978681514743e-16,
+        "max_se_diff": 1.2490009027033011e-15,
+        "worse_loglike": false,
+        "message": "",
+        "runtime_repeats_s": [
+          0.1068302383646369,
+          0.10567387379705906,
+          0.10499270493164659
+        ]
       },
       {
         "backend": "scipy_bfgs",
@@ -2627,7 +2945,8 @@
         "runtime_repeats_s": [
           20.54484800202772
         ],
-        "message": "Desired error not necessarily achieved due to precision loss."
+        "message": "Desired error not necessarily achieved due to precision loss.",
+        "worse_loglike": false
       },
       {
         "backend": "biogeme",
@@ -2646,7 +2965,8 @@
         "runtime_repeats_s": [
           6.108501699985936
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -2665,7 +2985,8 @@
         "runtime_repeats_s": [
           4.897
         ],
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "worse_loglike": false
       },
       {
         "backend": "mlogit",
@@ -2684,7 +3005,8 @@
         "runtime_repeats_s": [
           1.0300000000000002
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "gmnl",
@@ -2703,7 +3025,8 @@
         "runtime_repeats_s": [
           15.981
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "xlogit",
@@ -2722,7 +3045,8 @@
         "runtime_repeats_s": [
           0.4739147670334205
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       }
     ],
     "true_parameters": {
@@ -2850,7 +3174,28 @@
         "runtime_repeats_s": [
           0.722865954041481
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 5.589316003490239,
+        "estimate_s": 3.5683487406931818,
+        "covariance_s": 2.0209672627970576,
+        "loglike": -18020.21937823455,
+        "ll_diff": 1.0913936421275139e-11,
+        "max_param_diff": 7.469719287556131e-14,
+        "max_prob_diff": 5.262457136723242e-14,
+        "max_cov_diff": 5.967448757360216e-16,
+        "max_se_diff": 4.621303340002214e-15,
+        "worse_loglike": false,
+        "message": "",
+        "runtime_repeats_s": [
+          5.589316003490239,
+          5.607081126887351,
+          5.583140437956899
+        ]
       },
       {
         "backend": "scipy_bfgs",
@@ -2869,7 +3214,8 @@
         "runtime_repeats_s": [
           43.010303174029104
         ],
-        "message": "Desired error not necessarily achieved due to precision loss."
+        "message": "Desired error not necessarily achieved due to precision loss.",
+        "worse_loglike": false
       },
       {
         "backend": "biogeme",
@@ -2888,7 +3234,8 @@
         "runtime_repeats_s": [
           75.34653220197652
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "apollo",
@@ -2907,7 +3254,8 @@
         "runtime_repeats_s": [
           61.989
         ],
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "worse_loglike": false
       },
       {
         "backend": "mlogit",
@@ -2926,7 +3274,8 @@
         "runtime_repeats_s": [
           6.013
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "gmnl",
@@ -2945,7 +3294,8 @@
         "runtime_repeats_s": [
           201.058
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "xlogit",
@@ -2964,7 +3314,8 @@
         "runtime_repeats_s": [
           10.693977398099378
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       }
     ],
     "true_parameters": {
@@ -3119,7 +3470,28 @@
         "runtime_repeats_s": [
           2.479545365087688
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 17.085197397042066,
+        "estimate_s": 10.01282219029963,
+        "covariance_s": 7.072375206742436,
+        "loglike": -19158.100508799755,
+        "ll_diff": -3.637978807091713e-12,
+        "max_param_diff": 6.5503158452884236e-15,
+        "max_prob_diff": 4.3298697960381105e-15,
+        "max_cov_diff": 1.444157293750692e-15,
+        "max_se_diff": 9.96425164601078e-15,
+        "worse_loglike": false,
+        "message": "",
+        "runtime_repeats_s": [
+          17.01924150530249,
+          17.152570474892855,
+          17.085197397042066
+        ]
       },
       {
         "backend": "scipy_bfgs",
@@ -3138,7 +3510,8 @@
         "runtime_repeats_s": [
           73.94369719398674
         ],
-        "message": "Desired error not necessarily achieved due to precision loss."
+        "message": "Desired error not necessarily achieved due to precision loss.",
+        "worse_loglike": false
       },
       {
         "backend": "biogeme",
@@ -3176,7 +3549,8 @@
         "runtime_repeats_s": [
           236.97
         ],
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "worse_loglike": false
       },
       {
         "backend": "mlogit",
@@ -3195,7 +3569,8 @@
         "runtime_repeats_s": [
           13.671999999999997
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "gmnl",
@@ -3233,7 +3608,8 @@
         "runtime_repeats_s": [
           43.686276787891984
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       }
     ],
     "true_parameters": {
@@ -3411,7 +3787,28 @@
         "runtime_repeats_s": [
           5.2031055830884725
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
+      },
+      {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 35.28220966551453,
+        "estimate_s": 18.612398211378604,
+        "covariance_s": 16.669811454135925,
+        "loglike": -20000.217551360227,
+        "ll_diff": 2.1827872842550278e-11,
+        "max_param_diff": 6.185330025942903e-14,
+        "max_prob_diff": 3.6637359812630166e-14,
+        "max_cov_diff": 8.777700788442644e-16,
+        "max_se_diff": 9.25821919128822e-15,
+        "worse_loglike": false,
+        "message": "",
+        "runtime_repeats_s": [
+          35.40198363177478,
+          35.28220966551453,
+          35.136055207811296
+        ]
       },
       {
         "backend": "scipy_bfgs",
@@ -3430,7 +3827,8 @@
         "runtime_repeats_s": [
           101.33318344294094
         ],
-        "message": "Desired error not necessarily achieved due to precision loss."
+        "message": "Desired error not necessarily achieved due to precision loss.",
+        "worse_loglike": false
       },
       {
         "backend": "biogeme",
@@ -3487,7 +3885,8 @@
         "runtime_repeats_s": [
           25.269000000000005
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       },
       {
         "backend": "gmnl",
@@ -3525,7 +3924,8 @@
         "runtime_repeats_s": [
           127.40854366798885
         ],
-        "message": ""
+        "message": "",
+        "worse_loglike": false
       }
     ],
     "true_parameters": {

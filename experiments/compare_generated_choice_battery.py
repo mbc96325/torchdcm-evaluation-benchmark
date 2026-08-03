@@ -40,6 +40,7 @@ from mnl_generic_backends import (
     run_scipy_mle,
     run_xlogit_generic,
 )
+from torch_choice_backend import run_mnl as run_torch_choice_mnl
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -497,6 +498,13 @@ def run_mnl_scipy(case: MNLCase) -> BackendResult:
     return ns_to_backend(run_scipy_mle(case.data, case.spec, case.initial_values, target_names=case.parameter_names), "scipy_bfgs")
 
 
+def run_mnl_torch_choice(case: MNLCase, max_iter: int) -> BackendResult:
+    return ns_to_backend(
+        run_torch_choice_mnl(case.data, case.spec, case.initial_values, max_iter=max_iter),
+        "torch_choice",
+    )
+
+
 def run_mnl_mlogit(case: MNLCase) -> BackendResult:
     return ns_to_backend(run_mlogit_generic(mnl_design_long(case), case.parameter_names), "mlogit")
 
@@ -949,6 +957,7 @@ def run_generated_mnl(meta: GeneratedSpec, args) -> dict:
     case = build_mnl_case(meta, args.seed)
     runners = [
         ("torchdcm", lambda: run_mnl_torch(case, args.max_iter)),
+        ("torch_choice", lambda: run_mnl_torch_choice(case, args.max_iter)),
         ("scipy_bfgs", lambda: run_mnl_scipy(case)),
         ("biogeme", lambda: run_mnl_biogeme(case)),
         ("apollo", lambda: run_mnl_apollo(case)),
@@ -981,6 +990,14 @@ def run_generated_nl(meta: GeneratedSpec, args) -> dict:
     case = build_nested_case(mnl_case, args.seed)
     results = [
         nested_real.safe_run("torchdcm", lambda: nested_real.run_torch(case, max_iter=args.max_iter)),
+        nested_real.safe_run(
+            "torch_choice",
+            lambda: nested_real.run_torch_choice(
+                case,
+                max_iter=args.max_iter,
+                lambda_min=args.lambda_min,
+            ),
+        ),
         isolated_timed_safe_run("biogeme", lambda: nested_real.run_biogeme(case, lambda_min=args.lambda_min), nested_real.BackendResult, args.backend_timeout)
         if args.profile.startswith(("stress", "table4"))
         else timed_safe_run("biogeme", lambda: nested_real.run_biogeme(case, lambda_min=args.lambda_min), nested_real.BackendResult, args.backend_timeout),
@@ -1131,7 +1148,7 @@ def render_markdown(rows: list[dict], profile: str) -> str:
     description = (
         "All cross-estimator runtimes report estimation plus covariance on one logical CPU. Stress rows apply a 300-second worker-wall-clock limit to every external backend; timeout is not treated as numerical disagreement."
         if profile.startswith("stress")
-        else "All cross-estimator runtimes report estimation plus covariance on one logical CPU. Synthetic cases vary sample size (N), number of alternatives (J), number of observed variables (K), and equicorrelation (rho). MNL rows compare TorchDCM against SciPy, Biogeme, Apollo, mlogit, gmnl, and xlogit where available. Nested-logit and mixed-logit rows compare TorchDCM against Biogeme and Apollo."
+        else "All cross-estimator runtimes report estimation plus covariance on one logical CPU. Synthetic cases vary sample size (N), number of alternatives (J), number of observed variables (K), and equicorrelation (rho). MNL rows compare TorchDCM against Torch-Choice, SciPy, Biogeme, Apollo, mlogit, gmnl, and xlogit where available. Nested-logit rows also include Torch-Choice, while mixed-logit rows compare TorchDCM against Biogeme and Apollo."
     )
     repeated = [row for row in rows if int(row.get("runtime_repetitions", 1)) > 1]
     if repeated:
@@ -1150,14 +1167,14 @@ def render_markdown(rows: list[dict], profile: str) -> str:
         "",
         description,
         "",
-        "| case | family | N | J | K | rho | TorchDCM | SciPy | Biogeme | Apollo | mlogit | gmnl | xlogit | Consistent? |",
-        "| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |",
+        "| case | family | N | J | K | rho | TorchDCM | Torch-Choice | SciPy | Biogeme | Apollo | mlogit | gmnl | xlogit | Consistent? |",
+        "| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |",
     ]
     for row in rows:
         backends = {item["backend"]: item for item in row.get("backends", [])}
         meta = row.get("results", {})
         lines.append(
-            "| {case} | {family} | {N} | {J} | {K} | {rho} | {torchdcm} | {scipy} | {biogeme} | {apollo} | {mlogit} | {gmnl} | {xlogit} | {consistent} |".format(
+            "| {case} | {family} | {N} | {J} | {K} | {rho} | {torchdcm} | {torch_choice} | {scipy} | {biogeme} | {apollo} | {mlogit} | {gmnl} | {xlogit} | {consistent} |".format(
                 case=row["case"],
                 family=row.get("family", row.get("model", "")),
                 N=meta.get("N", row.get("n_obs")),
@@ -1165,6 +1182,7 @@ def render_markdown(rows: list[dict], profile: str) -> str:
                 K=meta.get("K", row.get("n_variables")),
                 rho=meta.get("rho", row.get("rho")),
                 torchdcm=fmt_time(backends.get("torchdcm")),
+                torch_choice=fmt_time(backends.get("torch_choice")),
                 scipy=fmt_time(backends.get("scipy_bfgs")),
                 biogeme=fmt_time(backends.get("biogeme")),
                 apollo=fmt_time(backends.get("apollo")),
@@ -1180,7 +1198,7 @@ def render_markdown(rows: list[dict], profile: str) -> str:
         ref = backends.get("torchdcm", {})
         lines.append(f"- `{row['case']}`: reference loglike={sci(ref.get('loglike'))}; " + ", ".join(
             f"{name} ll_diff={sci(backends[name].get('ll_diff'))}"
-            for name in ["scipy_bfgs", "biogeme", "apollo", "mlogit", "gmnl", "xlogit"]
+            for name in ["torch_choice", "scipy_bfgs", "biogeme", "apollo", "mlogit", "gmnl", "xlogit"]
             if name in backends
         ))
     return "\n".join(lines) + "\n"

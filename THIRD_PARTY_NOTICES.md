@@ -7,10 +7,10 @@ third-party software or data.
 
 ## External software
 
-PyTorch, NumPy, pandas, SciPy, Biogeme, Apollo, `mlogit`, `gmnl`, `xlogit`,
-and `jsonlite` are external dependencies. Their source code is not vendored in
-this repository. Each dependency remains subject to its upstream license and
-is identified by version in the main [README](README.md).
+PyTorch, Torch-Choice, NumPy, pandas, SciPy, Biogeme, Apollo, `mlogit`, `gmnl`,
+`xlogit`, and `jsonlite` are external dependencies. Their source code is not
+vendored in this repository. Each dependency remains subject to its upstream
+license and is identified by version in the main [README](README.md).
 
 ## Included datasets
 

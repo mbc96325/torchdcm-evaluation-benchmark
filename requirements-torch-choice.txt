@@ -1,0 +1,13 @@
+# Support dependencies used with Torch-Choice 1.0.7 in the archived benchmark.
+# Install Torch-Choice itself afterward without dependencies so NumPy 2.4.6 is
+# retained for the shared Biogeme/Torch-Choice environment:
+# python -m pip install torch-choice==1.0.7 --no-deps
+termcolor==3.3.0
+scikit-learn==1.9.0
+tabulate==0.10.0
+torchvision==0.27.1
+pytorch-lightning==2.6.5
+tensorboard==2.21.0
+nbclient==0.11.0
+seaborn==0.13.2
+scienceplots==2.2.2

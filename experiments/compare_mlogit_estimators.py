@@ -19,6 +19,7 @@ from xlogit import MultinomialLogit as XlogitMultinomialLogit
 from benchmark_runtime import estimation_covariance_total
 from torchdcm import Beta, ChoiceDataset, MultinomialLogit, UtilitySpec
 from mnl_generic_backends import run_scipy_mle
+from torch_choice_backend import run_mnl as run_torch_choice_mnl
 
 
 APOLLO_SCRIPT = Path(__file__).resolve().parent / "apollo" / "R" / "run_generic_mnl.R"
@@ -417,7 +418,11 @@ def run_torch(data: ChoiceDataset, spec: UtilitySpec, names: list[str]) -> Backe
     data = data.to(device=model.device, dtype=model.dtype)
     compiled = model.compile(data)
     name_to_index = {name: index for index, name in enumerate(compiled.free_names)}
-    initial = torch.zeros(len(compiled.free_names), dtype=torch.float64, requires_grad=True)
+    start_values = torch.zeros(len(compiled.free_names), dtype=torch.float64)
+    # Match Torch-Choice by excluding one-time tensor/autograd initialization.
+    warmup = start_values.clone().requires_grad_(True)
+    (-model.loglike(warmup, data, compiled)).backward()
+    initial = start_values.clone().requires_grad_(True)
     optimizer = torch.optim.LBFGS(
         [initial],
         max_iter=model.max_iter,
@@ -614,12 +619,23 @@ def main() -> None:
     df, mlogit_result = run_mlogit_export(args.dataset)
     data, spec, names = make_case(args.dataset, df)
     torch_result = run_torch(data, spec, names)
+    torch_choice_result = run_torch_choice_mnl(
+        data,
+        spec,
+        {name: 0.0 for name in names},
+        max_iter=200,
+    )
     scipy_result = run_scipy_mle(data, spec, {name: 0.0 for name in names}, target_names=names)
     gmnl_result = run_gmnl(args.dataset)
     xlogit_result = run_xlogit(args.dataset, df)
     biogeme_result = run_biogeme(args.dataset, df, names)
     apollo_result = run_apollo(args.dataset, df, names)
-    print_results(args.dataset, data, names, [torch_result, scipy_result, mlogit_result, biogeme_result, apollo_result, gmnl_result, xlogit_result])
+    print_results(
+        args.dataset,
+        data,
+        names,
+        [torch_result, torch_choice_result, scipy_result, mlogit_result, biogeme_result, apollo_result, gmnl_result, xlogit_result],
+    )
 
 
 if __name__ == "__main__":

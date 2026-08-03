@@ -12,6 +12,12 @@ uses its documented draw interface when a shared matrix cannot be supplied.
 All empirical inputs are read from the versioned files under `data/`. The
 runners do not fetch data during an experiment.
 
+The Torch-Choice adapter maps the same compiled MNL or NL design to its dense
+choice-dataset interface and supplies availability masks for ragged choice
+sets. It uses float64 tensors, the same starting values, and full L-BFGS
+estimation followed by classic covariance construction. Translation into this
+package-specific input layout occurs before timing.
+
 The synthetic generator varies sample size, choice-set size, coefficient
 dimension, feature correlation, and, for MixL, the number of random
 coefficients. NL choices are generated from a two-level nested-logit process,
@@ -23,6 +29,9 @@ surrogate.
 Cross-estimator CPU runs use one logical CPU. The runners set OpenMP, BLAS,
 NumExpr, and PyTorch thread counts to one, pin the process and its children
 where the operating system supports affinity, and set Apollo `nCores=1`.
+MNL runs for TorchDCM and Torch-Choice perform one untimed forward/backward
+warm-up before optimization so one-time PyTorch kernel and autograd
+initialization is excluded symmetrically.
 
 Reported runtime includes parameter estimation and covariance construction.
 Data loading or generation, design translation, process startup, and file

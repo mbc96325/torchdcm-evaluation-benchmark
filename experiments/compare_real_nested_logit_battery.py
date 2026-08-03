@@ -29,6 +29,7 @@ import compare_biogeme_public_mnl as public_mnl
 import compare_nhts_mnl as nhts_mnl
 import run_mlogit_dataset_battery as mlogit_datasets
 from compare_mnl_estimators import load_biogeme_swissmetro
+from torch_choice_backend import run_nested as run_torch_choice_nested
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -508,6 +509,32 @@ def run_torch(case: NestedCase, max_iter: int) -> BackendResult:
     )
 
 
+def run_torch_choice(case: NestedCase, max_iter: int, lambda_min: float) -> BackendResult:
+    result = run_torch_choice_nested(
+        case.data,
+        case.spec,
+        case.alternatives,
+        case.beta_names,
+        case.nests,
+        case.initial_values,
+        case.lambda_names,
+        lambda_min=lambda_min,
+        max_iter=max_iter,
+    )
+    return BackendResult(
+        backend="torch_choice",
+        available=bool(result.available),
+        total_s=getattr(result, "total_s", None),
+        estimate_s=getattr(result, "estimate_s", None),
+        covariance_s=getattr(result, "covariance_s", None),
+        loglike=getattr(result, "loglike", None),
+        params=getattr(result, "params", None),
+        covariance=getattr(result, "covariance", None),
+        probabilities=getattr(result, "probabilities", None),
+        message=getattr(result, "message", ""),
+    )
+
+
 def run_biogeme(case: NestedCase, lambda_min: float) -> BackendResult:
     try:
         import biogeme.biogeme as bio
@@ -799,6 +826,10 @@ def result_payload(case: NestedCase, results: list[BackendResult]) -> dict:
 def run_case(case: NestedCase, max_iter: int, lambda_min: float) -> dict:
     results = [
         safe_run("torchdcm", lambda: run_torch(case, max_iter=max_iter)),
+        safe_run(
+            "torch_choice",
+            lambda: run_torch_choice(case, max_iter=max_iter, lambda_min=lambda_min),
+        ),
         safe_run("biogeme", lambda: run_biogeme(case, lambda_min=lambda_min)),
         safe_run("apollo", lambda: run_apollo(case, lambda_min=lambda_min)),
     ]
@@ -825,17 +856,18 @@ def render_markdown(payloads: list[dict]) -> str:
         "Runtimes report estimation plus covariance on one logical CPU.",
         "A dagger marks a clearly inferior final log likelihood; its runtime is retained but its estimate is excluded from consistency. N.A. means fewer than two comparable estimates remain.",
         "",
-        "| Data | Model | N | TorchDCM | Biogeme | Apollo | Consistent? |",
-        "| --- | --- | ---: | ---: | ---: | ---: | --- |",
+        "| Data | Model | N | TorchDCM | Torch-Choice | Biogeme | Apollo | Consistent? |",
+        "| --- | --- | ---: | ---: | ---: | ---: | ---: | --- |",
     ]
     for payload in payloads:
         rows = {row["backend"]: row for row in payload["backends"]}
         lines.append(
-            "| {data} | {model} | {n_obs} | {torchdcm} | {biogeme} | {apollo} | {consistent} |".format(
+            "| {data} | {model} | {n_obs} | {torchdcm} | {torch_choice} | {biogeme} | {apollo} | {consistent} |".format(
                 data=payload["data"],
                 model=payload["model"],
                 n_obs=payload["n_obs"],
                 torchdcm=fmt_time(rows.get("torchdcm")),
+                torch_choice=fmt_time(rows.get("torch_choice")),
                 biogeme=fmt_time(rows.get("biogeme")),
                 apollo=fmt_time(rows.get("apollo")),
                 consistent=(

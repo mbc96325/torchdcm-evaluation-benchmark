@@ -6,6 +6,7 @@ import json
 import zipfile
 from pathlib import Path
 
+import pytest
 import torchdcm
 
 
@@ -37,6 +38,35 @@ def test_main_paper_case_counts():
     }
     for filename, count in expected.items():
         assert len(load(filename)) == count, filename
+
+
+def test_torch_choice_results_are_archived():
+    for filename in (
+        "synthetic_mnl_single_core.json",
+        "generated_choice_battery_table4_nl.json",
+        "nested_real_battery_single_core.json",
+    ):
+        for row in load(filename):
+            result = next(
+                item for item in row["backends"]
+                if item["backend"] == "torch_choice"
+            )
+            assert result["available"] is True
+            assert result["worse_loglike"] is False
+
+    for row in load("solver_attempt_matrix_mnl_single_core.json"):
+        torchdcm = row["backend_rows"]["torchdcm"]
+        result = row["backend_rows"]["torch_choice"]
+        assert torchdcm["available"] is True
+        assert result["available"] is True
+        assert result["worse_loglike"] is False
+        for backend in (torchdcm, result):
+            assert backend["estimate_s"] > 0
+            assert backend["covariance_s"] > 0
+            assert backend["total_s"] == pytest.approx(
+                backend["estimate_s"] + backend["covariance_s"]
+            )
+        assert row["solver_status"]["torch-choice"]["status"] == "ok"
 
 
 def test_electronic_companion_case_counts():

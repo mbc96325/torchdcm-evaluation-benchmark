@@ -19,7 +19,25 @@
         "VECLIB_MAXIMUM_THREADS": "1"
       },
       "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
-      "threadpools": []
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 32
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
     },
     "command": [
       "python",
@@ -36,28 +54,38 @@
     "solver_status": {
       "torchdcm": {
         "status": "ok",
-        "seconds": 0.15101,
+        "seconds": 0.009978126734495163,
+        "loglike": -8670.163118523758,
+        "worse_loglike": false,
         "backend": "torchdcm"
       },
       "scipy_bfgs": {
         "status": "ok",
         "seconds": 2.366196,
-        "backend": "scipy_bfgs"
+        "backend": "scipy_bfgs",
+        "loglike": -8670.1631185237,
+        "worse_loglike": false
       },
       "biogeme": {
         "status": "ok",
         "seconds": 1.346427,
-        "backend": "biogeme"
+        "backend": "biogeme",
+        "loglike": -8670.1631185238,
+        "worse_loglike": false
       },
       "apollo": {
         "status": "ok",
         "seconds": 0.725,
-        "backend": "apollo"
+        "backend": "apollo",
+        "loglike": -8670.1631,
+        "worse_loglike": false
       },
       "mlogit": {
         "status": "ok",
         "seconds": 0.123,
-        "backend": "mlogit"
+        "backend": "mlogit",
+        "loglike": -8670.1631185237,
+        "worse_loglike": false
       },
       "gmnl": {
         "status": "failed",
@@ -67,43 +95,65 @@
       "xlogit": {
         "status": "ok",
         "seconds": 0.025992,
-        "backend": "xlogit"
+        "backend": "xlogit",
+        "loglike": -8670.1631185275,
+        "worse_loglike": false
       },
       "case_runner": {
         "status": "ok",
         "seconds": 9.446964665083215
+      },
+      "torch-choice": {
+        "status": "ok",
+        "seconds": 0.014377864077687263,
+        "loglike": -8670.16311852376,
+        "worse_loglike": false,
+        "backend": "torch_choice"
       }
     },
     "backend_rows": {
       "torchdcm": {
         "backend": "torchdcm",
         "available": true,
-        "raw": "torchdcm          True    0.151010    0.148136    0.002874  -8670.1631185238     0.000e+00         0.000e+00",
-        "total_s": 0.15101
+        "total_s": 0.009978126734495163,
+        "estimate_s": 0.00759889604523778,
+        "covariance_s": 0.0023792306892573833,
+        "loglike": -8670.163118523758,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_s\": 0.009978126734495163, \"estimate_s\": 0.00759889604523778, \"covariance_s\": 0.0023792306892573833, \"loglike\": -8670.163118523758}"
       },
       "scipy_bfgs": {
         "backend": "scipy_bfgs",
         "available": true,
         "raw": "scipy_bfgs        True    2.366196    2.363947    0.002249  -8670.1631185237     7.276e-11         2.187e-07",
-        "total_s": 2.366196
+        "total_s": 2.366196,
+        "loglike": -8670.1631185237,
+        "worse_loglike": false
       },
       "biogeme": {
         "backend": "biogeme",
         "available": true,
         "raw": "biogeme           True    1.346427    1.317171    0.000054  -8670.1631185238     1.819e-12         2.668e-07",
-        "total_s": 1.346427
+        "total_s": 1.346427,
+        "loglike": -8670.1631185238,
+        "worse_loglike": false
       },
       "apollo": {
         "backend": "apollo",
         "available": true,
         "raw": "apollo            True    0.725000    0.725000    0.000000  -8670.1631000000     1.852e-05         4.154e-05",
-        "total_s": 0.725
+        "total_s": 0.725,
+        "loglike": -8670.1631,
+        "worse_loglike": false
       },
       "mlogit": {
         "backend": "mlogit",
         "available": true,
         "raw": "mlogit            True    0.123000    0.123000    0.000000  -8670.1631185237     6.185e-11         2.668e-07",
-        "total_s": 0.123
+        "total_s": 0.123,
+        "loglike": -8670.1631185237,
+        "worse_loglike": false
       },
       "gmnl": {
         "backend": "gmnl",
@@ -115,10 +165,25 @@
         "backend": "xlogit",
         "available": true,
         "raw": "xlogit            True    0.025992    0.025991    0.000001  -8670.1631185275    -3.693e-09         2.097e-06",
-        "total_s": 0.025992
+        "total_s": 0.025992,
+        "loglike": -8670.1631185275,
+        "worse_loglike": false
+      },
+      "torch_choice": {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.014377864077687263,
+        "loglike": -8670.16311852376,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torch_choice\", \"available\": true, \"total_s\": 0.014377864077687263, \"estimate_s\": 0.010852233972400427, \"covariance_s\": 0.0035256301052868366, \"loglike\": -8670.16311852376}",
+        "estimate_s": 0.010852233972400427,
+        "covariance_s": 0.0035256301052868366
       }
     },
-    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.\nFile biogeme.toml has been created"
+    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.\nFile biogeme.toml has been created",
+    "n_obs": 10719,
+    "consistent": "Yes"
   },
   {
     "case": "nhts_2022_mnl",
@@ -140,7 +205,25 @@
         "VECLIB_MAXIMUM_THREADS": "1"
       },
       "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
-      "threadpools": []
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 32
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
     },
     "command": [
       "python",
@@ -153,89 +236,140 @@
     "solver_status": {
       "torchdcm": {
         "status": "ok",
-        "seconds": 0.228849,
+        "seconds": 0.09537500515580177,
+        "loglike": -19574.078199123112,
+        "worse_loglike": false,
         "backend": "torchdcm"
       },
       "scipy_bfgs": {
         "status": "ok",
         "seconds": 38.722738,
-        "backend": "scipy_bfgs"
+        "backend": "scipy_bfgs",
+        "loglike": -19574.0781991229,
+        "worse_loglike": false
       },
       "biogeme": {
         "status": "ok",
         "seconds": 2.748691,
-        "backend": "biogeme"
+        "backend": "biogeme",
+        "loglike": -19574.078199123,
+        "worse_loglike": false
       },
       "apollo": {
         "status": "ok",
         "seconds": 7.617,
-        "backend": "apollo"
+        "backend": "apollo",
+        "loglike": -19574.0781991247,
+        "worse_loglike": false
       },
       "mlogit": {
         "status": "ok",
         "seconds": 1.388,
-        "backend": "mlogit"
+        "backend": "mlogit",
+        "loglike": -19574.078199123,
+        "worse_loglike": false
       },
       "gmnl": {
         "status": "ok",
         "seconds": 18.45,
-        "backend": "gmnl"
+        "backend": "gmnl",
+        "loglike": -19574.0781991233,
+        "worse_loglike": false
       },
       "xlogit": {
         "status": "ok",
         "seconds": 0.713486,
-        "backend": "xlogit"
+        "backend": "xlogit",
+        "loglike": -19574.0781991241,
+        "worse_loglike": false
       },
       "case_runner": {
         "status": "ok",
         "seconds": 182.71453672694042
+      },
+      "torch-choice": {
+        "status": "ok",
+        "seconds": 0.38539187610149384,
+        "loglike": -19574.0781991231,
+        "worse_loglike": false,
+        "backend": "torch_choice"
       }
     },
     "backend_rows": {
       "torchdcm": {
         "backend": "torchdcm",
         "available": true,
-        "raw": "torchdcm          True    0.228849    0.209848    0.019000 -19574.0781991231     0.000e+00     0.000e+00     0.000e+00     0.000e+00     0.000e+00",
-        "total_s": 0.228849
+        "total_s": 0.09537500515580177,
+        "estimate_s": 0.07656085910275578,
+        "covariance_s": 0.018814146053045988,
+        "loglike": -19574.078199123112,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_s\": 0.09537500515580177, \"estimate_s\": 0.07656085910275578, \"covariance_s\": 0.018814146053045988, \"loglike\": -19574.078199123112}"
       },
       "scipy_bfgs": {
         "backend": "scipy_bfgs",
         "available": true,
         "raw": "scipy_bfgs        True   38.722738   38.702221    0.020517 -19574.0781991229     2.365e-10     2.517e-06     3.523e-07     8.011e-08     1.663e-07",
-        "total_s": 38.722738
+        "total_s": 38.722738,
+        "loglike": -19574.0781991229,
+        "worse_loglike": false
       },
       "biogeme": {
         "backend": "biogeme",
         "available": true,
         "raw": "biogeme           True    2.748691    2.748593    0.000091 -19574.0781991230     8.731e-11     3.929e-06     3.853e-07     1.389e-07     2.882e-07",
-        "total_s": 2.748691
+        "total_s": 2.748691,
+        "loglike": -19574.078199123,
+        "worse_loglike": false
       },
       "apollo": {
         "backend": "apollo",
         "available": true,
         "raw": "apollo            True    7.617000    7.617000    0.000000 -19574.0781991247    -1.583e-09     2.912e-06     5.432e-07     1.071e-07     2.224e-07",
-        "total_s": 7.617
+        "total_s": 7.617,
+        "loglike": -19574.0781991247,
+        "worse_loglike": false
       },
       "mlogit": {
         "backend": "mlogit",
         "available": true,
         "raw": "mlogit            True    1.388000    1.388000    0.000000 -19574.0781991230     1.091e-10     7.886e-06     7.842e-07     7.913e-08     1.642e-07",
-        "total_s": 1.388
+        "total_s": 1.388,
+        "loglike": -19574.078199123,
+        "worse_loglike": false
       },
       "gmnl": {
         "backend": "gmnl",
         "available": true,
         "raw": "gmnl              True   18.450000   18.450000    0.000000 -19574.0781991233    -1.564e-10     7.886e-06     7.842e-07     3.003e-07     6.233e-07",
-        "total_s": 18.45
+        "total_s": 18.45,
+        "loglike": -19574.0781991233,
+        "worse_loglike": false
       },
       "xlogit": {
         "backend": "xlogit",
         "available": true,
         "raw": "xlogit            True    0.713486    0.713485    0.000001 -19574.0781991241    -1.030e-09     7.309e-06     1.051e-06     2.421e-07     4.926e-07",
-        "total_s": 0.713486
+        "total_s": 0.713486,
+        "loglike": -19574.0781991241,
+        "worse_loglike": false
+      },
+      "torch_choice": {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.38539187610149384,
+        "loglike": -19574.0781991231,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torch_choice\", \"available\": true, \"total_s\": 0.38539187610149384, \"estimate_s\": 0.3429079269990325, \"covariance_s\": 0.04248394910246134, \"loglike\": -19574.0781991231}",
+        "estimate_s": 0.3429079269990325,
+        "covariance_s": 0.04248394910246134
       }
     },
-    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu."
+    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.",
+    "n_obs": 27375,
+    "consistent": "Yes"
   },
   {
     "case": "biogeme_public_airline",
@@ -257,7 +391,25 @@
         "VECLIB_MAXIMUM_THREADS": "1"
       },
       "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
-      "threadpools": []
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 32
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
     },
     "command": [
       "python",
@@ -270,89 +422,140 @@
     "solver_status": {
       "torchdcm": {
         "status": "ok",
-        "seconds": 0.141045,
+        "seconds": 0.006931633688509464,
+        "loglike": -2386.418413581494,
+        "worse_loglike": false,
         "backend": "torchdcm"
       },
       "scipy_bfgs": {
         "status": "ok",
         "seconds": 3.149521,
-        "backend": "scipy_bfgs"
+        "backend": "scipy_bfgs",
+        "loglike": -2386.4184135815,
+        "worse_loglike": false
       },
       "biogeme": {
         "status": "ok",
         "seconds": 1.573041,
-        "backend": "biogeme"
+        "backend": "biogeme",
+        "loglike": -2386.4184135815,
+        "worse_loglike": false
       },
       "apollo": {
         "status": "ok",
         "seconds": 0.33,
-        "backend": "apollo"
+        "backend": "apollo",
+        "loglike": -2386.4184135815,
+        "worse_loglike": false
       },
       "mlogit": {
         "status": "ok",
         "seconds": 0.052,
-        "backend": "mlogit"
+        "backend": "mlogit",
+        "loglike": -2386.4184135815,
+        "worse_loglike": false
       },
       "gmnl": {
         "status": "ok",
         "seconds": 0.107,
-        "backend": "gmnl"
+        "backend": "gmnl",
+        "loglike": -2386.4184135815,
+        "worse_loglike": false
       },
       "xlogit": {
         "status": "ok",
         "seconds": 0.011307,
-        "backend": "xlogit"
+        "backend": "xlogit",
+        "loglike": -2386.4184136065,
+        "worse_loglike": false
       },
       "case_runner": {
         "status": "ok",
         "seconds": 9.296927527990192
+      },
+      "torch-choice": {
+        "status": "ok",
+        "seconds": 0.009849948808550835,
+        "loglike": -2386.418413581495,
+        "worse_loglike": false,
+        "backend": "torch_choice"
       }
     },
     "backend_rows": {
       "torchdcm": {
         "backend": "torchdcm",
         "available": true,
-        "raw": "torchdcm          True    0.141045    0.139746    0.001299  -2386.4184135815     0.000e+00     0.000e+00     0.000e+00     0.000e+00     0.000e+00",
-        "total_s": 0.141045
+        "total_s": 0.006931633688509464,
+        "estimate_s": 0.005828837864100933,
+        "covariance_s": 0.0011027958244085312,
+        "loglike": -2386.418413581494,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_s\": 0.006931633688509464, \"estimate_s\": 0.005828837864100933, \"covariance_s\": 0.0011027958244085312, \"loglike\": -2386.418413581494}"
       },
       "scipy_bfgs": {
         "backend": "scipy_bfgs",
         "available": true,
         "raw": "scipy_bfgs        True    3.149521    3.148256    0.001266  -2386.4184135815     2.683e-11     1.501e-07     1.186e-07     9.953e-10     3.959e-09",
-        "total_s": 3.149521
+        "total_s": 3.149521,
+        "loglike": -2386.4184135815,
+        "worse_loglike": false
       },
       "biogeme": {
         "backend": "biogeme",
         "available": true,
         "raw": "biogeme           True    1.573041    1.572981    0.000059  -2386.4184135815     1.955e-11     1.459e-07     1.210e-07     9.924e-10     3.948e-09",
-        "total_s": 1.573041
+        "total_s": 1.573041,
+        "loglike": -2386.4184135815,
+        "worse_loglike": false
       },
       "apollo": {
         "backend": "apollo",
         "available": true,
         "raw": "apollo            True    0.330000    0.330000    0.000000  -2386.4184135815    -1.364e-11     3.787e-07     3.189e-07     9.352e-10     6.909e-09",
-        "total_s": 0.33
+        "total_s": 0.33,
+        "loglike": -2386.4184135815,
+        "worse_loglike": false
       },
       "mlogit": {
         "backend": "mlogit",
         "available": true,
         "raw": "mlogit            True    0.052000    0.051000    0.001000  -2386.4184135815     2.001e-11     1.492e-07     1.208e-07     1.017e-09     4.048e-09",
-        "total_s": 0.052
+        "total_s": 0.052,
+        "loglike": -2386.4184135815,
+        "worse_loglike": false
       },
       "gmnl": {
         "backend": "gmnl",
         "available": true,
         "raw": "gmnl              True    0.107000    0.107000    0.000000  -2386.4184135815     2.001e-11     1.492e-07     1.208e-07     1.010e-09     4.016e-09",
-        "total_s": 0.107
+        "total_s": 0.107,
+        "loglike": -2386.4184135815,
+        "worse_loglike": false
       },
       "xlogit": {
         "backend": "xlogit",
         "available": true,
         "raw": "xlogit            True    0.011307    0.011306    0.000001  -2386.4184136065    -2.502e-08     3.620e-06     4.159e-06     3.983e-08     1.584e-07",
-        "total_s": 0.011307
+        "total_s": 0.011307,
+        "loglike": -2386.4184136065,
+        "worse_loglike": false
+      },
+      "torch_choice": {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.009849948808550835,
+        "loglike": -2386.418413581495,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torch_choice\", \"available\": true, \"total_s\": 0.009849948808550835, \"estimate_s\": 0.008162260055541992, \"covariance_s\": 0.0016876887530088425, \"loglike\": -2386.418413581495}",
+        "estimate_s": 0.008162260055541992,
+        "covariance_s": 0.0016876887530088425
       }
     },
-    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu."
+    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.",
+    "n_obs": 3609,
+    "consistent": "Yes"
   },
   {
     "case": "biogeme_public_parking",
@@ -374,7 +577,25 @@
         "VECLIB_MAXIMUM_THREADS": "1"
       },
       "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
-      "threadpools": []
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 32
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
     },
     "command": [
       "python",
@@ -387,89 +608,140 @@
     "solver_status": {
       "torchdcm": {
         "status": "ok",
-        "seconds": 0.151948,
+        "seconds": 0.006735865958034992,
+        "loglike": -1121.3392676024873,
+        "worse_loglike": false,
         "backend": "torchdcm"
       },
       "scipy_bfgs": {
         "status": "ok",
         "seconds": 1.92977,
-        "backend": "scipy_bfgs"
+        "backend": "scipy_bfgs",
+        "loglike": -1121.3392676022,
+        "worse_loglike": false
       },
       "biogeme": {
         "status": "ok",
         "seconds": 1.502925,
-        "backend": "biogeme"
+        "backend": "biogeme",
+        "loglike": -1121.3392676022,
+        "worse_loglike": false
       },
       "apollo": {
         "status": "ok",
         "seconds": 0.286,
-        "backend": "apollo"
+        "backend": "apollo",
+        "loglike": -1121.3392676023,
+        "worse_loglike": false
       },
       "mlogit": {
         "status": "ok",
         "seconds": 0.031,
-        "backend": "mlogit"
+        "backend": "mlogit",
+        "loglike": -1121.3392676022,
+        "worse_loglike": false
       },
       "gmnl": {
         "status": "ok",
         "seconds": 0.056,
-        "backend": "gmnl"
+        "backend": "gmnl",
+        "loglike": -1121.3392676022,
+        "worse_loglike": false
       },
       "xlogit": {
         "status": "ok",
         "seconds": 0.005792,
-        "backend": "xlogit"
+        "backend": "xlogit",
+        "loglike": -1121.3392676091,
+        "worse_loglike": false
       },
       "case_runner": {
         "status": "ok",
         "seconds": 7.701973412069492
+      },
+      "torch-choice": {
+        "status": "ok",
+        "seconds": 0.008636194746941328,
+        "loglike": -1121.3392676024891,
+        "worse_loglike": false,
+        "backend": "torch_choice"
       }
     },
     "backend_rows": {
       "torchdcm": {
         "backend": "torchdcm",
         "available": true,
-        "raw": "torchdcm          True    0.151948    0.151047    0.000901  -1121.3392676025     0.000e+00     0.000e+00     0.000e+00     0.000e+00     0.000e+00",
-        "total_s": 0.151948
+        "total_s": 0.006735865958034992,
+        "estimate_s": 0.00601481506600976,
+        "covariance_s": 0.0007210508920252323,
+        "loglike": -1121.3392676024873,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_s\": 0.006735865958034992, \"estimate_s\": 0.00601481506600976, \"covariance_s\": 0.0007210508920252323, \"loglike\": -1121.3392676024873}"
       },
       "scipy_bfgs": {
         "backend": "scipy_bfgs",
         "available": true,
         "raw": "scipy_bfgs        True    1.929770    1.928929    0.000841  -1121.3392676022     2.765e-10     3.784e-06     4.826e-07     1.932e-08     3.786e-08",
-        "total_s": 1.92977
+        "total_s": 1.92977,
+        "loglike": -1121.3392676022,
+        "worse_loglike": false
       },
       "biogeme": {
         "backend": "biogeme",
         "available": true,
         "raw": "biogeme           True    1.502925    1.502864    0.000060  -1121.3392676022     2.649e-10     3.876e-06     4.839e-07     1.901e-08     3.725e-08",
-        "total_s": 1.502925
+        "total_s": 1.502925,
+        "loglike": -1121.3392676022,
+        "worse_loglike": false
       },
       "apollo": {
         "backend": "apollo",
         "available": true,
         "raw": "apollo            True    0.286000    0.286000    0.000000  -1121.3392676023     1.912e-10     3.976e-06     5.993e-07     2.381e-08     6.715e-08",
-        "total_s": 0.286
+        "total_s": 0.286,
+        "loglike": -1121.3392676023,
+        "worse_loglike": false
       },
       "mlogit": {
         "backend": "mlogit",
         "available": true,
         "raw": "mlogit            True    0.031000    0.030000    0.001000  -1121.3392676022     2.651e-10     3.920e-06     4.556e-07     1.898e-08     3.720e-08",
-        "total_s": 0.031
+        "total_s": 0.031,
+        "loglike": -1121.3392676022,
+        "worse_loglike": false
       },
       "gmnl": {
         "backend": "gmnl",
         "available": true,
         "raw": "gmnl              True    0.056000    0.056000    0.000000  -1121.3392676022     2.651e-10     3.872e-06     4.858e-07     1.900e-08     3.722e-08",
-        "total_s": 0.056
+        "total_s": 0.056,
+        "loglike": -1121.3392676022,
+        "worse_loglike": false
       },
       "xlogit": {
         "backend": "xlogit",
         "available": true,
         "raw": "xlogit            True    0.005792    0.005792    0.000001  -1121.3392676091    -6.617e-09     7.051e-06     1.840e-06     2.226e-07     1.431e-07",
-        "total_s": 0.005792
+        "total_s": 0.005792,
+        "loglike": -1121.3392676091,
+        "worse_loglike": false
+      },
+      "torch_choice": {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.008636194746941328,
+        "loglike": -1121.3392676024891,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torch_choice\", \"available\": true, \"total_s\": 0.008636194746941328, \"estimate_s\": 0.007631468586623669, \"covariance_s\": 0.0010047261603176594, \"loglike\": -1121.3392676024891}",
+        "estimate_s": 0.007631468586623669,
+        "covariance_s": 0.0010047261603176594
       }
     },
-    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu."
+    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.",
+    "n_obs": 1576,
+    "consistent": "Yes"
   },
   {
     "case": "biogeme_public_telephone",
@@ -491,7 +763,25 @@
         "VECLIB_MAXIMUM_THREADS": "1"
       },
       "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
-      "threadpools": []
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 32
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
     },
     "command": [
       "python",
@@ -504,28 +794,38 @@
     "solver_status": {
       "torchdcm": {
         "status": "ok",
-        "seconds": 0.138834,
+        "seconds": 0.004711070563644171,
+        "loglike": -482.7191245740968,
+        "worse_loglike": false,
         "backend": "torchdcm"
       },
       "scipy_bfgs": {
         "status": "ok",
         "seconds": 0.241863,
-        "backend": "scipy_bfgs"
+        "backend": "scipy_bfgs",
+        "loglike": -482.7191245741,
+        "worse_loglike": false
       },
       "biogeme": {
         "status": "ok",
         "seconds": 1.65152,
-        "backend": "biogeme"
+        "backend": "biogeme",
+        "loglike": -482.7191245805,
+        "worse_loglike": false
       },
       "apollo": {
         "status": "ok",
         "seconds": 0.253,
-        "backend": "apollo"
+        "backend": "apollo",
+        "loglike": -482.7191245761,
+        "worse_loglike": false
       },
       "mlogit": {
         "status": "ok",
         "seconds": 0.021,
-        "backend": "mlogit"
+        "backend": "mlogit",
+        "loglike": -482.7191245741,
+        "worse_loglike": false
       },
       "gmnl": {
         "status": "failed",
@@ -535,43 +835,65 @@
       "xlogit": {
         "status": "ok",
         "seconds": 0.003803,
-        "backend": "xlogit"
+        "backend": "xlogit",
+        "loglike": -482.7191245741,
+        "worse_loglike": false
       },
       "case_runner": {
         "status": "ok",
         "seconds": 5.9187432220205665
+      },
+      "torch-choice": {
+        "status": "ok",
+        "seconds": 0.0058546243235468864,
+        "loglike": -482.7191245740967,
+        "worse_loglike": false,
+        "backend": "torch_choice"
       }
     },
     "backend_rows": {
       "torchdcm": {
         "backend": "torchdcm",
         "available": true,
-        "raw": "torchdcm          True    0.138834    0.138135    0.000699   -482.7191245741     0.000e+00     0.000e+00     0.000e+00     0.000e+00     0.000e+00",
-        "total_s": 0.138834
+        "total_s": 0.004711070563644171,
+        "estimate_s": 0.004204256925731897,
+        "covariance_s": 0.0005068136379122734,
+        "loglike": -482.7191245740968,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_s\": 0.004711070563644171, \"estimate_s\": 0.004204256925731897, \"covariance_s\": 0.0005068136379122734, \"loglike\": -482.7191245740968}"
       },
       "scipy_bfgs": {
         "backend": "scipy_bfgs",
         "available": true,
         "raw": "scipy_bfgs        True    0.241863    0.241228    0.000635   -482.7191245741     1.108e-11     1.256e-06     2.780e-07     4.171e-08     5.942e-08",
-        "total_s": 0.241863
+        "total_s": 0.241863,
+        "loglike": -482.7191245741,
+        "worse_loglike": false
       },
       "biogeme": {
         "backend": "biogeme",
         "available": true,
         "raw": "biogeme           True    1.651520    1.651458    0.000062   -482.7191245805    -6.354e-09     3.538e-05     7.509e-06     1.768e-06     2.519e-06",
-        "total_s": 1.65152
+        "total_s": 1.65152,
+        "loglike": -482.7191245805,
+        "worse_loglike": false
       },
       "apollo": {
         "backend": "apollo",
         "available": true,
         "raw": "apollo            True    0.253000    0.253000    0.000000   -482.7191245761    -1.968e-09     1.910e-05     5.111e-06     1.787e-06     1.358e-06",
-        "total_s": 0.253
+        "total_s": 0.253,
+        "loglike": -482.7191245761,
+        "worse_loglike": false
       },
       "mlogit": {
         "backend": "mlogit",
         "available": true,
         "raw": "mlogit            True    0.021000    0.020000    0.001000   -482.7191245741     1.091e-11     3.538e-05     7.509e-06     4.198e-08     5.980e-08",
-        "total_s": 0.021
+        "total_s": 0.021,
+        "loglike": -482.7191245741,
+        "worse_loglike": false
       },
       "gmnl": {
         "backend": "gmnl",
@@ -583,10 +905,25 @@
         "backend": "xlogit",
         "available": true,
         "raw": "xlogit            True    0.003803    0.003803    0.000001   -482.7191245741    -9.777e-12     1.759e-06     4.572e-07     2.508e-07     1.733e-07",
-        "total_s": 0.003803
+        "total_s": 0.003803,
+        "loglike": -482.7191245741,
+        "worse_loglike": false
+      },
+      "torch_choice": {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.0058546243235468864,
+        "loglike": -482.7191245740967,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torch_choice\", \"available\": true, \"total_s\": 0.0058546243235468864, \"estimate_s\": 0.005168261006474495, \"covariance_s\": 0.0006863633170723915, \"loglike\": -482.7191245740967}",
+        "estimate_s": 0.005168261006474495,
+        "covariance_s": 0.0006863633170723915
       }
     },
-    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu."
+    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.",
+    "n_obs": 434,
+    "consistent": "Yes"
   },
   {
     "case": "biogeme_public_lpmc",
@@ -608,7 +945,25 @@
         "VECLIB_MAXIMUM_THREADS": "1"
       },
       "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
-      "threadpools": []
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 32
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
     },
     "command": [
       "python",
@@ -621,89 +976,140 @@
     "solver_status": {
       "torchdcm": {
         "status": "ok",
-        "seconds": 0.214647,
+        "seconds": 0.08770020119845867,
+        "loglike": -74975.976074614,
+        "worse_loglike": false,
         "backend": "torchdcm"
       },
       "scipy_bfgs": {
         "status": "ok",
         "seconds": 56.995698,
-        "backend": "scipy_bfgs"
+        "backend": "scipy_bfgs",
+        "loglike": -74975.9760746128,
+        "worse_loglike": false
       },
       "biogeme": {
         "status": "ok",
         "seconds": 1.575225,
-        "backend": "biogeme"
+        "backend": "biogeme",
+        "loglike": -74975.9760746553,
+        "worse_loglike": false
       },
       "apollo": {
         "status": "ok",
         "seconds": 12.044,
-        "backend": "apollo"
+        "backend": "apollo",
+        "loglike": -74975.9760746154,
+        "worse_loglike": false
       },
       "mlogit": {
         "status": "ok",
         "seconds": 2.02,
-        "backend": "mlogit"
+        "backend": "mlogit",
+        "loglike": -74975.976074614,
+        "worse_loglike": false
       },
       "gmnl": {
         "status": "ok",
         "seconds": 5.644,
-        "backend": "gmnl"
+        "backend": "gmnl",
+        "loglike": -74975.976074614,
+        "worse_loglike": false
       },
       "xlogit": {
         "status": "ok",
         "seconds": 0.333516,
-        "backend": "xlogit"
+        "backend": "xlogit",
+        "loglike": -74975.9760746142,
+        "worse_loglike": false
       },
       "case_runner": {
         "status": "ok",
         "seconds": 99.37673680006992
+      },
+      "torch-choice": {
+        "status": "ok",
+        "seconds": 0.20057222060859203,
+        "loglike": -74975.97607461407,
+        "worse_loglike": false,
+        "backend": "torch_choice"
       }
     },
     "backend_rows": {
       "torchdcm": {
         "backend": "torchdcm",
         "available": true,
-        "raw": "torchdcm          True    0.214647    0.201360    0.013288 -74975.9760746140     0.000e+00     0.000e+00     0.000e+00     0.000e+00     0.000e+00",
-        "total_s": 0.214647
+        "total_s": 0.08770020119845867,
+        "estimate_s": 0.0744319949299097,
+        "covariance_s": 0.013268206268548965,
+        "loglike": -74975.976074614,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_s\": 0.08770020119845867, \"estimate_s\": 0.0744319949299097, \"covariance_s\": 0.013268206268548965, \"loglike\": -74975.976074614}"
       },
       "scipy_bfgs": {
         "backend": "scipy_bfgs",
         "available": true,
         "raw": "scipy_bfgs        True   56.995698   56.981727    0.013971 -74975.9760746128     1.164e-09     1.598e-07     4.949e-08     1.022e-10     1.155e-09",
-        "total_s": 56.995698
+        "total_s": 56.995698,
+        "loglike": -74975.9760746128,
+        "worse_loglike": false
       },
       "biogeme": {
         "backend": "biogeme",
         "available": true,
         "raw": "biogeme           True    1.575225    1.575165    0.000059 -74975.9760746553    -4.134e-08     1.207e-05     1.487e-06     6.529e-09     7.379e-08",
-        "total_s": 1.575225
+        "total_s": 1.575225,
+        "loglike": -74975.9760746553,
+        "worse_loglike": false
       },
       "apollo": {
         "backend": "apollo",
         "available": true,
         "raw": "apollo            True   12.044000   12.044000    0.000000 -74975.9760746154    -1.397e-09     5.547e-07     6.561e-08     2.242e-10     2.534e-09",
-        "total_s": 12.044
+        "total_s": 12.044,
+        "loglike": -74975.9760746154,
+        "worse_loglike": false
       },
       "mlogit": {
         "backend": "mlogit",
         "available": true,
         "raw": "mlogit            True    2.020000    2.019000    0.001000 -74975.9760746140     2.910e-11     3.235e-06     4.205e-07     1.015e-10     1.147e-09",
-        "total_s": 2.02
+        "total_s": 2.02,
+        "loglike": -74975.976074614,
+        "worse_loglike": false
       },
       "gmnl": {
         "backend": "gmnl",
         "available": true,
         "raw": "gmnl              True    5.644000    5.644000    0.000000 -74975.9760746140     2.910e-11     1.585e-07     4.946e-08     9.996e-11     1.130e-09",
-        "total_s": 5.644
+        "total_s": 5.644,
+        "loglike": -74975.976074614,
+        "worse_loglike": false
       },
       "xlogit": {
         "backend": "xlogit",
         "available": true,
         "raw": "xlogit            True    0.333516    0.333515    0.000001 -74975.9760746142    -2.328e-10     6.577e-07     1.641e-07     1.867e-09     2.110e-08",
-        "total_s": 0.333516
+        "total_s": 0.333516,
+        "loglike": -74975.9760746142,
+        "worse_loglike": false
+      },
+      "torch_choice": {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.20057222060859203,
+        "loglike": -74975.97607461407,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torch_choice\", \"available\": true, \"total_s\": 0.20057222060859203, \"estimate_s\": 0.17213104804977775, \"covariance_s\": 0.028441172558814287, \"loglike\": -74975.97607461407}",
+        "estimate_s": 0.17213104804977775,
+        "covariance_s": 0.028441172558814287
       }
     },
-    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu."
+    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.",
+    "n_obs": 81086,
+    "consistent": "Yes"
   },
   {
     "case": "mlogit_catsup",
@@ -725,7 +1131,25 @@
         "VECLIB_MAXIMUM_THREADS": "1"
       },
       "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
-      "threadpools": []
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 32
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
     },
     "command": [
       "python",
@@ -742,96 +1166,146 @@
     "solver_status": {
       "torchdcm": {
         "status": "ok",
-        "seconds": 0.13958983798511326,
+        "seconds": 0.004470174200832844,
+        "loglike": -3065.4569127975265,
+        "worse_loglike": false,
         "backend": "torchdcm"
       },
       "scipy_bfgs": {
         "status": "ok",
         "seconds": 0.37648651795461774,
-        "backend": "scipy_bfgs"
+        "backend": "scipy_bfgs",
+        "loglike": -3065.456912797519,
+        "worse_loglike": false
       },
       "biogeme": {
         "status": "ok",
         "seconds": 1.5920505929971114,
-        "backend": "biogeme"
+        "backend": "biogeme",
+        "loglike": -3065.4569127975246,
+        "worse_loglike": false
       },
       "apollo": {
         "status": "ok",
         "seconds": 0.271,
-        "backend": "apollo"
+        "backend": "apollo",
+        "loglike": -3065.456912798155,
+        "worse_loglike": false
       },
       "mlogit": {
         "status": "ok",
         "seconds": 0.04899999999999993,
-        "backend": "mlogit"
+        "backend": "mlogit",
+        "loglike": -3065.456912797525,
+        "worse_loglike": false
       },
       "gmnl": {
         "status": "ok",
         "seconds": 0.04899999999999999,
-        "backend": "gmnl"
+        "backend": "gmnl",
+        "loglike": -3065.456912797525,
+        "worse_loglike": false
       },
       "xlogit": {
         "status": "ok",
         "seconds": 0.008400816936045885,
-        "backend": "xlogit"
+        "backend": "xlogit",
+        "loglike": -3065.4569127977134,
+        "worse_loglike": false
       },
       "case_runner": {
         "status": "ok",
         "seconds": 8.643293129978701
+      },
+      "torch-choice": {
+        "status": "ok",
+        "seconds": 0.00873615127056837,
+        "loglike": -3065.456912797527,
+        "worse_loglike": false,
+        "backend": "torch_choice"
       }
     },
     "backend_rows": {
       "torchdcm": {
         "backend": "torchdcm",
         "available": true,
-        "total_s": 0.13958983798511326,
-        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_seconds\": 0.13958983798511326, \"estimate_seconds\": 0.13958983798511326, \"covariance_seconds\": 0.0, \"loglike\": -3065.4569127975265, \"n_obs\": 2798, \"n_rows\": 11192, \"n_parameters\": 3, \"parameters\": [\"B_DISP\", \"B_FEAT\", \"B_PRICE\"]}",
-        "message": ""
+        "total_s": 0.004470174200832844,
+        "estimate_s": 0.0038064019754529,
+        "covariance_s": 0.0006637722253799438,
+        "loglike": -3065.4569127975265,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_s\": 0.004470174200832844, \"estimate_s\": 0.0038064019754529, \"covariance_s\": 0.0006637722253799438, \"loglike\": -3065.4569127975265}"
       },
       "scipy_bfgs": {
         "backend": "scipy_bfgs",
         "available": true,
         "total_s": 0.37648651795461774,
         "raw": "{\"backend\": \"scipy_bfgs\", \"available\": true, \"total_seconds\": 0.37648651795461774, \"estimate_seconds\": 0.37555028800852597, \"covariance_seconds\": 0.0009362299460917711, \"loglike\": -3065.456912797519, \"params\": {\"B_DISP\": 1.2652173641520006, \"B_FEAT\": 0.883126589919651, \"B_PRICE\": -0.885018986309034}, \"message\": \"\"}",
-        "message": ""
+        "message": "",
+        "loglike": -3065.456912797519,
+        "worse_loglike": false
       },
       "mlogit": {
         "backend": "mlogit",
         "available": true,
         "total_s": 0.04899999999999993,
         "raw": "{\"backend\": \"mlogit\", \"dataset\": \"catsup\", \"n_obs\": 2798, \"n_rows\": 11192, \"n_parameters\": 3, \"variables\": [\"disp\", \"feat\", \"price\"], \"loglike\": -3065.456912797525, \"estimate_seconds\": 0.04799999999999982, \"covariance_seconds\": 0.001000000000000112, \"total_seconds\": 0.04899999999999993, \"params\": {\"disp\": 1.265217363308362, \"feat\": 0.883126588256059, \"price\": -0.8850189852047725}, \"covariance_names\": [\"disp\", \"feat\", \"price\"], \"covariance\": [[0.007786025963554875, -0.0009828472143911268, 0.00028017301458535884], [-0.0009828472143911266, 0.009727366404198922, -0.00016761094409274254], [0.0002801730145853589, -0.00016761094409274252, 0.0009802366646761672]], \"available\": true, \"wall_seconds\": 1.5929174080956727}",
-        "message": ""
+        "message": "",
+        "loglike": -3065.456912797525,
+        "worse_loglike": false
       },
       "biogeme": {
         "backend": "biogeme",
         "available": true,
         "total_s": 1.5920505929971114,
         "raw": "{\"backend\": \"biogeme\", \"available\": true, \"total_seconds\": 1.5920505929971114, \"estimate_seconds\": 1.5919228789862245, \"covariance_seconds\": 5.786202382296324e-05, \"loglike\": -3065.4569127975246, \"parameters\": [\"B_DISP\", \"B_FEAT\", \"B_PRICE\"], \"params\": {\"B_DISP\": 1.2652173542237117, \"B_FEAT\": 0.8831265786309689, \"B_PRICE\": -0.8850189797418848}, \"covariance\": [[0.007786025926488315, -0.0009828472188905288, 0.0002801730172018539], [-0.0009828472188905281, 0.009727366369912067, -0.00016761093629531456], [0.0002801730172018544, -0.00016761093629531594, 0.0009802366578672568]]}",
-        "message": ""
+        "message": "",
+        "loglike": -3065.4569127975246,
+        "worse_loglike": false
       },
       "apollo": {
         "backend": "apollo",
         "available": true,
         "total_s": 0.271,
         "raw": "{\"backend\": \"apollo\", \"available\": true, \"total_seconds\": 0.271, \"estimate_seconds\": 0.271, \"covariance_seconds\": 0, \"loglike\": -3065.456912798155, \"parameters\": [\"B_DISP\", \"B_FEAT\", \"B_PRICE\"], \"params\": {\"B_DISP\": 1.2652195298941724, \"B_FEAT\": 0.8831287124771697, \"B_PRICE\": -0.8850191557810492}, \"covariance\": [[0.007786031273084157, -0.0009828455398068693, 0.00028017264302623407], [-0.0009828455398068693, 0.009727368772009169, -0.00016761180137832797], [0.00028017264302623407, -0.00016761180137832797, 0.0009802370396473302]], \"message\": \"apollo_version=0.3.8\"}",
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "loglike": -3065.456912798155,
+        "worse_loglike": false
       },
       "gmnl": {
         "backend": "gmnl",
         "available": true,
         "total_s": 0.04899999999999999,
         "raw": "{\"backend\": \"gmnl\", \"available\": true, \"total_seconds\": 0.04899999999999999, \"estimate_seconds\": 0.04799999999999999, \"covariance_seconds\": 0.0010000000000000009, \"loglike\": -3065.456912797525, \"params\": {\"B_DISP\": 1.265217363308352, \"B_FEAT\": 0.883126588256058, \"B_PRICE\": -0.8850189852047806}, \"message\": \"\"}",
-        "message": ""
+        "message": "",
+        "loglike": -3065.456912797525,
+        "worse_loglike": false
       },
       "xlogit": {
         "backend": "xlogit",
         "available": true,
         "total_s": 0.008400816936045885,
         "raw": "{\"backend\": \"xlogit\", \"available\": true, \"total_seconds\": 0.008400816936045885, \"estimate_seconds\": 0.008400377002544701, \"covariance_seconds\": 4.3993350118398666e-07, \"loglike\": -3065.4569127977134, \"params\": {\"B_DISP\": 1.2652172215347846, \"B_FEAT\": 0.8831282124511335, \"B_PRICE\": -0.885018693523251}, \"message\": \"\"}",
-        "message": ""
+        "message": "",
+        "loglike": -3065.4569127977134,
+        "worse_loglike": false
+      },
+      "torch_choice": {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.00873615127056837,
+        "loglike": -3065.456912797527,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torch_choice\", \"available\": true, \"total_s\": 0.00873615127056837, \"estimate_s\": 0.007263410370796919, \"covariance_s\": 0.001472740899771452, \"loglike\": -3065.456912797527}",
+        "estimate_s": 0.007263410370796919,
+        "covariance_s": 0.001472740899771452
       }
     },
-    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu."
+    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.",
+    "n_obs": 2798,
+    "consistent": "Yes"
   },
   {
     "case": "mlogit_cracker",
@@ -853,7 +1327,25 @@
         "VECLIB_MAXIMUM_THREADS": "1"
       },
       "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
-      "threadpools": []
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 32
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
     },
     "command": [
       "python",
@@ -870,96 +1362,146 @@
     "solver_status": {
       "torchdcm": {
         "status": "ok",
-        "seconds": 0.15164267795626074,
+        "seconds": 0.008709441404789686,
+        "loglike": -4339.971890459953,
+        "worse_loglike": false,
         "backend": "torchdcm"
       },
       "scipy_bfgs": {
         "status": "ok",
         "seconds": 0.5448687970638275,
-        "backend": "scipy_bfgs"
+        "backend": "scipy_bfgs",
+        "loglike": -4339.971890459816,
+        "worse_loglike": false
       },
       "biogeme": {
         "status": "ok",
         "seconds": 1.570157591952011,
-        "backend": "biogeme"
+        "backend": "biogeme",
+        "loglike": -4339.97189045981,
+        "worse_loglike": false
       },
       "apollo": {
         "status": "ok",
         "seconds": 0.2749999999999999,
-        "backend": "apollo"
+        "backend": "apollo",
+        "loglike": -4339.971890461301,
+        "worse_loglike": false
       },
       "mlogit": {
         "status": "ok",
         "seconds": 0.05500000000000016,
-        "backend": "mlogit"
+        "backend": "mlogit",
+        "loglike": -4339.971890459809,
+        "worse_loglike": false
       },
       "gmnl": {
         "status": "ok",
         "seconds": 0.05600000000000005,
-        "backend": "gmnl"
+        "backend": "gmnl",
+        "loglike": -4339.971890459809,
+        "worse_loglike": false
       },
       "xlogit": {
         "status": "ok",
         "seconds": 0.008689754991792142,
-        "backend": "xlogit"
+        "backend": "xlogit",
+        "loglike": -4339.971890460651,
+        "worse_loglike": false
       },
       "case_runner": {
         "status": "ok",
         "seconds": 9.219294897047803
+      },
+      "torch-choice": {
+        "status": "ok",
+        "seconds": 0.017283991910517216,
+        "loglike": -4339.971890459954,
+        "worse_loglike": false,
+        "backend": "torch_choice"
       }
     },
     "backend_rows": {
       "torchdcm": {
         "backend": "torchdcm",
         "available": true,
-        "total_s": 0.15164267795626074,
-        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_seconds\": 0.15164267795626074, \"estimate_seconds\": 0.15164267795626074, \"covariance_seconds\": 0.0, \"loglike\": -4339.971890459953, \"n_obs\": 3292, \"n_rows\": 13168, \"n_parameters\": 3, \"parameters\": [\"B_DISP\", \"B_FEAT\", \"B_PRICE\"]}",
-        "message": ""
+        "total_s": 0.008709441404789686,
+        "estimate_s": 0.008003350347280502,
+        "covariance_s": 0.0007060910575091839,
+        "loglike": -4339.971890459953,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_s\": 0.008709441404789686, \"estimate_s\": 0.008003350347280502, \"covariance_s\": 0.0007060910575091839, \"loglike\": -4339.971890459953}"
       },
       "scipy_bfgs": {
         "backend": "scipy_bfgs",
         "available": true,
         "total_s": 0.5448687970638275,
         "raw": "{\"backend\": \"scipy_bfgs\", \"available\": true, \"total_seconds\": 0.5448687970638275, \"estimate_seconds\": 0.5438787150196731, \"covariance_seconds\": 0.0009900820441544056, \"loglike\": -4339.971890459816, \"params\": {\"B_DISP\": 0.7260200716107834, \"B_FEAT\": 0.5968330263292724, \"B_PRICE\": -0.009553032357264901}, \"message\": \"\"}",
-        "message": ""
+        "message": "",
+        "loglike": -4339.971890459816,
+        "worse_loglike": false
       },
       "mlogit": {
         "backend": "mlogit",
         "available": true,
         "total_s": 0.05500000000000016,
         "raw": "{\"backend\": \"mlogit\", \"dataset\": \"cracker\", \"n_obs\": 3292, \"n_rows\": 13168, \"n_parameters\": 3, \"variables\": [\"disp\", \"feat\", \"price\"], \"loglike\": -4339.971890459809, \"estimate_seconds\": 0.05400000000000005, \"covariance_seconds\": 0.001000000000000112, \"total_seconds\": 0.05500000000000016, \"params\": {\"disp\": 0.7260200434548435, \"feat\": 0.596832976387802, \"price\": -0.00955303175881402}, \"covariance_names\": [\"disp\", \"feat\", \"price\"], \"covariance\": [[0.0027623411821646304, -0.0012264309049103664, -3.876130374110364e-06], [-0.001226430904910364, 0.0071280524365988545, 7.226776651471859e-06], [-3.876130374110462e-06, 7.226776651472082e-06, 7.663412809772197e-07]], \"available\": true, \"wall_seconds\": 1.7809525950578973}",
-        "message": ""
+        "message": "",
+        "loglike": -4339.971890459809,
+        "worse_loglike": false
       },
       "biogeme": {
         "backend": "biogeme",
         "available": true,
         "total_s": 1.570157591952011,
         "raw": "{\"backend\": \"biogeme\", \"available\": true, \"total_seconds\": 1.570157591952011, \"estimate_seconds\": 1.5700258169090375, \"covariance_seconds\": 5.7802069932222366e-05, \"loglike\": -4339.97189045981, \"parameters\": [\"B_DISP\", \"B_FEAT\", \"B_PRICE\"], \"params\": {\"B_DISP\": 0.726020043454843, \"B_FEAT\": 0.5968329763878018, \"B_PRICE\": -0.009553031758815412}, \"covariance\": [[0.0027623411759598324, -0.0012264309231666106, -3.8761301451753e-06], [-0.0012264309231671555, 0.0071280524317492485, 7.226776909979612e-06], [-3.8761301451759775e-06, 7.226776909980686e-06, 7.663412781630274e-07]]}",
-        "message": ""
+        "message": "",
+        "loglike": -4339.97189045981,
+        "worse_loglike": false
       },
       "apollo": {
         "backend": "apollo",
         "available": true,
         "total_s": 0.2749999999999999,
         "raw": "{\"backend\": \"apollo\", \"available\": true, \"total_seconds\": 0.2749999999999999, \"estimate_seconds\": 0.2749999999999999, \"covariance_seconds\": 0, \"loglike\": -4339.971890461301, \"parameters\": [\"B_DISP\", \"B_FEAT\", \"B_PRICE\"], \"params\": {\"B_DISP\": 0.7260213870560227, \"B_FEAT\": 0.5968352914113377, \"B_PRICE\": -0.009552987520162178}, \"covariance\": [[0.0027623404994802036, -0.001226429663032401, -3.876123894727212e-06], [-0.001226429663032401, 0.007128051319592101, 7.226783427496805e-06], [-3.876123894727212e-06, 7.226783427496805e-06, 7.663416002789418e-07]], \"message\": \"apollo_version=0.3.8\"}",
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "loglike": -4339.971890461301,
+        "worse_loglike": false
       },
       "gmnl": {
         "backend": "gmnl",
         "available": true,
         "total_s": 0.05600000000000005,
         "raw": "{\"backend\": \"gmnl\", \"available\": true, \"total_seconds\": 0.05600000000000005, \"estimate_seconds\": 0.05600000000000005, \"covariance_seconds\": 0.0, \"loglike\": -4339.971890459809, \"params\": {\"B_DISP\": 0.7260200716103251, \"B_FEAT\": 0.5968330263301013, \"B_PRICE\": -0.009553032357247419}, \"message\": \"\"}",
-        "message": ""
+        "message": "",
+        "loglike": -4339.971890459809,
+        "worse_loglike": false
       },
       "xlogit": {
         "backend": "xlogit",
         "available": true,
         "total_s": 0.008689754991792142,
         "raw": "{\"backend\": \"xlogit\", \"available\": true, \"total_seconds\": 0.008689754991792142, \"estimate_seconds\": 0.008689354988746345, \"covariance_seconds\": 4.00003045797348e-07, \"loglike\": -4339.971890460651, \"params\": {\"B_DISP\": 0.7260199618006593, \"B_FEAT\": 0.5968344300000987, \"B_PRICE\": -0.009553063594005042}, \"message\": \"\"}",
-        "message": ""
+        "message": "",
+        "loglike": -4339.971890460651,
+        "worse_loglike": false
+      },
+      "torch_choice": {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.017283991910517216,
+        "loglike": -4339.971890459954,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torch_choice\", \"available\": true, \"total_s\": 0.017283991910517216, \"estimate_s\": 0.0156471598893404, \"covariance_s\": 0.001636832021176815, \"loglike\": -4339.971890459954}",
+        "estimate_s": 0.0156471598893404,
+        "covariance_s": 0.001636832021176815
       }
     },
-    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu."
+    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.",
+    "n_obs": 3292,
+    "consistent": "Yes"
   },
   {
     "case": "mlogit_electricity",
@@ -981,7 +1523,25 @@
         "VECLIB_MAXIMUM_THREADS": "1"
       },
       "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
-      "threadpools": []
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 32
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
     },
     "command": [
       "python",
@@ -998,96 +1558,146 @@
     "solver_status": {
       "torchdcm": {
         "status": "ok",
-        "seconds": 0.15334648895077407,
+        "seconds": 0.012027840130031109,
+        "loglike": -4958.649119337403,
+        "worse_loglike": false,
         "backend": "torchdcm"
       },
       "scipy_bfgs": {
         "status": "ok",
         "seconds": 2.861181757063605,
-        "backend": "scipy_bfgs"
+        "backend": "scipy_bfgs",
+        "loglike": -4958.649119337012,
+        "worse_loglike": false
       },
       "biogeme": {
         "status": "ok",
         "seconds": 2.031106836977415,
-        "backend": "biogeme"
+        "backend": "biogeme",
+        "loglike": -4958.64911934245,
+        "worse_loglike": false
       },
       "apollo": {
         "status": "ok",
         "seconds": 0.406,
-        "backend": "apollo"
+        "backend": "apollo",
+        "loglike": -4958.649119337778,
+        "worse_loglike": false
       },
       "mlogit": {
         "status": "ok",
         "seconds": 0.06999999999999984,
-        "backend": "mlogit"
+        "backend": "mlogit",
+        "loglike": -4958.649119337022,
+        "worse_loglike": false
       },
       "gmnl": {
         "status": "ok",
         "seconds": 0.242,
-        "backend": "gmnl"
+        "backend": "gmnl",
+        "loglike": -4958.649119337022,
+        "worse_loglike": false
       },
       "xlogit": {
         "status": "ok",
         "seconds": 0.013430442893877625,
-        "backend": "xlogit"
+        "backend": "xlogit",
+        "loglike": -4958.649119337611,
+        "worse_loglike": false
       },
       "case_runner": {
         "status": "ok",
         "seconds": 13.783645060029812
+      },
+      "torch-choice": {
+        "status": "ok",
+        "seconds": 0.020833482034504414,
+        "loglike": -4958.649119337402,
+        "worse_loglike": false,
+        "backend": "torch_choice"
       }
     },
     "backend_rows": {
       "torchdcm": {
         "backend": "torchdcm",
         "available": true,
-        "total_s": 0.15334648895077407,
-        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_seconds\": 0.15334648895077407, \"estimate_seconds\": 0.15334648895077407, \"covariance_seconds\": 0.0, \"loglike\": -4958.649119337403, \"n_obs\": 4308, \"n_rows\": 17232, \"n_parameters\": 6, \"parameters\": [\"B_PF\", \"B_CL\", \"B_LOC\", \"B_WK\", \"B_TOD\", \"B_SEAS\"]}",
-        "message": ""
+        "total_s": 0.012027840130031109,
+        "estimate_s": 0.01070975698530674,
+        "covariance_s": 0.001318083144724369,
+        "loglike": -4958.649119337403,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_s\": 0.012027840130031109, \"estimate_s\": 0.01070975698530674, \"covariance_s\": 0.001318083144724369, \"loglike\": -4958.649119337403}"
       },
       "scipy_bfgs": {
         "backend": "scipy_bfgs",
         "available": true,
         "total_s": 2.861181757063605,
         "raw": "{\"backend\": \"scipy_bfgs\", \"available\": true, \"total_seconds\": 2.861181757063605, \"estimate_seconds\": 2.8595481750089675, \"covariance_seconds\": 0.0016335820546373725, \"loglike\": -4958.649119337012, \"params\": {\"B_PF\": -0.6252277657950284, \"B_CL\": -0.10829909082739402, \"B_LOC\": 1.4422428666950835, \"B_WK\": 0.9955040041337877, \"B_TOD\": -5.46275865884236, \"B_SEAS\": -5.84003083377516}, \"message\": \"Desired error not necessarily achieved due to precision loss.\"}",
-        "message": "Desired error not necessarily achieved due to precision loss."
+        "message": "Desired error not necessarily achieved due to precision loss.",
+        "loglike": -4958.649119337012,
+        "worse_loglike": false
       },
       "mlogit": {
         "backend": "mlogit",
         "available": true,
         "total_s": 0.06999999999999984,
         "raw": "{\"backend\": \"mlogit\", \"dataset\": \"electricity\", \"n_obs\": 4308, \"n_rows\": 17232, \"n_parameters\": 6, \"variables\": [\"pf\", \"cl\", \"loc\", \"wk\", \"tod\", \"seas\"], \"loglike\": -4958.649119337022, \"estimate_seconds\": 0.06999999999999984, \"covariance_seconds\": 0, \"total_seconds\": 0.06999999999999984, \"params\": {\"pf\": -0.6252277652509325, \"cl\": -0.10829909022511179, \"loc\": 1.4422428711272355, \"wk\": 0.9955040043231113, \"tod\": -5.462758654941098, \"seas\": -5.8400308335960815}, \"covariance_names\": [\"pf\", \"cl\", \"loc\", \"wk\", \"tod\", \"seas\"], \"covariance\": [[0.0005392759769186155, 2.7443612302582824e-05, -0.00030160772530504005, -0.000264593537363965, 0.004153646406840979, 0.004202942334295155], [2.7443612302582777e-05, 6.796708663352194e-05, -6.63945037235296e-05, -6.435150158658652e-05, 0.0002504668658100951, 0.0002494119715603874], [-0.0003016077253050398, -6.63945037235296e-05, 0.002556022841188928, 0.001451778673631594, -0.002610370028071999, -0.002885254980329947], [-0.0002645935373639648, -6.435150158658652e-05, 0.001451778673631594, 0.0020052552143338623, -0.0021860160393415524, -0.0024447003313176124], [0.004153646406840979, 0.00025046686581009546, -0.0026103700280720008, -0.0021860160393415537, 0.03375028575562077, 0.03286689330997317], [0.004202942334295155, 0.0002494119715603878, -0.002885254980329949, -0.0024447003313176137, 0.03286689330997317, 0.03484863706877932]], \"available\": true, \"wall_seconds\": 2.797858668025583}",
-        "message": ""
+        "message": "",
+        "loglike": -4958.649119337022,
+        "worse_loglike": false
       },
       "biogeme": {
         "backend": "biogeme",
         "available": true,
         "total_s": 2.031106836977415,
         "raw": "{\"backend\": \"biogeme\", \"available\": true, \"total_seconds\": 2.031106836977415, \"estimate_seconds\": 2.030978313065134, \"covariance_seconds\": 6.053200922906399e-05, \"loglike\": -4958.64911934245, \"parameters\": [\"B_PF\", \"B_CL\", \"B_LOC\", \"B_WK\", \"B_TOD\", \"B_SEAS\"], \"params\": {\"B_PF\": -0.6252263610117917, \"B_CL\": -0.1082987399164012, \"B_LOC\": 1.4422389753148621, \"B_WK\": 0.995500264772292, \"B_TOD\": -5.462746354970676, \"B_SEAS\": -5.84001788100966}, \"covariance\": [[0.0005392753163823837, 2.744349810126465e-05, -0.0003016063839310748, -0.0002645923217928072, 0.0041536411470348, 0.004202936850547731], [2.7443498101265273e-05, 6.796700886216508e-05, -6.639425668787892e-05, -6.435125416218875e-05, 0.0002504658322406111, 0.0002494109212561834], [-0.0003016063839310801, -6.639425668787971e-05, 0.002556018036055396, 0.0014517748235396975, -0.0026103579475586385, -0.0028852425452336183], [-0.0002645923217928115, -6.435125416218897e-05, 0.0014517748235396953, 0.0020052516338089875, -0.0021860054927295594, -0.002444689422951734], [0.004153641147034803, 0.0002504658322406065, -0.0026103579475585978, -0.002186005492729527, 0.033750242076272315, 0.032866848974582676], [0.0042029368505477355, 0.00024941092125617875, -0.0028852425452335776, -0.0024446894229517018, 0.03286684897458268, 0.034848589407835764]]}",
-        "message": ""
+        "message": "",
+        "loglike": -4958.64911934245,
+        "worse_loglike": false
       },
       "apollo": {
         "backend": "apollo",
         "available": true,
         "total_s": 0.406,
         "raw": "{\"backend\": \"apollo\", \"available\": true, \"total_seconds\": 0.406, \"estimate_seconds\": 0.406, \"covariance_seconds\": 0, \"loglike\": -4958.649119337778, \"parameters\": [\"B_PF\", \"B_CL\", \"B_LOC\", \"B_WK\", \"B_TOD\", \"B_SEAS\"], \"params\": {\"B_PF\": -0.6252280290922753, \"B_CL\": -0.10829888493666778, \"B_LOC\": 1.4422436119115112, \"B_WK\": 0.9955047064218118, \"B_TOD\": -5.46276011775137, \"B_SEAS\": -5.840032288656426}, \"covariance\": [[0.0005392761877766713, 2.7443591592509817e-05, -0.0003016078813339409, -0.0002645936410748156, 0.00415364797162833, 0.00420294389786737], [2.7443591592509817e-05, 6.796706611144681e-05, -6.639446371951627e-05, -6.435148693437227e-05, 0.00025046665442243575, 0.0002494117616826783], [-0.0003016078813339409, -6.639446371951627e-05, 0.0025560233149376586, 0.0014517792537079893, -0.002610371202236887, -0.0028852562605325123], [-0.0002645936410748156, -6.435148693437227e-05, 0.0014517792537079893, 0.002005255669270556, -0.0021860168649030847, -0.002444701210074316], [0.00415364797162833, 0.00025046665442243575, -0.002610371202236887, -0.0021860168649030847, 0.033750297081069025, 0.03286690494806467], [0.00420294389786737, 0.0002494117616826783, -0.0028852562605325123, -0.002444701210074316, 0.03286690494806467, 0.034848648159762456]], \"message\": \"apollo_version=0.3.8\"}",
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "loglike": -4958.649119337778,
+        "worse_loglike": false
       },
       "gmnl": {
         "backend": "gmnl",
         "available": true,
         "total_s": 0.242,
         "raw": "{\"backend\": \"gmnl\", \"available\": true, \"total_seconds\": 0.242, \"estimate_seconds\": 0.242, \"covariance_seconds\": 0.0, \"loglike\": -4958.649119337022, \"params\": {\"B_PF\": -0.6252277652510363, \"B_CL\": -0.10829909022511847, \"B_LOC\": 1.4422428711272584, \"B_WK\": 0.9955040043231592, \"B_TOD\": -5.462758654941978, \"B_SEAS\": -5.840030833596967}, \"message\": \"\"}",
-        "message": ""
+        "message": "",
+        "loglike": -4958.649119337022,
+        "worse_loglike": false
       },
       "xlogit": {
         "backend": "xlogit",
         "available": true,
         "total_s": 0.013430442893877625,
         "raw": "{\"backend\": \"xlogit\", \"available\": true, \"total_seconds\": 0.013430442893877625, \"estimate_seconds\": 0.013430002960376441, \"covariance_seconds\": 4.3993350118398666e-07, \"loglike\": -4958.649119337611, \"params\": {\"B_PF\": -0.6252277155138607, \"B_CL\": -0.10829891666770841, \"B_LOC\": 1.4422435132709037, \"B_WK\": 0.9955049881776805, \"B_TOD\": -5.462758418796934, \"B_SEAS\": -5.8400307623279755}, \"message\": \"\"}",
-        "message": ""
+        "message": "",
+        "loglike": -4958.649119337611,
+        "worse_loglike": false
+      },
+      "torch_choice": {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.020833482034504414,
+        "loglike": -4958.649119337402,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torch_choice\", \"available\": true, \"total_s\": 0.020833482034504414, \"estimate_s\": 0.018406821880489588, \"covariance_s\": 0.002426660154014826, \"loglike\": -4958.649119337402}",
+        "estimate_s": 0.018406821880489588,
+        "covariance_s": 0.002426660154014826
       }
     },
-    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu."
+    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.",
+    "n_obs": 4308,
+    "consistent": "Yes"
   },
   {
     "case": "mlogit_hc",
@@ -1109,7 +1719,25 @@
         "VECLIB_MAXIMUM_THREADS": "1"
       },
       "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
-      "threadpools": []
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 32
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
     },
     "command": [
       "python",
@@ -1126,96 +1754,146 @@
     "solver_status": {
       "torchdcm": {
         "status": "ok",
-        "seconds": 0.14150928205344826,
+        "seconds": 0.003937451168894768,
+        "loglike": -331.9100227464945,
+        "worse_loglike": false,
         "backend": "torchdcm"
       },
       "scipy_bfgs": {
         "status": "ok",
         "seconds": 0.04812830709852278,
-        "backend": "scipy_bfgs"
+        "backend": "scipy_bfgs",
+        "loglike": -331.91002274621195,
+        "worse_loglike": false
       },
       "biogeme": {
         "status": "ok",
         "seconds": 2.1571457920363173,
-        "backend": "biogeme"
+        "backend": "biogeme",
+        "loglike": -331.91002274621184,
+        "worse_loglike": false
       },
       "apollo": {
         "status": "ok",
         "seconds": 0.21499999999999997,
-        "backend": "apollo"
+        "backend": "apollo",
+        "loglike": -331.9100227463087,
+        "worse_loglike": false
       },
       "mlogit": {
         "status": "ok",
         "seconds": 0.014000000000000012,
-        "backend": "mlogit"
+        "backend": "mlogit",
+        "loglike": -331.9100227462119,
+        "worse_loglike": false
       },
       "gmnl": {
         "status": "ok",
         "seconds": 0.01699999999999996,
-        "backend": "gmnl"
+        "backend": "gmnl",
+        "loglike": -331.9100227462119,
+        "worse_loglike": false
       },
       "xlogit": {
         "status": "ok",
         "seconds": 0.002136496943421662,
-        "backend": "xlogit"
+        "backend": "xlogit",
+        "loglike": -331.9100227462262,
+        "worse_loglike": false
       },
       "case_runner": {
         "status": "ok",
         "seconds": 6.5476266090990975
+      },
+      "torch-choice": {
+        "status": "ok",
+        "seconds": 0.005166163202375174,
+        "loglike": -331.9100227464945,
+        "worse_loglike": false,
+        "backend": "torch_choice"
       }
     },
     "backend_rows": {
       "torchdcm": {
         "backend": "torchdcm",
         "available": true,
-        "total_s": 0.14150928205344826,
-        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_seconds\": 0.14150928205344826, \"estimate_seconds\": 0.14150928205344826, \"covariance_seconds\": 0.0, \"loglike\": -331.9100227464945, \"n_obs\": 250, \"n_rows\": 1750, \"n_parameters\": 2, \"parameters\": [\"B_ICH\", \"B_OCH\"]}",
-        "message": ""
+        "total_s": 0.003937451168894768,
+        "estimate_s": 0.003614685032516718,
+        "covariance_s": 0.00032276613637804985,
+        "loglike": -331.9100227464945,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_s\": 0.003937451168894768, \"estimate_s\": 0.003614685032516718, \"covariance_s\": 0.00032276613637804985, \"loglike\": -331.9100227464945}"
       },
       "scipy_bfgs": {
         "backend": "scipy_bfgs",
         "available": true,
         "total_s": 0.04812830709852278,
         "raw": "{\"backend\": \"scipy_bfgs\", \"available\": true, \"total_seconds\": 0.04812830709852278, \"estimate_seconds\": 0.04752344801090658, \"covariance_seconds\": 0.0006048590876162052, \"loglike\": -331.91002274621195, \"params\": {\"B_ICH\": -0.001602056781445106, \"B_OCH\": -0.009302556310001188}, \"message\": \"Desired error not necessarily achieved due to precision loss.\"}",
-        "message": "Desired error not necessarily achieved due to precision loss."
+        "message": "Desired error not necessarily achieved due to precision loss.",
+        "loglike": -331.91002274621195,
+        "worse_loglike": false
       },
       "mlogit": {
         "backend": "mlogit",
         "available": true,
         "total_s": 0.014000000000000012,
         "raw": "{\"backend\": \"mlogit\", \"dataset\": \"hc\", \"n_obs\": 250, \"n_rows\": 1750, \"n_parameters\": 2, \"variables\": [\"ich\", \"och\"], \"loglike\": -331.9100227462119, \"estimate_seconds\": 0.014000000000000012, \"covariance_seconds\": 0, \"total_seconds\": 0.014000000000000012, \"params\": {\"ich\": -0.0016020522077310464, \"och\": -0.009302551383614417}, \"covariance_names\": [\"ich\", \"och\"], \"covariance\": [[4.929949915106531e-08, 4.239156118624587e-08], [4.239156118624588e-08, 5.077923104597888e-07]], \"available\": true, \"wall_seconds\": 0.5774871669709682}",
-        "message": ""
+        "message": "",
+        "loglike": -331.9100227462119,
+        "worse_loglike": false
       },
       "biogeme": {
         "backend": "biogeme",
         "available": true,
         "total_s": 2.1571457920363173,
         "raw": "{\"backend\": \"biogeme\", \"available\": true, \"total_seconds\": 2.1571457920363173, \"estimate_seconds\": 2.157026238972321, \"covariance_seconds\": 5.232100374996662e-05, \"loglike\": -331.91002274621184, \"parameters\": [\"B_ICH\", \"B_OCH\"], \"params\": {\"B_ICH\": -0.0016020567814831064, \"B_OCH\": -0.009302556309962086}, \"covariance\": [[4.929949915106529e-08, 4.239156118624587e-08], [4.23915611862459e-08, 5.077923104597887e-07]]}",
-        "message": ""
+        "message": "",
+        "loglike": -331.91002274621184,
+        "worse_loglike": false
       },
       "apollo": {
         "backend": "apollo",
         "available": true,
         "total_s": 0.21499999999999997,
         "raw": "{\"backend\": \"apollo\", \"available\": true, \"total_seconds\": 0.21499999999999997, \"estimate_seconds\": 0.21499999999999997, \"covariance_seconds\": 0, \"loglike\": -331.9100227463087, \"parameters\": [\"B_ICH\", \"B_OCH\"], \"params\": {\"B_ICH\": -0.0016020555993798032, \"B_OCH\": -0.009302549215458908}, \"covariance\": [[4.929942334275175e-08, 4.2391469049355974e-08], [4.2391469049355974e-08, 5.077918500500059e-07]], \"message\": \"apollo_version=0.3.8\"}",
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "loglike": -331.9100227463087,
+        "worse_loglike": false
       },
       "gmnl": {
         "backend": "gmnl",
         "available": true,
         "total_s": 0.01699999999999996,
         "raw": "{\"backend\": \"gmnl\", \"available\": true, \"total_seconds\": 0.01699999999999996, \"estimate_seconds\": 0.01699999999999996, \"covariance_seconds\": 0.0, \"loglike\": -331.9100227462119, \"params\": {\"B_ICH\": -0.0016020567814827964, \"B_OCH\": -0.009302556309961728}, \"message\": \"\"}",
-        "message": ""
+        "message": "",
+        "loglike": -331.9100227462119,
+        "worse_loglike": false
       },
       "xlogit": {
         "backend": "xlogit",
         "available": true,
         "total_s": 0.002136496943421662,
         "raw": "{\"backend\": \"xlogit\", \"available\": true, \"total_seconds\": 0.002136496943421662, \"estimate_seconds\": 0.00213598704431206, \"covariance_seconds\": 5.098991096019745e-07, \"loglike\": -331.9100227462262, \"params\": {\"B_ICH\": -0.0016020578467740834, \"B_OCH\": -0.00930255559046175}, \"message\": \"\"}",
-        "message": ""
+        "message": "",
+        "loglike": -331.9100227462262,
+        "worse_loglike": false
+      },
+      "torch_choice": {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.005166163202375174,
+        "loglike": -331.9100227464945,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torch_choice\", \"available\": true, \"total_s\": 0.005166163202375174, \"estimate_s\": 0.004715057089924812, \"covariance_s\": 0.00045110611245036125, \"loglike\": -331.9100227464945}",
+        "estimate_s": 0.004715057089924812,
+        "covariance_s": 0.00045110611245036125
       }
     },
-    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu."
+    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.",
+    "n_obs": 250,
+    "consistent": "Yes"
   },
   {
     "case": "mlogit_heating",
@@ -1237,7 +1915,25 @@
         "VECLIB_MAXIMUM_THREADS": "1"
       },
       "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
-      "threadpools": []
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 32
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
     },
     "command": [
       "python",
@@ -1254,96 +1950,146 @@
     "solver_status": {
       "torchdcm": {
         "status": "ok",
-        "seconds": 0.13344172900542617,
+        "seconds": 0.002751536201685667,
+        "loglike": -1095.2371253294464,
+        "worse_loglike": false,
         "backend": "torchdcm"
       },
       "scipy_bfgs": {
         "status": "ok",
         "seconds": 0.14052983198780566,
-        "backend": "scipy_bfgs"
+        "backend": "scipy_bfgs",
+        "loglike": -1095.237125329443,
+        "worse_loglike": false
       },
       "biogeme": {
         "status": "ok",
         "seconds": 1.6740210859570652,
-        "backend": "biogeme"
+        "backend": "biogeme",
+        "loglike": -1095.2371253294434,
+        "worse_loglike": false
       },
       "apollo": {
         "status": "ok",
         "seconds": 0.21999999999999997,
-        "backend": "apollo"
+        "backend": "apollo",
+        "loglike": -1095.2371253294486,
+        "worse_loglike": false
       },
       "mlogit": {
         "status": "ok",
         "seconds": 0.02300000000000002,
-        "backend": "mlogit"
+        "backend": "mlogit",
+        "loglike": -1095.2371253294436,
+        "worse_loglike": false
       },
       "gmnl": {
         "status": "ok",
         "seconds": 0.021999999999999964,
-        "backend": "gmnl"
+        "backend": "gmnl",
+        "loglike": -1095.2371253294436,
+        "worse_loglike": false
       },
       "xlogit": {
         "status": "ok",
         "seconds": 0.00330264400690794,
-        "backend": "xlogit"
+        "backend": "xlogit",
+        "loglike": -1095.2371253294446,
+        "worse_loglike": false
       },
       "case_runner": {
         "status": "ok",
         "seconds": 6.717506289016455
+      },
+      "torch-choice": {
+        "status": "ok",
+        "seconds": 0.0044674999080598354,
+        "loglike": -1095.2371253294464,
+        "worse_loglike": false,
+        "backend": "torch_choice"
       }
     },
     "backend_rows": {
       "torchdcm": {
         "backend": "torchdcm",
         "available": true,
-        "total_s": 0.13344172900542617,
-        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_seconds\": 0.13344172900542617, \"estimate_seconds\": 0.13344172900542617, \"covariance_seconds\": 0.0, \"loglike\": -1095.2371253294464, \"n_obs\": 900, \"n_rows\": 4500, \"n_parameters\": 2, \"parameters\": [\"B_IC\", \"B_OC\"]}",
-        "message": ""
+        "total_s": 0.002751536201685667,
+        "estimate_s": 0.002367821056395769,
+        "covariance_s": 0.0003837151452898979,
+        "loglike": -1095.2371253294464,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_s\": 0.002751536201685667, \"estimate_s\": 0.002367821056395769, \"covariance_s\": 0.0003837151452898979, \"loglike\": -1095.2371253294464}"
       },
       "scipy_bfgs": {
         "backend": "scipy_bfgs",
         "available": true,
         "total_s": 0.14052983198780566,
         "raw": "{\"backend\": \"scipy_bfgs\", \"available\": true, \"total_seconds\": 0.14052983198780566, \"estimate_seconds\": 0.13986549095716327, \"covariance_seconds\": 0.0006643410306423903, \"loglike\": -1095.237125329443, \"params\": {\"B_IC\": -0.006231869335352012, \"B_OC\": -0.004580082962776304}, \"message\": \"\"}",
-        "message": ""
+        "message": "",
+        "loglike": -1095.237125329443,
+        "worse_loglike": false
       },
       "mlogit": {
         "backend": "mlogit",
         "available": true,
         "total_s": 0.02300000000000002,
         "raw": "{\"backend\": \"mlogit\", \"dataset\": \"heating\", \"n_obs\": 900, \"n_rows\": 4500, \"n_parameters\": 2, \"variables\": [\"ic\", \"oc\"], \"loglike\": -1095.2371253294436, \"estimate_seconds\": 0.02300000000000002, \"covariance_seconds\": 0, \"total_seconds\": 0.02300000000000002, \"params\": {\"ic\": -0.006231869335009908, \"oc\": -0.004580082961486916}, \"covariance_names\": [\"ic\", \"oc\"], \"covariance\": [[1.2444947708484683e-07, -6.055759376648684e-09], [-6.055759376648684e-09, 1.0378951115415688e-07]], \"available\": true, \"wall_seconds\": 0.8433146120514721}",
-        "message": ""
+        "message": "",
+        "loglike": -1095.2371253294436,
+        "worse_loglike": false
       },
       "biogeme": {
         "backend": "biogeme",
         "available": true,
         "total_s": 1.6740210859570652,
         "raw": "{\"backend\": \"biogeme\", \"available\": true, \"total_seconds\": 1.6740210859570652, \"estimate_seconds\": 1.6738992019090801, \"covariance_seconds\": 5.4551986977458e-05, \"loglike\": -1095.2371253294434, \"parameters\": [\"B_IC\", \"B_OC\"], \"params\": {\"B_IC\": -0.00623186933500991, \"B_OC\": -0.004580082961486917}, \"covariance\": [[1.2444947708484685e-07, -6.055759376648676e-09], [-6.055759376648677e-09, 1.037895111541569e-07]]}",
-        "message": ""
+        "message": "",
+        "loglike": -1095.2371253294434,
+        "worse_loglike": false
       },
       "apollo": {
         "backend": "apollo",
         "available": true,
         "total_s": 0.21999999999999997,
         "raw": "{\"backend\": \"apollo\", \"available\": true, \"total_seconds\": 0.21999999999999997, \"estimate_seconds\": 0.21999999999999997, \"covariance_seconds\": 0, \"loglike\": -1095.2371253294486, \"parameters\": [\"B_IC\", \"B_OC\"], \"params\": {\"B_IC\": -0.006231868407907092, \"B_OC\": -0.004580068730568737}, \"covariance\": [[1.2444942974765187e-07, -6.055754096238504e-09], [-6.055754096238504e-09, 1.037892178788224e-07]], \"message\": \"apollo_version=0.3.8\"}",
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "loglike": -1095.2371253294486,
+        "worse_loglike": false
       },
       "gmnl": {
         "backend": "gmnl",
         "available": true,
         "total_s": 0.021999999999999964,
         "raw": "{\"backend\": \"gmnl\", \"available\": true, \"total_seconds\": 0.021999999999999964, \"estimate_seconds\": 0.021999999999999964, \"covariance_seconds\": 0.0, \"loglike\": -1095.2371253294436, \"params\": {\"B_IC\": -0.006231869335009885, \"B_OC\": -0.004580082961486814}, \"message\": \"\"}",
-        "message": ""
+        "message": "",
+        "loglike": -1095.2371253294436,
+        "worse_loglike": false
       },
       "xlogit": {
         "backend": "xlogit",
         "available": true,
         "total_s": 0.00330264400690794,
         "raw": "{\"backend\": \"xlogit\", \"available\": true, \"total_seconds\": 0.00330264400690794, \"estimate_seconds\": 0.0033022440038621426, \"covariance_seconds\": 4.00003045797348e-07, \"loglike\": -1095.2371253294446, \"params\": {\"B_IC\": -0.006231869670800543, \"B_OC\": -0.004580082603659084}, \"message\": \"\"}",
-        "message": ""
+        "message": "",
+        "loglike": -1095.2371253294446,
+        "worse_loglike": false
+      },
+      "torch_choice": {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.0044674999080598354,
+        "loglike": -1095.2371253294464,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torch_choice\", \"available\": true, \"total_s\": 0.0044674999080598354, \"estimate_s\": 0.0037736869417130947, \"covariance_s\": 0.0006938129663467407, \"loglike\": -1095.2371253294464}",
+        "estimate_s": 0.0037736869417130947,
+        "covariance_s": 0.0006938129663467407
       }
     },
-    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu."
+    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.",
+    "n_obs": 900,
+    "consistent": "Yes"
   },
   {
     "case": "mlogit_mode",
@@ -1365,7 +2111,25 @@
         "VECLIB_MAXIMUM_THREADS": "1"
       },
       "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
-      "threadpools": []
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 32
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
     },
     "command": [
       "python",
@@ -1382,96 +2146,146 @@
     "solver_status": {
       "torchdcm": {
         "status": "ok",
-        "seconds": 0.13397055794484913,
+        "seconds": 0.0025191488675773144,
+        "loglike": -451.2967553327321,
+        "worse_loglike": false,
         "backend": "torchdcm"
       },
       "scipy_bfgs": {
         "status": "ok",
         "seconds": 0.2008087169378996,
-        "backend": "scipy_bfgs"
+        "backend": "scipy_bfgs",
+        "loglike": -451.2967553323124,
+        "worse_loglike": false
       },
       "biogeme": {
         "status": "ok",
         "seconds": 1.614866379997693,
-        "backend": "biogeme"
+        "backend": "biogeme",
+        "loglike": -451.29675533231244,
+        "worse_loglike": false
       },
       "apollo": {
         "status": "ok",
         "seconds": 0.20899999999999996,
-        "backend": "apollo"
+        "backend": "apollo",
+        "loglike": -451.2967553323132,
+        "worse_loglike": false
       },
       "mlogit": {
         "status": "ok",
         "seconds": 0.013000000000000012,
-        "backend": "mlogit"
+        "backend": "mlogit",
+        "loglike": -451.2967553323125,
+        "worse_loglike": false
       },
       "gmnl": {
         "status": "ok",
         "seconds": 0.014999999999999958,
-        "backend": "gmnl"
+        "backend": "gmnl",
+        "loglike": -451.2967553323125,
+        "worse_loglike": false
       },
       "xlogit": {
         "status": "ok",
         "seconds": 0.0020727849332615733,
-        "backend": "xlogit"
+        "backend": "xlogit",
+        "loglike": -451.29675533337206,
+        "worse_loglike": false
       },
       "case_runner": {
         "status": "ok",
         "seconds": 6.2038875200087205
+      },
+      "torch-choice": {
+        "status": "ok",
+        "seconds": 0.0033590500243008137,
+        "loglike": -451.2967553327321,
+        "worse_loglike": false,
+        "backend": "torch_choice"
       }
     },
     "backend_rows": {
       "torchdcm": {
         "backend": "torchdcm",
         "available": true,
-        "total_s": 0.13397055794484913,
-        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_seconds\": 0.13397055794484913, \"estimate_seconds\": 0.13397055794484913, \"covariance_seconds\": 0.0, \"loglike\": -451.2967553327321, \"n_obs\": 453, \"n_rows\": 1812, \"n_parameters\": 2, \"parameters\": [\"B_COST\", \"B_TIME\"]}",
-        "message": ""
+        "total_s": 0.0025191488675773144,
+        "estimate_s": 0.002193612977862358,
+        "covariance_s": 0.0003255358897149563,
+        "loglike": -451.2967553327321,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_s\": 0.0025191488675773144, \"estimate_s\": 0.002193612977862358, \"covariance_s\": 0.0003255358897149563, \"loglike\": -451.2967553327321}"
       },
       "scipy_bfgs": {
         "backend": "scipy_bfgs",
         "available": true,
         "total_s": 0.2008087169378996,
         "raw": "{\"backend\": \"scipy_bfgs\", \"available\": true, \"total_seconds\": 0.2008087169378996, \"estimate_seconds\": 0.20019430795218796, \"covariance_seconds\": 0.0006144089857116342, \"loglike\": -451.2967553323124, \"params\": {\"B_COST\": 0.1367936302885489, \"B_TIME\": -0.10687699660890654}, \"message\": \"Desired error not necessarily achieved due to precision loss.\"}",
-        "message": "Desired error not necessarily achieved due to precision loss."
+        "message": "Desired error not necessarily achieved due to precision loss.",
+        "loglike": -451.2967553323124,
+        "worse_loglike": false
       },
       "mlogit": {
         "backend": "mlogit",
         "available": true,
         "total_s": 0.013000000000000012,
         "raw": "{\"backend\": \"mlogit\", \"dataset\": \"mode\", \"n_obs\": 453, \"n_rows\": 1812, \"n_parameters\": 2, \"variables\": [\"cost\", \"time\"], \"loglike\": -451.2967553323125, \"estimate_seconds\": 0.013000000000000012, \"covariance_seconds\": 0, \"total_seconds\": 0.013000000000000012, \"params\": {\"cost\": 0.1367936877079757, \"time\": -0.10687606968771074}, \"covariance_names\": [\"cost\", \"time\"], \"covariance\": [[0.0011984168872344562, -2.820454971371498e-05], [-2.8204549713714987e-05, 5.5466227762280757e-05]], \"available\": true, \"wall_seconds\": 0.5876041309675202}",
-        "message": ""
+        "message": "",
+        "loglike": -451.2967553323125,
+        "worse_loglike": false
       },
       "biogeme": {
         "backend": "biogeme",
         "available": true,
         "total_s": 1.614866379997693,
         "raw": "{\"backend\": \"biogeme\", \"available\": true, \"total_seconds\": 1.614866379997693, \"estimate_seconds\": 1.6147474360186607, \"covariance_seconds\": 5.2412040531635284e-05, \"loglike\": -451.29675533231244, \"parameters\": [\"B_COST\", \"B_TIME\"], \"params\": {\"B_COST\": 0.13679363399766237, \"B_TIME\": -0.10687699665254133}, \"covariance\": [[0.0011984168872344564, -2.8204549713715092e-05], [-2.8204549713714974e-05, 5.5466227762280784e-05]]}",
-        "message": ""
+        "message": "",
+        "loglike": -451.29675533231244,
+        "worse_loglike": false
       },
       "apollo": {
         "backend": "apollo",
         "available": true,
         "total_s": 0.20899999999999996,
         "raw": "{\"backend\": \"apollo\", \"available\": true, \"total_seconds\": 0.20899999999999996, \"estimate_seconds\": 0.20899999999999996, \"covariance_seconds\": 0, \"loglike\": -451.2967553323132, \"parameters\": [\"B_COST\", \"B_TIME\"], \"params\": {\"B_COST\": 0.13679362124486583, \"B_TIME\": -0.10687698953169728}, \"covariance\": [[0.0011984168577417861, -2.8204546520848125e-05], [-2.8204546520848125e-05, 5.546622238577714e-05]], \"message\": \"apollo_version=0.3.8\"}",
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "loglike": -451.2967553323132,
+        "worse_loglike": false
       },
       "gmnl": {
         "backend": "gmnl",
         "available": true,
         "total_s": 0.014999999999999958,
         "raw": "{\"backend\": \"gmnl\", \"available\": true, \"total_seconds\": 0.014999999999999958, \"estimate_seconds\": 0.014999999999999958, \"covariance_seconds\": 0.0, \"loglike\": -451.2967553323125, \"params\": {\"B_COST\": 0.13679363399766242, \"B_TIME\": -0.1068769966525413}, \"message\": \"\"}",
-        "message": ""
+        "message": "",
+        "loglike": -451.2967553323125,
+        "worse_loglike": false
       },
       "xlogit": {
         "backend": "xlogit",
         "available": true,
         "total_s": 0.0020727849332615733,
         "raw": "{\"backend\": \"xlogit\", \"available\": true, \"total_seconds\": 0.0020727849332615733, \"estimate_seconds\": 0.002072324976325035, \"covariance_seconds\": 4.5995693653821945e-07, \"loglike\": -451.29675533337206, \"params\": {\"B_COST\": 0.13679519033334672, \"B_TIME\": -0.10687710660598661}, \"message\": \"\"}",
-        "message": ""
+        "message": "",
+        "loglike": -451.29675533337206,
+        "worse_loglike": false
+      },
+      "torch_choice": {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.0033590500243008137,
+        "loglike": -451.2967553327321,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torch_choice\", \"available\": true, \"total_s\": 0.0033590500243008137, \"estimate_s\": 0.0028880652971565723, \"covariance_s\": 0.00047098472714424133, \"loglike\": -451.2967553327321}",
+        "estimate_s": 0.0028880652971565723,
+        "covariance_s": 0.00047098472714424133
       }
     },
-    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu."
+    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.",
+    "n_obs": 453,
+    "consistent": "Yes"
   },
   {
     "case": "mlogit_nox",
@@ -1493,7 +2307,25 @@
         "VECLIB_MAXIMUM_THREADS": "1"
       },
       "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
-      "threadpools": []
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 32
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
     },
     "command": [
       "python",
@@ -1510,28 +2342,38 @@
     "solver_status": {
       "torchdcm": {
         "status": "ok",
-        "seconds": 0.1351942989276722,
+        "seconds": 0.004918799269944429,
+        "loglike": -1106.0106492450957,
+        "worse_loglike": false,
         "backend": "torchdcm"
       },
       "scipy_bfgs": {
         "status": "ok",
         "seconds": 0.2358963170554489,
-        "backend": "scipy_bfgs"
+        "backend": "scipy_bfgs",
+        "loglike": -1106.0106492447533,
+        "worse_loglike": false
       },
       "biogeme": {
         "status": "ok",
         "seconds": 5.145987783907913,
-        "backend": "biogeme"
+        "backend": "biogeme",
+        "loglike": -1106.0106492447549,
+        "worse_loglike": false
       },
       "apollo": {
         "status": "ok",
         "seconds": 0.28600000000000003,
-        "backend": "apollo"
+        "backend": "apollo",
+        "loglike": -1106.0106492447537,
+        "worse_loglike": false
       },
       "mlogit": {
         "status": "ok",
         "seconds": 0.034999999999999976,
-        "backend": "mlogit"
+        "backend": "mlogit",
+        "loglike": -1106.0106492447546,
+        "worse_loglike": false
       },
       "gmnl": {
         "status": "failed",
@@ -1541,48 +2383,69 @@
       "xlogit": {
         "status": "ok",
         "seconds": 0.003816560027189553,
-        "backend": "xlogit"
+        "backend": "xlogit",
+        "loglike": -1106.0106492474172,
+        "worse_loglike": false
       },
       "case_runner": {
         "status": "ok",
         "seconds": 10.028601838974282
+      },
+      "torch-choice": {
+        "status": "ok",
+        "seconds": 0.008245537988841534,
+        "loglike": -1106.0106492450955,
+        "worse_loglike": false,
+        "backend": "torch_choice"
       }
     },
     "backend_rows": {
       "torchdcm": {
         "backend": "torchdcm",
         "available": true,
-        "total_s": 0.1351942989276722,
-        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_seconds\": 0.1351942989276722, \"estimate_seconds\": 0.1351942989276722, \"covariance_seconds\": 0.0, \"loglike\": -1106.0106492450957, \"n_obs\": 632, \"n_rows\": 9480, \"n_parameters\": 3, \"parameters\": [\"B_POST\", \"B_VCOST\", \"B_KCOST\"]}",
-        "message": ""
+        "total_s": 0.004918799269944429,
+        "estimate_s": 0.004332247190177441,
+        "covariance_s": 0.0005865520797669888,
+        "loglike": -1106.0106492450957,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_s\": 0.004918799269944429, \"estimate_s\": 0.004332247190177441, \"covariance_s\": 0.0005865520797669888, \"loglike\": -1106.0106492450957}"
       },
       "scipy_bfgs": {
         "backend": "scipy_bfgs",
         "available": true,
         "total_s": 0.2358963170554489,
         "raw": "{\"backend\": \"scipy_bfgs\", \"available\": true, \"total_seconds\": 0.2358963170554489, \"estimate_seconds\": 0.23498016805388033, \"covariance_seconds\": 0.0009161490015685558, \"loglike\": -1106.0106492447533, \"params\": {\"B_POST\": -1.163043807806995, \"B_VCOST\": -0.062473663814832714, \"B_KCOST\": 0.03337940947350045}, \"message\": \"Desired error not necessarily achieved due to precision loss.\"}",
-        "message": "Desired error not necessarily achieved due to precision loss."
+        "message": "Desired error not necessarily achieved due to precision loss.",
+        "loglike": -1106.0106492447533,
+        "worse_loglike": false
       },
       "mlogit": {
         "backend": "mlogit",
         "available": true,
         "total_s": 0.034999999999999976,
         "raw": "{\"backend\": \"mlogit\", \"dataset\": \"nox\", \"n_obs\": 632, \"n_rows\": 9480, \"n_parameters\": 3, \"variables\": [\"post\", \"vcost\", \"kcost\"], \"loglike\": -1106.0106492447546, \"estimate_seconds\": 0.034999999999999976, \"covariance_seconds\": 0, \"total_seconds\": 0.034999999999999976, \"params\": {\"post\": -1.1630438193327073, \"vcost\": -0.062473663632982644, \"kcost\": 0.033379410031432924}, \"covariance_names\": [\"post\", \"vcost\", \"kcost\"], \"covariance\": [[0.015328107136885172, -0.00040911174841924653, -0.000637280752985476], [-0.00040911174841924247, 0.0008196413244780571, 0.00024454641825107006], [-0.0006372807529854747, 0.0002445464182510702, 0.00011256563384936231]], \"available\": true, \"wall_seconds\": 0.4513991290004924}",
-        "message": ""
+        "message": "",
+        "loglike": -1106.0106492447546,
+        "worse_loglike": false
       },
       "biogeme": {
         "backend": "biogeme",
         "available": true,
         "total_s": 5.145987783907913,
         "raw": "{\"backend\": \"biogeme\", \"available\": true, \"total_seconds\": 5.145987783907913, \"estimate_seconds\": 5.145877260016277, \"covariance_seconds\": 5.4421951062977314e-05, \"loglike\": -1106.0106492447549, \"parameters\": [\"B_POST\", \"B_VCOST\", \"B_KCOST\"], \"params\": {\"B_POST\": -1.1630438193327073, \"B_VCOST\": -0.06247366363298273, \"B_KCOST\": 0.033379410031432896}, \"covariance\": [[0.015328107136885266, -0.0004091117484192502, -0.0006372807529854803], [-0.0004091117484192475, 0.0008196413244780592, 0.00024454641825107093], [-0.0006372807529854795, 0.0002445464182510712, 0.0001125656338493628]]}",
-        "message": ""
+        "message": "",
+        "loglike": -1106.0106492447549,
+        "worse_loglike": false
       },
       "apollo": {
         "backend": "apollo",
         "available": true,
         "total_s": 0.28600000000000003,
         "raw": "{\"backend\": \"apollo\", \"available\": true, \"total_seconds\": 0.28600000000000003, \"estimate_seconds\": 0.28600000000000003, \"covariance_seconds\": 0, \"loglike\": -1106.0106492447537, \"parameters\": [\"B_POST\", \"B_VCOST\", \"B_KCOST\"], \"params\": {\"B_POST\": -1.163043839548837, \"B_VCOST\": -0.06247365246077568, \"B_KCOST\": 0.03337942934191975}, \"covariance\": [[0.015328107998992606, -0.0004091118194730505, -0.0006372808479824903], [-0.0004091118194730505, 0.0008196414379230445, 0.00024454644279019156], [-0.0006372808479824903, 0.00024454644279019156, 0.00011256564481876837]], \"message\": \"apollo_version=0.3.8\"}",
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "loglike": -1106.0106492447537,
+        "worse_loglike": false
       },
       "gmnl": {
         "backend": "gmnl",
@@ -1596,10 +2459,25 @@
         "available": true,
         "total_s": 0.003816560027189553,
         "raw": "{\"backend\": \"xlogit\", \"available\": true, \"total_seconds\": 0.003816560027189553, \"estimate_seconds\": 0.0038161500124260783, \"covariance_seconds\": 4.100147634744644e-07, \"loglike\": -1106.0106492474172, \"params\": {\"B_POST\": -1.163036904794064, \"B_VCOST\": -0.062475152131323236, \"B_KCOST\": 0.03337880385868684}, \"message\": \"\"}",
-        "message": ""
+        "message": "",
+        "loglike": -1106.0106492474172,
+        "worse_loglike": false
+      },
+      "torch_choice": {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.008245537988841534,
+        "loglike": -1106.0106492450955,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torch_choice\", \"available\": true, \"total_s\": 0.008245537988841534, \"estimate_s\": 0.006981516256928444, \"covariance_s\": 0.0012640217319130898, \"loglike\": -1106.0106492450955}",
+        "estimate_s": 0.006981516256928444,
+        "covariance_s": 0.0012640217319130898
       }
     },
-    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu."
+    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.",
+    "n_obs": 632,
+    "consistent": "Yes"
   },
   {
     "case": "mlogit_risky_transport",
@@ -1621,7 +2499,25 @@
         "VECLIB_MAXIMUM_THREADS": "1"
       },
       "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
-      "threadpools": []
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 32
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
     },
     "command": [
       "python",
@@ -1638,28 +2534,38 @@
     "solver_status": {
       "torchdcm": {
         "status": "ok",
-        "seconds": 0.17826368496753275,
+        "seconds": 0.024819301906973124,
+        "loglike": -1716.0467301337903,
+        "worse_loglike": false,
         "backend": "torchdcm"
       },
       "scipy_bfgs": {
         "status": "ok",
         "seconds": 1.1388261859538034,
-        "backend": "scipy_bfgs"
+        "backend": "scipy_bfgs",
+        "loglike": -1716.0467301337824,
+        "worse_loglike": false
       },
       "biogeme": {
         "status": "ok",
         "seconds": 2.32503855205141,
-        "backend": "biogeme"
+        "backend": "biogeme",
+        "loglike": -1716.0467301337846,
+        "worse_loglike": false
       },
       "apollo": {
         "status": "ok",
         "seconds": 0.346,
-        "backend": "apollo"
+        "backend": "apollo",
+        "loglike": -1716.0467301337992,
+        "worse_loglike": false
       },
       "mlogit": {
         "status": "ok",
         "seconds": 0.03999999999999998,
-        "backend": "mlogit"
+        "backend": "mlogit",
+        "loglike": -1716.0467301337846,
+        "worse_loglike": false
       },
       "gmnl": {
         "status": "failed",
@@ -1674,43 +2580,62 @@
       "case_runner": {
         "status": "ok",
         "seconds": 8.581860644975677
+      },
+      "torch-choice": {
+        "status": "ok",
+        "seconds": 0.02919756341725588,
+        "loglike": -1716.0467301337903,
+        "worse_loglike": false,
+        "backend": "torch_choice"
       }
     },
     "backend_rows": {
       "torchdcm": {
         "backend": "torchdcm",
         "available": true,
-        "total_s": 0.17826368496753275,
-        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_seconds\": 0.17826368496753275, \"estimate_seconds\": 0.17826368496753275, \"covariance_seconds\": 0.0, \"loglike\": -1716.0467301337903, \"n_obs\": 1793, \"n_rows\": 5405, \"n_parameters\": 7, \"parameters\": [\"B_COST\", \"B_RISK\", \"B_SEATS\", \"B_NOISE\", \"B_CROWDNESS\", \"B_CONVLOC\", \"B_CLIENTELE\"]}",
-        "message": ""
+        "total_s": 0.024819301906973124,
+        "estimate_s": 0.023365419823676348,
+        "covariance_s": 0.0014538820832967758,
+        "loglike": -1716.0467301337903,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_s\": 0.024819301906973124, \"estimate_s\": 0.023365419823676348, \"covariance_s\": 0.0014538820832967758, \"loglike\": -1716.0467301337903}"
       },
       "scipy_bfgs": {
         "backend": "scipy_bfgs",
         "available": true,
         "total_s": 1.1388261859538034,
         "raw": "{\"backend\": \"scipy_bfgs\", \"available\": true, \"total_seconds\": 1.1388261859538034, \"estimate_seconds\": 1.1370372000383213, \"covariance_seconds\": 0.0017889859154820442, \"loglike\": -1716.0467301337824, \"params\": {\"B_COST\": -0.008529157145791265, \"B_RISK\": -0.11535521325094646, \"B_SEATS\": -0.10649074005452276, \"B_NOISE\": 0.033184831771670656, \"B_CROWDNESS\": -0.643300687159108, \"B_CONVLOC\": 0.34766034572775306, \"B_CLIENTELE\": 0.2137080712665571}, \"message\": \"Desired error not necessarily achieved due to precision loss.\"}",
-        "message": "Desired error not necessarily achieved due to precision loss."
+        "message": "Desired error not necessarily achieved due to precision loss.",
+        "loglike": -1716.0467301337824,
+        "worse_loglike": false
       },
       "mlogit": {
         "backend": "mlogit",
         "available": true,
         "total_s": 0.03999999999999998,
         "raw": "{\"backend\": \"mlogit\", \"dataset\": \"risky_transport\", \"n_obs\": 1793, \"n_rows\": 5405, \"n_parameters\": 7, \"variables\": [\"cost\", \"risk\", \"seats\", \"noise\", \"crowdness\", \"convloc\", \"clientele\"], \"loglike\": -1716.0467301337846, \"estimate_seconds\": 0.03899999999999998, \"covariance_seconds\": 0.0010000000000000009, \"total_seconds\": 0.03999999999999998, \"params\": {\"cost\": -0.008529157093042604, \"risk\": -0.11535520768809855, \"seats\": -0.10649074212911876, \"noise\": 0.03318482942881826, \"crowdness\": -0.6433006785889854, \"convloc\": 0.34766035258526073, \"clientele\": 0.21370807323363047}, \"covariance_names\": [\"cost\", \"risk\", \"seats\", \"noise\", \"crowdness\", \"convloc\", \"clientele\"], \"covariance\": [[1.2377019635029303e-06, -2.1411252843450375e-06, 9.756183435046415e-06, -3.9933232448652136e-05, -3.21564845496154e-05, -2.0750549434773563e-05, 1.0384811858918372e-05], [-2.1411252843450375e-06, 0.0001253185452361377, 5.5493288317948115e-05, 2.7480589440629056e-05, 0.00017410910950581488, 0.00012072001840890932, -3.6542606575444065e-05], [9.7561834350464e-06, 5.549328831794813e-05, 0.05498508236155308, -0.010120658388229804, -0.007520428044102675, -0.003771238501948863, -0.005970477372080008], [-3.9933232448652224e-05, 2.7480589440629188e-05, -0.010120658388229835, 0.06753208020281698, -0.041824410125394826, -0.002535702351660928, -0.011778112388375173], [-3.215648454961538e-05, 0.00017410910950581455, -0.007520428044102664, -0.04182441012539483, 0.05807918513238334, -0.012394961663053237, -0.011642382836552384], [-2.075054943477358e-05, 0.00012072001840890934, -0.0037712385019488767, -0.002535702351660917, -0.012394961663053237, 0.03924284776082976, -0.00854613701473989], [1.0384811858918404e-05, -3.654260657544406e-05, -0.005970477372080002, -0.011778112388375178, -0.01164238283655239, -0.008546137014739882, 0.06674197928871713]], \"available\": true, \"wall_seconds\": 0.4631310299737379}",
-        "message": ""
+        "message": "",
+        "loglike": -1716.0467301337846,
+        "worse_loglike": false
       },
       "biogeme": {
         "backend": "biogeme",
         "available": true,
         "total_s": 2.32503855205141,
         "raw": "{\"backend\": \"biogeme\", \"available\": true, \"total_seconds\": 2.32503855205141, \"estimate_seconds\": 2.3249083280097693, \"covariance_seconds\": 6.122200284153223e-05, \"loglike\": -1716.0467301337846, \"parameters\": [\"B_COST\", \"B_RISK\", \"B_SEATS\", \"B_NOISE\", \"B_CROWDNESS\", \"B_CONVLOC\", \"B_CLIENTELE\"], \"params\": {\"B_COST\": -0.00852915710361331, \"B_RISK\": -0.11535520758006067, \"B_SEATS\": -0.10649073899070786, \"B_NOISE\": 0.03318483309195135, \"B_CROWDNESS\": -0.6433006714442603, \"B_CONVLOC\": 0.3476603567771222, \"B_CLIENTELE\": 0.2137080438514657}, \"covariance\": [[1.2377019553021595e-06, -2.1411253383175047e-06, 9.756183301457783e-06, -3.993323196783946e-05, -3.2156484638661e-05, -2.0750549399301965e-05, 1.0384811845762955e-05], [-2.141125338317623e-06, 0.00012531853688331775, 5.549329107739775e-05, 2.7480591292707727e-05, 0.00017410909643640702, 0.00012072000759740896, -3.65426081672188e-05], [9.756183301457827e-06, 5.5493291077414686e-05, 0.05498508212229698, -0.010120658319655588, -0.007520428021013792, -0.0037712384716765955, -0.005970477371516675], [-3.993323196783977e-05, 2.748059129272082e-05, -0.010120658319655565, 0.06753207993407177, -0.041824409976707014, -0.0025357023465590505, -0.011778112321816012], [-3.215648463866073e-05, 0.0001741090964363846, -0.00752042802101379, -0.04182440997670702, 0.058079184962446385, -0.012394961648906728, -0.011642382832130099], [-2.075054939930193e-05, 0.00012072000759741281, -0.0037712384716765807, -0.002535702346559137, -0.01239496164890666, 0.039242847670363346, -0.008546137003189626], [1.0384811845762894e-05, -3.654260816721784e-05, -0.005970477371516704, -0.01177811232181598, -0.01164238283213011, -0.008546137003189617, 0.06674197911787974]]}",
-        "message": ""
+        "message": "",
+        "loglike": -1716.0467301337846,
+        "worse_loglike": false
       },
       "apollo": {
         "backend": "apollo",
         "available": true,
         "total_s": 0.346,
         "raw": "{\"backend\": \"apollo\", \"available\": true, \"total_seconds\": 0.346, \"estimate_seconds\": 0.346, \"covariance_seconds\": 0, \"loglike\": -1716.0467301337992, \"parameters\": [\"B_COST\", \"B_RISK\", \"B_SEATS\", \"B_NOISE\", \"B_CROWDNESS\", \"B_CONVLOC\", \"B_CLIENTELE\"], \"params\": {\"B_COST\": -0.008529151832982442, \"B_RISK\": -0.11535521888589996, \"B_SEATS\": -0.10649093497427556, \"B_NOISE\": 0.033184351507281905, \"B_CROWDNESS\": -0.6433005301655719, \"B_CONVLOC\": 0.34766010859816765, \"B_CLIENTELE\": 0.21370836651499336}, \"covariance\": [[1.2377017151064504e-06, -2.1411255310442487e-06, 9.756186734440683e-06, -3.993322472751782e-05, -3.215647735113382e-05, -2.0750544520587538e-05, 1.0384808198554932e-05], [-2.1411255310442487e-06, 0.00012531853605670407, 5.549328501738676e-05, 2.7480640945064473e-05, 0.0001741090631570116, 0.00012072000921966127, -3.6542624903376654e-05], [9.756186734440683e-06, 5.549328501738676e-05, 0.05498508079770201, -0.010120658467975906, -0.007520427593772279, -0.0037712385866579697, -0.005970477418586297], [-3.993322472751782e-05, 2.7480640945064473e-05, -0.010120658467975906, 0.06753207477772988, -0.041824406942051265, -0.002535701543091768, -0.011778111101830472], [-3.215647735113382e-05, 0.0001741090631570116, -0.007520427593772279, -0.041824406942051265, 0.05807918166766858, -0.012394961797650775, -0.011642383141710008], [-2.0750544520587538e-05, 0.00012072000921966127, -0.0037712385866579697, -0.002535701543091768, -0.012394961797650775, 0.03924284632654937, -0.00854613693599947], [1.0384808198554932e-05, -3.6542624903376654e-05, -0.005970477418586297, -0.011778111101830472, -0.011642383141710008, -0.00854613693599947, 0.06674197760976727]], \"message\": \"apollo_version=0.3.8\"}",
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "loglike": -1716.0467301337992,
+        "worse_loglike": false
       },
       "gmnl": {
         "backend": "gmnl",
@@ -1725,9 +2650,22 @@
         "total_s": null,
         "raw": "{\"backend\": \"xlogit\", \"available\": false, \"total_seconds\": null, \"estimate_seconds\": null, \"covariance_seconds\": null, \"loglike\": null, \"params\": null, \"message\": \"ValueError: inconsistent alts values in long format\"}",
         "message": "ValueError: inconsistent alts values in long format"
+      },
+      "torch_choice": {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.02919756341725588,
+        "loglike": -1716.0467301337903,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torch_choice\", \"available\": true, \"total_s\": 0.02919756341725588, \"estimate_s\": 0.027588099241256714, \"covariance_s\": 0.0016094641759991646, \"loglike\": -1716.0467301337903}",
+        "estimate_s": 0.027588099241256714,
+        "covariance_s": 0.0016094641759991646
       }
     },
-    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu."
+    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.",
+    "n_obs": 1793,
+    "consistent": "Yes"
   },
   {
     "case": "mlogit_train",
@@ -1749,7 +2687,25 @@
         "VECLIB_MAXIMUM_THREADS": "1"
       },
       "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
-      "threadpools": []
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 32
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
     },
     "command": [
       "python",
@@ -1766,96 +2722,146 @@
     "solver_status": {
       "torchdcm": {
         "status": "ok",
-        "seconds": 0.14992457791231573,
+        "seconds": 0.015542797278612852,
+        "loglike": -1724.1500271596988,
+        "worse_loglike": false,
         "backend": "torchdcm"
       },
       "scipy_bfgs": {
         "status": "ok",
         "seconds": 1.7662997259758413,
-        "backend": "scipy_bfgs"
+        "backend": "scipy_bfgs",
+        "loglike": -1724.1500271593738,
+        "worse_loglike": false
       },
       "biogeme": {
         "status": "ok",
         "seconds": 1.3592235069954768,
-        "backend": "biogeme"
+        "backend": "biogeme",
+        "loglike": -1724.1500271593764,
+        "worse_loglike": false
       },
       "apollo": {
         "status": "ok",
         "seconds": 0.2859999999999999,
-        "backend": "apollo"
+        "backend": "apollo",
+        "loglike": -1724.1500271601724,
+        "worse_loglike": false
       },
       "mlogit": {
         "status": "ok",
         "seconds": 0.03100000000000014,
-        "backend": "mlogit"
+        "backend": "mlogit",
+        "loglike": -1724.1500271593764,
+        "worse_loglike": false
       },
       "gmnl": {
         "status": "ok",
         "seconds": 0.046999999999999986,
-        "backend": "gmnl"
+        "backend": "gmnl",
+        "loglike": -1724.1500271593764,
+        "worse_loglike": false
       },
       "xlogit": {
         "status": "ok",
         "seconds": 0.004735138034448028,
-        "backend": "xlogit"
+        "backend": "xlogit",
+        "loglike": -1724.150027165676,
+        "worse_loglike": false
       },
       "case_runner": {
         "status": "ok",
         "seconds": 9.117399046081118
+      },
+      "torch-choice": {
+        "status": "ok",
+        "seconds": 0.018832918722182512,
+        "loglike": -1724.1500271596992,
+        "worse_loglike": false,
+        "backend": "torch_choice"
       }
     },
     "backend_rows": {
       "torchdcm": {
         "backend": "torchdcm",
         "available": true,
-        "total_s": 0.14992457791231573,
-        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_seconds\": 0.14992457791231573, \"estimate_seconds\": 0.14992457791231573, \"covariance_seconds\": 0.0, \"loglike\": -1724.1500271596988, \"n_obs\": 2929, \"n_rows\": 5858, \"n_parameters\": 4, \"parameters\": [\"B_PRICE\", \"B_TIME\", \"B_CHANGE\", \"B_COMFORT\"]}",
-        "message": ""
+        "total_s": 0.015542797278612852,
+        "estimate_s": 0.014800035860389471,
+        "covariance_s": 0.000742761418223381,
+        "loglike": -1724.1500271596988,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_s\": 0.015542797278612852, \"estimate_s\": 0.014800035860389471, \"covariance_s\": 0.000742761418223381, \"loglike\": -1724.1500271596988}"
       },
       "scipy_bfgs": {
         "backend": "scipy_bfgs",
         "available": true,
         "total_s": 1.7662997259758413,
         "raw": "{\"backend\": \"scipy_bfgs\", \"available\": true, \"total_seconds\": 1.7662997259758413, \"estimate_seconds\": 1.7652540829731151, \"covariance_seconds\": 0.0010456430027261376, \"loglike\": -1724.1500271593738, \"params\": {\"B_PRICE\": -0.0014843762367789575, \"B_TIME\": -0.02867586431100542, \"B_CHANGE\": -0.32634094762235294, \"B_COMFORT\": -0.9457256542068884}, \"message\": \"Desired error not necessarily achieved due to precision loss.\"}",
-        "message": "Desired error not necessarily achieved due to precision loss."
+        "message": "Desired error not necessarily achieved due to precision loss.",
+        "loglike": -1724.1500271593738,
+        "worse_loglike": false
       },
       "mlogit": {
         "backend": "mlogit",
         "available": true,
         "total_s": 0.03100000000000014,
         "raw": "{\"backend\": \"mlogit\", \"dataset\": \"train\", \"n_obs\": 2929, \"n_rows\": 5858, \"n_parameters\": 4, \"variables\": [\"price\", \"time\", \"change\", \"comfort\"], \"loglike\": -1724.1500271593764, \"estimate_seconds\": 0.030000000000000027, \"covariance_seconds\": 0.001000000000000112, \"total_seconds\": 0.03100000000000014, \"params\": {\"price\": -0.0014843759627745578, \"time\": -0.028675856982919773, \"change\": -0.32634094065578734, \"comfort\": -0.9457255537501433}, \"covariance_names\": [\"price\", \"time\", \"change\", \"comfort\"], \"covariance\": [[5.5916659991782796e-09, 9.631272939565929e-08, 1.3224616230369515e-06, 2.3271574331760892e-06], [9.631272939565929e-08, 7.142407869244835e-06, 3.617470022393026e-05, 6.95626935043655e-05], [1.3224616230369515e-06, 3.617470022393027e-05, 0.0035389591625358176, 0.0009384504603770146], [2.3271574331760892e-06, 6.95626935043655e-05, 0.0009384504603770145, 0.0042179132456508]], \"available\": true, \"wall_seconds\": 1.095893468009308}",
-        "message": ""
+        "message": "",
+        "loglike": -1724.1500271593764,
+        "worse_loglike": false
       },
       "biogeme": {
         "backend": "biogeme",
         "available": true,
         "total_s": 1.3592235069954768,
         "raw": "{\"backend\": \"biogeme\", \"available\": true, \"total_seconds\": 1.3592235069954768, \"estimate_seconds\": 1.3591046229703352, \"covariance_seconds\": 5.406199488788843e-05, \"loglike\": -1724.1500271593764, \"parameters\": [\"B_PRICE\", \"B_TIME\", \"B_CHANGE\", \"B_COMFORT\"], \"params\": {\"B_PRICE\": -0.0014843762198745003, \"B_TIME\": -0.028675862241613496, \"B_CHANGE\": -0.3263409801331412, \"B_COMFORT\": -0.9457256803289483}, \"covariance\": [[5.591665977850928e-09, 9.631272893279259e-08, 1.3224616157726586e-06, 2.3271574172981716e-06], [9.631272893280034e-08, 7.142407850215798e-06, 3.617470007870743e-05, 6.95626930985046e-05], [1.3224616157726595e-06, 3.6174700078707546e-05, 0.0035389591550790307, 0.0009384504542924474], [2.3271574172981733e-06, 6.956269309850473e-05, 0.0009384504542924474, 0.004217913229478652]]}",
-        "message": ""
+        "message": "",
+        "loglike": -1724.1500271593764,
+        "worse_loglike": false
       },
       "apollo": {
         "backend": "apollo",
         "available": true,
         "total_s": 0.2859999999999999,
         "raw": "{\"backend\": \"apollo\", \"available\": true, \"total_seconds\": 0.2859999999999999, \"estimate_seconds\": 0.2859999999999999, \"covariance_seconds\": 0, \"loglike\": -1724.1500271601724, \"parameters\": [\"B_PRICE\", \"B_TIME\", \"B_CHANGE\", \"B_COMFORT\"], \"params\": {\"B_PRICE\": -0.0014843732438440654, \"B_TIME\": -0.02867581070420895, \"B_CHANGE\": -0.3263402803203727, \"B_COMFORT\": -0.9457244292858531}, \"covariance\": [[5.591654877682001e-09, 9.631252474547133e-08, 1.3224592814129729e-06, 2.327152368967886e-06], [9.631252474547133e-08, 7.142400947351311e-06, 3.61746611559123e-05, 6.956257985720688e-05], [1.3224592814129729e-06, 3.61746611559123e-05, 0.0035389568807053544, 0.0009384493072695914], [2.327152368967886e-06, 6.956257985720688e-05, 0.0009384493072695914, 0.004217909208709943]], \"message\": \"apollo_version=0.3.8\"}",
-        "message": "apollo_version=0.3.8"
+        "message": "apollo_version=0.3.8",
+        "loglike": -1724.1500271601724,
+        "worse_loglike": false
       },
       "gmnl": {
         "backend": "gmnl",
         "available": true,
         "total_s": 0.046999999999999986,
         "raw": "{\"backend\": \"gmnl\", \"available\": true, \"total_seconds\": 0.046999999999999986, \"estimate_seconds\": 0.046999999999999986, \"covariance_seconds\": 0.0, \"loglike\": -1724.1500271593764, \"params\": {\"B_PRICE\": -0.0014843762253030916, \"B_TIME\": -0.02867586240546817, \"B_CHANGE\": -0.3263409845433173, \"B_COMFORT\": -0.9457256889888929}, \"message\": \"\"}",
-        "message": ""
+        "message": "",
+        "loglike": -1724.1500271593764,
+        "worse_loglike": false
       },
       "xlogit": {
         "backend": "xlogit",
         "available": true,
         "total_s": 0.004735138034448028,
         "raw": "{\"backend\": \"xlogit\", \"available\": true, \"total_seconds\": 0.004735138034448028, \"estimate_seconds\": 0.004734707996249199, \"covariance_seconds\": 4.300381988286972e-07, \"loglike\": -1724.150027165676, \"params\": {\"B_PRICE\": -0.001484378340598082, \"B_TIME\": -0.028675762018861354, \"B_CHANGE\": -0.32634591688039005, \"B_COMFORT\": -0.9457282775993958}, \"message\": \"\"}",
-        "message": ""
+        "message": "",
+        "loglike": -1724.150027165676,
+        "worse_loglike": false
+      },
+      "torch_choice": {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.018832918722182512,
+        "loglike": -1724.1500271596992,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torch_choice\", \"available\": true, \"total_s\": 0.018832918722182512, \"estimate_s\": 0.017836553044617176, \"covariance_s\": 0.0009963656775653362, \"loglike\": -1724.1500271596992}",
+        "estimate_s": 0.017836553044617176,
+        "covariance_s": 0.0009963656775653362
       }
     },
-    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu."
+    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.",
+    "n_obs": 2929,
+    "consistent": "Yes"
   },
   {
     "case": "mlogit_fishing",
@@ -1877,7 +2883,25 @@
         "VECLIB_MAXIMUM_THREADS": "1"
       },
       "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
-      "threadpools": []
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 32
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
     },
     "command": [
       "python",
@@ -1890,89 +2914,140 @@
     "solver_status": {
       "torchdcm": {
         "status": "ok",
-        "seconds": 0.143341,
+        "seconds": 0.011196360923349857,
+        "loglike": -1230.78383041549,
+        "worse_loglike": false,
         "backend": "torchdcm"
       },
       "scipy_bfgs": {
         "status": "ok",
         "seconds": 0.814975,
-        "backend": "scipy_bfgs"
+        "backend": "scipy_bfgs",
+        "loglike": -1230.7838304155,
+        "worse_loglike": false
       },
       "biogeme": {
         "status": "ok",
         "seconds": 1.542508,
-        "backend": "biogeme"
+        "backend": "biogeme",
+        "loglike": -1230.7838304155,
+        "worse_loglike": false
       },
       "apollo": {
         "status": "ok",
         "seconds": 0.274,
-        "backend": "apollo"
+        "backend": "apollo",
+        "loglike": -1230.7838304155,
+        "worse_loglike": false
       },
       "mlogit": {
         "status": "ok",
         "seconds": 0.941452,
-        "backend": "mlogit"
+        "backend": "mlogit",
+        "loglike": -1230.7838304155,
+        "worse_loglike": false
       },
       "gmnl": {
         "status": "ok",
         "seconds": 0.54888,
-        "backend": "gmnl"
+        "backend": "gmnl",
+        "loglike": -1230.7838304155,
+        "worse_loglike": false
       },
       "xlogit": {
         "status": "ok",
         "seconds": 0.005826,
-        "backend": "xlogit"
+        "backend": "xlogit",
+        "loglike": -1230.7838304194,
+        "worse_loglike": false
       },
       "case_runner": {
         "status": "ok",
         "seconds": 7.567578010959551
+      },
+      "torch-choice": {
+        "status": "ok",
+        "seconds": 0.014913649298250675,
+        "loglike": -1230.7838304154902,
+        "worse_loglike": false,
+        "backend": "torch_choice"
       }
     },
     "backend_rows": {
       "torchdcm": {
         "backend": "torchdcm",
         "available": true,
-        "raw": "torchdcm          True    0.143341    0.142528    0.000813  -1230.7838304155     0.000e+00     0.000e+00     0.000e+00     0.000e+00     0.000e+00",
-        "total_s": 0.143341
+        "total_s": 0.011196360923349857,
+        "estimate_s": 0.010580108966678381,
+        "covariance_s": 0.0006162519566714764,
+        "loglike": -1230.78383041549,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_s\": 0.011196360923349857, \"estimate_s\": 0.010580108966678381, \"covariance_s\": 0.0006162519566714764, \"loglike\": -1230.78383041549}"
       },
       "scipy_bfgs": {
         "backend": "scipy_bfgs",
         "available": true,
         "raw": "scipy_bfgs        True    0.814975    0.814226    0.000749  -1230.7838304155     2.274e-12     4.052e-08     4.088e-10     1.537e-09     1.744e-07",
-        "total_s": 0.814975
+        "total_s": 0.814975,
+        "loglike": -1230.7838304155,
+        "worse_loglike": false
       },
       "mlogit": {
         "backend": "mlogit",
         "available": true,
         "raw": "mlogit            True    0.941452    0.027000    0.002000  -1230.7838304155     0.000e+00     1.506e-08     4.088e-10     1.538e-09     4.219e-07",
-        "total_s": 0.941452
+        "total_s": 0.941452,
+        "loglike": -1230.7838304155,
+        "worse_loglike": false
       },
       "biogeme": {
         "backend": "biogeme",
         "available": true,
         "raw": "biogeme           True    1.542508    1.542445    0.000058  -1230.7838304155    -3.070e-11     5.892e-07     1.767e-02     1.312e-01     5.036e+02",
-        "total_s": 1.542508
+        "total_s": 1.542508,
+        "loglike": -1230.7838304155,
+        "worse_loglike": false
       },
       "apollo": {
         "backend": "apollo",
         "available": true,
         "raw": "apollo            True    0.274000    0.274000    0.000000  -1230.7838304155    -1.455e-11     2.293e-07     3.499e-09     1.316e-08     6.493e-07",
-        "total_s": 0.274
+        "total_s": 0.274,
+        "loglike": -1230.7838304155,
+        "worse_loglike": false
       },
       "gmnl": {
         "backend": "gmnl",
         "available": true,
         "raw": "gmnl              True    0.548880    0.053000    0.001000  -1230.7838304155     0.000e+00     1.506e-08     1.074e-10     4.687e-10     1.270e-07",
-        "total_s": 0.54888
+        "total_s": 0.54888,
+        "loglike": -1230.7838304155,
+        "worse_loglike": false
       },
       "xlogit": {
         "backend": "xlogit",
         "available": true,
         "raw": "xlogit            True    0.005826    0.005825    0.000000  -1230.7838304194    -3.949e-09     6.182e-06     6.722e-08     2.529e-07     5.322e-05",
-        "total_s": 0.005826
+        "total_s": 0.005826,
+        "loglike": -1230.7838304194,
+        "worse_loglike": false
+      },
+      "torch_choice": {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.014913649298250675,
+        "loglike": -1230.7838304154902,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torch_choice\", \"available\": true, \"total_s\": 0.014913649298250675, \"estimate_s\": 0.013998348265886307, \"covariance_s\": 0.0009153010323643684, \"loglike\": -1230.7838304154902}",
+        "estimate_s": 0.013998348265886307,
+        "covariance_s": 0.0009153010323643684
       }
     },
-    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu."
+    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.",
+    "n_obs": 1182,
+    "consistent": "Yes"
   },
   {
     "case": "mlogit_modecanada",
@@ -1994,7 +3069,25 @@
         "VECLIB_MAXIMUM_THREADS": "1"
       },
       "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
-      "threadpools": []
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1,
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 32
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1
+        }
+      ]
     },
     "command": [
       "python",
@@ -2007,28 +3100,38 @@
     "solver_status": {
       "torchdcm": {
         "status": "ok",
-        "seconds": 0.141951,
+        "seconds": 0.009252244140952826,
+        "loglike": -3404.3011945471712,
+        "worse_loglike": false,
         "backend": "torchdcm"
       },
       "scipy_bfgs": {
         "status": "ok",
         "seconds": 1.966987,
-        "backend": "scipy_bfgs"
+        "backend": "scipy_bfgs",
+        "loglike": -3404.3011945472,
+        "worse_loglike": false
       },
       "biogeme": {
         "status": "ok",
         "seconds": 1.462723,
-        "backend": "biogeme"
+        "backend": "biogeme",
+        "loglike": -3404.3011945472,
+        "worse_loglike": false
       },
       "apollo": {
         "status": "ok",
         "seconds": 0.332,
-        "backend": "apollo"
+        "backend": "apollo",
+        "loglike": -3404.3011945472,
+        "worse_loglike": false
       },
       "mlogit": {
         "status": "ok",
         "seconds": 0.521005,
-        "backend": "mlogit"
+        "backend": "mlogit",
+        "loglike": -3404.3011945472,
+        "worse_loglike": false
       },
       "gmnl": {
         "status": "failed",
@@ -2043,38 +3146,58 @@
       "case_runner": {
         "status": "ok",
         "seconds": 9.657959103002213
+      },
+      "torch-choice": {
+        "status": "ok",
+        "seconds": 0.01403019716963172,
+        "loglike": -3404.3011945471767,
+        "worse_loglike": false,
+        "backend": "torch_choice"
       }
     },
     "backend_rows": {
       "torchdcm": {
         "backend": "torchdcm",
         "available": true,
-        "raw": "torchdcm          True    0.141951    0.140317    0.001634  -3404.3011945472     0.000e+00     0.000e+00     0.000e+00     0.000e+00     0.000e+00",
-        "total_s": 0.141951
+        "total_s": 0.009252244140952826,
+        "estimate_s": 0.007815022021532059,
+        "covariance_s": 0.0014372221194207668,
+        "loglike": -3404.3011945471712,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torchdcm\", \"available\": true, \"total_s\": 0.009252244140952826, \"estimate_s\": 0.007815022021532059, \"covariance_s\": 0.0014372221194207668, \"loglike\": -3404.3011945471712}"
       },
       "scipy_bfgs": {
         "backend": "scipy_bfgs",
         "available": true,
         "raw": "scipy_bfgs        True    1.966987    1.965353    0.001635  -3404.3011945472     1.728e-11     4.069e-10     1.826e-14     1.001e-11     3.419e-07",
-        "total_s": 1.966987
+        "total_s": 1.966987,
+        "loglike": -3404.3011945472,
+        "worse_loglike": false
       },
       "mlogit": {
         "backend": "mlogit",
         "available": true,
         "raw": "mlogit            True    0.521005    0.117000    0.000000  -3404.3011945472    -4.547e-13     4.841e-08     2.394e-15     1.996e-12     8.717e-05",
-        "total_s": 0.521005
+        "total_s": 0.521005,
+        "loglike": -3404.3011945472,
+        "worse_loglike": false
       },
       "biogeme": {
         "backend": "biogeme",
         "available": true,
         "raw": "biogeme           True    1.462723    1.462666    0.000053  -3404.3011945472    -4.547e-13     1.848e-10     2.394e-15     1.996e-12     2.028e-07",
-        "total_s": 1.462723
+        "total_s": 1.462723,
+        "loglike": -3404.3011945472,
+        "worse_loglike": false
       },
       "apollo": {
         "backend": "apollo",
         "available": true,
         "raw": "apollo            True    0.332000    0.332000    0.000000  -3404.3011945472    -2.410e-11     1.564e-08     4.981e-13     2.729e-10     1.509e-05",
-        "total_s": 0.332
+        "total_s": 0.332,
+        "loglike": -3404.3011945472,
+        "worse_loglike": false
       },
       "gmnl": {
         "backend": "gmnl",
@@ -2087,8 +3210,21 @@
         "available": false,
         "raw": "xlogit           False          NA          NA          NA                NA            NA            NA            NA            NA            NA  xlogit MultinomialLogit requires consistent alternatives in long format; ModeCanada has ragged choice sets.",
         "message": "NA NA NA NA NA NA NA NA NA xlogit MultinomialLogit requires consistent alternatives in long format; ModeCanada has ragged choice sets."
+      },
+      "torch_choice": {
+        "backend": "torch_choice",
+        "available": true,
+        "total_s": 0.01403019716963172,
+        "loglike": -3404.3011945471767,
+        "worse_loglike": false,
+        "message": "",
+        "raw": "{\"backend\": \"torch_choice\", \"available\": true, \"total_s\": 0.01403019716963172, \"estimate_s\": 0.011985016986727715, \"covariance_s\": 0.002045180182904005, \"loglike\": -3404.3011945471767}",
+        "estimate_s": 0.011985016986727715,
+        "covariance_s": 0.002045180182904005
       }
     },
-    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu."
+    "stderr_tail": "An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.",
+    "n_obs": 4324,
+    "consistent": "Yes"
   }
 ]

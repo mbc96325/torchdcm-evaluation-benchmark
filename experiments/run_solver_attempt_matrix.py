@@ -22,6 +22,7 @@ RESULTS = ROOT / "results"
 
 SOLVERS = {
     "torchdcm": {"torchdcm", "torchdcm_fit", "torchdcm_fixed"},
+    "torch-choice": {"torch_choice"},
     "scipy_bfgs": {"scipy_bfgs"},
     "biogeme": {"biogeme", "biogeme_fixed"},
     "apollo": {"apollo", "apollo_r_fixed"},
@@ -31,7 +32,7 @@ SOLVERS = {
 }
 
 BACKEND_PATTERN = re.compile(
-    r"^(torchdcm|torchdcm_fit|torchdcm_fixed|scipy_bfgs|biogeme|biogeme_fixed|apollo|apollo_r_fixed|mlogit|gmnl|xlogit)\s+"
+    r"^(torchdcm|torchdcm_fit|torchdcm_fixed|torch_choice|scipy_bfgs|biogeme|biogeme_fixed|apollo|apollo_r_fixed|mlogit|gmnl|xlogit)\s+"
 )
 
 LL_ABS_TOL = 0.25
@@ -198,6 +199,16 @@ def parse_sidecar_backend_rows(case: MatrixCase) -> dict[str, dict]:
             "loglike": parse_float(str(torch_row.get("loglike", "NA"))),
             "raw": json.dumps(torch_row),
             "message": torch_row.get("message", ""),
+        }
+    torch_choice_row = row.get("torch_choice")
+    if torch_choice_row:
+        backend_rows["torch_choice"] = {
+            "backend": "torch_choice",
+            "available": bool(torch_choice_row.get("available")),
+            "total_s": parse_float(str(torch_choice_row.get("total_seconds", "NA"))),
+            "loglike": parse_float(str(torch_choice_row.get("loglike", "NA"))),
+            "raw": json.dumps(torch_choice_row),
+            "message": torch_choice_row.get("message", ""),
         }
     scipy_row = row.get("scipy_bfgs")
     if scipy_row:

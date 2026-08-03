@@ -8,7 +8,7 @@ Modeling*. The paper is prepared for the *INFORMS Journal on Computing*
 software track.
 
 This archive contains the TorchDCM source code used in the study, experiment
-drivers for seven estimation packages, all input datasets, the intermediate
+drivers for eight estimation packages, all input datasets, the intermediate
 solver outputs retained by the benchmark, and the machine-readable results
 used to prepare the paper's tables.
 
@@ -70,6 +70,10 @@ The repository reproduces the numerical experiments reported in the paper:
 - ordered-logit and ordered-probit validation; and
 - latent-class, hybrid-choice, and panel validation.
 
+Torch-Choice 1.0.7 is included in every aligned MNL and NL comparison reported
+in Tables 3, 4, 7, and 8. The MixL comparisons retain the packages with a
+documented MixL estimation interface.
+
 These experiments produce the results behind Tables 3--9 in the main paper
 and Tables EC.1--EC.11 in the electronic companion. All 18 empirical datasets,
 including the original LPMC files and the NHTS public-use CSV archive, are
@@ -107,6 +111,7 @@ required after cloning.
 ├── tests/                    # Artifact and numerical parity checks
 ├── run_exp.py                # Root experiment selector
 ├── requirements.txt          # Tested Python versions
+├── requirements-torch-choice.txt # Torch-Choice support dependencies
 ├── pyproject.toml            # Standalone local installation
 ├── LICENSE                   # MIT License for original software
 ├── AUTHORS                   # Contribution authors
@@ -126,6 +131,7 @@ Python 3.10 or later is required. The committed results were produced with:
 | pandas | 2.3.3 |
 | SciPy | 1.18.0 |
 | Biogeme | 3.3.3 |
+| Torch-Choice | 1.0.7 |
 | xlogit | 0.2.7 |
 | Apollo | 0.3.8 |
 | mlogit | 2.0.0 |
@@ -153,6 +159,8 @@ python -m venv .venv
 source .venv/bin/activate
 python -m pip install -U pip
 python -m pip install -r requirements.txt
+python -m pip install -r requirements-torch-choice.txt
+python -m pip install torch-choice==1.0.7 --no-deps
 python -m pip install -e . --no-deps
 ```
 
@@ -160,6 +168,12 @@ On Windows, activate the environment with
 `.venv\Scripts\activate`. The exact PyTorch command may differ by CPU/CUDA
 platform. If so, install the appropriate PyTorch build first, then install the
 remaining dependencies and this repository.
+
+Torch-Choice 1.0.7 declares NumPy below version 2, while Biogeme 3.3.3 requires
+NumPy 2.4.6 or later. The archived benchmark uses Torch-Choice 1.0.7 with the
+NumPy 2.4.6 environment in `requirements.txt`, which passed all MNL and NL
+final-likelihood checks. Installing Torch-Choice with `--no-deps` preserves
+this tested cross-software environment.
 
 Install the external R estimators when their comparison rows are needed:
 
@@ -270,10 +284,11 @@ table formatting to these values and is not required to rerun estimation.
 
 All cross-estimator CPU runners enforce one logical CPU by controlling process
 affinity and the OpenMP, BLAS, NumExpr, and PyTorch thread counts. Apollo uses
-`nCores=1`. Reported runtime covers full parameter estimation and covariance
-construction. It excludes data loading or generation, aligned-design
-construction, process startup, and file input/output. Stress workers have a
-300-second limit.
+`nCores=1`. Torch-Choice uses the same float64 precision, single-thread PyTorch
+policy, and untimed MNL forward/backward warm-up as TorchDCM. Reported runtime
+covers full parameter estimation and covariance construction. It excludes data
+loading or generation, aligned-design construction, process startup, and file
+input/output. Stress workers have a 300-second limit.
 
 Within a case, estimators receive aligned data, utility specifications,
 parameter scales, and starting values. Simulated models use common draws when

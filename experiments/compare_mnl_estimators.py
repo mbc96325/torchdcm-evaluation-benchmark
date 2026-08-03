@@ -21,6 +21,7 @@ from torchdcm import Beta, ChoiceDataset, MultinomialLogit, UtilitySpec
 from torchdcm.spec.expressions import Expression, Term
 from compare_biogeme import build_case, run_biogeme
 from mnl_generic_backends import make_design_long, run_gmnl_generic, run_mlogit_generic, run_xlogit_generic
+from torch_choice_backend import run_mnl as run_torch_choice_mnl
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -124,7 +125,12 @@ def run_torchdcm(data, spec) -> BackendResult:
     model = MultinomialLogit(spec)
     data = data.to(device=model.device, dtype=model.dtype)
     compiled = model.compile(data)
-    params = compiled.free_initial.clone().detach().requires_grad_(True)
+    initial = compiled.free_initial.clone().detach()
+    # Exclude one-time PyTorch kernel and autograd initialization, matching the
+    # Torch-Choice timing path and the synthetic MNL benchmark.
+    warmup = initial.clone().requires_grad_(True)
+    (-model.loglike(warmup, data, compiled)).backward()
+    params = initial.clone().requires_grad_(True)
     optimizer = torch.optim.LBFGS(
         [params],
         max_iter=model.max_iter,
@@ -438,6 +444,7 @@ def run_case(case: str, n_obs: int, data_seed: int, initial: str, init_seed: int
 
     results = [
         run_torchdcm(data, spec),
+        run_torch_choice_mnl(data, spec, initial_values, max_iter=200),
         run_scipy_mle(data, spec, initial_values),
         run_biogeme_timed(df, alternatives, names, initial_values),
         run_apollo_timed(df, alternatives, names, initial_values),
@@ -463,7 +470,7 @@ def print_results(case: str, n_obs: int, initial: str, initial_values: dict[str,
     print("  data_source: data/small/biogeme_swissmetro/data.csv")
     print("  model: MNL with TRAIN/SM/CAR, ASC_TRAIN, ASC_CAR, B_TIME, B_COST")
     print("  scaling: time/100, cost/100, GA discount and official availability filters")
-    print("  initial_values: shared across TorchDCM, SciPy, Biogeme, Apollo")
+    print("  initial_values: shared across all estimators")
     print("  covariance: classic inverse observed information where available")
     print("  reference: torchdcm")
     print(f"initial: {initial}")
