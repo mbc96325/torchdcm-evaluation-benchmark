@@ -19,7 +19,10 @@ from torchdcm import (
     UtilitySpec,
 )
 
-from compare_mnl_estimators import load_biogeme_swissmetro
+try:
+    from .compare_mnl_estimators import load_biogeme_swissmetro
+except ImportError:  # Support direct execution of scripts in experiments/.
+    from compare_mnl_estimators import load_biogeme_swissmetro
 
 
 # Actual-data cases use the canonical tables committed with this benchmark.

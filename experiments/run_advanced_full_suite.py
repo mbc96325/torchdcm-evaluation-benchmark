@@ -7,6 +7,8 @@ import sys
 import tempfile
 from pathlib import Path
 
+from advanced_diagnostics import enrich_advanced_diagnostics
+
 
 CASES = [
     ("latent_class", "Synthetic 2,000"),
@@ -167,9 +169,14 @@ def main() -> None:
             indexed[(kind, case_name)]["results"]["biogeme"] = biogeme
             _refresh_summary(indexed[(kind, case_name)])
 
-        payload["timing_scope"] = "full optimization plus classic covariance construction"
+        payload["timing_scope"] = (
+            "full optimization plus classic covariance construction; "
+            "TorchDCM case-specific compilation excluded"
+        )
+        payload["torchdcm_compilation_timed"] = False
         payload["solver_timeout_seconds"] = args.timeout
         payload["cases"] = [indexed[key] for key in CASES]
+        enrich_advanced_diagnostics(payload)
         args.output.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
         print(f"[suite] wrote {args.output}", flush=True)
 

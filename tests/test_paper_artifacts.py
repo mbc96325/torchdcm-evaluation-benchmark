@@ -9,6 +9,8 @@ from pathlib import Path
 import pytest
 import torchdcm
 
+from experiments.summarize_ordered_results import domain_summaries, maxima
+
 
 ROOT = Path(__file__).resolve().parents[1]
 RESULTS = ROOT / "results"
@@ -78,6 +80,70 @@ def test_electronic_companion_case_counts():
         assert len(synthetic["rows"]) == 10
         assert len(actual["rows"]) == 54
     assert len(load("advanced_full_estimation.json")["cases"]) == 18
+
+
+def test_advanced_table_diagnostics_are_archived():
+    expected = {
+        ("latent_class", "Synthetic 2,000"): (2.2340864529532545e-4, 4.5071749136260664e-5, 7.324154968080254e-5),
+        ("latent_class", "Synthetic 5,000"): (2.93890082735504e-4, 3.191804808422294e-5, 5.9071982590641614e-5),
+        ("latent_class", "Synthetic 10,000"): (2.1281393966510187e-6, 4.6975296330575844e-7, 2.6002561959170833e-7),
+        ("latent_class", "Swissmetro 2,000"): (1.8983474101736952e-3, 9.568040243168596e-5, 5.692539107286787e-5),
+        ("latent_class", "Swissmetro 3,500"): (1.7415695220179828e-5, 2.16464298607999e-6, 3.373994409583414e-6),
+        ("latent_class", "Swissmetro 5,000"): (1.0368461083682945e-3, 2.195495428791716e-5, 3.437941201328565e-5),
+        ("hybrid_choice", "Synthetic 500"): (2.2780071182726402e-6, 9.906976097262543e-7),
+        ("hybrid_choice", "Synthetic 2,000"): (3.961017049691762e-6, 3.120366864561852e-6),
+        ("hybrid_choice", "Synthetic 10,000"): (2.386953181776619e-7, 6.279999970049133e-8),
+        ("hybrid_choice", "Optima 500"): (2.8849174396050614e-6, 5.271626530856111e-7),
+        ("hybrid_choice", "Optima 1,000"): (1.2139216381656937e-5, 3.5568421347387247e-6),
+        ("hybrid_choice", "Optima 1,298"): (5.127314497865854e-6, 1.2421327281186834e-6),
+        ("panel_likelihood", "Synthetic 250x2"): (6.571974518920776e-6, 3.176976268171039e-6),
+        ("panel_likelihood", "Synthetic 500x4"): (1.9627221253815108e-7, 2.870089654827268e-8),
+        ("panel_likelihood", "Synthetic 1,250x8"): (4.5622417077506583e-7, 3.517458146279351e-8),
+        ("panel_likelihood", "Electricity 100"): (3.882486106360217e-7, 2.357490050885428e-11),
+        ("panel_likelihood", "Electricity 250"): (8.600253248225442e-6, 4.483663299035927e-10),
+        ("panel_likelihood", "Electricity 348"): (4.285030679729296e-7, 6.090926880905948e-11),
+    }
+    for case in load("advanced_full_estimation.json")["cases"]:
+        diagnostics = case["diagnostics"]
+        values = [diagnostics["max_parameter_difference"]]
+        if case["kind"] == "latent_class":
+            values.extend(
+                [
+                    diagnostics["max_mean_class_share_difference"],
+                    diagnostics["max_probability_difference"],
+                ]
+            )
+        elif case["kind"] == "hybrid_choice":
+            values.append(diagnostics["max_probability_difference"])
+        else:
+            values.append(diagnostics["max_sequence_probability_difference"])
+        assert values == pytest.approx(expected[(case["kind"], case["case"])])
+
+
+def test_ordered_summary_diagnostics_are_reproducible():
+    synthetic_logit = load("ordered_logit_synthetic_threeway_single_core.json")
+    synthetic_probit = load("ordered_probit_synthetic_threeway_single_core.json")
+    assert list(maxima(synthetic_logit).values()) == pytest.approx(
+        [1.1569045454962179e-7, 2.1107926071906036e-5, 2.691609219840352e-6]
+    )
+    assert list(maxima(synthetic_probit).values()) == pytest.approx(
+        [5.015135684516281e-8, 6.927409984536226e-6, 3.2711932814732947e-6]
+    )
+
+    domains = domain_summaries(
+        {
+            "logit": load("ordered_logit_real_threeway_single_core.json"),
+            "probit": load("ordered_probit_real_threeway_single_core.json"),
+        }
+    )
+    expected = {
+        "Environmental": (1.130393229686888e-6, 8.644273809599312e-5, 1.992352649032858e-5),
+        "Mobility": (1.4002062016515993e-6, 3.2797483777091685e-4, 3.117287214615683e-5),
+        "Residential choice": (5.45376224181382e-7, 1.3153482763117452e-4, 1.1484619032609e-5),
+        "Lifestyle": (8.527717909601051e-7, 5.193664154561073e-5, 1.4180785255279993e-5),
+    }
+    for domain, values in expected.items():
+        assert list(domains[domain]["maxima"].values()) == pytest.approx(values)
 
 
 def test_all_paper_datasets_are_archived():

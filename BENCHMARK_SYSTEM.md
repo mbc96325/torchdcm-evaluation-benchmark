@@ -39,6 +39,11 @@ input/output are excluded. Compilation performed inside an estimator's fit
 call remains included. Stress cases use a 300-second worker limit. Actual-data
 NL and MixL cases run in fresh child processes.
 
+The advanced-model suite uses the timing boundary documented in Table EC.8.
+Its TorchDCM models are compiled before the timed `fit` call, and the resulting
+JSON records this scope. This exception is applied consistently to the six
+latent-class, six hybrid-choice, and six panel cases.
+
 The device experiment uses the same TorchDCM specification, starting values,
 and simulation draws on CPU and CUDA. Its reported values are medians of three
 full estimation runs.
@@ -56,8 +61,9 @@ max(0.25, 1e-5 * abs(best_loglike), 0.01 * n_observations).
 Such a runtime remains visible but the solution is excluded from consistency.
 `Yes` requires at least two remaining solutions within the tolerance. `N.A.`
 means fewer than two comparable solutions remain. `Fail` records an attempted
-run that did not complete successfully, while `Timeout` records the
-300-second limit.
+run that did not complete successfully. `Timeout` records a worker that
+reaches the 300-second limit or is externally terminated under the same
+constrained run. The JSON retains the raw elapsed time and termination message.
 
 ## Output policy
 

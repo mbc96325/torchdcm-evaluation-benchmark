@@ -928,6 +928,16 @@ def isolated_timed_safe_run(backend: str, fn, result_class, timeout_s: int | Non
             process.join()
         return result_class(backend, False, total_s=elapsed, message=f"{backend} exceeded {timeout_s}s timeout")
     if process.exitcode != 0:
+        if process.exitcode == -signal.SIGKILL:
+            return result_class(
+                backend,
+                False,
+                total_s=elapsed,
+                message=(
+                    f"{backend} timeout/resource termination in isolated "
+                    f"process with exit code {process.exitcode}"
+                ),
+            )
         return result_class(backend, False, total_s=elapsed, message=f"{backend} failed in isolated process with exit code {process.exitcode}")
     if queue.empty():
         return result_class(backend, False, total_s=elapsed, message=f"{backend} isolated process returned no result")

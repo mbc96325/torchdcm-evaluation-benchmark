@@ -1,6 +1,7 @@
 {
   "benchmark": "advanced_full_estimation_validation",
-  "timing_scope": "full optimization plus classic covariance construction",
+  "timing_scope": "full optimization plus classic covariance construction; TorchDCM case-specific compilation excluded",
+  "torchdcm_compilation_timed": false,
   "runtime_policy": {
     "cpu_policy": "single-logical-core",
     "logical_cpu_affinity": [
@@ -126,7 +127,12 @@
       },
       "best_loglike": -1926.441606179621,
       "loglike_tolerance": 20.0,
-      "consistent": true
+      "consistent": true,
+      "diagnostics": {
+        "max_parameter_difference": 0.00022340864529532545,
+        "max_mean_class_share_difference": 4.5071749136260664e-05,
+        "max_probability_difference": 7.324154968080254e-05
+      }
     },
     {
       "case": "Synthetic 5,000",
@@ -215,7 +221,12 @@
       },
       "best_loglike": -4802.548990418294,
       "loglike_tolerance": 50.0,
-      "consistent": true
+      "consistent": true,
+      "diagnostics": {
+        "max_parameter_difference": 0.000293890082735504,
+        "max_mean_class_share_difference": 3.191804808422294e-05,
+        "max_probability_difference": 5.9071982590641614e-05
+      }
     },
     {
       "case": "Synthetic 10,000",
@@ -304,7 +315,12 @@
       },
       "best_loglike": -9613.171449138856,
       "loglike_tolerance": 100.0,
-      "consistent": true
+      "consistent": true,
+      "diagnostics": {
+        "max_parameter_difference": 2.1281393966510187e-06,
+        "max_mean_class_share_difference": 4.6975296330575844e-07,
+        "max_probability_difference": 2.6002561959170833e-07
+      }
     },
     {
       "case": "Swissmetro 3,500",
@@ -393,7 +409,12 @@
       },
       "best_loglike": -2555.9506887998223,
       "loglike_tolerance": 35.0,
-      "consistent": true
+      "consistent": true,
+      "diagnostics": {
+        "max_parameter_difference": 1.7415695220179828e-05,
+        "max_mean_class_share_difference": 2.16464298607999e-06,
+        "max_probability_difference": 3.373994409583414e-06
+      }
     },
     {
       "case": "Swissmetro 2,000",
@@ -482,7 +503,12 @@
       },
       "best_loglike": -1309.1020105318544,
       "loglike_tolerance": 20.0,
-      "consistent": true
+      "consistent": true,
+      "diagnostics": {
+        "max_parameter_difference": 0.0018983474101736952,
+        "max_mean_class_share_difference": 9.568040243168596e-05,
+        "max_probability_difference": 5.692539107286787e-05
+      }
     },
     {
       "case": "Swissmetro 5,000",
@@ -571,7 +597,12 @@
       },
       "best_loglike": -3878.7251545779013,
       "loglike_tolerance": 50.0,
-      "consistent": true
+      "consistent": true,
+      "diagnostics": {
+        "max_parameter_difference": 0.0010368461083682945,
+        "max_mean_class_share_difference": 2.195495428791716e-05,
+        "max_probability_difference": 3.437941201328565e-05
+      }
     },
     {
       "case": "Synthetic 500",
@@ -665,7 +696,11 @@
       },
       "best_loglike": -1682.8676847191393,
       "loglike_tolerance": 5.0,
-      "consistent": true
+      "consistent": true,
+      "diagnostics": {
+        "max_parameter_difference": 2.2780071182726402e-06,
+        "max_probability_difference": 9.906976097262543e-07
+      }
     },
     {
       "case": "Synthetic 2,000",
@@ -759,7 +794,11 @@
       },
       "best_loglike": -6896.269085005824,
       "loglike_tolerance": 20.0,
-      "consistent": true
+      "consistent": true,
+      "diagnostics": {
+        "max_parameter_difference": 3.961017049691762e-06,
+        "max_probability_difference": 3.120366864561852e-06
+      }
     },
     {
       "case": "Synthetic 10,000",
@@ -841,7 +880,11 @@
       },
       "best_loglike": -34352.656084429036,
       "loglike_tolerance": 100.0,
-      "consistent": true
+      "consistent": true,
+      "diagnostics": {
+        "max_parameter_difference": 2.386953181776619e-07,
+        "max_probability_difference": 6.279999970049133e-08
+      }
     },
     {
       "case": "Optima 500",
@@ -935,7 +978,11 @@
       },
       "best_loglike": -1488.9748214896847,
       "loglike_tolerance": 5.0,
-      "consistent": true
+      "consistent": true,
+      "diagnostics": {
+        "max_parameter_difference": 2.8849174396050614e-06,
+        "max_probability_difference": 5.271626530856111e-07
+      }
     },
     {
       "case": "Optima 1,000",
@@ -1029,7 +1076,11 @@
       },
       "best_loglike": -3025.50595368806,
       "loglike_tolerance": 10.0,
-      "consistent": true
+      "consistent": true,
+      "diagnostics": {
+        "max_parameter_difference": 1.2139216381656937e-05,
+        "max_probability_difference": 3.5568421347387247e-06
+      }
     },
     {
       "case": "Optima 1,298",
@@ -1111,7 +1162,11 @@
       },
       "best_loglike": -3911.6749158421085,
       "loglike_tolerance": 12.98,
-      "consistent": true
+      "consistent": true,
+      "diagnostics": {
+        "max_parameter_difference": 5.127314497865854e-06,
+        "max_probability_difference": 1.2421327281186834e-06
+      }
     },
     {
       "case": "Synthetic 250x2",
@@ -1211,7 +1266,11 @@
       },
       "best_loglike": -613.7538149698912,
       "loglike_tolerance": 5.0,
-      "consistent": true
+      "consistent": true,
+      "diagnostics": {
+        "max_parameter_difference": 6.571974518920776e-06,
+        "max_sequence_probability_difference": 3.176976268171039e-06
+      }
     },
     {
       "case": "Synthetic 500x4",
@@ -1311,7 +1370,11 @@
       },
       "best_loglike": -2414.776133532819,
       "loglike_tolerance": 20.0,
-      "consistent": true
+      "consistent": true,
+      "diagnostics": {
+        "max_parameter_difference": 1.9627221253815108e-07,
+        "max_sequence_probability_difference": 2.870089654827268e-08
+      }
     },
     {
       "case": "Synthetic 1,250x8",
@@ -1403,7 +1466,11 @@
       },
       "best_loglike": -12023.881303831464,
       "loglike_tolerance": 100.0,
-      "consistent": true
+      "consistent": true,
+      "diagnostics": {
+        "max_parameter_difference": 4.5622417077506583e-07,
+        "max_sequence_probability_difference": 3.517458146279351e-08
+      }
     },
     {
       "case": "Electricity 100",
@@ -1495,7 +1562,11 @@
       },
       "best_loglike": -1555.6939837890384,
       "loglike_tolerance": 12.0,
-      "consistent": true
+      "consistent": true,
+      "diagnostics": {
+        "max_parameter_difference": 3.882486106360217e-07,
+        "max_sequence_probability_difference": 2.357490050885428e-11
+      }
     },
     {
       "case": "Electricity 250",
@@ -1587,7 +1658,11 @@
       },
       "best_loglike": -3927.36977710251,
       "loglike_tolerance": 30.0,
-      "consistent": true
+      "consistent": true,
+      "diagnostics": {
+        "max_parameter_difference": 8.600253248225442e-06,
+        "max_sequence_probability_difference": 4.483663299035927e-10
+      }
     },
     {
       "case": "Electricity 348",
@@ -1679,7 +1754,11 @@
       },
       "best_loglike": -5443.607175293502,
       "loglike_tolerance": 41.76,
-      "consistent": true
+      "consistent": true,
+      "diagnostics": {
+        "max_parameter_difference": 4.285030679729296e-07,
+        "max_sequence_probability_difference": 6.090926880905948e-11
+      }
     }
   ],
   "solver_timeout_seconds": 300

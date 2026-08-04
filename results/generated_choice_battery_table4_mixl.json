@@ -4596,7 +4596,7 @@
         "max_param_diff": null,
         "max_prob_diff": null,
         "params": null,
-        "message": "biogeme failed in isolated process with exit code -9"
+      "message": "biogeme timeout/resource termination in isolated process with exit code -9"
       },
       {
         "backend": "apollo",

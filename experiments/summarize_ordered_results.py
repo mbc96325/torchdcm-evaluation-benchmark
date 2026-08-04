@@ -38,6 +38,34 @@ def runtime_ranges(payload: dict) -> dict[str, list[float]]:
     }
 
 
+def domain_summaries(payloads: dict[str, dict]) -> dict[str, dict]:
+    groups: dict[str, list[dict]] = {}
+    for payload in payloads.values():
+        for row in payload["rows"]:
+            groups.setdefault(row["group"], []).append(row)
+    summaries = {}
+    for group, rows in groups.items():
+        summaries[group] = {
+            "indicators": len({row["indicator"] for row in rows}),
+            "runtime_ranges": {
+                backend: [
+                    min(runtime(row, backend) for row in rows),
+                    max(runtime(row, backend) for row in rows),
+                ]
+                for backend in BACKENDS
+            },
+            "maxima": {
+                key: max(float(row[key]) for row in rows)
+                for key in (
+                    "abs_loglike_diff",
+                    "max_param_diff",
+                    "max_probability_diff",
+                )
+            },
+        }
+    return summaries
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -122,6 +150,7 @@ def main() -> None:
             }
             for kind, payload in actual.items()
         },
+        "actual_domains_combined": domain_summaries(actual),
     }
     print("SUMMARY_JSON")
     print(json.dumps(summary, indent=2))

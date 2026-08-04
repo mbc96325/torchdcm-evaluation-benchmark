@@ -279,6 +279,9 @@ The top-level JSON files in `results/` are the direct sources for the numerical
 tables. `results/intermediate/` contains the subordinate package outputs and
 logs used to assemble them. The manuscript repository applies the journal's
 table formatting to these values and is not required to rerun estimation.
+For the actual-data tables, Table 2 counts free parameters in the aligned MNL
+specification. Tables 8 and 9 instead count model-specific utility or mean
+coefficients and report NL dissimilarities or MixL random scales separately.
 
 ## Timing and numerical protocol
 
@@ -288,7 +291,11 @@ affinity and the OpenMP, BLAS, NumExpr, and PyTorch thread counts. Apollo uses
 policy, and untimed MNL forward/backward warm-up as TorchDCM. Reported runtime
 covers full parameter estimation and covariance construction. It excludes data
 loading or generation, aligned-design construction, process startup, and file
-input/output. Stress workers have a 300-second limit.
+input/output. The advanced-model suite uses its separately recorded boundary:
+TorchDCM case-specific compilation occurs before the timed fit. Stress workers
+have a 300-second limit. A reported `Timeout` includes a worker that reaches
+that limit or is externally terminated under the same constrained run; the
+raw termination message and elapsed time remain in JSON.
 
 Within a case, estimators receive aligned data, utility specifications,
 parameter scales, and starting values. Simulated models use common draws when
